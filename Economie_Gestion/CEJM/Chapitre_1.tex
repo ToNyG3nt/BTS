@@ -1,0 +1,131 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% Mise en page
+\geometry{margin=2.2cm}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{CEJM — Thème 1}
+\fancyhead[R]{Chapitre 1}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{15pt}
+
+% Couleurs simples
+\definecolor{bleu}{RGB}{0,90,170}
+\definecolor{gris}{RGB}{245,245,245}
+
+% Encadrés simples sans packages additionnels
+\newcommand{\Encadre}[2][bleu]{%
+  \noindent\fcolorbox{#1}{gris}{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}{#2}}
+}
+
+% Titre
+\title{\textbf{CEJM} \\[3mm]\large Thème 1 : L'intégration de l'entreprise dans son environnement\\[2mm]\normalsize Chapitre 1 : Les agents économiques en relation avec l'entreprise}
+\author{}
+\date{\vspace{-6mm}}
+
+\begin{document}
+\maketitle
+\vspace{-8mm}
+\Encadre{\textbf{Problématique :} Comment s'établissent les relations entre l'entreprise et son environnement économique ?}
+
+\tableofcontents
+\newpage
+
+\section{Synthèse}
+L'activité économique est l'activité humaine qui organise la production, l'échange et la consommation de biens et de services pour satisfaire des besoins.\\
+Pour mener leurs activités, les entreprises sont en relation avec de nombreux agents économiques avec lesquels elles effectuent des échanges de diverses natures.
+
+\section{Les acteurs de l'activité économique}
+En économie, on parle \textbf{d'agents économiques} (ou secteurs institutionnels). Un agent économique est un individu ou un ensemble d'individus constituant un centre de décision économique indépendant.\\
+L'analyse regroupe ces centres de décision en catégories selon leur fonction principale.
+
+\subsection{Catégories principales d'agents}
+\begin{itemize}
+  \item \textbf{Ménages} : individus ou groupes vivant dans un même logement. Fonction principale : \textit{consommation} de biens et services pour satisfaire directement leurs besoins.
+  \item \textbf{Entreprises} : produisent des biens et/ou des services pour les vendre sur un marché afin de réaliser un \textit{profit}.
+  \item \textbf{Banques} : assurent le \textit{financement de l'économie} par la collecte et l'octroi de crédits.
+  \item \textbf{Administrations publiques} (État, Sécurité sociale, collectivités locales) : répondent à des besoins d'intérêt général et produisent des \textit{services non marchands}.
+\end{itemize}
+
+\subsection{Production marchande et non marchande}
+\begin{description}
+  \item[Production marchande] assurée par les entreprises : biens et services vendus sur un marché à un prix concurrentiel.
+  \item[Production non marchande] assurée par les administrations publiques : fournie gratuitement ou à des prix non significatifs (\textless{} 50\% du coût de production).
+\end{description}
+
+\section{Interactions sur les marchés}
+La réalité peut être représentée par un \textit{circuit économique}, modèle schématique des échanges et interdépendances entre agents économiques.\\
+\Encadre{\textbf{Vidéo :} \url{https://www.citeco.fr/le-circuit-\%C3\%A9conomique}}
+
+\section{Relations de l'entreprise avec les ménages}
+\subsection{Marché des biens et services}
+\begin{itemize}
+  \item \textbf{Flux réels} des entreprises vers les ménages : biens et services.
+  \item \textbf{Flux monétaires} des ménages vers les entreprises : paiements (chiffre d'affaires).
+\end{itemize}
+Les décisions de consommation dépendent des préférences, du budget et de la \textit{conjoncture} (moral des ménages). Une conjoncture favorable stimule la consommation ; défavorable, elle incite à l'épargne. Les entreprises doivent adapter leur approche client.\\
+Les comportements évoluent avec le numérique : nécessité d'anticiper et de personnaliser la relation avec des consommateurs plus nomades et volatils.
+
+\subsection{Marché du travail}
+Rencontre entre ménages et entreprises : \textbf{travail} contre \textbf{salaire}.\\
+\begin{itemize}
+  \item \textbf{Flux réels} : quantité de travail fournie.
+  \item \textbf{Flux monétaires} : salaires versés aux ménages.
+\end{itemize}
+
+\section{Relations avec les autres entreprises}
+Fonction principale de l'entreprise : \textbf{produire}. Elle achète à d'autres entreprises (fournisseurs), générant échanges B2B.
+\begin{itemize}
+  \item Fournisseurs de \textit{biens} : matières premières, produits intermédiaires...
+  \item Fournisseurs de \textit{services} : transport, entretien, publicité...
+  \item Fournisseurs d'\textit{immobilisations} : biens de production durables (mobilier, outils...).
+\end{itemize}
+Ces relations croisent flux réels et flux monétaires. Une \textbf{collaboration réussie} avec fournisseurs et partenaires améliore la performance et la création de valeur.
+
+\section{Relations avec les banques}
+Le \textbf{marché des capitaux} met en relation offreurs (épargnants) et demandeurs de capitaux (entreprises, etc.). Le \textbf{prix du capital} est le \textit{taux d'intérêt}.\\
+\textit{Financement externe indirect} : la banque joue l'intermédiaire entre agents économiques.
+
+\subsection*{Focus : le marché financier}
+Lieu d'émission et d'échange des \textit{valeurs mobilières} (actions, obligations). \textit{Financement externe direct} : rencontre directe via des titres.
+
+\begin{tabularx}{\textwidth}{@{}p{0.48\textwidth} p{0.48\textwidth}@{}}
+\multicolumn{1}{c}{\textbf{Marché primaire}} & \multicolumn{1}{c}{\textbf{Marché secondaire}} \\
+\midrule
+Émission de nouvelles valeurs (marché du neuf).\\
+Finance entreprises, État, collectivités (investissements). & Marché de l'occasion.\\
+Échange et cotation de titres déjà émis. \\
+\end{tabularx}
+
+\vspace{2mm}
+\Encadre{\textbf{Vidéo :} \url{https://www.youtube.com/watch?v=MQUuCmO98DE}}
+
+\paragraph{Compléments — Pourquoi un marché financier ?}
+\begin{itemize}
+  \item Accélérateur de croissance : capitaux importants pour se développer.
+  \item Levées de fonds moins coûteuses et plus simples (moins d'intermédiation).
+  \item Transparence financière accrue, appréciée par les financeurs et partenaires.
+  \item Notoriété renforcée via la diffusion d'information.
+\end{itemize}
+
+\section{Relations avec l'État}
+L'État fournit des \textbf{services non marchands} (éducation, sécurité, justice, infrastructures...). Il verse des \textbf{prestations sociales} (allocations, aides, indemnités chômage) et attribue des \textbf{subventions} à certaines entreprises. Ces dépenses sont financées par \textbf{impôts}, \textbf{taxes} et \textbf{cotisations sociales}.\\
+\textit{Exemple} : \textbf{Bpifrance} (banque publique d'investissement) finance et accompagne les projets d'entreprises (innovation, international, fonds propres, reprise...).\\
+Les entreprises contribuent au financement public via l'\textit{impôt sur les sociétés}, les \textit{cotisations sociales}, etc.
+
+\section*{Mots-clés}
+Agents économiques — Ménages — Entreprises — Administrations publiques — Banques — Production marchande — Production non marchande — Marché des biens et services — Marché du travail — Marché des capitaux — Marché financier.
+
+\end{document}
