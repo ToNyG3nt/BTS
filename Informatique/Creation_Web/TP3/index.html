@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Découverte de Montpellier</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav aria-label="Navigation principale">
+      <div class="container">
+        <div class="brand">Montpellier</div>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="primary-menu">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#presentation">Présentation</a></li>
+          <li><a href="#carte">Carte</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- En-tête -->
+    <header id="accueil">
+      <div>
+        <h1>Découverte de Montpellier</h1>
+        <p class="subtitle">Ville méditerranéenne, jeune et dynamique</p>
+      </div>
+    </header>
+
+    <main>
+      <!-- Section Présentation -->
+      <section id="presentation" class="presentation">
+        <h2>Présentation</h2>
+        <p>
+          Montpellier, située dans le sud de la France, se distingue par son patrimoine
+          historique, son dynamisme universitaire et culturel, ainsi que sa proximité
+          avec la mer Méditerranée. La ville allie modernité et traditions à travers
+          ses quartiers, ses places emblématiques et ses innovations urbaines.
+        </p>
+        <div class="images">
+          <!-- Remplacez les images par vos propres fichiers locaux si nécessaire -->
+          <img loading="lazy" src="https://images.unsplash.com/photo-1520975922322-5051b0a68138?q=80&w=1200&auto=format&fit=crop" alt="Place de la Comédie à Montpellier" />
+          <img loading="lazy" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop" alt="Architecture à Montpellier" />
+          <img loading="lazy" src="https://images.unsplash.com/photo-1459664018906-085c36f472af?q=80&w=1200&auto=format&fit=crop" alt="Ambiance méditerranéenne" />
+        </div>
+      </section>
+
+      <!-- Section Carte -->
+      <section id="carte" class="carte">
+        <h2>Carte de Montpellier</h2>
+        <div class="map-container">
+          <!-- Google Maps (iframe embed) -->
+          <iframe
+            title="Carte de Montpellier"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d144204.5490575664!2d3.74150574380736!3d43.61124219925735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6af04d3a070f9%3A0x40819a5fd8fc9a0!2sMontpellier!5e0!3m2!1sfr!2sfr!4v1697040000000">
+          </iframe>
+        </div>
+      </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer id="contact">
+      <div class="container">
+        <p>
+          Pour plus d'informations, consultez le site officiel de la ville :
+          <a href="https://www.montpellier.fr/" target="_blank" rel="noopener noreferrer">montpellier.fr</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bouton retour en haut -->
+    <button id="backToTop" aria-label="Retour en haut" title="Retour en haut">↑</button>
+  </body>
+  </html>

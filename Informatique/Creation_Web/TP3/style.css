@@ -1,0 +1,81 @@
+:root {
+  --accent: #1e88e5;
+  --text: #222;
+  --muted: #555;
+  --bg: #f7f7f7;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: var(--text); background: #fff; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Navigation */
+nav {
+  position: sticky; top: 0; z-index: 10;
+  background: #fff; border-bottom: 1px solid #e5e5e5;
+}
+nav .container {
+  max-width: 1100px; margin: 0 auto; padding: 0 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+nav .brand { font-weight: 700; padding: 12px 0; }
+nav ul { list-style: none; display: flex; gap: 16px; margin: 0; padding: 12px 0; }
+nav li a { padding: 8px 10px; border-radius: 6px; }
+nav li a:focus, nav li a:hover { background: var(--bg); }
+nav a.active { background: var(--bg); font-weight: 600; }
+
+/* Bouton menu (mobile) */
+.menu-toggle { display: none; width: 40px; height: 40px; border: 1px solid #e5e5e5; border-radius: 8px; background: #fff; align-items: center; justify-content: center; gap: 4px; }
+.menu-toggle span { display: block; width: 20px; height: 2px; background: #333; }
+
+/* En-tête avec bannière */
+header#accueil {
+  color: #fff; text-align: center; display: grid; place-items: center;
+  min-height: 42vh; position: relative;
+  /* Définir l'image bannière ici (remplacez banner.jpg par votre image locale) */
+  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.45)),
+              url('images/banner.jpg') center/cover no-repeat;
+}
+header#accueil h1 { font-size: clamp(28px, 5vw, 52px); margin: 0; letter-spacing: .5px; }
+header#accueil .subtitle { margin-top: 10px; color: #eaeaea; }
+
+main { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+section { margin: 40px 0; }
+section h2 { margin: 0 0 12px; font-size: clamp(20px, 3.2vw, 32px); }
+section p { color: var(--muted); line-height: 1.6; }
+
+/* Présentation */
+.presentation .images { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 16px; }
+.presentation .images img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
+
+/* Carte */
+.map-container { position: relative; width: 100%; height: 420px; background: var(--bg); border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; }
+.map-container iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Pied de page */
+footer#contact { background: #0f172a; color: #cbd5e1; padding: 24px 16px; margin-top: 48px; }
+footer .container { max-width: 1100px; margin: 0 auto; }
+footer a { color: #93c5fd; }
+
+/* Petites améliorations responsive */
+@media (max-width: 640px) {
+  .menu-toggle { display: inline-flex; }
+  nav ul {
+    position: absolute; right: 16px; top: 56px;
+    flex-direction: column; gap: 8px; padding: 10px;
+    border: 1px solid #e5e5e5; border-radius: 8px;
+    background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    display: none;
+  }
+  body.nav-open nav ul { display: flex; }
+  nav li a { padding: 8px 10px; }
+  .presentation .images img { height: 150px; }
+}
+
+/* Bouton retour en haut */
+#backToTop {
+  position: fixed; right: 16px; bottom: 16px; width: 40px; height: 40px;
+  border-radius: 50%; border: none; background: var(--accent); color: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15); cursor: pointer; display: none;
+}
+#backToTop.show { display: inline-grid; place-items: center; }

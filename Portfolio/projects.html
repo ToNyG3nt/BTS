@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio — Projets</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/content.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a class="brand" href="index.html">Mon Portfolio</a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="primary-menu">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a class="active" href="projects.html">Projets</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="subhero">
+      <div class="container">
+        <h1>Projets</h1>
+        <p class="subtitle">Une sélection de mes travaux récents</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section>
+        <div id="projects" class="grid cards"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© <span id="year"></span> — Mon Portfolio. Tous droits réservés.</p>
+      </div>
+    </footer>
+  </body>
+  </html>
