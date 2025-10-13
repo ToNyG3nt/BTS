@@ -1,12 +1,16 @@
 {
   "git.autofetch": true,
+  "git.autofetchPeriod": 180,
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
+  "git.pullBeforeCheckout": true,
+  "git.rebaseWhenSync": false,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 2000,
   "gitdoc.enabled": true,
   "gitdoc.commitValidationLevel": "none",
   "gitdoc.commitMessageFormat": "📝 Auto-sync: ${file}",
   "gitdoc.pullOnOpen": true,
-  "gitdoc.pushOnSave": true
+  "gitdoc.pushOnSave": true,
+  "gitdoc.autoPull": "afterDelay"
 }

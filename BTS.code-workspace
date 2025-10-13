@@ -1,0 +1,46 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "git.autofetch": true,
+        "git.autofetchPeriod": 180,
+        "git.enableSmartCommit": true,
+        "git.confirmSync": false,
+        "git.pullBeforeCheckout": true,
+        "gitdoc.enabled": true,
+        "gitdoc.pullOnOpen": true,
+        "gitdoc.pushOnSave": true,
+        "gitdoc.autoPull": "afterDelay"
+    },
+    "extensions": {
+        "recommendations": [
+            "vsls-contrib.gitdoc",
+            "cweijan.vscode-office"
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Auto Pull on Startup",
+                "type": "shell",
+                "command": "git",
+                "args": ["pull"],
+                "runOptions": {
+                    "runOn": "folderOpen"
+                },
+                "presentation": {
+                    "echo": false,
+                    "reveal": "never",
+                    "focus": false,
+                    "panel": "shared",
+                    "showReuseMessage": false
+                },
+                "problemMatcher": []
+            }
+        ]
+    }
+}
