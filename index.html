@@ -1,10 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta http-equiv="refresh" content="0; url=Portfolio/">
-    <title>Redirection...</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio — Accueil</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/content.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
   </head>
   <body>
-    <p>Redirection vers <a href="Portfolio/">Portfolio</a>…</p>
+    <nav class="navbar">
+      <div class="container">
+        <a class="brand" href="index.html">Mon Portfolio</a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul id="primary-menu">
+          <li><a class="active" href="index.html">Accueil</a></li>
+          <li><a href="projects.html">Projets</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="container">
+  <h1>Bonjour, je suis <span class="accent">Maël Mignard</span></h1>
+        <p class="subtitle">Développeur·se Web — HTML, CSS, JavaScript</p>
+        <div class="cta">
+          <a class="btn" href="projects.html">Voir mes projets</a>
+          <a class="btn secondary" href="contact.html">Me contacter</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section>
+        <h2>Derniers projets</h2>
+        <div id="latest-projects" class="grid cards"></div>
+      </section>
+
+      <section>
+        <h2>Compétences</h2>
+        <ul class="tags">
+          <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Responsif</li><li>Accessibilité</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© <span id="year"></span> — Mon Portfolio. Tous droits réservés.</p>
+      </div>
+    </footer>
   </body>
-</html>
+  </html>
