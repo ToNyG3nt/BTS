@@ -1,0 +1,126 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{15pt}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{TD1 Arithmétique}
+\fancyhead[C]{Mignard Mael}
+\fancyhead[R]{\today}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{\LaTeX}
+
+\title{TD1 Arithmétique}
+\author{Mignard Mael}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\section{Exercice 1}
+\subsection{Question a}
+\begin{itemize}
+    \item $2^6 = 64$
+    \item $(-3)^4 = 81$
+    \item $5^0 = 1$
+    \item $(-2)^5 = -32$
+\end{itemize}
+
+\subsection{Question b}
+\begin{itemize}
+    \item $2^3 \times 2^5 = 2^{3+5} = 2^8 = 256$
+    \item $\frac{7^8}{7^3} = 7^{8-3} = 7^5 = 16807$
+    \item $(3^2)^4 = 3^{2 \times 4} = 3^8 = 6561$
+\end{itemize}
+
+\subsection{Question c}
+\begin{itemize}
+    \item $10 \times 10 \times 10 = 10^3 = 1000$
+\end{itemize}
+
+\clearpage
+\section{Exercice 2}
+\subsection{Question a}
+\begin{itemize}
+    \item Si $n$ est pair : $n = 2 \times k$
+    \item Alors $n^2 = (2 \times k)^2 = 4 \times k^2 = 2 \times (2 \times k^2)$
+    \item On nomme $K = 2 \times k^2$
+    \item Donc $n^2 = 2 \times K$, donc $n^2$ est pair
+\end{itemize}
+
+\subsection{Question b}
+\begin{itemize}
+    \item Si $n$ est impair : $n = 2 \times k + 1$
+    \item Alors $n^2 = (2 \times k + 1)^2 = 4 \times k^2 + 4 \times k + 1 = 2 \times (2 \times k^2 + 2 \times k) + 1$
+    \item On nomme $K = 2 \times k^2 + 2 \times k$
+    \item Donc $n^2 = 2 \times K + 1$, donc $n^2$ est impair
+\end{itemize}
+
+\subsection{Question c}
+\begin{itemize}
+    \item Vérifier que $(ab)^n = a^n \times b^n$
+    \item $(ab)^n = ab \times ab \times \dots \times ab$ (n fois)
+    \item $= a \times a \times \dots \times a$ (n fois) $\times b \times b \times \dots \times b$ (n fois)
+    \item $= a^n \times b^n$
+\end{itemize}
+
+\clearpage
+\section{Exercice 3}
+\subsection{Question a}
+\subsubsection{Décomposition en facteurs premiers}
+\begin{itemize}
+    \item $84 = 2 \times 42 = 2 \times 2 \times 21 = 2^2 \times 3 \times 7$
+    \item $210 = 2 \times 105 = 2 \times 3 \times 35 = 2 \times 3 \times 5 \times 7$
+\end{itemize}
+
+\subsubsection{Plus grand commun diviseur}
+\begin{itemize}
+    \item $pgcd(84,210) = 2 \times 3 \times 7 = 42$
+\end{itemize}
+
+\subsection{Question b}
+\subsubsection{Décomposition en facteurs premiers}
+\begin{itemize}
+    \item $144 = 2^4 \times 3^2$
+    \item $198 = 2 \times 3^2 \times 11$
+\end{itemize}
+
+\subsubsection{Plus grand commun diviseur}
+\begin{itemize}
+    \item $pgcd(144,198) = 2 \times 3^2 = 18$
+\end{itemize}
+
+\subsection{Question c}
+\subsubsection{Décomposition en facteurs premiers}
+\begin{itemize}
+    \item $128 = 2^7$
+    \item $160 = 2^5 \times 5$
+\end{itemize}
+
+\subsubsection{Plus grand commun diviseur}
+\begin{itemize}
+    \item $pgcd(128,160) = 2^5 = 32$
+\end{itemize}
+
+\section{Exercice 5}
+\subsection{Question a}
+\begin{itemize}
+    \item Décomposer en facteurs premiers :
+    \begin{itemize}
+        \item $84 = 2^2 \times 3 \times 7$
+        \item $126 = 2 \times 3^2 \times 7$
+        \item $210 = 2 \times 3 \times 5 \times 7$
+    \end{itemize}
+    \item PGCD des 3 nombres : $pgcd(84,126,210) = 2^1 \times 3^1 \times 7^1 = 42$
+    \item La longueur d'un morceau est donc de 42 cm
+\end{itemize}
+
+\end{document}

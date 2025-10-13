@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+</head>
+<body>
+    <h1>Formulaire d'inscription</h1>
+
+    <form action="#" method="post">
+        <label for="prenom">Prénom :</label><br>
+        <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required><br><br>
+
+        <label for="nom">Nom :</label><br>
+        <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" required><br><br>
+
+        <label for="email">Adresse email :</label><br>
+        <input type="email" id="email" name="email" placeholder="exemple@mail.com" required><br><br>
+
+        <label for="password">Mot de passe :</label><br>
+        <input type="password" id="password" name="password" placeholder="Choisissez un mdp" required><br><br>
+
+        <label for="profession">Profession :</label><br>
+        <select id="profession" name="profession" required>
+            <option value="">-- Sélectionnez votre profession --</option>
+            <option value="etudiant">Étudiant</option>
+            <option value="developpeur">Développeur</option>
+            <option value="enseignant">Enseignant</option>
+        </select><br><br>
+
+        <label for="age">Âge :</label><br>
+        <input type="number" id="age" name="age" min="0" placeholder="Entrez votre âge" required><br><br>
+
+        <label for="message">Commentaire :</label><br>
+        <textarea id="message" name="message" rows="4" cols="40" placeholder="Écrivez votre message ici..."></textarea><br><br>
+
+        <button type="submit">Envoyer</button>
+    </form>
+</body>
+</html>

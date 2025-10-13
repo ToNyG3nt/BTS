@@ -1,0 +1,140 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\geometry{margin=2.5cm}
+
+% Environnements
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{definition}{Définition}[section]
+\newtheorem{remark}{Remarque}[section]
+\newtheorem{example}{Exemple}[section]
+
+\title{Cours d'Arithmétique \\ division}
+\author{BTS SIO}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% -------------------------------
+\section{Division euclidienne}
+
+\begin{theorem}[Division euclidienne]
+Pour tout entier naturel $a$ et tout entier naturel non nul $b$, il existe des entiers uniques $q$ et $r$ tels que :
+\[
+a = bq + r \quad \text{avec} \quad 0 \leq r < b.
+\]
+\end{theorem}
+
+\begin{definition}[Quotient et reste]
+\begin{itemize}
+    
+    \item $q$ : quotient de la division euclidienne de $a$ par $b$.
+    \item $r$ : reste de cette division.
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+On peut lire : « $q$ est le nombre de fois entier que $b$ rentre dans $a$ ; $r$ est ce qui reste, toujours plus petit que $b$. »
+\end{remark}
+
+\begin{example}
+$145 \div 11$: on a $145 = 11 \times 13 + 2$.  
+Donc $q = 13$, $r = 2$.
+\end{example}
+
+\subsection*{Exercices}
+\begin{enumerate}
+    \item Effectuez les divisions euclidiennes suivantes :  
+    $37 \div 5$, $128 \div 12$, $256 \div 17$, $523 \div 9$, $999 \div 25$.
+    \item Vérifiez si les égalités suivantes sont bien des divisions euclidiennes :  
+    $792 = 21 \times 37 + 15$,  
+    $807 = 21 \times 37 + 30$,  
+    $819 = 21 \times 37 + 42$.
+    \item Alphabet répété : quelle est la $10\,000^{\text{e}}$ lettre écrite en répétant l’alphabet ?  
+    Combien d’alphabets complets sont écrits ?
+    \item Mise en page : un texte a $6245$ lignes.  
+    a) Avec 72 lignes par page, combien de lignes comporte la dernière page ?  
+    b) Avec 95 pages dont la dernière fait 52 lignes, combien de lignes ont les autres pages ?
+\end{enumerate}
+
+% -------------------------------
+\section{Multiples et diviseurs}
+
+\begin{definition}
+Soient $a,b \in \mathbb{Z}$ avec $b \neq 0$ :  
+\begin{itemize}
+    \item $a$ est un multiple de $b$ si $\exists k \in \mathbb{Z},\; a = b \times k$.  
+    \item $b$ est un diviseur de $a$ si $a$ est multiple de $b$.  
+\end{itemize}
+Notation : $b \mid a$ ou $b \nmid a$.
+\end{definition}
+
+\begin{example}
+$24 = 6 \times 4 \Rightarrow 6 \mid 24$ et $4 \mid 24$.
+\end{example}
+
+\subsection*{Exercices}
+\begin{enumerate}
+    \item Dire si vrai/faux : $5 \mid 45$, $7 \mid 50$, $12 \mid 144$, $8 \mid 260$, $19 \mid 190$.
+    \item Même consigne : $-4 \mid 20$, $6 \mid -54$, $0 \mid 15$, $15 \mid 0$, $-7 \mid -49$.
+    \item Donner l’ensemble des diviseurs de : $18$, $28$, $36$, $47$.
+    \item Donner un nombre entre 20 et 30 ayant :  
+    a) 2 diviseurs ; b) 3 diviseurs ; c) 4 diviseurs.
+    \item Montrer :  
+    a) si $n$ est pair, $n^2$ est pair.  
+    b) si $n$ est impair, $n^2$ est impair.
+    \item Montrer que la somme de trois entiers consécutifs est toujours divisible par 3.
+    \item Vérifier la divisibilité par 7 des nombres : 203, 532, 1001, 245.
+\end{enumerate}
+
+% -------------------------------
+\section{Critères de divisibilité}
+
+\begin{itemize}
+    \item Par 2 : dernier chiffre pair.
+    \item Par 3 : somme des chiffres divisible par 3.
+    \item Par 4 : deux derniers chiffres divisibles par 4.
+    \item Par 5 : dernier chiffre = 0 ou 5.
+    \item Par 6 : divisible par 2 et 3.
+    \item Par 9 : somme des chiffres divisible par 9.
+    \item Par 10 : dernier chiffre = 0.
+    \item Par 11 : différence (somme chiffres impairs – somme chiffres pairs) multiple de 11.
+    \item Par 7 : règle des dizaines + $5 \times$ unités.
+\end{itemize}
+
+% -------------------------------
+\newpage
+\section*{Corrigés des exercices}
+
+\subsection*{Division euclidienne}
+\begin{itemize}
+    \item $37 = 5 \times 7 + 2$ ;  
+    $128 = 12 \times 10 + 8$ ;  
+    $256 = 17 \times 15 + 1$ ;  
+    $523 = 9 \times 58 + 1$ ;  
+    $999 = 25 \times 39 + 24$.
+    \item Seules la première égalité est une vraie division euclidienne ($r=15<21$). Les autres ont un reste trop grand.
+    \item $10000 = 26 \times 384 + 16$ ; donc 384 alphabets complets, et la $16^\text{e}$ lettre est P.
+    \item a) $6245 = 72 \times 86 + 53$ → dernière page : 53 lignes.  
+          b) $6193$ lignes sur 94 pages → 65 lignes/page + dernière de 52 lignes.
+\end{itemize}
+
+\subsection*{Multiples et diviseurs}
+\begin{itemize}
+    \item Vrai, Faux, Vrai, Faux, Vrai.  
+    \item Vrai, Vrai, Faux, Vrai, Vrai.  
+    \item Div(18) = $\{1,2,3,6,9,18\}$ ; Div(28) = $\{1,2,4,7,14,28\}$ ; Div(36) = $\{1,2,3,4,6,9,12,18,36\}$ ; Div(47) = $\{1,47\}$.  
+    \item 23 (premier), 25 ($5^2$), 21 ($3\times7$).  
+    \item a) $n=2k \Rightarrow n^2=4k^2=2(2k^2)$ → pair.  
+          b) $n=2k+1 \Rightarrow n^2=4k^2+4k+1=2m+1$ → impair.  
+    \item $n+(n+1)+(n+2)=3(n+1)$ → divisible par 3.  
+    \item Tous les nombres donnés sont divisibles par 7.  
+\end{itemize}
+
+\end{document}

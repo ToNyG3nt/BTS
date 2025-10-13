@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{circuitikz}
+
+\begin{document}
+\begin{circuitikz}[american, scale=1, transform shape]
+\space{8cm}
+  \node at (0,2) (C1) {C1};
+  \node at (0,0) (C2) {C2};
+
+  % Première NAND = NOT C1
+  \node[nand port] (nand1) at (2,2) {};
+  \draw (nand1.in 2) -- (nand1.in 1);
+  \coordinate (nand1mid) at ($(nand1.in 1)!0.5!(nand1.in 2)$);
+  \draw (C1.east) -- (nand1mid);
+
+  % Deuxième NAND = NOT C2
+  \node[nand port] (nand2) at (2,0) {};
+  \draw (nand2.in 2) -- (nand2.in 1);
+  \coordinate (nand2mid) at ($(nand2.in 1)!0.5!(nand2.in 2)$);
+  \draw (C2.east) -- (nand2mid);
+
+  % Troisième NAND = OR(C1,C2)
+  \node[nand port] (nand3) at (5,1) {};
+  \draw (nand1.out) -- ++(0.5,0) |- (nand3.in 1);
+  \draw (nand2.out) -- ++(0.5,0) |- (nand3.in 2);
+
+  \draw (nand3.out) -- ++(1,0) node[right]{L};
+\end{circuitikz}
+\begin{tabular}{|c|c||c|}
+\hline
+C1 & C2 & L = C1 $\lor$ C2 \\
+\hline
+0 & 0 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+1 & 1 & 1 \\
+\hline
+\end{tabular}
+\end{document}
