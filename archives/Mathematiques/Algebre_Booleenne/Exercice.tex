@@ -1,39 +1,74 @@
 \documentclass{article}
 \usepackage{circuitikz}
-
+\usepackage{amsmath}
 \begin{document}
-\begin{circuitikz}[american, scale=1, transform shape]
-\space{8cm}
-  \node at (0,2) (C1) {C1};
-  \node at (0,0) (C2) {C2};
 
-  % Première NAND = NOT C1
-  \node[nand port] (nand1) at (2,2) {};
-  \draw (nand1.in 2) -- (nand1.in 1);
-  \coordinate (nand1mid) at ($(nand1.in 1)!0.5!(nand1.in 2)$);
-  \draw (C1.east) -- (nand1mid);
+	extbf{Énoncé :}
 
-  % Deuxième NAND = NOT C2
-  \node[nand port] (nand2) at (2,0) {};
-  \draw (nand2.in 2) -- (nand2.in 1);
-  \coordinate (nand2mid) at ($(nand2.in 1)!0.5!(nand2.in 2)$);
-  \draw (C2.east) -- (nand2mid);
+On dispose de 3 alarmes $a$, $b$, $c$ (valeurs logiques 0 ou 1).
 
-  % Troisième NAND = OR(C1,C2)
-  \node[nand port] (nand3) at (5,1) {};
-  \draw (nand1.out) -- ++(0.5,0) |- (nand3.in 1);
-  \draw (nand2.out) -- ++(0.5,0) |- (nand3.in 2);
+\begin{itemize}
+  \item Allumer une lampe $L$ s'il y a au moins une alarme active.
+  \item Déclencher une sonnerie $S$ s'il y a au moins deux alarmes actives.
+\end{itemize}
 
-  \draw (nand3.out) -- ++(1,0) node[right]{L};
-\end{circuitikz}
-\begin{tabular}{|c|c||c|}
+	extbf{Table de vérité :}
+\begin{center}
+\begin{tabular}{|c|c|c||c|c|}
 \hline
-C1 & C2 & L = C1 $\lor$ C2 \\
+a & b & c & L & S \\
 \hline
-0 & 0 & 0 \\
-0 & 1 & 1 \\
-1 & 0 & 1 \\
-1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 \\
+0 & 1 & 0 & 1 & 0 \\
+0 & 1 & 1 & 1 & 1 \\
+1 & 0 & 0 & 1 & 0 \\
+1 & 0 & 1 & 1 & 1 \\
+1 & 1 & 0 & 1 & 1 \\
+1 & 1 & 1 & 1 & 1 \\
 \hline
 \end{tabular}
+\end{center}
+
+	extbf{Expressions logiques :}
+\begin{align*}
+L &= a \vee b \vee c \\
+S &= (a \wedge b) \vee (a \wedge c) \vee (b \wedge c)
+\end{align*}
+
+	extbf{Logigramme logique (schéma) :}
+\begin{center}
+\begin{circuitikz}[american]
+  % Entrées
+  \node (a) at (0,2) {$a$};
+  \node (b) at (0,1) {$b$};
+  \node (c) at (0,0) {$c$};
+  % OU pour la lampe
+  \node[or port, right=2 of a] (or1) {};
+  \draw (a) -- (or1.in 1);
+  \draw (b) -- ++(0.7,0) |- (or1.in 2);
+  \draw (c) -- ++(0.7,0) |- (or1.in 3);
+  \draw (or1.out) -- ++(1,0) node[right] {L};
+  % ET pour la sonnerie
+  \node[and port, right=2 of c] (and1) {};
+  \node[and port, right=2 of b] (and2) {};
+  \node[and port, right=2 of a] (and3) {};
+  % a ET b
+  \draw (a) -- ++(0.7,0) |- (and1.in 1);
+  \draw (b) -- ++(0.7,0) |- (and1.in 2);
+  % a ET c
+  \draw (a) -- ++(0.7,0) |- (and2.in 1);
+  \draw (c) -- ++(0.7,0) |- (and2.in 2);
+  % b ET c
+  \draw (b) -- ++(0.7,0) |- (and3.in 1);
+  \draw (c) -- ++(0.7,0) |- (and3.in 2);
+  % OU final pour S
+  \node[or port, right=2.5 of and2] (or2) {};
+  \draw (and1.out) -- ++(0.5,0) |- (or2.in 1);
+  \draw (and2.out) -- ++(0.5,0) |- (or2.in 2);
+  \draw (and3.out) -- ++(0.5,0) |- (or2.in 3);
+  \draw (or2.out) -- ++(1,0) node[right] {S};
+\end{circuitikz}
+\end{center}
+
 \end{document}

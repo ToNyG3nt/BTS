@@ -1,0 +1,122 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{tikz}
+\geometry{margin=2.5cm}
+\title{Découverte de la programmation : logigrammes et pseudo-code}
+\author{Maël Mignard}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Exercice 1}
+\textbf{Énoncé :} On saisit un nom d’utilisateur :
+\begin{itemize}
+  \item si sa longueur est strictement supérieure à 20, on affiche le message « Votre nom est trop long »,
+  \item sinon on affiche le message « Votre nom est trop court ».
+\end{itemize}
+
+\subsection*{Logigramme}
+\begin{center}
+\begin{tikzpicture}[node distance=2cm, every node/.style={font=\sffamily}]
+  \node (start) [draw, rectangle, rounded corners] {Début};
+  \node (input) [draw, rectangle, below of=start] {Saisir nom};
+  \node (test) [draw, diamond, aspect=2, below of=input, yshift=-0.5cm] {longueur(nom) $>$ 20 ?};
+  \node (long) [draw, rectangle, right=3cm of test] {Afficher « Votre nom est trop long »};
+  \node (court) [draw, rectangle, below of=test, yshift=-0.5cm] {Afficher « Votre nom est trop court »};
+  \node (end) [draw, rectangle, rounded corners, below of=court] {Fin};
+  \draw[->] (start) -- (input);
+  \draw[->] (input) -- (test);
+  \draw[->] (test) -- node[above] {Oui} (long);
+  \draw[->] (test) -- node[left] {Non} (court);
+  \draw[->] (long) |- (end);
+  \draw[->] (court) -- (end);
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Pseudo-code}
+\begin{verbatim}
+Saisir nom
+Si longueur(nom) > 20 alors
+    Afficher "Votre nom est trop long"
+Sinon
+    Afficher "Votre nom est trop court"
+FinSi
+\end{verbatim}
+
+\section*{Exercice 2}
+\textbf{Énoncé :} On saisit un nom d’utilisateur et :
+\begin{itemize}
+  \item si sa longueur est strictement supérieure à 30, on affiche le message « Votre nom est trop long »,
+  \item si sa longueur est strictement inférieure à 30, on affiche le message « Votre nom est trop court ».
+\end{itemize}
+
+\subsection*{Logigramme}
+\begin{center}
+\begin{tikzpicture}[node distance=2cm, every node/.style={font=\sffamily}]
+  \node (start) [draw, rectangle, rounded corners] {Début};
+  \node (input) [draw, rectangle, below of=start] {Saisir nom};
+  \node (test1) [draw, diamond, aspect=2, below of=input, yshift=-0.5cm] {longueur(nom) $>$ 30 ?};
+  \node (long) [draw, rectangle, right=3cm of test1] {Afficher « Votre nom est trop long »};
+  \node (test2) [draw, diamond, aspect=2, below of=test1, yshift=-0.5cm] {longueur(nom) $<$ 30 ?};
+  \node (court) [draw, rectangle, right=3cm of test2] {Afficher « Votre nom est trop court »};
+  \node (end) [draw, rectangle, rounded corners, below of=test2, yshift=-1cm] {Fin};
+  \draw[->] (start) -- (input);
+  \draw[->] (input) -- (test1);
+  \draw[->] (test1) -- node[above] {Oui} (long);
+  \draw[->] (test1) -- node[left] {Non} (test2);
+  \draw[->] (long) |- (end);
+  \draw[->] (test2) -- node[above] {Oui} (court);
+  \draw[->] (test2) -- node[left] {Non} (end);
+  \draw[->] (court) |- (end);
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Pseudo-code}
+\begin{verbatim}
+Saisir nom
+Si longueur(nom) > 30 alors
+    Afficher "Votre nom est trop long"
+Sinon Si longueur(nom) < 30 alors
+    Afficher "Votre nom est trop court"
+FinSi
+\end{verbatim}
+
+\section*{Exercice 3}
+\textbf{Énoncé :}
+On souhaite afficher le message suivant à l’écran :
+« Je suis au tour n°1
+Je suis au tour n°2
+Je suis au tour …
+…etc. …..
+Je suis au tour n° 10 »
+
+\subsection*{Logigramme}
+\begin{center}
+\begin{tikzpicture}[node distance=2cm, every node/.style={font=\sffamily}]
+  \node (start) [draw, rectangle, rounded corners] {Début};
+  \node (init) [draw, rectangle, below of=start] {i $\leftarrow$ 1};
+  \node (test) [draw, diamond, aspect=2, below of=init, yshift=-0.5cm] {i $\leq$ 10 ?};
+  \node (aff) [draw, rectangle, right=3cm of test] {Afficher « Je suis au tour n°i »};
+  \node (inc) [draw, rectangle, below of=aff] {i $\leftarrow$ i+1};
+  \node (end) [draw, rectangle, rounded corners, below of=test, yshift=-2cm] {Fin};
+  \draw[->] (start) -- (init);
+  \draw[->] (init) -- (test);
+  \draw[->] (test) -- node[above] {Oui} (aff);
+  \draw[->] (aff) -- (inc);
+  \draw[->] (inc) -| (test);
+  \draw[->] (test) -- node[left] {Non} (end);
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Pseudo-code}
+\begin{verbatim}
+Pour i allant de 1 à 10
+    Afficher "Je suis au tour n°", i
+FinPour
+\end{verbatim}
+
+\end{document}
