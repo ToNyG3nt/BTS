@@ -1,0 +1,47 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\title{Découverte de la programmation : corrigé logigrammes et pseudo-code}
+\author{Maël Mignard}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Correction Exercice 1}
+\textbf{Pseudo-code corrigé}
+\begin{verbatim}
+Saisir nom
+Si longueur(nom) > 20 alors
+    Afficher "Votre nom est trop long"
+Sinon
+    Afficher "Votre nom est trop court"
+FinSi
+\end{verbatim}
+\textbf{Explication :} On teste si la longueur du nom dépasse 20 caractères. Si oui, on affiche le message correspondant, sinon l'autre.
+
+\section*{Correction Exercice 2}
+\textbf{Pseudo-code corrigé}
+\begin{verbatim}
+Saisir nom
+Si longueur(nom) > 30 alors
+    Afficher "Votre nom est trop long"
+Sinon Si longueur(nom) < 30 alors
+    Afficher "Votre nom est trop court"
+FinSi
+\end{verbatim}
+\textbf{Explication :} On distingue bien les deux cas (strictement supérieur ou inférieur à 30). Si la longueur vaut exactement 30, aucun message n'est affiché.
+
+\section*{Correction Exercice 3}
+\textbf{Pseudo-code corrigé}
+\begin{verbatim}
+Pour i allant de 1 à 10
+    Afficher "Je suis au tour n°", i
+FinPour
+\end{verbatim}
+\textbf{Explication :} On utilise une boucle pour afficher le message pour chaque valeur de i de 1 à 10.
+
+\end{document}
