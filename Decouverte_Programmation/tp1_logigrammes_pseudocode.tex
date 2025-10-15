@@ -7,13 +7,14 @@
 \usetikzlibrary{positioning}
 
 \geometry{margin=2.5cm}
-\title{Découverte de la programmation : logigrammes et pseudo-code}
+\title{Découverte de la programmation : TP1 logigrammes et pseudo-code}
 \author{Maël Mignard}
 \date{\today}
 
 \begin{document}
 \maketitle
 
+% Exercice 1
 \section*{Exercice 1}
 \textbf{Énoncé :} On saisit un nom d’utilisateur :
 \begin{itemize}
@@ -24,14 +25,12 @@
 \subsection*{Logigramme}
 \begin{center}
 \begin{tikzpicture}[every node/.style={font=\sffamily}, node distance=1.7cm, >=latex]
-  % Nœuds
   \node (start) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=0.8cm] {Début};
   \node (input) [draw, rectangle, below=of start, minimum width=2.5cm, minimum height=0.8cm] {Saisir nom};
   \node (test) [draw, diamond, aspect=2, below=of input, inner sep=1pt, minimum width=3.5cm, minimum height=1.2cm] {longueur(nom) $>$ 20 ?};
   \node (long) [draw, rectangle, right=3.5cm of test, minimum width=2.8cm, minimum height=0.8cm] {Afficher « Votre nom est trop long »};
   \node (court) [draw, rectangle, below=of test, minimum width=2.8cm, minimum height=0.8cm] {Afficher « Votre nom est trop court »};
   \node (end) [draw, rectangle, rounded corners, below=of court, minimum width=2.5cm, minimum height=0.8cm] {Fin};
-  % Flèches
   \draw[->] (start) -- (input);
   \draw[->] (input) -- (test);
   \draw[->] (test) -- node[above, sloped] {Oui} (long);
@@ -51,6 +50,7 @@ Sinon
 FinSi
 \end{verbatim}
 
+% Exercice 2
 \section*{Exercice 2}
 \textbf{Énoncé :} On saisit un nom d’utilisateur et :
 \begin{itemize}
@@ -61,7 +61,6 @@ FinSi
 \subsection*{Logigramme}
 \begin{center}
 \begin{tikzpicture}[every node/.style={font=\sffamily}, node distance=1.7cm, >=latex]
-  % Nœuds
   \node (start) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=0.8cm] {Début};
   \node (input) [draw, rectangle, below=of start, minimum width=2.5cm, minimum height=0.8cm] {Saisir nom};
   \node (test1) [draw, diamond, aspect=2, below=of input, inner sep=1pt, minimum width=3.5cm, minimum height=1.2cm] {longueur(nom) $>$ 30 ?};
@@ -69,7 +68,6 @@ FinSi
   \node (test2) [draw, diamond, aspect=2, below=of test1, inner sep=1pt, minimum width=3.5cm, minimum height=1.2cm] {longueur(nom) $<$ 30 ?};
   \node (court) [draw, rectangle, right=3.5cm of test2, minimum width=2.8cm, minimum height=0.8cm] {Afficher « Votre nom est trop court »};
   \node (end) [draw, rectangle, rounded corners, below=of test2, minimum width=2.5cm, minimum height=0.8cm] {Fin};
-  % Flèches
   \draw[->] (start) -- (input);
   \draw[->] (input) -- (test1);
   \draw[->] (test1) -- node[above, sloped] {Oui} (long);
@@ -91,6 +89,7 @@ Sinon Si longueur(nom) < 30 alors
 FinSi
 \end{verbatim}
 
+% Exercice 3
 \section*{Exercice 3}
 \textbf{Énoncé :}
 On souhaite afficher le message suivant à l’écran :
@@ -103,14 +102,12 @@ Je suis au tour n° 10 »
 \subsection*{Logigramme}
 \begin{center}
 \begin{tikzpicture}[every node/.style={font=\sffamily}, node distance=1.7cm, >=latex]
-  % Nœuds
   \node (start) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=0.8cm] {Début};
   \node (init) [draw, rectangle, below=of start, minimum width=2.5cm, minimum height=0.8cm] {i $\leftarrow$ 1};
   \node (test) [draw, diamond, aspect=2, below=of init, inner sep=1pt, minimum width=3.5cm, minimum height=1.2cm] {i $\leq$ 10 ?};
   \node (aff) [draw, rectangle, right=3.5cm of test, minimum width=3.2cm, minimum height=0.8cm] {Afficher « Je suis au tour n°i »};
   \node (inc) [draw, rectangle, below=of aff, minimum width=2.5cm, minimum height=0.8cm] {i $\leftarrow$ i+1};
   \node (end) [draw, rectangle, rounded corners, below=of test, minimum width=2.5cm, minimum height=0.8cm] {Fin};
-  % Flèches
   \draw[->] (start) -- (init);
   \draw[->] (init) -- (test);
   \draw[->] (test) -- node[above, sloped] {Oui} (aff);
@@ -127,7 +124,7 @@ Pour i allant de 1 à 10
 FinPour
 \end{verbatim}
 
-% --- Exercice 5 ---
+% Exercice 5
 \section*{Exercice 5}
 \textbf{a) Algorithme (pseudo-code)}
 \begin{verbatim}
@@ -187,7 +184,7 @@ Si resultat <> 1 alors
 FinSi
 \end{verbatim}
 
-% --- Exercice 6 ---
+% Exercice 6
 \section*{Exercice 6}
 \textbf{a) Algorithme (pseudo-code)}
 \begin{verbatim}
@@ -217,6 +214,128 @@ Répéter
 Jusqu'à isNumerique(montantHT) = 1
 TTC <- montantHT * 1.2
 Afficher TTC
+\end{verbatim}
+
+% Exercice 7
+
+\section*{Exercice 7}
+
+\subsection*{Logigramme}
+\begin{center}
+\begin{tikzpicture}[every node/.style={font=\sffamily}, node distance=1.7cm, >=latex]
+  \node (start) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=0.8cm] {Début};
+  \node (in1) [draw, rectangle, below=of start, minimum width=2.5cm, minimum height=0.8cm] {Saisir phrase1};
+  \node (in2) [draw, rectangle, below=of in1, minimum width=2.5cm, minimum height=0.8cm] {Saisir phrase2};
+  \node (in3) [draw, rectangle, below=of in2, minimum width=2.5cm, minimum height=0.8cm] {Saisir phrase3};
+  \node (concat) [draw, rectangle, below=of in3, minimum width=4.5cm, minimum height=0.8cm] {concat $\leftarrow$ phrase1 + " " + phrase2 + " " + phrase3};
+  \node (aff) [draw, rectangle, below=of concat, minimum width=2.5cm, minimum height=0.8cm] {Afficher concat};
+  \node (end) [draw, rectangle, rounded corners, below=of aff, minimum width=2.5cm, minimum height=0.8cm] {Fin};
+  \draw[->] (start) -- (in1);
+  \draw[->] (in1) -- (in2);
+  \draw[->] (in2) -- (in3);
+  \draw[->] (in3) -- (concat);
+  \draw[->] (concat) -- (aff);
+  \draw[->] (aff) -- (end);
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Pseudo-code}
+\begin{verbatim}
+Saisir phrase1
+Saisir phrase2
+Saisir phrase3
+concat <- phrase1 + " " + phrase2 + " " + phrase3
+Afficher concat
+\end{verbatim}
+
+	extbf{b) Saisir 3 phrases, chaque phrase max 50 caractères}
+
+\subsection*{Logigramme}
+\begin{center}
+\begin{tikzpicture}[every node/.style={font=\sffamily}, node distance=1.7cm, >=latex]
+  \node (start) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=0.8cm] {Début};
+  \node (i) [draw, rectangle, below=of start, minimum width=2.5cm, minimum height=0.8cm] {i $\leftarrow$ 1};
+  \node (testi) [draw, diamond, aspect=2, below=of i, inner sep=1pt, minimum width=3.5cm, minimum height=1.2cm] {i $\leq$ 3 ?};
+  \node (repeat) [draw, rectangle, right=3.5cm of testi, minimum width=3.5cm, minimum height=0.8cm] {Saisir phrase[i]};
+  \node (testlen) [draw, diamond, aspect=2, below=of repeat, inner sep=1pt, minimum width=3.5cm, minimum height=1.2cm] {longueur(phrase[i]) $\leq$ 50 ?};
+  \node (inc) [draw, rectangle, below=of testi, minimum width=2.5cm, minimum height=0.8cm] {i $\leftarrow$ i+1};
+  \node (concat) [draw, rectangle, below=of inc, minimum width=4.5cm, minimum height=0.8cm] {concat $\leftarrow$ phrase[1] + " " + phrase[2] + " " + phrase[3]};
+  \node (aff) [draw, rectangle, below=of concat, minimum width=2.5cm, minimum height=0.8cm] {Afficher concat};
+  \node (end) [draw, rectangle, rounded corners, below=of aff, minimum width=2.5cm, minimum height=0.8cm] {Fin};
+  \draw[->] (start) -- (i);
+  \draw[->] (i) -- (testi);
+  \draw[->] (testi) -- node[above, sloped] {Oui} (repeat);
+  \draw[->] (repeat) -- (testlen);
+  \draw[->] (testlen) -- node[right] {Oui} (inc);
+  \draw[->] (testlen) -- node[right] {Non} (repeat);
+  \draw[->] (testi) -- node[left] {Non} (concat);
+  \draw[->] (inc) -- (testi);
+  \draw[->] (concat) -- (aff);
+  \draw[->] (aff) -- (end);
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Pseudo-code}
+\begin{verbatim}
+Pour i de 1 à 3
+    Répéter
+        Saisir phrase[i]
+    Jusqu'à longueur(phrase[i]) <= 50
+FinPour
+concat <- phrase[1] + " " + phrase[2] + " " + phrase[3]
+Afficher concat
+\end{verbatim}
+
+
+\subsection*{Logigramme}
+\begin{center}
+\begin{tikzpicture}[every node/.style={font=\sffamily}, node distance=1.7cm, >=latex]
+  \node (start) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=0.8cm] {Début};
+  \node (n) [draw, rectangle, below=of start, minimum width=2.5cm, minimum height=0.8cm] {Saisir N};
+  \node (i) [draw, rectangle, below=of n, minimum width=2.5cm, minimum height=0.8cm] {i $\leftarrow$ 1};
+  \node (testi) [draw, diamond, aspect=2, below=of i, inner sep=1pt, minimum width=3.5cm, minimum height=1.2cm] {i $\leq$ N ?};
+  \node (repeat) [draw, rectangle, right=3.5cm of testi, minimum width=3.5cm, minimum height=0.8cm] {Saisir phrase[i]};
+  \node (testlen) [draw, diamond, aspect=2, below=of repeat, inner sep=1pt, minimum width=3.5cm, minimum height=1.2cm] {longueur(phrase[i]) $\leq$ 50 ?};
+  \node (inc) [draw, rectangle, below=of testi, minimum width=2.5cm, minimum height=0.8cm] {i $\leftarrow$ i+1};
+  \node (concat) [draw, rectangle, below=of inc, minimum width=4.5cm, minimum height=0.8cm] {concat $\leftarrow$ phrase[1]};
+  \node (i2) [draw, rectangle, below=of concat, minimum width=2.5cm, minimum height=0.8cm] {i $\leftarrow$ 2};
+  \node (testi2) [draw, diamond, aspect=2, below=of i2, inner sep=1pt, minimum width=3.5cm, minimum height=1.2cm] {i $\leq$ N ?};
+  \node (concat2) [draw, rectangle, right=3.5cm of testi2, minimum width=4.5cm, minimum height=0.8cm] {concat $\leftarrow$ concat + " " + phrase[i]};
+  \node (inc2) [draw, rectangle, below=of testi2, minimum width=2.5cm, minimum height=0.8cm] {i $\leftarrow$ i+1};
+  \node (aff) [draw, rectangle, below=of inc2, minimum width=2.5cm, minimum height=0.8cm] {Afficher concat};
+  \node (end) [draw, rectangle, rounded corners, below=of aff, minimum width=2.5cm, minimum height=0.8cm] {Fin};
+  \draw[->] (start) -- (n);
+  \draw[->] (n) -- (i);
+  \draw[->] (i) -- (testi);
+  \draw[->] (testi) -- node[above, sloped] {Oui} (repeat);
+  \draw[->] (repeat) -- (testlen);
+  \draw[->] (testlen) -- node[right] {Oui} (inc);
+  \draw[->] (testlen) -- node[right] {Non} (repeat);
+  \draw[->] (testi) -- node[left] {Non} (concat);
+  \draw[->] (inc) -- (testi);
+  \draw[->] (concat) -- (i2);
+  \draw[->] (i2) -- (testi2);
+  \draw[->] (testi2) -- node[above, sloped] {Oui} (concat2);
+  \draw[->] (concat2) -- (inc2);
+  \draw[->] (inc2) -- (testi2);
+  \draw[->] (testi2) -- node[left] {Non} (aff);
+  \draw[->] (aff) -- (end);
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Pseudo-code}
+\begin{verbatim}
+Saisir N
+Pour i de 1 à N
+    Répéter
+        Saisir phrase[i]
+    Jusqu'à longueur(phrase[i]) <= 50
+FinPour
+concat <- phrase[1]
+Pour i de 2 à N
+    concat <- concat + " " + phrase[i]
+FinPour
+Afficher concat
 \end{verbatim}
 
 \end{document}
