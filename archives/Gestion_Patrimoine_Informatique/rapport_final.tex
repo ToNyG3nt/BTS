@@ -1,0 +1,529 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Configuration de la page
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=2.5cm}
+\setlength{\headheight}{15pt}
+
+% Configuration des en-têtes et pieds de page
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Gestion du Patrimoine Informatique}
+\fancyhead[R]{BTS SIO}
+\fancyfoot[C]{\thepage}
+
+% Configuration pour le code
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{gray!10},
+    commentstyle=\color{green!60!black},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{red},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=single,
+    rulecolor=\color{black}
+}
+\lstset{style=mystyle}
+
+% Style pour les encadrés
+\newcommand{\infobox}[2]{\subsection{INFO - #1}\textit{#2}}
+\newcommand{\warningbox}[2]{\subsection{ATTENTION - #1}\textit{#2}}
+\newcommand{\successbox}[2]{\subsection{SUCCES - #1}\textit{#2}}
+
+\title{
+    \LARGE{\textbf{Gestion du Patrimoine Informatique}} \\
+    \Large{Installation et Hébergement de GLPI} \\
+    \Large{Création et Gestion d'un Parc Informatique}
+}
+
+\author{
+    \textbf{[Votre Nom]} \\
+    BTS SIO - Services Informatiques aux Organisations
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\tableofcontents
+\newpage
+
+% ========================================
+% INTRODUCTION
+% ========================================
+\section{Introduction}
+
+\subsection{Contexte du projet}
+Dans le cadre de la formation BTS SIO, ce rapport présente la mise en place d'une solution de gestion du patrimoine informatique basée sur GLPI (Gestionnaire Libre de Parc Informatique). Cette solution permet de centraliser et d'automatiser la gestion des équipements informatiques d'une organisation.
+
+\subsection{Objectifs}
+\begin{itemize}
+    \item Installer et configurer GLPI sur un serveur dédié
+    \item Mettre en place l'hébergement et la sécurisation de l'application
+    \item Créer un inventaire complet du parc informatique
+    \item Implémenter les processus de gestion des équipements
+    \item Former les utilisateurs à l'utilisation de l'outil
+\end{itemize}
+
+% ========================================
+% INSTALLATION DE GLPI - PROCÉDURE COMPLÈTE
+% ========================================
+\section{Installation de GLPI - Procédure Complète}
+
+\subsection{Étape 1 : Installation de LAMP avec Base de Données MariaDB}
+
+\subsubsection{Installation d'Apache, MariaDB et PHP}
+\begin{lstlisting}[language=bash, caption=Installation complète de LAMP sur Arch Linux]
+# Mise à jour du système
+sudo pacman -Syu
+
+# Installation d'Apache
+sudo pacman -S apache
+
+# Installation de MariaDB
+sudo pacman -S mariadb
+
+# Installation de PHP et toutes les extensions nécessaires
+sudo pacman -S php php-apache php-gd php-intl php-zip php-curl php-mbstring php-xml php-mysql php-ldap php-imap php-snmp
+
+# Démarrage et activation des services
+sudo systemctl start httpd
+sudo systemctl enable httpd
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+\end{lstlisting}
+
+\subsubsection{Sécurisation et création de la base de données MariaDB}
+\begin{lstlisting}[language=bash, caption=Configuration MariaDB pour GLPI]
+# Sécurisation de MariaDB
+sudo mysql_secure_installation
+# Répondre : Y, nouveau_mot_de_passe, Y, Y, Y, Y
+
+# Connexion à MariaDB et création de la base GLPI
+sudo mysql -u root -p
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Commandes SQL pour GLPI]
+-- Création de la base de données GLPI
+CREATE DATABASE glpidb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Création de l'utilisateur GLPI
+CREATE USER 'glpiuser'@'localhost' IDENTIFIED BY 'MotDePasseSecurise123!';
+
+-- Attribution des droits complets sur la base GLPI
+GRANT ALL PRIVILEGES ON glpidb.* TO 'glpiuser'@'localhost';
+
+-- Application des modifications
+FLUSH PRIVILEGES;
+
+-- Vérification de la création
+SHOW DATABASES;
+SELECT User, Host FROM mysql.user WHERE User = 'glpiuser';
+
+-- Sortie de MariaDB
+EXIT;
+\end{lstlisting}
+
+\subsection{Étape 2 : Téléchargement de GLPI Version 10.0.20 depuis GitHub}
+
+\subsubsection{Récupération des sources officielles}
+\begin{lstlisting}[language=bash, caption=Téléchargement GLPI 10.0.20]
+# Déplacement vers le répertoire temporaire
+cd /tmp
+
+# Téléchargement de la version exacte 10.0.20 depuis GitHub officiel
+wget https://github.com/glpi-project/glpi/releases/download/10.0.20/glpi-10.0.20.tgz
+
+# Vérification du téléchargement
+ls -la glpi-10.0.20.tgz
+
+# Extraction de l'archive
+tar -xzf glpi-10.0.20.tgz
+
+# Vérification de l'extraction
+ls -la glpi/
+
+# Déplacement vers le répertoire web d'Apache (Arch Linux)
+sudo mv glpi /srv/http/
+
+# Vérification de l'installation
+ls -la /srv/http/glpi/
+\end{lstlisting}
+
+\subsection{Étape 3 : Gestion des Droits Utilisateur pour Apache}
+
+\subsubsection{Configuration des permissions}
+\begin{lstlisting}[language=bash, caption=Attribution des droits Apache]
+# Attribution de la propriété à l'utilisateur Apache (http sur Arch)
+sudo chown -R http:http /srv/http/glpi/
+
+# Configuration des permissions de base
+sudo chmod -R 755 /srv/http/glpi/
+
+# Permissions spéciales pour les répertoires sensibles
+sudo chmod -R 775 /srv/http/glpi/files/
+sudo chmod -R 775 /srv/http/glpi/config/
+
+# Vérification des permissions
+ls -la /srv/http/glpi/
+ls -la /srv/http/glpi/files/
+ls -la /srv/http/glpi/config/
+
+# Test de l'écriture par Apache
+sudo -u http touch /srv/http/glpi/files/test_write.txt
+ls -la /srv/http/glpi/files/test_write.txt
+sudo rm /srv/http/glpi/files/test_write.txt
+\end{lstlisting}
+
+\subsection{Étape 4 : Activation des Extensions PHP Nécessaires}
+
+\subsubsection{Vérification et activation des modules PHP}
+\begin{lstlisting}[language=bash, caption=Configuration des extensions PHP sur Arch]
+# Vérification des extensions PHP installées
+php -m | grep -E "mysql|mbstring|curl|gd|xml|zip|intl|ldap|imap|snmp"
+
+# Configuration d'Apache pour PHP (Arch Linux)
+sudo nano /etc/httpd/conf/httpd.conf
+# Décommenter la ligne : LoadModule rewrite_module modules/mod_rewrite.so
+# Ajouter à la fin : LoadModule php_module modules/libphp.so
+# Ajouter : AddHandler php-script .php
+# Ajouter : Include conf/extra/php_module.conf
+
+# Redémarrage d'Apache pour appliquer les modifications
+sudo systemctl restart httpd
+
+# Test de la configuration PHP
+php -v
+php -m | wc -l
+\end{lstlisting}
+
+\subsection{Étape 5 : Première Installation via Navigateur}
+
+\subsubsection{Processus d'installation web}
+\successbox{Accès à l'interface d'installation}{
+URL d'accès : http://10.100.133.85/glpi/index.php?noAUTO=1
+}
+
+\textbf{Étapes de l'assistant d'installation :}
+\begin{enumerate}
+    \item \textbf{Sélection de la langue}
+    \begin{itemize}
+        \item Choisir "Français"
+        \item Cliquer sur "OK"
+    \end{itemize}
+    
+    \item \textbf{Acceptation de la licence}
+    \begin{itemize}
+        \item Lire et accepter la licence GPL
+        \item Cliquer sur "Continuer"
+    \end{itemize}
+    
+    \item \textbf{Vérification des prérequis}
+    \begin{itemize}
+        \item Vérifier que tous les prérequis sont en vert
+        \item Si des éléments sont en rouge, les corriger avant de continuer
+        \item Cliquer sur "Continuer"
+    \end{itemize}
+    
+    \item \textbf{Configuration de la base de données}
+    \begin{itemize}
+        \item Serveur de BDD : localhost
+        \item Utilisateur : glpiuser
+        \item Mot de passe : MotDePasseSecurise123!
+        \item Base de données : glpidb
+        \item Cliquer sur "Continuer"
+    \end{itemize}
+    
+    \item \textbf{Initialisation de la base de données}
+    \begin{itemize}
+        \item Attendre la création des tables
+        \item Cliquer sur "Continuer"
+    \end{itemize}
+    
+    \item \textbf{Fin de l'installation}
+    \begin{itemize}
+        \item Noter les comptes créés par défaut
+        \item Cliquer sur "Utiliser GLPI"
+    \end{itemize}
+\end{enumerate}
+
+\warningbox{Comptes par défaut créés}{
+\begin{itemize}
+    \item glpi/glpi : Super-Administrateur (tous droits)
+    \item tech/tech : Technicien (gestion technique)
+    \item normal/normal : Utilisateur standard
+    \item post-only/postonly : Utilisateur post-uniquement
+\end{itemize}
+}
+
+\subsection{Étape 6 : Connexion Super Admin et Création d'Utilisateurs}
+
+\subsubsection{Première connexion avec le compte Super Admin}
+\begin{enumerate}
+    \item \textbf{Connexion initiale}
+    \begin{itemize}
+        \item Utilisateur : glpi
+        \item Mot de passe : glpi
+        \item Cliquer sur "Se connecter"
+    \end{itemize}
+    
+    \item \textbf{Changement obligatoire du mot de passe}
+    \begin{itemize}
+        \item Aller dans "Mon profil" > "Modifier le mot de passe"
+        \item Nouveau mot de passe sécurisé
+        \item Confirmer le changement
+    \end{itemize}
+    
+    \item \textbf{Suppression du répertoire d'installation}
+    \begin{itemize}
+        \item Message d'alerte affiché par GLPI
+        \item Exécuter : sudo rm -rf /srv/http/glpi/install/
+        \item Actualiser la page
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Création des nouveaux utilisateurs}
+\textbf{Navigation : Administration > Utilisateurs > Créer un utilisateur}
+
+\begin{lstlisting}[caption=Exemple de création d'utilisateur]
+Nom d'utilisateur : admin_si
+Nom : Administrateur
+Prénom : Système Info
+Email : admin@entreprise.com
+Mot de passe : [Générer un mot de passe sécurisé]
+Profil : Super-Admin
+Entité : Entité racine
+Statut : Actif
+\end{lstlisting}
+
+\subsection{Étape 7 : Création des Utilisateurs et Attribution des Droits}
+
+\subsubsection{Définition des profils par poste}
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Poste} & \textbf{Profil GLPI} & \textbf{Droits attribués} \\
+\hline
+Directeur IT & Super-Admin & Tous droits, configuration système \\
+Chef de projet & Admin & Gestion complète, sans config système \\
+Technicien Senior & Technicien & Gestion tickets, inventaire, rapports \\
+Technicien Junior & Technicien & Gestion tickets, consultation inventaire \\
+Support N1 & Hotliner & Création/modification tickets uniquement \\
+Utilisateur final & Self-Service & Création tickets, consultation matériel \\
+Invité/Stagiaire & Observer & Lecture seule \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Exemple de création utilisateurs par service}
+\begin{lstlisting}[caption=Utilisateurs Service Informatique]
+# Directeur IT
+Utilisateur : directeur_it
+Profil : Super-Admin
+Entité : Entité racine
+Groupes : Direction, Service IT
+
+# Chef de projet
+Utilisateur : chef_projet_it
+Profil : Admin  
+Entité : Service IT
+Groupes : Service IT, Chefs de projet
+
+# Techniciens
+Utilisateur : tech_senior_1
+Profil : Technicien
+Entité : Service IT
+Groupes : Service IT, Techniciens
+
+Utilisateur : tech_junior_1
+Profil : Technicien (droits limités)
+Entité : Service IT
+Groupes : Service IT, Techniciens Junior
+\end{lstlisting}
+
+\subsection{Étape 8 : Création des Postes de Travail et Attribution (Inventaire)}
+
+\subsubsection{Configuration de l'inventaire automatique}
+\textbf{Installation de l'agent GLPI sur les postes clients :}
+
+\begin{lstlisting}[language=bash, caption=Installation agent GLPI - Windows]
+# Téléchargement de l'agent GLPI
+# URL : https://github.com/glpi-project/glpi-agent/releases
+
+# Installation silencieuse via PowerShell (Administrateur)
+Invoke-WebRequest -Uri "https://github.com/glpi-project/glpi-agent/releases/download/1.7.3/GLPI-Agent-1.7.3-x64.msi" -OutFile "GLPI-Agent.msi"
+
+# Installation avec configuration automatique
+msiexec /i GLPI-Agent.msi /quiet SERVER="http://10.100.133.85/glpi/front/inventory.php" TAG="Production"
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash, caption=Installation agent GLPI - Linux]
+# Installation sur Ubuntu/Debian
+wget -O glpi-agent.deb https://github.com/glpi-project/glpi-agent/releases/download/1.7.3/glpi-agent_1.7.3-1_amd64.deb
+sudo dpkg -i glpi-agent.deb
+sudo apt-get install -f
+
+# Configuration de l'agent
+sudo nano /etc/glpi-agent/agent.cfg
+
+# Contenu du fichier de configuration :
+server = http://10.100.133.85/glpi/front/inventory.php
+tag = Production
+logger = stderr
+logfile-maxsize = 10485760
+\end{lstlisting}
+
+\subsubsection{Création manuelle des postes de travail}
+\textbf{Navigation : Parc > Ordinateurs > Créer un ordinateur}
+
+\begin{lstlisting}[caption=Exemple de fiche poste de travail]
+Nom : PC-COMPTABLE-01
+Numéro de série : ABC123456789
+Numéro d'inventaire : INV-2024-001
+Modèle : Dell OptiPlex 7090
+Type : Ordinateur de bureau
+Statut : En fonction
+Lieu : Bureau comptabilité
+Utilisateur : Jean Dupont (Comptable)
+Groupe : Service Comptabilité
+Domaine : ENTREPRISE.LOCAL
+Système d'exploitation : Windows 11 Pro
+Processeur : Intel Core i7-11700
+Mémoire : 16 Go DDR4
+Disque dur : SSD 512 Go
+\end{lstlisting}
+
+\subsubsection{Attribution des équipements aux utilisateurs}
+\textbf{Processus d'attribution :}
+
+\begin{enumerate}
+    \item \textbf{Aller dans la fiche de l'ordinateur}
+    \item \textbf{Onglet "Gestion"}
+    \item \textbf{Remplir les champs :}
+    \begin{itemize}
+        \item Utilisateur : Sélectionner l'utilisateur
+        \item Groupe : Groupe de l'utilisateur
+        \item Lieu : Localisation physique
+        \item Statut : "Attribué" ou "En fonction"
+    \end{itemize}
+    \item \textbf{Enregistrer les modifications}
+\end{enumerate}
+
+\successbox{Vérification de l'installation complète}{
+Points de contrôle après installation :
+\begin{itemize}
+    \item LAMP fonctionnel (Apache + MariaDB + PHP)
+    \item GLPI 10.0.20 installé et accessible
+    \item Base de données configurée et opérationnelle
+    \item Utilisateurs créés avec les bons profils
+    \item Agents d'inventaire déployés
+    \item Premier inventaire automatique réalisé
+    \item Attribution des équipements effectuée
+\end{itemize}
+}
+
+% ========================================
+% TESTS ET VALIDATION
+% ========================================
+\section{Tests et Validation Post-Installation}
+
+\subsection{Tests fonctionnels}
+\begin{lstlisting}[language=bash, caption=Tests de validation système]
+# Test de la base de données
+sudo mysql -u glpiuser -p -e "USE glpidb; SHOW TABLES;" | wc -l
+# Doit retourner environ 400+ tables
+
+# Test de l'accès web GLPI
+curl -I http://10.100.133.85/glpi/
+# Doit retourner : HTTP/1.1 200 OK
+
+# Test des permissions fichiers
+sudo -u http ls -la /srv/http/glpi/files/
+# Vérifier que http peut lire/écrire
+
+# Test des agents (après déploiement)
+glpi-agent --version
+glpi-agent --test
+\end{lstlisting}
+
+\subsection{Validation des fonctionnalités}
+\textbf{Tests à effectuer via l'interface web :}
+\begin{enumerate}
+    \item \textbf{Connexion des différents utilisateurs}
+    \item \textbf{Création d'un ticket de test}
+    \item \textbf{Ajout manuel d'un équipement}
+    \item \textbf{Vérification de l'inventaire automatique}
+    \item \textbf{Test des notifications email}
+    \item \textbf{Génération d'un rapport simple}
+\end{enumerate}
+
+% ========================================
+% CONCLUSION
+% ========================================
+\section{Conclusion}
+
+La mise en place de GLPI version 10.0.20 suivant ces 8 étapes détaillées permet d'obtenir une solution complète et opérationnelle de gestion du patrimoine informatique. L'installation méthodique sur Arch Linux garantit :
+
+\begin{itemize}
+    \item Une base technique solide avec LAMP correctement configuré sur Arch
+    \item Configuration Apache native (httpd) avec PHP intégré
+    \item Un système d'inventaire automatique fonctionnel
+    \item Une organisation claire des utilisateurs et de leurs droits
+    \item Un processus d'attribution des équipements structuré
+    \item Accès HTTP simple sur l'IP 10.100.133.85
+\end{itemize}
+
+Cette procédure offre une foundation robuste pour la gestion quotidienne du parc informatique et peut être étendue selon les besoins spécifiques de l'organisation.
+
+% ========================================
+% ANNEXES
+% ========================================
+\newpage
+\section{Annexes}
+
+\subsection{Annexe A : Commandes utiles de maintenance}
+
+\begin{lstlisting}[language=bash, caption=Maintenance GLPI]
+# Vérification des services
+sudo systemctl status httpd mariadb
+
+# Vérification des logs GLPI
+tail -f /srv/http/glpi/files/_log/glpi.log
+
+# Mise à jour des permissions après modification
+sudo chown -R http:http /srv/http/glpi/
+sudo chmod -R 755 /srv/http/glpi/
+\end{lstlisting}
+
+\subsection{Annexe B : URLs importantes}
+
+\begin{itemize}
+    \item Documentation officielle GLPI : \url{https://glpi-project.org/documentation/}
+    \item Releases GitHub : \url{https://github.com/glpi-project/glpi/releases}
+    \item Forum communautaire : \url{https://forum.glpi-project.org/}
+    \item Agents GLPI : \url{https://github.com/glpi-project/glpi-agent}
+\end{itemize}
+
+\end{document}

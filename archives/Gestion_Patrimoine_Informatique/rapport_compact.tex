@@ -1,0 +1,297 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Configuration de la page
+\geometry{left=2cm, right=2cm, top=2.5cm, bottom=2cm}
+\setlength{\headheight}{15pt}
+
+% Configuration des en-têtes et pieds de page
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Gestion du Patrimoine Informatique}
+\fancyhead[R]{BTS SIO}
+\fancyfoot[C]{\thepage}
+
+% Configuration pour le code
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{gray!10},
+    basicstyle=\ttfamily\scriptsize,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    showstringspaces=false
+}
+\lstset{style=mystyle}
+
+\title{
+    \Large{\textbf{Installation GLPI 10.0.20}} \\
+    \large{Arch Linux + Apache + MariaDB}
+}
+
+\author{\textbf{BTS SIO} - Gestion du Patrimoine Informatique}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+% ========================================
+% INTRODUCTION
+% ========================================
+\section{Configuration}
+
+\textbf{Environnement :}
+\begin{itemize}
+    \item Système : Arch Linux
+    \item Serveur web : Apache (httpd)
+    \item Base de données : MariaDB
+    \item GLPI : Version 10.0.20
+    \item URL : http://10.100.133.85/glpi/index.php?noAUTO=1
+\end{itemize}
+
+% ========================================
+% INSTALLATION
+% ========================================
+\section{Installation LAMP}
+
+\subsection{Installation des paquets}
+\begin{lstlisting}[language=bash]
+# Mise à jour et installation
+sudo pacman -Syu
+sudo pacman -S apache mariadb php php-apache php-gd php-intl php-zip php-curl php-mbstring php-xml php-mysql
+
+# Démarrage des services
+sudo systemctl start httpd mariadb
+sudo systemctl enable httpd mariadb
+\end{lstlisting}
+
+\subsection{Configuration MariaDB}
+\begin{lstlisting}[language=bash]
+# Initialisation
+sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+sudo mysql_secure_installation
+
+# Création base GLPI
+sudo mysql -u root -p
+\end{lstlisting}
+
+\begin{lstlisting}[language=sql]
+CREATE DATABASE glpidb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'glpiuser'@'localhost' IDENTIFIED BY 'MotDePasseSecurise123!';
+GRANT ALL PRIVILEGES ON glpidb.* TO 'glpiuser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+\end{lstlisting}
+
+\subsection{Configuration Apache}
+\begin{lstlisting}[language=bash]
+# Edition httpd.conf
+sudo nano /etc/httpd/conf/httpd.conf
+# Décommenter : LoadModule rewrite_module modules/mod_rewrite.so
+# Ajouter : LoadModule php_module modules/libphp.so
+# Ajouter : AddHandler php-script .php
+# Ajouter : Include conf/extra/php_module.conf
+
+# Créer php_module.conf
+sudo nano /etc/httpd/conf/extra/php_module.conf
+\end{lstlisting}
+
+Contenu de php\_module.conf :
+\begin{lstlisting}
+<IfModule php_module>
+    DirectoryIndex index.php index.html
+    <FilesMatch "\.php$">
+        SetHandler application/x-httpd-php
+    </FilesMatch>
+</IfModule>
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+# Test et redémarrage
+sudo httpd -t
+sudo systemctl restart httpd
+\end{lstlisting}
+
+% ========================================
+% INSTALLATION GLPI
+% ========================================
+\section{Installation GLPI}
+
+\subsection{Téléchargement et installation}
+\begin{lstlisting}[language=bash]
+# Téléchargement GLPI 10.0.20
+cd /tmp
+wget https://github.com/glpi-project/glpi/releases/download/10.0.20/glpi-10.0.20.tgz
+tar -xzf glpi-10.0.20.tgz
+
+# Installation
+sudo mv glpi /srv/http/
+sudo chown -R http:http /srv/http/glpi/
+sudo chmod -R 755 /srv/http/glpi/
+sudo chmod -R 775 /srv/http/glpi/files/ /srv/http/glpi/config/
+\end{lstlisting}
+
+\subsection{Installation web}
+\begin{enumerate}
+    \item Accéder à : \textbf{http://10.100.133.85/glpi/index.php?noAUTO=1}
+    \item Choisir \textbf{Français} → OK
+    \item Accepter la licence GPL → Continuer
+    \item Vérifier les prérequis (tous en vert) → Continuer
+    \item Configuration BDD :
+    \begin{itemize}
+        \item Serveur : localhost
+        \item Utilisateur : glpiuser
+        \item Mot de passe : MotDePasseSecurise123!
+        \item Base : glpidb
+    \end{itemize}
+    \item Attendre l'initialisation → Continuer
+    \item Utiliser GLPI
+\end{enumerate}
+
+\subsection{Première connexion}
+\begin{enumerate}
+    \item Se connecter avec : \textbf{glpi / glpi}
+    \item Changer le mot de passe obligatoirement
+    \item Supprimer le répertoire d'installation :
+\end{enumerate}
+
+\begin{lstlisting}[language=bash]
+sudo rm -rf /srv/http/glpi/install/
+\end{lstlisting}
+
+% ========================================
+% CONFIGURATION
+% ========================================
+\section{Configuration des utilisateurs}
+
+\subsection{Comptes par défaut}
+\begin{itemize}
+    \item \textbf{glpi/glpi} : Super-Administrateur
+    \item \textbf{tech/tech} : Technicien
+    \item \textbf{normal/normal} : Utilisateur standard
+    \item \textbf{post-only/postonly} : Post uniquement
+\end{itemize}
+
+\subsection{Création utilisateurs}
+Navigation : \textbf{Administration > Utilisateurs > +}
+
+Exemple utilisateur admin :
+\begin{itemize}
+    \item Nom d'utilisateur : admin\_si
+    \item Nom : Administrateur
+    \item Prénom : Système
+    \item Email : admin@entreprise.local
+    \item Profil : Super-Admin
+    \item Statut : Actif
+\end{itemize}
+
+% ========================================
+% INVENTAIRE
+% ========================================
+\section{Gestion de l'inventaire}
+
+\subsection{Agent GLPI (Windows)}
+\begin{lstlisting}[language=bash]
+# Téléchargement et installation
+Invoke-WebRequest -Uri "https://github.com/glpi-project/glpi-agent/releases/download/1.7.3/GLPI-Agent-1.7.3-x64.msi" -OutFile "GLPI-Agent.msi"
+
+# Installation avec configuration
+msiexec /i GLPI-Agent.msi /quiet SERVER="http://10.100.133.85/glpi/front/inventory.php" TAG="Production"
+\end{lstlisting}
+
+\subsection{Agent GLPI (Linux)}
+\begin{lstlisting}[language=bash]
+# Installation
+wget -O glpi-agent.deb https://github.com/glpi-project/glpi-agent/releases/download/1.7.3/glpi-agent_1.7.3-1_amd64.deb
+sudo dpkg -i glpi-agent.deb
+
+# Configuration
+sudo nano /etc/glpi-agent/agent.cfg
+\end{lstlisting}
+
+Configuration agent.cfg :
+\begin{lstlisting}
+server = http://10.100.133.85/glpi/front/inventory.php
+tag = Production
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+sudo systemctl restart glpi-agent
+sudo systemctl enable glpi-agent
+\end{lstlisting}
+
+\subsection{Ajout manuel d'équipements}
+Navigation : \textbf{Parc > Ordinateurs > +}
+
+Exemple fiche poste :
+\begin{itemize}
+    \item Nom : PC-DIRECTION-01
+    \item Série : ABC123456789
+    \item Fabricant : Dell
+    \item Modèle : OptiPlex 7090
+    \item Utilisateur : Jean Martin
+    \item Lieu : Bureau direction
+    \item IP : 10.100.133.10
+\end{itemize}
+
+% ========================================
+% TESTS ET MAINTENANCE
+% ========================================
+\section{Tests et maintenance}
+
+\subsection{Tests de validation}
+\begin{lstlisting}[language=bash]
+# Test base de données
+sudo mysql -u glpiuser -p -e "USE glpidb; SHOW TABLES;" | wc -l
+
+# Test accès web
+curl -I http://10.100.133.85/glpi/
+
+# Test services
+sudo systemctl status httpd mariadb
+
+# Test permissions
+sudo -u http ls -la /srv/http/glpi/files/
+\end{lstlisting}
+
+\subsection{Maintenance courante}
+\begin{lstlisting}[language=bash]
+# Redémarrage services
+sudo systemctl restart httpd mariadb
+
+# Mise à jour système
+sudo pacman -Syu
+
+# Vérification logs
+tail -f /srv/http/glpi/files/_log/glpi.log
+sudo journalctl -u httpd -f
+
+# Réparation permissions
+sudo chown -R http:http /srv/http/glpi/
+sudo chmod -R 755 /srv/http/glpi/
+sudo chmod -R 775 /srv/http/glpi/files/ /srv/http/glpi/config/
+\end{lstlisting}
+
+\subsection{Informations importantes}
+\begin{itemize}
+    \item \textbf{URL GLPI :} http://10.100.133.85/glpi/
+    \item \textbf{URL agents :} http://10.100.133.85/glpi/front/inventory.php
+    \item \textbf{Répertoire :} /srv/http/glpi/
+    \item \textbf{Utilisateur Apache :} http
+    \item \textbf{Base de données :} glpidb sur localhost:3306
+    \item \textbf{Logs :} /srv/http/glpi/files/\_log/glpi.log
+\end{itemize}
+
+\section{Conclusion}
+
+Installation GLPI 10.0.20 sur Arch Linux avec Apache httpd opérationnelle. Configuration spécifique adaptée à l'environnement avec accès HTTP direct via 10.100.133.85. Système prêt pour la gestion du patrimoine informatique avec inventaire automatique et gestion des utilisateurs.
+
+\end{document}
