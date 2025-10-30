@@ -1,0 +1,158 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{fancybox}
+\geometry{margin=2cm}
+
+% Définition d'un environnement pour les algorithmes
+\newcounter{algocounter}
+\newenvironment{algorithm}[1]{
+  \refstepcounter{algocounter}
+  \begin{center}
+  \shadowbox{
+    \begin{minipage}{0.9\textwidth}
+      \textbf{Algorithme \thealgocounter : #1}
+      \vspace{0.2cm}
+      \hrule
+      \vspace{0.3cm}
+}{
+    \end{minipage}
+  }
+  \end{center}
+  \vspace{0.3cm}
+}
+
+% Commandes pour le pseudo-code
+\newcommand{\KW}[1]{\textbf{#1}}
+\newcommand{\COMMENT}[1]{\textcolor{gray}{\textit{// #1}}}
+\newcommand{\INDENT}{\quad}
+\newcommand{\FUNCTION}[2]{\KW{Fonction} #1(#2)}
+\newcommand{\PROCEDURE}[2]{\KW{Procédure} #1(#2)}
+\newcommand{\IF}[1]{\KW{Si} #1 \KW{alors}}
+\newcommand{\ELSE}{\KW{sinon}}
+\newcommand{\ELSEIF}[1]{\KW{sinon si} #1 \KW{alors}}
+\newcommand{\ENDIF}{\KW{fin si}}
+\newcommand{\FOR}[1]{\KW{Pour} #1 \KW{faire}}
+\newcommand{\ENDFOR}{\KW{fin pour}}
+\newcommand{\WHILE}[1]{\KW{Tant que} #1 \KW{faire}}
+\newcommand{\ENDWHILE}{\KW{fin tant que}}
+\newcommand{\RETURN}[1]{\KW{retourner} #1}
+\newcommand{\STATE}[1]{#1}
+
+\title{Modèles d'Algorithmes en Pseudo-Code}
+\author{Notes d'Algorithmique}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction au Pseudo-Code}
+
+Le pseudo-code est une méthode de description d'algorithmes qui utilise un langage simple et structuré, indépendant de tout langage de programmation spécifique.
+
+\section{Structures de Base}
+
+\subsection{Structure Conditionnelle}
+
+\begin{algorithm}{Structure Si-Alors-Sinon}
+\IF{condition} \\
+\INDENT \STATE{instruction1} \\
+\INDENT \STATE{instruction2} \\
+\ELSE \\
+\INDENT \STATE{instruction3} \\
+\ENDIF
+\end{algorithm}
+
+\subsection{Boucle Pour}
+
+\begin{algorithm}{Boucle Pour avec compteur}
+\FOR{i de 1 à n} \\
+\INDENT \STATE{instruction} \\
+\ENDFOR
+\end{algorithm}
+
+\subsection{Boucle Tant Que}
+
+\begin{algorithm}{Boucle Tant Que}
+\WHILE{condition} \\
+\INDENT \STATE{instruction} \\
+\ENDWHILE
+\end{algorithm}
+
+\section{Exemples d'Algorithmes}
+
+\subsection{Recherche du Maximum}
+
+\begin{algorithm}{Recherche du maximum dans un tableau}
+\FUNCTION{MaxTableau}{T, n} \\
+\INDENT max $\leftarrow$ T[1] \\
+\INDENT \FOR{i de 2 à n} \\
+\INDENT \INDENT \IF{T[i] > max} \\
+\INDENT \INDENT \INDENT max $\leftarrow$ T[i] \\
+\INDENT \INDENT \ENDIF \\
+\INDENT \ENDFOR \\
+\INDENT \RETURN{max} \\
+\KW{fin fonction}
+\end{algorithm}
+
+\subsection{Tri par Sélection}
+
+\begin{algorithm}{Tri par sélection}
+\PROCEDURE{TriSelection}{T, n} \\
+\INDENT \FOR{i de 1 à n-1} \\
+\INDENT \INDENT min $\leftarrow$ i \\
+\INDENT \INDENT \FOR{j de i+1 à n} \\
+\INDENT \INDENT \INDENT \IF{T[j] < T[min]} \\
+\INDENT \INDENT \INDENT \INDENT min $\leftarrow$ j \\
+\INDENT \INDENT \INDENT \ENDIF \\
+\INDENT \INDENT \ENDFOR \\
+\INDENT \INDENT échanger T[i] et T[min] \\
+\INDENT \ENDFOR \\
+\KW{fin procédure}
+\end{algorithm}
+
+\subsection{Recherche Dichotomique}
+
+\begin{algorithm}{Recherche dichotomique dans un tableau trié}
+\FUNCTION{RechercheDichotomique}{T, n, valeur} \\
+\INDENT début $\leftarrow$ 1 \\
+\INDENT fin $\leftarrow$ n \\
+\INDENT \WHILE{début $\leq$ fin} \\
+\INDENT \INDENT milieu $\leftarrow$ (début + fin) / 2 \\
+\INDENT \INDENT \IF{T[milieu] = valeur} \\
+\INDENT \INDENT \INDENT \RETURN{milieu} \\
+\INDENT \INDENT \ELSEIF{T[milieu] < valeur} \\
+\INDENT \INDENT \INDENT début $\leftarrow$ milieu + 1 \\
+\INDENT \INDENT \ELSE \\
+\INDENT \INDENT \INDENT fin $\leftarrow$ milieu - 1 \\
+\INDENT \INDENT \ENDIF \\
+\INDENT \ENDWHILE \\
+\INDENT \RETURN{-1} \COMMENT{élément non trouvé} \\
+\KW{fin fonction}
+\end{algorithm}
+
+\section{Conseils pour écrire du Pseudo-Code}
+
+\begin{itemize}
+    \item Utilisez des noms de variables explicites
+    \item Indentez correctement pour montrer la structure
+    \item Utilisez des commentaires pour clarifier les étapes complexes
+    \item Soyez précis dans les conditions et les opérations
+    \item Testez mentalement votre algorithme avec des exemples
+\end{itemize}
+
+\section{Template Vide}
+
+\begin{algorithm}{Votre algorithme}
+\FUNCTION{NomFonction}{paramètres} \\
+\INDENT \COMMENT{Votre code ici} \\
+\INDENT \\
+\KW{fin fonction}
+\end{algorithm}
+
+\end{document}
