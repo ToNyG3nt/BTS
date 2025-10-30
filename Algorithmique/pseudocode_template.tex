@@ -2,10 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
-\usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{amsmath}
-\usepackage{fancybox}
 \geometry{margin=2cm}
 
 % Définition d'un environnement pour les algorithmes
@@ -13,7 +11,7 @@
 \newenvironment{algorithm}[1]{
   \refstepcounter{algocounter}
   \begin{center}
-  \shadowbox{
+  \fbox{
     \begin{minipage}{0.9\textwidth}
       \textbf{Algorithme \thealgocounter : #1}
       \vspace{0.2cm}
@@ -28,7 +26,7 @@
 
 % Commandes pour le pseudo-code
 \newcommand{\KW}[1]{\textbf{#1}}
-\newcommand{\COMMENT}[1]{\textcolor{gray}{\textit{// #1}}}
+\newcommand{\COMMENT}[1]{\textit{// #1}}
 \newcommand{\INDENT}{\quad}
 \newcommand{\FUNCTION}[2]{\KW{Fonction} #1(#2)}
 \newcommand{\PROCEDURE}[2]{\KW{Procédure} #1(#2)}

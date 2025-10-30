@@ -2,10 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
-\usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{amsmath}
-\usepackage{fancybox}
 \geometry{margin=2cm}
 
 % Définition d'un environnement pour les algorithmes
@@ -13,7 +11,7 @@
 \newenvironment{algorithm}[1]{
   \refstepcounter{algocounter}
   \begin{center}
-  \shadowbox{
+  \fbox{
     \begin{minipage}{0.9\textwidth}
       \textbf{Algorithme \thealgocounter : #1}
       \vspace{0.2cm}
@@ -28,7 +26,7 @@
 
 % Commandes pour le pseudo-code
 \newcommand{\KW}[1]{\textbf{#1}}
-\newcommand{\COMMENT}[1]{\textcolor{gray}{\textit{// #1}}}
+\newcommand{\COMMENT}[1]{\textit{// #1}}
 \newcommand{\INDENT}{\quad}
 \newcommand{\FUNCTION}[2]{\KW{Fonction} #1(#2)}
 \newcommand{\PROCEDURE}[2]{\KW{Procédure} #1(#2)}
@@ -55,60 +53,51 @@
 
 \textbf{Énoncé :} Écrire un algorithme qui calcule la factorielle d'un nombre entier positif n.
 
-\begin{algorithm}[H]
-\caption{Calcul de la factorielle (version itérative)}
-\begin{algorithmic}[1]
-\Function{Factorielle}{n}
-    \State résultat $\leftarrow$ 1
-    \For{i de 1 à n}
-        \State résultat $\leftarrow$ résultat $\times$ i
-    \EndFor
-    \State \Return résultat
-\EndFunction
-\end{algorithmic}
+\begin{algorithm}{Calcul de la factorielle (version itérative)}
+\FUNCTION{Factorielle}{n} \\
+\INDENT résultat $\leftarrow$ 1 \\
+\INDENT \FOR{i de 1 à n} \\
+\INDENT \INDENT résultat $\leftarrow$ résultat $\times$ i \\
+\INDENT \ENDFOR \\
+\INDENT \RETURN{résultat} \\
+\KW{fin fonction}
 \end{algorithm}
 
 \section{Exercice 2 : Vérification de Nombre Premier}
 
 \textbf{Énoncé :} Écrire un algorithme qui détermine si un nombre est premier.
 
-\begin{algorithm}[H]
-\caption{Test de primalité}
-\begin{algorithmic}[1]
-\Function{EstPremier}{n}
-    \If{n $\leq$ 1}
-        \State \Return faux
-    \EndIf
-    \If{n = 2}
-        \State \Return vrai
-    \EndIf
-    \For{i de 2 à $\sqrt{n}$}
-        \If{n mod i = 0}
-            \State \Return faux
-        \EndIf
-    \EndFor
-    \State \Return vrai
-\EndFunction
-\end{algorithmic}
+\begin{algorithm}{Test de primalité}
+\FUNCTION{EstPremier}{n} \\
+\INDENT \IF{n $\leq$ 1} \\
+\INDENT \INDENT \RETURN{faux} \\
+\INDENT \ENDIF \\
+\INDENT \IF{n = 2} \\
+\INDENT \INDENT \RETURN{vrai} \\
+\INDENT \ENDIF \\
+\INDENT \FOR{i de 2 à $\sqrt{n}$} \\
+\INDENT \INDENT \IF{n mod i = 0} \\
+\INDENT \INDENT \INDENT \RETURN{faux} \\
+\INDENT \INDENT \ENDIF \\
+\INDENT \ENDFOR \\
+\INDENT \RETURN{vrai} \\
+\KW{fin fonction}
 \end{algorithm}
 
 \section{Exercice 3 : Algorithme de Tri à Bulles}
 
 \textbf{Énoncé :} Implémenter l'algorithme de tri à bulles.
 
-\begin{algorithm}[H]
-\caption{Tri à bulles}
-\begin{algorithmic}[1]
-\Procedure{TriBulles}{T, n}
-    \For{i de 1 à n-1}
-        \For{j de 1 à n-i}
-            \If{T[j] > T[j+1]}
-                \State échanger T[j] et T[j+1]
-            \EndIf
-        \EndFor
-    \EndFor
-\EndProcedure
-\end{algorithmic}
+\begin{algorithm}{Tri à bulles}
+\PROCEDURE{TriBulles}{T, n} \\
+\INDENT \FOR{i de 1 à n-1} \\
+\INDENT \INDENT \FOR{j de 1 à n-i} \\
+\INDENT \INDENT \INDENT \IF{T[j] > T[j+1]} \\
+\INDENT \INDENT \INDENT \INDENT échanger T[j] et T[j+1] \\
+\INDENT \INDENT \INDENT \ENDIF \\
+\INDENT \INDENT \ENDFOR \\
+\INDENT \ENDFOR \\
+\KW{fin procédure}
 \end{algorithm}
 
 \section{À Compléter}
@@ -116,25 +105,19 @@
 \subsection{Exercice 4 : Calcul du PGCD}
 \textbf{Énoncé :} Écrire un algorithme pour calculer le PGCD de deux nombres (algorithme d'Euclide).
 
-\begin{algorithm}[H]
-\caption{Votre solution ici}
-\begin{algorithmic}[1]
-\Function{PGCD}{a, b}
-    \State \Comment{À compléter}
-\EndFunction
-\end{algorithmic}
+\begin{algorithm}{Votre solution ici}
+\FUNCTION{PGCD}{a, b} \\
+\INDENT \COMMENT{À compléter} \\
+\KW{fin fonction}
 \end{algorithm}
 
 \subsection{Exercice 5 : Recherche dans un Tableau}
 \textbf{Énoncé :} Écrire un algorithme de recherche linéaire dans un tableau.
 
-\begin{algorithm}[H]
-\caption{Votre solution ici}
-\begin{algorithmic}[1]
-\Function{RechercheLineaire}{T, n, valeur}
-    \State \Comment{À compléter}
-\EndFunction
-\end{algorithmic}
+\begin{algorithm}{Votre solution ici}
+\FUNCTION{RechercheLineaire}{T, n, valeur} \\
+\INDENT \COMMENT{À compléter} \\
+\KW{fin fonction}
 \end{algorithm}
 
 \end{document}
