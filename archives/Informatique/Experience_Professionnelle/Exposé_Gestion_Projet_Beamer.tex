@@ -1,0 +1,217 @@
+
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usetheme{Madrid}
+\usepackage{xcolor}
+% Couleurs personnalisées
+\definecolor{myblue}{HTML}{1E90FF}
+\definecolor{mygreen}{HTML}{27ae60}
+\definecolor{myorange}{HTML}{e67e22}
+\definecolor{mypurple}{HTML}{8e44ad}
+\definecolor{myred}{HTML}{c0392b}
+\setbeamercolor{frametitle}{bg=myblue!10,fg=myblue!80!black}
+\setbeamercolor{block title}{bg=mygreen!20,fg=mygreen!80!black}
+\setbeamercolor{block body}{bg=mygreen!5,fg=black}
+\setbeamercolor{item}{fg=myblue!70!black}
+\setbeamertemplate{itemize item}{\color{myblue}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{myorange}$\star$}
+
+\title{Gestion de projet informatique :\newline méthodes traditionnelles vs agiles}
+\author{Anraud Gadille, Maël Mignard}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Introduction : Projet informatique}
+\begin{frame}{\color{myblue}Définition d'un projet informatique}
+  \scriptsize
+  \begin{columns}
+    \column{0.48\textwidth}
+    {\setbeamercolor{block title}{bg=myblue!20,fg=myblue!80!black}
+    \setbeamercolor{block body}{bg=myblue!5,fg=black}
+    \begin{block}{Concepts}
+      \begin{itemize}
+        \item \textbf{Objectif} : Créer ou améliorer un logiciel/système.
+        \item \textbf{Phases} : Analyse $\rightarrow$ Conception $\rightarrow$ Développement $\rightarrow$ Tests $\rightarrow$ Déploiement $\rightarrow$ Maintenance.
+        \item \textbf{Ressources} : Temps, budget, équipe, outils.
+        \item \textbf{Risques} : Retards, dépassement de budget, changements.
+        \item \textbf{Livrable} : Résultat final fonctionnel.
+      \end{itemize}
+    \end{block}}
+    \column{0.48\textwidth}
+    {\setbeamercolor{block title}{bg=myorange!20,fg=myorange!80!black}
+    \setbeamercolor{block body}{bg=myorange!5,fg=black}
+    \begin{block}{Exemples}
+      \begin{itemize}
+        \item Site web pour vendre des gâteaux.
+        \item Discuter $\rightarrow$ Dessiner $\rightarrow$ Coder $\rightarrow$ Tester $\rightarrow$ Lancer.
+        \item 3 mois, 2000€, développeur + designer.
+        \item Développeur malade $\rightarrow$ retard.
+        \item Site en ligne avec panier et paiement sécurisé.
+      \end{itemize}
+    \end{block}}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{\color{mygreen}Bases, acteurs et outils}
+  \scriptsize
+  \begin{columns}
+    \column{0.48\textwidth}
+    {\setbeamercolor{block title}{bg=mygreen!20,fg=mygreen!80!black}
+    \setbeamercolor{block body}{bg=mygreen!5,fg=black}
+    \begin{block}{Bases}
+      \begin{itemize}
+        \item Planifier, exécuter, suivre et clôturer un projet pour atteindre un objectif précis.
+      \end{itemize}
+    \end{block}}
+    {\setbeamercolor{block title}{bg=mypurple!20,fg=mypurple!80!black}
+    \setbeamercolor{block body}{bg=mypurple!5,fg=black}
+    \begin{block}{Acteurs}
+      \begin{itemize}
+        \item Chef de projet
+        \item Équipe
+        \item Clients
+      \end{itemize}
+    \end{block}}
+    \column{0.48\textwidth}
+    {\setbeamercolor{block title}{bg=myorange!20,fg=myorange!80!black}
+    \setbeamercolor{block body}{bg=myorange!5,fg=black}
+    \begin{block}{Outils}
+      \begin{itemize}
+        \item Logiciels pour organiser, collaborer et suivre l’avancement
+        \item Planification
+        \item Communication
+        \item Suivi
+      \end{itemize}
+    \end{block}}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{\color{myorange}Méthodes traditionnelles}
+  \scriptsize
+  \begin{columns}
+    \column{0.48\textwidth}
+    {\setbeamercolor{block title}{bg=myorange!20,fg=myorange!80!black}
+    \setbeamercolor{block body}{bg=myorange!5,fg=black}
+    \begin{block}{Phases}
+      \begin{itemize}
+        \item Initiation
+        \item Planification
+        \item Exécution
+        \item Suivi et Contrôle
+        \item Clôture
+      \end{itemize}
+    \end{block}}
+    \column{0.48\textwidth}
+    {\setbeamercolor{block title}{bg=myred!20,fg=myred!80!black}
+    \setbeamercolor{block body}{bg=myred!5,fg=black}
+    \begin{block}{Objectifs}
+      \begin{itemize}
+        \item Définir les objectifs, le périmètre, les parties prenantes et la faisabilité du projet.
+        \item Établir un plan détaillé : tâches, calendrier, budget, ressources et risques.
+        \item Réaliser les tâches prévues selon le plan.
+        \item Surveiller l’avancement, comparer avec le plan et corriger les écarts si nécessaire.
+        \item Finaliser le projet, livrer le produit et effectuer un bilan (retour d’expérience).
+      \end{itemize}
+    \end{block}}
+  \end{columns}
+\end{frame}
+\begin{frame}{\color{mypurple}Autres méthodes traditionnelles : Cycle en V vs PERT}
+  \scriptsize
+  \begin{columns}
+    \column{0.48\textwidth}
+    {\setbeamercolor{block title}{bg=mypurple!20,fg=mypurple!80!black}
+    \setbeamercolor{block body}{bg=mypurple!5,fg=black}
+    \begin{block}{Cycle en V}
+      \begin{itemize}
+        \item \textbf{Définition} : Modèle séquentiel, chaque étape doit être validée avant la suivante.
+        \item \textbf{Approche} : Séquentielle, structurée et peu flexible.
+        \item \textbf{Planification} : Précise et figée dès le départ.
+        \item \textbf{Gestion des risques} : Identification anticipée, peu d'adaptations en cours de projet.
+        \item \textbf{Utilisation} : Projets avec exigences stables et bien définies.
+        \item \textbf{Avantages} : Étapes claires, suivi facile, documentation complète.
+        \item \textbf{Inconvénients} : Manque de souplesse, difficile à adapter aux changements.
+      \end{itemize}
+    \end{block}}
+    \column{0.48\textwidth}
+    {\setbeamercolor{block title}{bg=myblue!20,fg=myblue!80!black}
+    \setbeamercolor{block body}{bg=myblue!5,fg=black}
+    \begin{block}{PERT}
+      \begin{itemize}
+        \item \textbf{Définition} : Méthode de gestion axée sur l’ordonnancement et la planification des tâches.
+        \item \textbf{Approche} : Réseau de tâches, gestion des dépendances et des incertitudes.
+        \item \textbf{Planification} : Dynamique, estimation des durées et identification des chemins critiques.
+        \item \textbf{Gestion des risques} : Évolutive, ajustements possibles en fonction de l’avancement.
+        \item \textbf{Utilisation} : Projets complexes avec de nombreuses tâches et dépendances.
+        \item \textbf{Avantages} : Optimisation des délais, meilleure gestion des imprévus.
+        \item \textbf{Inconvénients} : Mise en œuvre complexe, nécessite des outils adaptés.
+      \end{itemize}
+    \end{block}}
+  \end{columns}
+\end{frame}
+
+\section{Méthodes agiles}
+\begin{frame}{Méthodes agiles}
+  \scriptsize
+  \textbf{Scrum}
+  \begin{itemize}
+    \item \textbf{Fonctionnement} : Étapes courtes (sprints) + réunions quotidiennes.
+    \item \textbf{Qui participe ?} : Product Owner, Scrum Master, équipe
+    \item \textbf{Durée} : 2-4 semaines/étape
+    \item \textbf{Avantages} : Flexible, livraisons fréquentes.
+    \item \textbf{Inconvénients} : Équipe expérimentée nécessaire.
+    \item \textbf{Pour quel projet ?} : Logiciels, nouveaux produits.
+  \end{itemize}
+  \vspace{0.3cm}
+  \textbf{Kanban}
+  \begin{itemize}
+    \item \textbf{Fonctionnement} : Tableau visuel (À faire/En cours/Terminé).
+    \item \textbf{Qui participe ?} : Équipe auto-organisée
+    \item \textbf{Durée} : Continu
+    \item \textbf{Avantages} : Simple, adaptable.
+    \item \textbf{Inconvénients} : Moins structuré pour gros projets.
+    \item \textbf{Pour quel projet ?} : Maintenance, tâches répétitives.
+  \end{itemize}
+  \vspace{0.3cm}
+  \textbf{XP (Extreme Programming)}
+  \begin{itemize}
+    \item \textbf{Fonctionnement} : Qualité du code + tests automatiques.
+    \item \textbf{Qui participe ?} : Développeurs + client
+    \item \textbf{Durée} : 1-2 semaines/étape
+    \item \textbf{Avantages} : Code solide, peu de bugs.
+    \item \textbf{Inconvénients} : Équipe technique requise.
+    \item \textbf{Pour quel projet ?} : Projets complexes, qualité critique.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Comparatif : Méthode Agile vs Traditionnelle}
+  \scriptsize
+  \begin{columns}
+    \column{0.48\textwidth}
+    \textbf{Méthode Agile}
+    \begin{itemize}
+      \item \textbf{Flexibilité} : Très flexible, adaptations fréquentes possibles.
+      \item \textbf{Livraison \& implication client} : Livraisons fréquentes (2-4 semaines), feedback client régulier.
+      \item \textbf{Documentation} : Légère, axée sur le produit fonctionnel.
+      \item \textbf{Risques} : Réduction des risques grâce aux ajustements réguliers et au feedback client.
+    \end{itemize}
+    \column{0.48\textwidth}
+    \textbf{Méthode Traditionnelle}
+    \begin{itemize}
+      \item \textbf{Flexibilité} : Peu flexible, changements difficiles après le démarrage.
+      \item \textbf{Livraison \& implication client} : Livraison unique à la fin, validation client surtout au début et à la fin.
+      \item \textbf{Documentation} : Lourde, chaque phase est documentée en détail.
+      \item \textbf{Risques} : Risques élevés si les besoins initiaux sont mal définis (découverte tardive des problèmes).
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+
+
+\end{document}

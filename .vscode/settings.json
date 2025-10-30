@@ -12,5 +12,9 @@
   "gitdoc.commitMessageFormat": "📝 Auto-sync: ${file}",
   "gitdoc.pullOnOpen": true,
   "gitdoc.pushOnSave": true,
-  "gitdoc.autoPull": "afterDelay"
+  "gitdoc.autoPull": "afterDelay",
+  "latex-workshop.latex.autoBuild.run": "onFileChange",
+  "latex-workshop.latex.outDir": "./out",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.clean.enabled": true
 }

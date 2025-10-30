@@ -1,0 +1,94 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{setspace}
+\onehalfspacing
+
+\title{Étude de Risques - Société Educ\&Info}
+\author{DSI - BTS SIO}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Identification des processus métiers / actifs informationnels}
+\begin{itemize}
+    \item Conception et mise à jour des programmes de formation.
+    \item Gestion administrative : facturation, paiements, relations avec les OPCA.
+    \item Gestion commerciale : devis, suivi client, communication avec le site web.
+    \item Organisation logistique des formations : planification, préparation des salles, matériel.
+    \item Gestion du site internet : publication des cours, inscriptions en ligne.
+    \item Gestion des supports pédagogiques et évaluations.
+    \item Suivi post-formation et adaptation des contenus selon les retours clients.
+\end{itemize}
+
+\section*{2. Identification des actifs supports}
+\begin{itemize}
+    \item Infrastructure réseau : serveurs internes (RADIUS, base de données, sauvegarde), routeur, pare-feu.
+    \item Postes de travail du personnel et des stagiaires.
+    \item ERP pour la gestion des plannings, facturation et suivi des formations.
+    \item Site internet hébergé sur un serveur externe.
+    \item Données clients, documents pédagogiques, données administratives.
+    \item Salle informatique sécurisée et climatisée.
+    \item Connexion VPN avec la société mère.
+\end{itemize}
+
+\section*{3. Identification des mesures de sécurité existantes}
+\begin{itemize}
+    \item Moyens anti-incendie présents dans les locaux.
+    \item Alarme anti-intrusion active en dehors des heures d’ouverture.
+    \item Accès au réseau Wi-Fi via portail captif et serveur RADIUS.
+    \item Sauvegarde quotidienne des fichiers sur un serveur interne.
+    \item Transmission hebdomadaire des fichiers administratifs via VPN.
+    \item Armoires métalliques fermant à clé pour les documents papier.
+    \item Maintenance logicielle assurée sous 24h par contrat fournisseur.
+\end{itemize}
+
+\section*{4. Identification des vulnérabilités}
+\begin{itemize}
+    \item Absence de PSSI et de charte d’utilisation du SI.
+    \item Aucun contrôle d’accès sur les postes stagiaires.
+    \item Absence de procédure de fermeture et de contrôle des clés des salles.
+    \item Utilisation de matériels personnels connectés au réseau de l’entreprise.
+    \item Réseau saturé lorsque toutes les salles sont utilisées.
+    \item Manque de sensibilisation à la sécurité du personnel.
+    \item DSI non expert en sécurité informatique.
+\end{itemize}
+
+\section*{5. Identification des menaces}
+\begin{itemize}
+    \item Intrusion physique ou vol de matériel informatique.
+    \item Intrusion réseau ou vol de données (clients, supports pédagogiques).
+    \item Infection par malware due à l’utilisation de périphériques externes.
+    \item Perte de données liée à une défaillance matérielle ou erreur humaine.
+    \item Déni de service lié à la saturation du réseau.
+    \item Espionnage industriel ou copie non autorisée de supports de cours.
+    \item Risques liés à l’intervention de prestataires externes (nettoyage, maintenance).
+\end{itemize}
+
+\section*{6. Identification des impacts}
+\begin{itemize}
+    \item Perte ou corruption de données critiques ou confidentielles.
+    \item Interruption de l’activité de formation.
+    \item Atteinte à la réputation de l’entreprise.
+    \item Pertes financières liées à des incidents ou litiges clients.
+    \item Perte de confiance des clients et partenaires.
+    \item Non-conformité réglementaire (protection des données).
+\end{itemize}
+
+\section*{7. Identification des risques}
+\begin{itemize}
+    \item Risque de fuite ou de vol de données sensibles (clients, supports de cours).
+    \item Risque d’intrusion sur le réseau stagiaire ou personnel.
+    \item Risque de panne matérielle entraînant la perte de disponibilité du SI.
+    \item Risque de dégradation de l’image et perte de clients.
+    \item Risque de non-conformité en matière de protection des données.
+    \item Risque d’exploitation de vulnérabilités dues à l’absence de PSSI.
+\end{itemize}
+
+\end{document}

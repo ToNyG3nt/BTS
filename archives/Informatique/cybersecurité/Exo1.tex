@@ -1,0 +1,73 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Exercice 1 - Cybersécurité}
+\author{Mignard Mael}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Scénario}
+La société « InnovArt » est un cabinet de design de produits. Cette PME bordelaise est
+constituée d’une vingtaine de personnes. Elle réalise des plans de conception de produits et
+des maquettes virtuelles pour ses clients.
+La société est composée d'une direction générale, d'un service commercial qui communique
+avec les clients, d'un bureau d'étude qui rédige les documents techniques, d'un service de
+comptabilité qui s'occupe de la facturation et des finances et d'un service informatique qui
+administre le système informatique.
+Le système informatique est composé d'un réseau wifi et d'un réseau Ethernet.
+1. 2. 3. 4. Le bureau d'étude possède 10 ordinateurs fixes et utilise un logiciel professionnel de
+conception par informatique, le service commercial possède 3 ordinateurs portables
+et le service comptabilité 1 ordinateur fixe.
+Le service informatique possède un serveur connecté au réseau sur lequel sont
+stockés les fichiers partagés entre les employés avec un dossier par service.
+Chaque employé utilise un compte administrateur sur son ordinateur et un mot de
+passe wifi est partagé par tous les employés.
+Le service informatique effectue une sauvegarde du serveur une fois par semaine
+sur une clé USB stockée dans un coffre sécurisé à côté du serveur. Le site internet et
+le serveur email sont hébergés chez un prestataire externe.
+Dans un contexte de développement de la société, vous êtes embauché en tant que RSSI
+afin d'améliorer la sécurité du système informatique et de se mettre en conformité avec
+la nouvelle réglementation RGPD. Le directeur de la société vous demande de procéder à
+l'analyse des risques informatiques de la société et d'élaborer une politique de sécurité
+des systèmes. Pour cela, vous devrez vous appuyer sur le scénario présenté, sur la
+réglementation RGPD et sur des hypothèses que vous justifierez rapidement dans les
+documents.
+
+\clearpage
+
+\section{Questions}
+\begin{enumerate}
+    \item  Décrivez le déroulement d’une attaque qui pourrait cibler l’entreprise.
+    \item \begin{itemize}
+        \item Identifier les processus métiers / actifs informationnels
+        \item Identifier les actifs supports
+        \item Identifier les mesures de sécurité existantes
+        \item Identifier les vulnérabilités / Identifier les menaces
+        \item Identifier les impacts 
+        \item Établir un mini plan d’actions à la suite de cette analyse de risques
+    \end{itemize}
+    \item Proposer des mesures d’hygiène/sécurité adaptées à l’organisation
+    \item Formuler des préconisations et des mesures à appliquer pour le choix de sous-traitance
+\end{enumerate}
+
+\section{Réponses}
+\begin{enumerate}
+    \item Une attaque possible serait une attaque par ransomware. Un employé pourrait recevoir un email de phishing contenant un lien ou une pièce jointe malveillante. En cliquant sur le lien ou en ouvrant la pièce jointe, un logiciel malveillant s'installerait sur son ordinateur, chiffrant les fichiers locaux et ceux accessibles sur le serveur partagé. L'attaquant demanderait ensuite une rançon pour déchiffrer les fichiers, paralysant ainsi les opérations de l'entreprise.
+    \item 
+    \begin{itemize}
+        \item Processus métiers / actifs informationnels : Conception de produits, gestion des clients, facturation.
+        \item Actifs supports : Ordinateurs fixes et portables, serveur de fichiers, réseau wifi et Ethernet.
+        \item Mesures de sécurité existantes : Sauvegarde hebdomadaire du serveur, coffre sécurisé pour la clé USB.
+        \item Vulnérabilités / Menaces : Utilisation de comptes administrateurs par les employés, mot de passe wifi partagé, absence de segmentation réseau.
+        \item Impacts : Perte de données critiques, interruption des opérations, atteinte à la réputation.
+        \item Mini plan d’actions : Mettre en place des comptes utilisateurs avec des privilèges limités, renforcer la sécurité du réseau wifi, segmenter le réseau pour isoler les services critiques.
+    \end{itemize}
+\end{enumerate}
+\end{document}
