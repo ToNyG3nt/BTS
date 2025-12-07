@@ -251,7 +251,7 @@ body.light-theme {
 
 /* Custom cursors for projects */
 .projet-carte.projet-csharp:hover {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewport="0 0 24 24" version="1.1"><text x="0" y="20" font-family="monospace" font-size="20" fill="white">#</text></svg>') 12 12, auto;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewport="0 0 24 24" version="1.1"><text x="0" y="20" font-family="monospace" font-size="20" fill="white">%23</text></svg>') 12 12, auto;
 }
 
 .projet-carte.projet-algorithmique:hover {
