@@ -4,45 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfolio — Projets</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css" />
-    <script src="assets/js/content.js" defer></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
     <script src="assets/js/main.js" defer></script>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="container">
-        <a class="brand" href="index.html">Mon Portfolio</a>
-        <button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Ouvrir le menu">
+    <nav class="barre-de-navigation">
+      <div class="conteneur">
+        <a class="marque" href="index.html">Mon Portfolio</a>
+        <button class="bascule-menu" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu">
           <span></span><span></span><span></span>
         </button>
-        <ul id="primary-menu">
+        <ul id="menu-principal">
           <li><a href="index.html">Accueil</a></li>
-          <li><a class="active" href="projects.html#python">Python</a></li>
-          <li><a href="projects.html#latex">LaTeX</a></li>
-          <li><a href="projects.html#reseaux">Réseaux</a></li>
-          <li><a href="projects.html#web">Web</a></li>
-          <li><a href="about.html">À propos</a></li>
+          <li><a class="actif" href="projects.html">Projets</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
     </nav>
 
-    <header class="subhero">
-      <div class="container">
+    <header class="sous-hero">
+      <div class="conteneur">
         <h1>Projets</h1>
-        <p class="subtitle">Une sélection de mes travaux récents</p>
+        <p class="sous-titre">Une sélection de mes travaux récents</p>
       </div>
     </header>
 
-    <main class="container">
+    <main class="conteneur">
       <section>
-        <div id="projects" class="grid cards"></div>
+        <div class="grille-projets">
+          <a href="projets/algorithmique.html" class="projet-carte projet-algorithmique item-1">
+            <div class="projet-contenu">
+              <h2>Algorithmique</h2>
+              <p>Exercices d'algorithmique en C# et LaTeX.</p>
+            </div>
+          </a>
+          <a href="projets/decouverte-programmation.html" class="projet-carte projet-decouverte item-2">
+            <div class="projet-contenu">
+              <h2>Découverte de la programmation</h2>
+              <p>Logigrammes et pseudocode.</p>
+            </div>
+          </a>
+          <a href="projets/projet-csharp.html" class="projet-carte projet-csharp item-3">
+            <div class="projet-contenu">
+              <h2>Projet C#</h2>
+              <p>Apprentissage du C# avec un projet simple.</p>
+            </div>
+          </a>
+        </div>
       </section>
     </main>
 
     <footer>
-      <div class="container">
-        <p>© <span id="year"></span> — Mon Portfolio. Tous droits réservés.</p>
+      <div class="conteneur">
+        <p>© <span id="annee"></span> — Mon Portfolio. Tous droits réservés.</p>
       </div>
     </footer>
   </body>
