@@ -20,6 +20,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Sticky Navigation Bar Logic
+    const navbar = document.querySelector('nav');
+    if (navbar) {
+        // Use a small delay or check for layout complete to get accurate offsetTop
+        // For simplicity, let's assume it's calculated correctly after DOMContentLoaded
+        const sticky = navbar.offsetTop;
+
+        function stickyNavbar() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky");
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+        window.addEventListener('scroll', stickyNavbar); // Add event listener
+        // Also call it once in case the page is loaded with scroll already
+        stickyNavbar();
+    }
+
+
     // Image switching logic for dark mode
     const bannerImage = document.querySelector('.banner img');
 
