@@ -20,29 +20,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Dark Mode Toggle Logic
+    // Image switching logic for dark mode
+    const bannerImage = document.querySelector('.banner img');
+
+    function updateBannerImage(isDarkMode) {
+        if (!bannerImage) return;
+
+        if (isDarkMode) {
+            bannerImage.src = bannerImage.dataset.darkSrc || bannerImage.dataset.lightSrc; // Fallback to light if dark is not defined
+        } else {
+            bannerImage.src = bannerImage.dataset.lightSrc;
+        }
+    }
+
+    // Existing Dark Mode Toggle Logic
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
-    // Check for user's preferred theme in localStorage
+    // Check for user's preferred theme in localStorage and system preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         body.classList.add(savedTheme);
+        updateBannerImage(savedTheme === 'dark-mode');
     } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        // If no saved theme, check system preference
         body.classList.add('dark-mode');
+        updateBannerImage(true);
+    } else {
+        updateBannerImage(false); // Ensure light image is set if no dark mode preference
     }
 
     if (darkModeToggle) {
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
 
             // Save preference to localStorage
-            if (body.classList.contains('dark-mode')) {
+            if (isDarkMode) {
                 localStorage.setItem('theme', 'dark-mode');
             } else {
-                localStorage.removeItem('theme'); // Or localStorage.setItem('theme', 'light-mode');
+                localStorage.removeItem('theme');
             }
+
+            updateBannerImage(isDarkMode); // Update image immediately
         });
     }
 });

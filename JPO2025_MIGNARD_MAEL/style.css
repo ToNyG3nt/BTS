@@ -8,23 +8,23 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     margin: 0;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #043d8e;
+    background-color: var(--background-color);
+    color: var(--text-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 header {
-    background: #043d8e;
-    color: #fff;
+    background: var(--header-bg);
+    color: var(--button-text-color);
     padding-top: 0;
     padding-bottom: 1rem;
     text-align: center;
 }
 
 .banner {
-    background-color: #043d8e;
+    background-color: var(--header-bg);
     position: relative;
     overflow: hidden;
     height: 150px; /* Simplified height */
@@ -42,7 +42,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff;
+    color: var(--button-text-color);
     z-index: 10;
     margin: 0;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Simplified shadow */
@@ -51,7 +51,7 @@ header {
 
 nav {
     width: 100%;
-    background: #043d8e; /* Ensure nav background is consistent */
+    background: var(--nav-bg); /* Ensure nav background is consistent */
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
@@ -72,21 +72,21 @@ nav ul.nav-list li {
 }
 
 nav a {
-    color: #fff;
+    color: var(--button-text-color);
     text-decoration: none;
     padding: 10px 0;
     display: block; /* Make the whole padding area clickable */
 }
 
 nav a:hover {
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid var(--button-text-color);
 }
 
 main {
     padding: 20px;
     max-width: 960px;
     margin: 20px auto; /* Add margin to separate from nav */
-    background: #fff;
+    background: var(--main-bg-color);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Simplified shadow */
     border-radius: 8px; /* Added border-radius for consistency */
     flex-grow: 1; /* Allows main to take up available space */
@@ -95,9 +95,9 @@ main {
 section {
     margin-bottom: 20px;
     padding: 20px;
-    border: 1px solid #eee; /* Simplified border */
+    border: 1px solid var(--section-border-color); /* Simplified border */
     border-radius: 8px; /* Simplified border-radius */
-    background: #fff; /* Changed to white for consistency */
+    background: var(--section-bg-color); /* Changed to white for consistency */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Simplified shadow */
 }
 
@@ -118,7 +118,7 @@ section {
 }
 
 .option-card, .card {
-    border: 1px solid #ddd; /* Simplified border */
+    border: 1px solid var(--card-border-color); /* Simplified border */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Simplified shadow */
     padding: 20px;
     margin-bottom: 20px;
@@ -128,7 +128,7 @@ section {
 }
 
 .option-card h3, .card h3 {
-    color: #043d8e; /* Changed to main brand color */
+    color: var(--primary-color); /* Changed to main brand color */
     margin-top: 0;
     margin-bottom: 10px;
 }
@@ -153,8 +153,8 @@ section {
 }
 
 .subjects-table thead tr {
-    background-color: #043d8e; /* Changed to brand color */
-    color: #ffffff;
+    background-color: var(--primary-color); /* Changed to brand color */
+    color: var(--button-text-color);
     text-align: left;
     font-weight: bold;
 }
@@ -162,15 +162,15 @@ section {
 .subjects-table th,
 .subjects-table td {
     padding: 10px 12px; /* Slightly reduced padding */
-    border: 1px solid #ccc; /* Simplified border */
+    border: 1px solid var(--table-border-color); /* Simplified border */
 }
 
 .subjects-table tbody tr:nth-of-type(even) {
-    background-color: #f9f9f9; /* Lighter alternating row */
+    background-color: var(--table-even-row-bg); /* Lighter alternating row */
 }
 
 .subjects-table tbody tr:last-of-type {
-    border-bottom: 1px solid #043d8e; /* Simplified border to brand color */
+    border-bottom: 1px solid var(--primary-color); /* Simplified border to brand color */
 }
 
 .subjects-table tbody tr:hover {
@@ -181,7 +181,7 @@ form label {
     display: block;
     margin-bottom: 5px;
     text-align: left;
-    color: #333; /* Darker for better contrast */
+    color: var(--dark-text); /* Darker for better contrast */
 }
 
 form input[type="text"],
@@ -190,7 +190,7 @@ form textarea,
 form select {
     width: calc(100% - 24px); /* Account for padding */
     padding: 10px 12px;
-    border: 1px solid #bbb; /* Simplified border */
+    border: 1px solid var(--input-border-color); /* Simplified border */
     border-radius: 5px; /* Simplified border-radius */
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* Simplified shadow */
     margin-bottom: 15px; /* Added spacing */
@@ -200,13 +200,13 @@ form input[type="text"]:focus,
 form input[type="email"]:focus,
 form textarea:focus,
 form select:focus {
-    border-color: #043d8e; /* Focus color to brand */
+    border-color: var(--primary-color); /* Focus color to brand */
     outline: none;
 }
 
 form button {
-    background: #043d8e; /* Changed to brand color */
-    color: #fff;
+    background: var(--primary-color); /* Changed to brand color */
+    color: var(--button-text-color);
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -217,7 +217,7 @@ form button {
 }
 
 form button:hover {
-    background: #002a66; /* Darker shade of brand color on hover */
+    background: var(--button-hover-bg);
 }
 
 footer {
@@ -225,8 +225,8 @@ footer {
     justify-content: center;
     align-items: center;
     padding: 15px; /* Slightly reduced padding */
-    background: #043d8e;
-    color: #fff;
+    background: var(--footer-bg);
+    color: var(--button-text-color);
     margin-top: auto;
     font-size: 0.9em; /* Slightly smaller font */
 }
@@ -242,7 +242,7 @@ footer {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #fff; /* Default color for the icon */
+    color: var(--button-text-color); /* Use variable */
     padding: 5px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -252,112 +252,47 @@ footer {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Color Variables */
+:root {
+    --primary-color: #043d8e;
+    --text-color: #043d8e;
+    --background-color: #f4f4f4;
+    --main-bg-color: #fff;
+    --section-bg-color: #fff;
+    --section-border-color: #eee;
+    --card-border-color: #ddd;
+    --table-border-color: #ccc;
+    --input-border-color: #bbb;
+    --light-gray-text: #555;
+    --dark-text: #333;
+    --table-even-row-bg: #f9f9f9;
+    --table-hover-bg: #eef;
+    --button-hover-bg: #002a66;
+    --button-text-color: #fff;
+    --header-bg: #043d8e;
+    --footer-bg: #043d8e;
+    --nav-bg: #043d8e;
+}
+
 /* Dark Mode Styles */
 body.dark-mode {
-    background-color: #121212; /* Dark background */
-    color: #e0e0e0; /* Light text */
+    --primary-color: #90caf9; /* Lighter blue for dark mode */
+    --text-color: #e0e0e0;
+    --background-color: #121212;
+    --main-bg-color: #1e1e1e;
+    --section-bg-color: #252525;
+    --section-border-color: #333;
+    --card-border-color: #333;
+    --table-border-color: #444;
+    --input-border-color: #555;
+    --light-gray-text: #bbb;
+    --dark-text: #e0e0e0; /* Changed to lighter for dark mode */
+    --table-even-row-bg: #2a2a2a;
+    --table-hover-bg: #3a3a3a;
+    --button-hover-bg: #64b5f6;
+    --button-text-color: #e0e0e0; /* Use variable */
+    --header-bg: #1a1a1a;
+    --footer-bg: #1a1a1a;
+    --nav-bg: #1a1a1a;
 }
 
-body.dark-mode header {
-    background-color: #1a1a1a;
-}
-
-body.dark-mode .banner {
-    background-color: #1a1a1a;
-}
-
-body.dark-mode nav {
-    background-color: #1a1a1a;
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode nav a {
-    color: #e0e0e0;
-}
-
-body.dark-mode nav a:hover {
-    border-bottom-color: #e0e0e0;
-}
-
-body.dark-mode main {
-    background: #1e1e1e;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode section {
-    background: #252525;
-    border-color: #333;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode .option-card,
-body.dark-mode .card {
-    background: #252525;
-    border-color: #333;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode .option-card h3,
-body.dark-mode .card h3 {
-    color: #90caf9; /* Lighter blue for dark mode */
-}
-
-body.dark-mode .subjects-table {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .subjects-table thead tr {
-    background-color: #333;
-    color: #e0e0e0;
-}
-
-body.dark-mode .subjects-table th,
-body.dark-mode .subjects-table td {
-    border-color: #444;
-}
-
-body.dark-mode .subjects-table tbody tr:nth-of-type(even) {
-    background-color: #2a2a2a;
-}
-
-body.dark-mode .subjects-table tbody tr:hover {
-    background-color: #3a3a3a;
-}
-
-body.dark-mode form label {
-    color: #bbb;
-}
-
-body.dark-mode form input[type="text"],
-body.dark-mode form input[type="email"],
-body.dark-mode form textarea,
-body.dark-mode form select {
-    background-color: #333;
-    color: #e0e0e0;
-    border-color: #555;
-}
-
-body.dark-mode form input[type="text"]:focus,
-body.dark-mode form input[type="email"]:focus,
-body.dark-mode form textarea:focus,
-body.dark-mode form select:focus {
-    border-color: #90caf9;
-}
-
-body.dark-mode form button {
-    background: #90caf9;
-    color: #121212;
-}
-
-body.dark-mode form button:hover {
-    background: #64b5f6;
-}
-
-body.dark-mode footer {
-    background: #1a1a1a;
-    color: #e0e0e0;
-}
-
-body.dark-mode #darkModeToggle {
-    color: #e0e0e0; /* Moon icon color in dark mode */
-}
