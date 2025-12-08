@@ -61,14 +61,14 @@ nav ul.nav-list {
     padding: 0;
     list-style: none;
     display: flex;
-    justify-content: space-between; /* This will push the toggle to the right */
+    justify-content: center; /* Center the menu items */
     align-items: center; /* Vertically align items */
     margin: 0;
     width: 100%; /* Ensure it takes full width to use space-between effectively */
 }
 
 nav ul.nav-list li {
-    margin: 0 15px; /* Adjust margin for other nav items */
+    margin: 0 10px; /* Make menu items closer */
 }
 
 nav a {
@@ -293,7 +293,7 @@ body.dark-mode {
     --button-text-color: #e0e0e0; /* Use variable */
     --header-bg: #1a1a1a;
     --footer-bg: #1a1a1a;
-    --nav-bg: #1a1a1a;
+    --nav-bg: #2a2a2a; /* Slightly lighter for better visibility */
 }
 
 
