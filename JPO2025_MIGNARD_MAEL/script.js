@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!bannerImage) return;
 
         if (isDarkMode) {
-            bannerImage.src = bannerImage.dataset.darkSrc || bannerImage.dataset.lightSrc; // Fallback to light if dark is not defined
+            bannerImage.src = bannerImage.dataset.lightSrc; // TEMPORARY: Force light image in dark mode
         } else {
             bannerImage.src = bannerImage.dataset.lightSrc;
         }
