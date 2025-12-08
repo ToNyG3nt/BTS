@@ -13,10 +13,11 @@
             <img src="assets/images/baniere.png" alt="Bannière BTS SIO" style="width:100%;">
         </div>
         <nav>
-            <ul>
+            <ul class="nav-list">
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="formations.html">Formations</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li class="dark-mode-item"><button id="darkModeToggle">🌙</button></li>
             </ul>
         </nav>
     </header>
@@ -44,20 +45,42 @@
             </div>
         </section>
 
-        <section class="table-of-contents">
-            <h2>Table des matieres</h2>
-            <div class="table-of-contents-list">
-                <ul>
-                    <li><a href="#sisr">SISR</a></li>
-                    <li><a href="#sisr-admin-sup">Administration et supervision des systèmes et réseaux</a></li>
-                    <li><a href="#sisr-cyber-data">Cybersécurité et protection des données</a></li>
-                    <li><a href="#sisr-support-incidents">Support et résolution d'incidents (Maintenance)</a></li>
-                    <li><a href="#slam">SLAM</a></li>
-                    <li><a href="#slam-dev-app">Conception et développement d'applications</a></li>
-                    <li><a href="#slam-data-exploit">Gestion et exploitation des données</a></li>
-                    <li><a href="#slam-maintenance-version">Maintenance évolutive et gestion de version</a></li>
-                </ul>
-            </div>
+        <section class="bts-subjects">
+            <h2>Matières du BTS SIO</h2>
+            <table class="subjects-table">
+                <thead>
+                    <tr>
+                        <th>Matière</th>
+                        <th>Description succincte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Culture Générale et Expression</td>
+                        <td>Améliorer la maîtrise de la langue et les capacités d'analyse.</td>
+                    </tr>
+                    <tr>
+                        <td>Culture Économique, Juridique et Managériale</td>
+                        <td>Comprendre l'environnement économique, juridique et managérial des entreprises.</td>
+                    </tr>
+                    <tr>
+                        <td>Mathématiques pour l'Informatique</td>
+                        <td>Acquérir les bases mathématiques nécessaires à l'informatique.</td>
+                    </tr>
+                    <tr>
+                        <td>Anglais</td>
+                        <td>Développer les compétences linguistiques pour le milieu professionnel.</td>
+                    </tr>
+                    <tr>
+                        <td>Conception et Développement d'Applications</td>
+                        <td>Apprendre à concevoir et développer des solutions logicielles.</td>
+                    </tr>
+                    <tr>
+                        <td>Réseaux et Infrastructures</td>
+                        <td>Maîtriser les bases des réseaux informatiques et des infrastructures.</td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
     </main>
 

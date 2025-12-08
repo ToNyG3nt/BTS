@@ -13,18 +13,18 @@
             <img src="assets/images/baniere.png" alt="Bannière BTS SIO" style="width:100%;">
         </div>
         <nav>
-            <ul>
+            <ul class="nav-list">
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="formations.html">Formations</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li class="dark-mode-item"><button id="darkModeToggle">🌙</button></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section class="contact-section">
-            <h2>Contact Us</h2>
-            <img src="assets/images/contact.png" alt="Contact icon">
+            <h2>Nous Contacter</h2>
             <form id="contact-form">
                 <label for="nom">Nom (obligatoire) :</label>
                 <input type="text" id="nom" name="nom" required>
@@ -33,7 +33,12 @@
                 <input type="email" id="email" name="email" required>
 
                 <label for="subject">Sujet :</label>
-                <input type="text" id="subject" name="subject">
+                <select id="subject" name="subject">
+                    <option value="information">Information</option>
+                    <option value="question">Question</option>
+                    <option value="support">Support</option>
+                    <option value="other">Autre</option>
+                </select>
 
                 <label for="message">Message:</label>
                 <textarea id="message" name="message"></textarea>

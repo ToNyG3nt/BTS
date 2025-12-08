@@ -18,7 +18,8 @@ body {
 header {
     background: #043d8e;
     color: #fff;
-    padding: 1rem 0;
+    padding-top: 0;
+    padding-bottom: 1rem;
     text-align: center;
 }
 
@@ -56,16 +57,18 @@ nav {
 
 /* Removed sticky class for simplification */
 
-nav ul {
+nav ul.nav-list {
     padding: 0;
     list-style: none;
     display: flex;
-    justify-content: center;
-    margin: 0; /* Remove default margin */
+    justify-content: space-between; /* This will push the toggle to the right */
+    align-items: center; /* Vertically align items */
+    margin: 0;
+    width: 100%; /* Ensure it takes full width to use space-between effectively */
 }
 
-nav ul li {
-    margin: 0 15px;
+nav ul.nav-list li {
+    margin: 0 15px; /* Adjust margin for other nav items */
 }
 
 nav a {
@@ -226,4 +229,135 @@ footer {
     color: #fff;
     margin-top: auto;
     font-size: 0.9em; /* Slightly smaller font */
+}
+
+/* Dark Mode Toggle Button Styles */
+.dark-mode-item {
+    margin-left: auto; /* Pushes this item to the far right */
+    margin-right: 15px; /* Add some right margin */
+}
+
+#darkModeToggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff; /* Default color for the icon */
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+}
+
+body.dark-mode header {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .banner {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode nav {
+    background-color: #1a1a1a;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode nav a {
+    color: #e0e0e0;
+}
+
+body.dark-mode nav a:hover {
+    border-bottom-color: #e0e0e0;
+}
+
+body.dark-mode main {
+    background: #1e1e1e;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode section {
+    background: #252525;
+    border-color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .option-card,
+body.dark-mode .card {
+    background: #252525;
+    border-color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .option-card h3,
+body.dark-mode .card h3 {
+    color: #90caf9; /* Lighter blue for dark mode */
+}
+
+body.dark-mode .subjects-table {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .subjects-table thead tr {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .subjects-table th,
+body.dark-mode .subjects-table td {
+    border-color: #444;
+}
+
+body.dark-mode .subjects-table tbody tr:nth-of-type(even) {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .subjects-table tbody tr:hover {
+    background-color: #3a3a3a;
+}
+
+body.dark-mode form label {
+    color: #bbb;
+}
+
+body.dark-mode form input[type="text"],
+body.dark-mode form input[type="email"],
+body.dark-mode form textarea,
+body.dark-mode form select {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode form input[type="text"]:focus,
+body.dark-mode form input[type="email"]:focus,
+body.dark-mode form textarea:focus,
+body.dark-mode form select:focus {
+    border-color: #90caf9;
+}
+
+body.dark-mode form button {
+    background: #90caf9;
+    color: #121212;
+}
+
+body.dark-mode form button:hover {
+    background: #64b5f6;
+}
+
+body.dark-mode footer {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode #darkModeToggle {
+    color: #e0e0e0; /* Moon icon color in dark mode */
 }
