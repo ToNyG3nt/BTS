@@ -82,12 +82,20 @@ section {
 }
 
 .presentation img {
-    max-width: 500px; /* Limit image size */
+    max-width: 400px; /* Limit image size */
     height: auto; /* Maintain aspect ratio */
     display: block; /* Center image */
-    margin: 15px auto; /* Center image with some vertical margin */
+    margin: 10px auto; /* Center image with some vertical margin */
     border-radius: 8px; /* Slightly rounded corners */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+/* Specific sizing for icon-like images */
+.option-card img, .card img, .contact-section img {
+    max-width: 70px; /* Limit width */
+    height: 70px; /* Limit height */
+    object-fit: contain; /* Ensure image content is contained within the bounds without cropping */
+    margin-bottom: 5px; /* Adjust margin for smaller images */
 }
 
 .option-card, .card {
