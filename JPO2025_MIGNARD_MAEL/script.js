@@ -57,28 +57,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
-    // Check for user's preferred theme in localStorage and system preference
+    // Apply theme on page load (default to light mode, ignore system preference initially)
+    let isDarkMode = false;
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        body.classList.add(savedTheme);
-        updateBannerImage(savedTheme === 'dark-mode');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        body.classList.add('dark-mode');
-        updateBannerImage(true);
+
+    if (savedTheme === 'dark-mode') {
+        isDarkMode = true;
+    } else if (savedTheme === 'light-mode') {
+        isDarkMode = false;
     } else {
-        updateBannerImage(false); // Ensure light image is set if no dark mode preference
+        // If no saved theme, default to light mode and save it
+        localStorage.setItem('theme', 'light-mode');
+        isDarkMode = false;
     }
+
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
+    } else {
+        body.classList.remove('dark-mode');
+    }
+    updateBannerImage(isDarkMode);
 
     if (darkModeToggle) {
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
-            const isDarkMode = body.classList.contains('dark-mode');
+            isDarkMode = body.classList.contains('dark-mode');
 
             // Save preference to localStorage
             if (isDarkMode) {
                 localStorage.setItem('theme', 'dark-mode');
             } else {
-                localStorage.removeItem('theme');
+                localStorage.setItem('theme', 'light-mode'); // Explicitly save light mode
             }
 
             updateBannerImage(isDarkMode); // Update image immediately
