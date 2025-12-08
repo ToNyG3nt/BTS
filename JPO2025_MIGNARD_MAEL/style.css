@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
 body {
-    font-family: sans-serif;
+    font-family: 'Lato', sans-serif;
     margin: 0;
     line-height: 1.6;
     background-color: #f4f4f4;
@@ -74,8 +76,9 @@ section {
     margin-bottom: 20px;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 8px; /* For cards/sections */
-    background: #fff;
+    border-radius: 12px; /* Increased for softer look */
+    background: #fcfcfc; /* Subtle background to differentiate */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
 }
 
 .presentation img, .option-card img, .card img, .contact-section img {
@@ -96,10 +99,11 @@ section {
 
 .option-card, .card {
     border: 1px solid #ccc;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Shadow for cards */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Enhanced shadow for depth */
     padding: 15px;
     margin-bottom: 15px;
     text-align: center;
+    border-radius: 10px; /* Increased for softer look */
 }
 
 /* Form styling */
