@@ -73,44 +73,36 @@ main {
 }
 
 section {
-    margin-bottom: 20px;
-    padding: 20px;
+    margin-bottom: 30px; /* Increased spacing between sections */
+    padding: 25px; /* Slightly increased padding */
     border: 1px solid #ddd;
-    border-radius: 12px; /* Increased for softer look */
-    background: #fcfcfc; /* Subtle background to differentiate */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
-}
-
-.presentation img, .option-card img, .card img, .contact-section img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto 10px auto;
-    border-radius: 5px; /* Rounded corners for images */
-}
-
-/* Specific sizing for icon-like images */
-.option-card img, .card img, .contact-section img {
-    max-width: 100px; /* Limit width */
-    height: 100px; /* Limit height */
-    object-fit: contain; /* Ensure image content is contained within the bounds without cropping */
-    margin-bottom: 5px; /* Adjust margin for smaller images */
+    border-radius: 12px;
+    background: #fcfcfc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .option-card, .card {
     border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Enhanced shadow for depth */
-    padding: 15px;
-    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    padding: 20px;
+    margin-bottom: 20px;
     text-align: center;
-    border-radius: 10px; /* Increased for softer look */
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition */
+}
+
+.option-card:hover, .card:hover {
+    transform: translateY(-5px); /* Lift effect */
+.option-card h3, .card h3 {
+    color: #3498db; /* A subtle blue for headings */
+    margin-top: 0;
 }
 
 /* Form styling */
 form {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 15px; /* Increased gap for better spacing */
     max-width: 500px;
     margin: 20px auto;
 }
