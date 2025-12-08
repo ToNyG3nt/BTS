@@ -81,6 +81,15 @@ section {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.presentation img {
+    max-width: 500px; /* Limit image size */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Center image */
+    margin: 15px auto; /* Center image with some vertical margin */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
 .option-card, .card {
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
