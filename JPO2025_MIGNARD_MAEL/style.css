@@ -1,33 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+/* Simplified CSS for JPO2025_MIGNARD_MAEL/style.css */
+
+html {
+    height: 100%;
+}
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     margin: 0;
     line-height: 1.6;
     background-color: #f4f4f4;
-    color: #333;
+    color: #043d8e;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
-    background: #333;
+    background: #043d8e;
     color: #fff;
     padding: 1rem 0;
     text-align: center;
-    position: relative; /* Added for positioning the nav */
 }
 
 .banner {
-    /* padding: 2rem; Removed padding as image will take space */
-    background-color: #555; /* Placeholder for banner image */
-    position: relative; /* For absolute positioning of h1 */
-    overflow: hidden; /* To ensure image cover works */
-    height: 150px; /* Fixed height for the banner area */
+    background-color: #043d8e;
+    position: relative;
+    overflow: hidden;
+    height: 150px; /* Simplified height */
 }
 
 .banner img {
     width: 100%;
-    height: 100%; /* Image fills the banner height */
-    object-fit: cover; /* Ensures the image covers the area without distortion */
+    height: 100%; /* This means the image tries to fill the 150px height */
+    object-fit: cover;
     display: block;
 }
 
@@ -36,28 +41,38 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff; /* Ensure text is visible over the image */
-    z-index: 10; /* Ensure text is above the image */
-    margin: 0; /* Remove default margin */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds readability */
-    white-space: nowrap; /* Prevents text from wrapping */
+    color: #fff;
+    z-index: 10;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Simplified shadow */
+    white-space: nowrap;
 }
+
+nav {
+    width: 100%;
+    background: #043d8e; /* Ensure nav background is consistent */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Removed sticky class for simplification */
 
 nav ul {
     padding: 0;
     list-style: none;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 0; /* Remove default margin */
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 20px;
+    margin: 0 15px;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    padding: 5px 0;
+    padding: 10px 0;
+    display: block; /* Make the whole padding area clickable */
 }
 
 nav a:hover {
@@ -67,102 +82,148 @@ nav a:hover {
 main {
     padding: 20px;
     max-width: 960px;
-    margin: auto;
+    margin: 20px auto; /* Add margin to separate from nav */
     background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Simplified shadow */
+    border-radius: 8px; /* Added border-radius for consistency */
+    flex-grow: 1; /* Allows main to take up available space */
 }
 
 section {
-    margin-bottom: 30px; /* Increased spacing between sections */
-    padding: 25px; /* Slightly increased padding */
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    background: #fcfcfc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #eee; /* Simplified border */
+    border-radius: 8px; /* Simplified border-radius */
+    background: #fff; /* Changed to white for consistency */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Simplified shadow */
 }
 
 .presentation img {
-    max-width: 400px; /* Limit image size */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Center image */
-    margin: 10px auto; /* Center image with some vertical margin */
-    border-radius: 8px; /* Slightly rounded corners */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    max-width: 100%; /* Ensure responsiveness */
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Specific sizing for icon-like images */
 .option-card img, .card img, .contact-section img {
-    max-width: 70px; /* Limit width */
-    height: 70px; /* Limit height */
-    object-fit: contain; /* Ensure image content is contained within the bounds without cropping */
-    margin-bottom: 5px; /* Adjust margin for smaller images */
+    max-width: 60px; /* Slightly smaller */
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 5px;
 }
 
 .option-card, .card {
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border: 1px solid #ddd; /* Simplified border */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Simplified shadow */
     padding: 20px;
     margin-bottom: 20px;
     text-align: center;
-    border-radius: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition */
+    border-radius: 8px; /* Simplified border-radius */
+    /* Removed transition for simplification */
 }
 
-.option-card:hover, .card:hover {
-    transform: translateY(-5px); /* Lift effect */
 .option-card h3, .card h3 {
-    color: #3498db; /* A subtle blue for headings */
+    color: #043d8e; /* Changed to main brand color */
     margin-top: 0;
+    margin-bottom: 10px;
 }
 
-/* Form styling */
-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px; /* Increased gap for better spacing */
-    max-width: 500px;
-    margin: 20px auto;
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.subjects-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 300px; /* Slightly smaller min-width */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Simplified shadow */
+    border-radius: 8px; /* Simplified border-radius */
+    overflow: hidden;
+}
+
+.subjects-table thead tr {
+    background-color: #043d8e; /* Changed to brand color */
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.subjects-table th,
+.subjects-table td {
+    padding: 10px 12px; /* Slightly reduced padding */
+    border: 1px solid #ccc; /* Simplified border */
+}
+
+.subjects-table tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9; /* Lighter alternating row */
+}
+
+.subjects-table tbody tr:last-of-type {
+    border-bottom: 1px solid #043d8e; /* Simplified border to brand color */
+}
+
+.subjects-table tbody tr:hover {
 }
 
 form label {
     font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #333; /* Darker for better contrast */
 }
 
 form input[type="text"],
 form input[type="email"],
-form textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+form textarea,
+form select {
+    width: calc(100% - 24px); /* Account for padding */
+    padding: 10px 12px;
+    border: 1px solid #bbb; /* Simplified border */
+    border-radius: 5px; /* Simplified border-radius */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* Simplified shadow */
+    margin-bottom: 15px; /* Added spacing */
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #043d8e; /* Focus color to brand */
+    outline: none;
 }
 
 form button {
-    background: #333;
+    background: #043d8e; /* Changed to brand color */
     color: #fff;
     padding: 10px 15px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1rem; /* Slightly smaller font size */
+    font-weight: bold;
+    /* Removed transition for simplification */
 }
 
 form button:hover {
-    background: #555;
+    background: #002a66; /* Darker shade of brand color on hover */
 }
 
 footer {
-    text-align: center;
-    padding: 20px;
-    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px; /* Slightly reduced padding */
+    background: #043d8e;
     color: #fff;
-    margin-top: 20px;
-}
-
-/* Responsive design - basic */
-@media (max-width: 768px) {
-    nav ul li {
-        display: block;
-        margin: 10px 0;
-    }
+    margin-top: auto;
+    font-size: 0.9em; /* Slightly smaller font */
 }
