@@ -1,0 +1,125 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% Configuration des marges
+\geometry{hmargin=2.5cm,vmargin=2.5cm}
+
+\title{\textbf{Exercice de Cybersécurité}\\ \large ``Le vol des bijoux du Louvre''}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Objectif Pédagogique}
+Sensibiliser les participants aux risques cyber liés :
+\begin{itemize}
+    \item à l’ingénierie sociale,
+    \item au phishing ciblé (\textit{spear phishing}),
+    \item à la compromission des accès internes,
+    \item et à la gestion d'incident.
+\end{itemize}
+
+\section{Scénario}
+[cite_start]Dans la nuit du \textbf{12 au 13 avril}, un vol spectaculaire a eu lieu au Louvre : la parure de diamants dite \textbf{``Les Larmes de Cléopâtre''} a disparu[cite: 9].
+
+\begin{itemize}
+    [cite_start]\item Aucune effraction physique n’a été constatée[cite: 10].
+    [cite_start]\item Le système d’alarme n’a jamais été déclenché[cite: 10].
+    [cite_start]\item Les accès numériques au coffre ont été validés avec les identifiants d’un cadre du département des antiquités[cite: 10].
+\end{itemize}
+
+La direction soupçonne une \textbf{attaque informatique} ayant permis de neutraliser la sécurité. [cite_start]Les équipes doivent maintenant reconstituer la chaîne d’attaque[cite: 11, 12].
+
+\section{Éléments à analyser (Indices)}
+
+\subsection{1. L'e-mail suspect (Phishing)}
+\begin{quote}
+    \textbf{Objet :} Mise à jour obligatoire – Partenariat UNESCO \\
+    \textbf{Expéditeur :} julien.marcus@unesco-partnership.org \\
+    
+    Bonjour,\\
+    Nous renouvelons notre partenariat et avons besoin de la liste complète des objets précieux enregistrés cette année au Louvre. Merci de compléter le document ci-joint.\\
+    
+    Cordialement,\\
+    J. Marcus\\
+    Département culturel – UNESCO\\
+    
+    [cite_start]\textit{[Pièce jointe : partenariat\_UNESCO.xlsm (Contient une macro malveillante)]} [cite: 19-24]
+\end{quote}
+
+\subsection{2. Extraits de logs réseau et systèmes}
+
+[cite_start]\textbf{Log 1 – Proxy} [cite: 26]
+\begin{itemize}
+    \item Requête : \texttt{POST http://update-secure-cloud.com/upload.php}
+    \item Utilisateur : \texttt{p.durand}
+    \item Heure : 12/04 – 18:42
+    [cite_start]\item Taille : 4,3 Mo [cite: 27-30]
+\end{itemize}
+    
+[cite_start]\textbf{Log 2 – Système} [cite: 31]
+\begin{itemize}
+    \item Événement : Connexion réussie badge-numerique / \texttt{p.durand}
+    \item Heure : 12/04 – 23:14
+    [cite_start]\item Alerte : IP source interne inhabituelle \texttt{10.4.18.23} [cite: 32-34]
+\end{itemize}
+
+[cite_start]\textbf{Log 3 – Caméras} [cite: 35]
+\begin{itemize}
+    \item Événement : Perte de signal (salle des joyaux)
+    \item Heure : 12/04 – 23:13 – 23:17
+    [cite_start]\item Cause déclarée : mise à jour automatique [cite: 36-38]
+\end{itemize}
+
+\subsection{3. Organigramme du musée}
+\begin{center}
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    every node/.style={rectangle, draw, rounded corners, align=center, minimum height=1cm, minimum width=2.5cm},
+    level 1/.style={sibling distance=5cm},
+    level 2/.style={sibling distance=3cm}
+]
+
+\node[fill=orange!20] {Directeur}
+    child { node[fill=blue!20] {Accueil} }
+    child { node[fill=red!20] {Antiquités}
+        child { node[fill=red!20] {Département\\ d'art} }
+    }
+    child { node[fill=green!20] {Sécurité}
+        child { node[fill=green!20] {Département\\ des salles} }
+    };
+\end{tikzpicture}
+\end{center}
+
+\section{Message interne – Équipe Sécurité}
+[cite_start]\textit{Objet : Incident de sécurité – Analyse préliminaire et recommandations} [cite: 41]
+
+Chers collaborateurs,
+
+Dans la nuit du 12 au 13 avril, un incident majeur a été constaté. [cite_start]La parure « Les Larmes de Cléopâtre » a été dérobée sans déclenchement d’alarme [cite: 43-44].
+
+[cite_start]\textbf{Premières constatations[cite: 47]:}
+\begin{itemize}
+    [cite_start]\item Une connexion interne a été réalisée à 23h14 depuis une adresse IP inhabituelle[cite: 48].
+    [cite_start]\item Les caméras ont été désactivées pendant 4 minutes via une demande de ``mise à jour système''[cite: 49].
+    [cite_start]\item Des traces d’exfiltration de données ont été identifiées sur un domaine externe[cite: 50].
+\end{itemize}
+
+[cite_start]\textbf{Consignes immédiates[cite: 51]:}
+\begin{enumerate}
+    [cite_start]\item Ne pas éteindre, redémarrer, ni modifier vos postes de travail[cite: 52].
+    [cite_start]\item Signaler immédiatement toute activité inhabituelle[cite: 53].
+    [cite_start]\item Ne pas communiquer publiquement sur l'incident[cite: 54].
+\end{enumerate}
+
+\section{Travail à faire (Résultat attendu)}
+[cite_start]Vous devez fournir une \textbf{reconstitution complète de l’attaque} et proposer un \textbf{plan d’action concret} pour éviter un nouvel incident [cite: 63-64].
+
+\end{document}

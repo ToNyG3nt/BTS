@@ -1,0 +1,100 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+\title{\textbf{Exercice : Sécurisation réseau TPE (Techno Vert)}}
+\author{Maël - BTS SIO}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Analyse du réseau actuel}
+
+\subsection{Identification des risques et failles}
+Voici 5 failles majeures identifiées dans l'infrastructure actuelle :
+
+\begin{enumerate}
+    \item \textbf{Absence de segmentation (Réseau plat) :} Tous les PC et le NAS sont sur le même réseau. Si un poste est infecté, le virus peut attaquer directement le NAS et les autres PC.
+    \item \textbf{Usage dangereux du Wi-Fi :} L'utilisation du réseau "Invité" pour le travail interne expose les données de l'entreprise à n'importe quel visiteur connecté.
+    \item \textbf{Matériel inadapté :} Le switch non-manageable empêche la création de VLANs pour séparer les flux.
+    \item \textbf{Données exposées :} Le NAS contenant les données sensibles est accessible sans filtrage réseau spécifique.
+    \item \textbf{Absence de visibilité :} Il n'y a aucune supervision pour détecter une attaque ou une panne en temps réel.
+\end{enumerate}
+
+\subsection{Limites de la Box Internet}
+Une box grand public est insuffisante pour une entreprise de 20 personnes car :
+\begin{itemize}
+    \item Elle ne permet pas de créer des règles de pare-feu fines (filtrage par IP, port, protocole) entre différents zones locales.
+    \item Elle ne gère pas (ou très mal) les VLANs nécessaires à la sécurité.
+    \item Ses capacités de journalisation (logs) sont inexistantes, empêchant l'analyse post-incident.
+\end{itemize}
+
+\section{Conception d'une architecture sécurisée}
+
+\subsection{Schéma réseau logique proposé}
+
+\textbf{Équipements requis :}
+\begin{itemize}
+    \item 1 Pare-feu/Routeur professionnel (ex: Fortinet, Stormshield, pfSense).
+    \item 1 Switch Manageable (Niveau 2/3).
+    \item Points d'accès Wi-Fi professionnels (compatibles VLAN).
+\end{itemize}
+
+\textbf{Architecture des zones (VLANs) :}
+
+\begin{itemize}
+    \item \textbf{VLAN 10 - Administration :} Postes de direction et comptabilité (Données critiques).
+    \item \textbf{VLAN 20 - Employés :} Postes de travail standards.
+    \item \textbf{VLAN 30 - Serveurs/NAS :} Zone isolée, accessible uniquement via des ports spécifiques (ex: SMB, HTTPS) depuis les VLAN 10 et 20.
+    \item \textbf{VLAN 90 - Invités (Wi-Fi) :} Accès Internet uniquement, isolation totale du réseau interne.
+\end{itemize}
+
+\subsection{Justification de la segmentation}
+La segmentation réseau est essentielle pour \textbf{limiter la surface d'attaque}. En séparant les services :
+\begin{itemize}
+    \item On empêche la propagation latérale d'un virus (si un PC employé est infecté, le NAS et la Compta restent protégés par le pare-feu).
+    \item On optimise les performances en réduisant le domaine de diffusion (broadcast).
+\end{itemize}
+
+
+\section{Mesures de sécurité à mettre en place}
+
+Voici 6 mesures prioritaires pour sécuriser Techno Vert:
+
+\begin{enumerate}
+    \item \textbf{Mise en place de VLANs :} Pour séparer physiquement et logiquement les flux de données (Invités vs Production).
+    \item \textbf{Filtrage strict (Pare-feu) :} Bloquer tout trafic entrant non sollicité et limiter le trafic sortant au strict nécessaire (bloquer les sites malveillants).
+    \item \textbf{Sécurisation du Wi-Fi (WPA3) :} Utiliser le protocole WPA3-Enterprise si possible, ou à minima WPA2/3 avec un mot de passe complexe, sur un SSID séparé du réseau invité.
+    \item \textbf{Sauvegardes hors ligne :} Configurer une sauvegarde du NAS sur un support déconnecté (disque USB ou Cloud immuable) pour contrer les ransomwares.
+    \item \textbf{Mise à jour des firmwares :} Maintenir à jour le routeur, le switch et le NAS pour combler les failles de sécurité connues.
+    \item \textbf{VPN pour l'accès distant :} Remplacer tout accès direct (port forwarding) par un VPN sécurisé pour les employés en télétravail.
+\end{enumerate}
+
+\section{Plan d'action}
+
+\textbf{Priorité 1 : Immédiat (Urgence)}
+\begin{itemize}
+    \item Interdire l'usage du Wi-Fi "Invité" pour l'accès aux données internes.
+    \item Changer les mots de passe par défaut de tous les équipements (Box, NAS).
+    \item Vérifier que le NAS a une sauvegarde fonctionnelle.
+\end{itemize}
+
+\textbf{Priorité 2 : Court terme (Investissement)}
+\begin{itemize}
+    \item Acquérir et installer un Pare-feu et un Switch manageable.
+    \item Configurer les VLANs et migrer les postes informatiques.
+    \item Mettre en place les règles de filtrage inter-VLAN.
+\end{itemize}
+
+\textbf{Priorité 3 : Moyen terme (Amélioration)}
+\begin{itemize}
+    \item Mettre en place un outil de supervision (monitoring) pour alerter en cas de panne.
+    \item Former les employés aux bonnes pratiques (ne pas se connecter au Wi-Fi invité).
+\end{itemize}
+
+\end{document}

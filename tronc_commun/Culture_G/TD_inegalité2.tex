@@ -1,0 +1,105 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+
+% Configuration de la page
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=20mm,
+}
+
+% Commandes personnalisées pour l'oral
+\newcommand{\IdeeP}[1]{\noindent\textbf{\textcolor{blue}{IDÉE PRINCIPALE : #1}}\par}
+\newcommand{\ChiffreCle}[1]{\noindent\textbf{\textcolor{red}{\textbullet\ Donnée Clé : #1}}\par}
+\newcommand{\SousAxe}[1]{\vspace{0.5em}\noindent\underline{\textbf{#1}}\par}
+\newcommand{\Transition}[1]{\vspace{1em}\noindent\textit{\textcolor{gray}{[Transition : #1]}}\par}
+\newcommand{\DateCle}[1]{\noindent\textbf{\textcolor{purple}{\textbullet\ Date Clé : #1}}\par}
+
+\title{\textbf{Prise de Notes Oral : Actions Contre les IS aux États-Unis et en France}}
+\author{Votre Nom}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty} % Supprime le numéro de page sur la première page
+\section*{1. Initiatives Populaires et Civiques en France}
+
+\IdeeP{La société civile pallie les insuffisances du système, notamment les déserts médicaux et les refus de soins.}
+
+\SousAxe{1.1. Mobilisations des Professionnels et Grèves}
+\begin{itemize}
+\item **Objectif :** Attirer l'attention sur les dysfonctionnements du système (crise de l'hôpital public, surcharge, pénurie).
+\item **Médecins Libéraux :** Mouvements pour une revalorisation du tarif des consultations ($\to$ Nécessaire pour l'attractivité des zones sous-dotées).
+\item **Hôpital Public :** Grèves pour dénoncer la pénurie de moyens et l'impact sur la **qualité des soins** et l'équité d'accès.
+\end{itemize}
+\ChiffreCle{Les mobilisations sont souvent le levier pour obtenir des financements ou des réformes.}
+
+\SousAxe{1.2. Associations de Transport Bénévole}
+\IdeeP{Elles luttent directement contre la fracture territoriale et l'isolement.}
+\begin{itemize}
+\item **Rôle :** Offrir des services de transport aux personnes isolées ou résidant en zones mal desservies.
+\item **Lien avec les IS :** Ces associations suppléent la défaillance des transports en commun en **désert médical** ($\to$ Garantir l'accès physique pour les patients sans voiture ou à faibles revenus).
+\item **Exemples :** Certaines sections de la Croix-Rouge ou des associations locales spécialisées.
+\end{itemize}
+
+\SousAxe{1.3. Défense des Droits et Signalements}
+\IdeeP{Action citoyenne pour renforcer la protection des plus vulnérables (CSS/AME).}
+\begin{itemize}
+\item **Refus de Soins :** Plateformes et associations travaillent à **simplifier la procédure de signalement** en cas de refus de soins illégal (souvent des bénéficiaires de la CSS ou de l'AME).
+\item **Maltraitance :** Aident les patients à dénoncer des cas de maltraitance dans les structures.
+\item **Empowerment :** Renforcent le pouvoir du patient face au système.
+\end{itemize}
+
+\Transition{En conclusion, le modèle américain utilise le marché tout en tentant, via l'État, d'établir des garde-fous sociaux. Le modèle français repose davantage sur la régulation étatique et la vigilance citoyenne.}
+
+
+
+\section*{2. Programmes Fédéraux d'Assurance et Réglementation (États-Unis)}
+
+\IdeeP{L'action fédérale vise à combler les lacunes d'un marché privé via l'extension de la couverture minimale.}
+
+\subsection*{2.1. Le Triptyque des Filets de Sécurité}
+
+\SousAxe{Medicare (Séniors et Handicapés)}
+\DateCle{Créé en **1965** (Sous le Président Johnson).}
+\begin{itemize}
+\item Cible : $\ge 65$ ans et certaines incapacités (ESRD).
+\item Rôle : Garantir une couverture essentielle à une population à haut risque de coûts médicaux.
+\item Limite : Ne couvre pas tous les soins (ex: Soins de longue durée, nécessité d'assurances complémentaires).
+\end{itemize}
+
+\SousAxe{Medicaid (Faibles Revenus et Enfants)}
+\DateCle{Créé également en **1965**.}
+\begin{itemize}
+\item Cible : Familles/individus sous un certain seuil de pauvreté.
+\item Rôle : Principal filet de sécurité pour les plus pauvres.
+\item Inégalité : Géré par les États $\to$ Inégalité selon le lieu de résidence (États ayant refusé l'extension).
+\end{itemize}
+
+\SousAxe{CHIP (Children's Health Insurance Program)}
+\DateCle{Créé en **1997**.}
+\begin{itemize}
+\item Cible : Enfants au-dessus du seuil Medicaid.
+\item Rôle : Améliorer la santé publique future en couvrant des millions d'enfants.
+\end{itemize}
+
+\subsection*{2.2. L'Affordable Care Act (ACA) - "Obamacare"}
+
+\IdeeP{Réforme majeure visant l'universalité partielle et la protection des consommateurs.}
+\DateCle{Adopté en **2010**.}
+\begin{itemize}
+\item **Conditions Préexistantes :** Interdiction aux assureurs de refuser une couverture ou d'augmenter les primes pour des conditions médicales antérieures. ($\to$ Lutte contre l'inégalité de l'accès au marché).
+\item **Extension de Medicaid :** Incitation aux États à élargir la couverture $\to$ Succès dans les États participants.
+\item **Subventions :** Octroi de crédits d'impôt fédéraux aux revenus modestes/intermédiaires pour l'achat de primes sur les \textit{Marketplaces}.
+\end{itemize}
+\ChiffreCle{Résultat : Forte baisse du taux de non-assurés dans les États ayant adopté l'extension de Medicaid.}
+
+\Transition{Ces programmes publics sont complétés par un important réseau d'ONG, en contraste avec les actions citoyennes en France...}
+
+\end{document}

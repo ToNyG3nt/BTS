@@ -1,0 +1,347 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}    
+\usepackage[french]{babel}  
+\usepackage{lmodern}        
+\usepackage{geometry}       
+\usepackage{graphicx}       
+\usepackage{enumitem}       
+\usepackage{multicol}       
+\usepackage{amsmath, amssymb} 
+\usepackage[dvipsnames, table]{xcolor} 
+
+\usepackage{tcolorbox}      
+\tcbuselibrary{skins, breakable}
+\usepackage{tikz}           
+\usetikzlibrary{shapes, arrows.meta, positioning, calc, shadows, matrix, fit}
+\usepackage{hyperref}       
+
+\geometry{
+    hmargin=2.5cm, 
+    vmargin=2.5cm,
+    headheight=15pt
+}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    urlcolor=blue!60!black,
+    pdftitle={TD Architecture en Couches & Modèle OSI},
+    pdfauthor={BTS SIO}
+}
+
+\newtcolorbox{reponsebox}{
+    colback=gray!10!white,   
+    colframe=gray!60!black, 
+    coltitle=white,         
+    title={\textbf{\textsf{Réponse :}}}, 
+    fonttitle=\bfseries,    
+    arc=2mm,                
+    boxrule=0.5pt,          
+    left=5pt, right=5pt, top=5pt, bottom=5pt, 
+    breakable,              
+    parbox=false            
+}
+
+\newenvironment{reponse}{\begin{reponsebox}}{\end{reponsebox}}
+
+\title{\textbf{\Huge TD : Architecture en Couches \& Modèle OSI}}
+\author{\Large Mignard Maël}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty} 
+
+\begin{abstract}
+Ce travail dirigé couvre les fondamentaux du modèle OSI, le mécanisme d'encapsulation/désencapsulation, le calcul de l'overhead, le rôle des équipements réseau intermédiaires et leur positionnement dans les couches.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Exercice 1 : Principes du Modèle OSI}
+
+\begin{enumerate}
+    \item \textbf{Donner une définition claire pour les termes suivants :}
+    \begin{description}[style=nextline, font=\sffamily\bfseries\color{blue!70!black}]
+        \item[Système ouvert] Un système (ordinateur, serveur, etc.) capable de communiquer avec d'autres systèmes en respectant des protocoles standards et ouverts, indépendamment de son architecture propriétaire.
+        \item[Entité] Un élément actif logiciel ou matériel au sein d'une couche OSI (ex: un processus TCP), qui réalise une partie du travail de la couche et communique avec une entité de même niveau sur un autre système.
+        \item[Protocole] Un ensemble formel de règles et de conventions qui gouvernent l'échange de données entre deux entités de même niveau (couche N sur hôte A vers couche N sur hôte B).
+        \item[Primitive] Une commande de base ou un appel de fonction permettant à une couche (N) de demander un service à la couche immédiatement inférieure (N-1), ou à la couche inférieure de notifier la couche supérieure (ex: demande de connexion, indication de réception de données).
+    \end{description}
+
+    \item \textbf{Associer chaque couche OSI à son rôle principal :}
+    \begin{multicols}{2}
+        \begin{itemize}[label=\textbullet]
+            \item \textbf{Couche 1 : Physique} (Transmission des bits bruts sur le média)
+            \item \textbf{Couche 2 : Liaison de données} (Gestion de la trame, accès au média, détection d'erreurs locale)
+            \item \textbf{Couche 3 : Réseau} (Adressage logique et routage des paquets à travers les réseaux)
+            \item \textbf{Couche 4 : Transport} (Fiabilité, contrôle de flux, multiplexage des applications)
+            \item \textbf{Couche 5 : Session} (Gestion et synchronisation du dialogue entre applications)
+            \item \textbf{Couche 6 : Présentation} (Formatage, chiffrement et compression des données)
+            \item \textbf{Couche 7 : Application} (Point d'accès aux services réseau pour l'utilisateur)
+        \end{itemize}
+    \end{multicols}
+
+    \item \textbf{Donner deux exemples de protocoles pour les couches suivantes :}
+    \begin{itemize}
+        \item Couche 4 (Transport) : \textbf{TCP} (Transmission Control Protocol), \textbf{UDP} (User Datagram Protocol).
+        \item Couche 3 (Réseau) : \textbf{IP} (Internet Protocol), \textbf{ICMP} (Internet Control Message Protocol), \textbf{ARP} (Address Resolution Protocol - souvent situé entre L2 et L3).
+        \item Couche 7 (Application) : \textbf{HTTP} (Web), \textbf{DNS} (Résolution de noms), \textbf{SMTP} (Mail), \textbf{FTP} (Fichiers).
+    \end{itemize}
+\end{enumerate}
+
+\clearpage
+
+\section{Exercice 2 : Encapsulation}
+
+\begin{enumerate}
+    \item \textbf{Nommer l'unité de donnée (PDU - Protocol Data Unit) pour les couches suivantes :}
+    \begin{itemize}
+        \item Couche 4 (Transport) : \textbf{Segment} (si TCP) ou \textbf{Datagramme} (si UDP).
+        \item Couche 3 (Réseau) : \textbf{Paquet}.
+        \item Couche 2 (Liaison) : \textbf{Trame}.
+        \item Couche 1 (Physique) : \textbf{Bit} (ou flux de bits).
+    \end{itemize}
+
+    \item \textbf{Expliquer le mécanisme d'encapsulation des données.}
+    \begin{reponse}
+    Lorsqu'une application envoie des données, celles-ci traversent les couches du modèle OSI de haut en bas (de la couche 7 vers la couche 1). À chaque niveau, la couche courante considère les données reçues de la couche supérieure comme une charge utile ("payload"). Elle y ajoute son propre \textbf{en-tête (header)} contenant les informations de contrôle nécessaires à son fonctionnement (adresses, numéros de séquence, etc.).
+
+    La couche 2 (Liaison) ajoute également souvent un \textbf{en-queue (trailer)} pour le contrôle d'erreur (FCS/CRC). La donnée initiale est ainsi "enveloppée" successivement comme des poupées russes avant d'être transmise sur le support physique.
+    \end{reponse}
+
+    \item \textbf{Une application envoie "BTS SIO". Quels en-têtes sont ajoutés ?}
+    \begin{reponse}
+    Les en-têtes sont ajoutés lors de la descente sur le poste émetteur :
+    \begin{itemize}
+        \item \textbf{C7 (Application)} : Ajoute un en-tête applicatif (ex: requête HTTP `POST /data "BTS SIO"`).
+        \item \textbf{C6 (Présentation)} : Peut ajouter un en-tête si chiffrement/compression est utilisé.
+        \item \textbf{C5 (Session)} : Ajoute un en-tête pour gérer l'ID de session.
+        \item \textbf{C4 (Transport)} : Ajoute un en-tête TCP ou UDP (contient les ports Source/Destination).
+        \item \textbf{C3 (Réseau)} : Ajoute un en-tête IP (contient les adresses IP Source/Destination).
+        \item \textbf{C2 (Liaison)} : Ajoute un en-tête Ethernet (adresses MAC Source/Destination) et un trailer (FCS).
+    \end{itemize}
+    \end{reponse}
+\end{enumerate}
+\clearpage
+\section{Exercice 3 : Désencapsulation}
+
+\begin{enumerate}
+    \item \textbf{Décrire le rôle de chaque couche à la réception d'un message.}
+    \begin{reponse}
+    C'est le processus inverse de l'encapsulation, réalisé de bas en haut (C1 vers C7) :
+    \begin{itemize}
+        \item \textbf{C1 (Physique)} : Reçoit les signaux et les retransforme en un flux de bits.
+        \item \textbf{C2 (Liaison)} : Reconstruit la trame, vérifie l'intégrité (CRC). Si OK, elle retire l'en-tête/trailer et passe le paquet à C3.
+        \item \textbf{C3 (Réseau)} : Vérifie si l'adresse IP destination est la sienne. Si oui, retire l'en-tête IP et passe le segment à C4.
+        \item \textbf{C4 (Transport)} : Vérifie le port destination pour identifier l'application, retire l'en-tête (réordonne les segments si TCP) et passe la donnée à C5.
+        \item \textbf{C5 à C7} : Gèrent la session, le formatage et livrent finalement la donnée brute ("BTS SIO") à l'application destinataire.
+    \end{itemize}
+    \end{reponse}
+\end{enumerate}
+
+\section{Exercice 4 : Overhead (Surcharge)}
+
+\subsection{Calculs}
+
+\begin{enumerate}
+    \item Une trame fait 1000 octets, dont 60 octets d'en-tête. Calculer le pourcentage de données utiles.
+    \begin{reponse}
+    La taille des données utiles est : $1000 - 60 = 940$ octets.
+    Pourcentage utile $= \frac{940}{1000} \times 100 = \mathbf{94\%}$.
+    (L'overhead est donc de $6\% $).
+    \end{reponse}
+    \item Un paquet IP fait 512 octets, dont 20 octets d'en-tête. Calculer l'overhead (pourcentage de surcharge).
+    \begin{reponse}
+    Overhead $= \frac{\text{Taille En-tête}}{\text{Taille Totale}} \times 100$
+    Overhead $= \frac{20}{512} \times 100 \approx \mathbf{3,91\%}$.
+    \end{reponse}
+\end{enumerate}
+
+\subsection{Analyse}
+\begin{enumerate}
+    \item \textbf{Pourquoi un overhead élevé ralentit-il un réseau ?}
+    \begin{reponse}
+    L'overhead représente la part des données "administratives" (en-têtes de contrôle) qui ne sont pas les données utiles de l'utilisateur. Si l'overhead est élevé, une part importante de la bande passante disponible est consommée juste pour transporter ces en-têtes.
+
+    Pour transmettre la même quantité de données utiles, le réseau doit envoyer plus de bits au total. Cela réduit le débit effectif (le "goodput") et peut augmenter la congestion et les délais, ralentissant ainsi les communications.
+    \end{reponse}
+\end{enumerate}
+
+\section{Exercice 5 : Équipements Réseau \& Couches OSI}
+
+\subsection{Classement}
+Indiquer la couche OSI la plus élevée à laquelle fonctionnent principalement ces équipements :
+\begin{itemize}
+    \item Switch (Commutateur) : \textbf{Couche 2 (Liaison)} (Switch L2 classique)
+    \item Répéteur / Hub (Concentrateur) : \textbf{Couche 1 (Physique)}
+    \item Routeur : \textbf{Couche 3 (Réseau)}
+    \item Pont (Bridge) : \textbf{Couche 2 (Liaison)}
+    \item Passerelle applicative (Proxy) : \textbf{Couche 7 (Application)}
+\end{itemize}
+
+\subsection{Questions}
+\begin{enumerate}
+    \item \textbf{Différence entre un pont et un switch ?}
+    \begin{reponse}
+    Bien que les deux fonctionnent en couche 2 et filtrent sur les adresses MAC :
+    \begin{itemize}
+        \item Un \textbf{pont} (bridge) relie généralement deux segments de réseau. Il fonctionne souvent de manière logicielle et possède peu de ports.
+        \item Un \textbf{switch} est un pont multiport matériel haute performance. Chaque port d'un switch constitue son propre domaine de collision, permettant des communications simultanées (full-duplex) entre différentes paires de ports sans interférences, ce qui augmente considérablement la bande passante globale.
+    \end{itemize}
+    \end{reponse}
+    \item \textbf{Pourquoi un routeur est-il indispensable sur Internet ?}
+    \begin{reponse}
+    Internet est un assemblage de milliers de réseaux différents (LAN, WAN) utilisant des technologies physiques variées. Le routeur (Couche 3) est indispensable car :
+    \begin{itemize}
+        \item Il interconnecte ces réseaux hétérogènes.
+        \item Il utilise l'adressage logique universel (Adresses IP) pour identifier les destinations au-delà du réseau local.
+        \item Il détermine le meilleur chemin (routage) pour acheminer les paquets à travers le dédale des réseaux jusqu'à la destination finale. Un switch L2 ne peut pas "voir" au-delà de son propre réseau local.
+    \end{itemize}
+    \end{reponse}
+\end{enumerate}
+\clearpage
+\section{Exercice 6 : Cheminement d'un Message}
+
+\begin{enumerate}
+    \item \textbf{Dans quelles couches interviennent le switch et le routeur lors du passage d'une donnée ?}
+    \begin{reponse}
+    Lorsqu'ils transmettent des données d'utilisateurs :
+    \begin{itemize}
+        \item **Le Switch** reçoit les bits (C1), remonte jusqu'à la \textbf{Couche 2 (Liaison)} pour lire l'adresse MAC de destination dans l'en-tête de trame, prend sa décision de commutation, et redescend à la couche 1 pour réémettre. Il ne regarde pas les couches supérieures.
+        \item **Le Routeur** reçoit les bits (C1), remonte à la C2 pour vérifier la trame, la "désencapsule" pour atteindre la \textbf{Couche 3 (Réseau)}. Il lit l'adresse IP de destination, consulte sa table de routage, ré-encapsule le paquet dans une nouvelle trame (nouvelles MAC) et redescend à la C1 pour l'envoyer vers le saut suivant.
+    \end{itemize}
+    \end{reponse}
+\end{enumerate}
+
+\section{Exercice 7 : QCM de Révision}
+
+Cochez la bonne réponse.
+
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{Le PDU de la couche Réseau s'appelle :}
+    \begin{enumerate}[label=\Alph*.]
+        \item Trame
+        \item[\textbf{B.}] \textbf{Paquet} $\checkmark$
+        \item Segment
+        \item Bits
+    \end{enumerate}
+
+    \item \textbf{Quel équipement fonctionne uniquement en couche 1 ?}
+    \begin{enumerate}[label=\Alph*.]
+        \item Switch
+        \item[\textbf{B.}] \textbf{Répéteur} (ou Hub) $\checkmark$
+        \item Routeur
+        \item Passerelle
+    \end{enumerate}
+
+    \item \textbf{La désencapsulation consiste à :}
+    \begin{enumerate}[label=\Alph*.]
+        \item Ajouter des en-têtes
+        \item[\textbf{B.}] \textbf{Retirer des en-têtes} $\checkmark$
+        \item Chiffrer les données
+        \item Faire du routage
+    \end{enumerate}
+
+    \item \textbf{Le protocole TCP appartient à la couche :}
+    \begin{enumerate}[label=\Alph*.]
+        \item 2 (Liaison)
+        \item 3 (Réseau)
+        \item[\textbf{C.}] \textbf{4 (Transport)} $\checkmark$
+        \item 7 (Application)
+    \end{enumerate}
+
+    \item \textbf{L'overhead correspond :}
+    \begin{enumerate}[label=\Alph*.]
+        \item À l'espace libre sur le disque
+        \item Aux données utiles de l'utilisateur
+        \item[\textbf{C.}] \textbf{Aux informations de contrôle (en-têtes et trailers)} ajoutées par les protocoles $\checkmark$
+        \item À la vitesse du réseau
+    \end{enumerate}
+\end{enumerate}
+
+\newpage
+\section{Exercice 8 : Mini-Projet (Schéma de synthèse)}
+
+\textbf{Objectif :} Réaliser un schéma illustrant le passage d'une donnée à travers les couches, l'insertion d'équipements intermédiaires et les informations lues par chacun.
+
+\vspace{1cm}
+
+% Si vous lisez ceci, sachez que les prochaines lignes de codes sont un enfer. Merci de votre comprehension.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[
+    node distance=0.6cm and 1cm,
+    host/.style={draw, rectangle, minimum width=3.2cm, minimum height=5.5cm, fill=blue!5},
+    device/.style={draw, rectangle, rounded corners, minimum width=2.5cm, fill=green!5, font=\bfseries},
+    layer/.style={draw, rectangle, minimum width=3cm, minimum height=0.6cm, align=center},
+    arrow/.style={-Stealth, thick},
+    path/.style={-Stealth, thick, gray, dashed}
+]
+
+    % --- Poste A (Left) ---
+    \node[host] (host_a_box) at (0,0) {};
+    \node[font=\bfseries, above=0.2cm of host_a_box] {Poste A};
+    \begin{scope}
+        \node[layer] (l7a) at (0, 2) {7. Application};
+        \node[layer] (l6a) [below=2pt of l7a] {6. Présentation};
+        \node[layer] (l5a) [below=2pt of l6a] {5. Session};
+        \node[layer] (l4a) [below=2pt of l5a] {4. Transport};
+        \node[layer] (l3a) [below=2pt of l4a] {3. Réseau};
+        \node[layer] (l2a) [below=2pt of l3a] {2. Liaison};
+        \node[layer] (l1a) [below=2pt of l2a] {1. Physique};
+    \end{scope}
+
+    % --- Poste B (Right) ---
+    \node[host] (host_b_box) at (14,0) {};
+    \node[font=\bfseries, above=0.2cm of host_b_box] {Poste B};
+    \begin{scope}[xshift=14cm]
+        \node[layer] (l7b) at (0, 2) {7. Application};
+        \node[layer] (l6b) [below=2pt of l7b] {6. Présentation};
+        \node[layer] (l5b) [below=2pt of l6b] {5. Session};
+        \node[layer] (l4b) [below=2pt of l5b] {4. Transport};
+        \node[layer] (l3b) [below=2pt of l4b] {3. Réseau};
+        \node[layer] (l2b) [below=2pt of l3b] {2. Liaison};
+        \node[layer] (l1b) [below=2pt of l2b] {1. Physique};
+    \end{scope}
+
+    % --- Devices (Bottom) ---
+    \node[device] (switch) at (3.5, -4) {Switch};
+    \node[device] (router) at (7, -4) {Routeur};
+    \node[device] (gateway) at (10.5, -4) {Passerelle};
+
+    % --- Data Flow ---
+    % Logical flow (top)
+    \draw[arrow, red!60, dashed] (l7a) -- (l7b) node [midway, above, font=\small] {Flux Applicatif};
+    % Encapsulation
+    \draw[arrow] (l7a) -- (l6a); \draw[arrow] (l6a) -- (l5a); \draw[arrow] (l5a) -- (l4a);
+    \draw[arrow] (l4a) -- (l3a); \draw[arrow] (l3a) -- (l2a); \draw[arrow] (l2a) -- (l1a);
+    % Decapsulation
+    \draw[arrow] (l1b) -- (l2b); \draw[arrow] (l2b) -- (l3b); \draw[arrow] (l3b) -- (l4b);
+    \draw[arrow] (l4b) -- (l5b); \draw[arrow] (l5b) -- (l6b); \draw[arrow] (l6b) -- (l7b);
+    
+    % --- Physical Path ---
+    \draw[path] (l1a) -| (switch);
+    \draw[path] (switch) -- (router);
+    \draw[path] (router) -- (gateway);
+    \draw[path] (gateway) |- (l1b);
+
+    % --- Annotations ---
+    \node[below=0.1cm of switch, font=\itshape\small] {Lit Addr. MAC (L2)};
+    \node[below=0.1cm of router, font=\itshape\small] {Lit Addr. IP (L3)};
+    \node[below=0.1cm of gateway, font=\itshape\small] {Traduit (L7)};
+
+    % PDU Labels
+    \node[right=0.1cm of l4a, font=\small\bfseries] {Segment};
+    \node[right=0.1cm of l3a, font=\small\bfseries] {Paquet};
+    \node[right=0.1cm of l2a, font=\small\bfseries] {Trame};
+\end{tikzpicture}
+\caption{Schéma horizontal et simplifié du cheminement d'une donnée.}
+\label{fig:osi_flow_simple}
+\end{figure}
+
+\end{document}

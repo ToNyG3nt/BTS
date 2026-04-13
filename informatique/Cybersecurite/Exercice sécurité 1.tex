@@ -1,0 +1,96 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+\title{\textbf{Analyse d'incident de sécurité : La Petite Pâtisserie}}
+\author{Maël - BTS SIO}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Identification de l'attaque}
+
+\subsection*{a. Type d'attaque}
+Il s'agit d'une attaque par \textbf{rançongiciel} (ransomware).
+
+\subsection*{b. Indices}
+\begin{itemize}
+    \item \textbf{Demande de rançon :} Une fenêtre explicite réclame de l'argent .
+    \item \textbf{Fichiers illisibles :} Les données sont chiffrées et inaccessibles .
+    \item \textbf{Dysfonctionnement :} Apparition de fenêtres étranges sur les postes .
+\end{itemize}
+
+\section{Analyse des causes}
+Voici 5 failles identifiées ayant permis l'attaque :
+
+\begin{enumerate}
+    \item \textbf{Mots de passe faibles :} L'usage de \og patisserie2024 \fg{} facilite les attaques par force brute .
+    \item \textbf{Absence de segmentation :} La box grand public met tout le monde sur le même réseau. Une fois un poste touché, le serveur est directement accessible .
+    \item \textbf{Protection insuffisante :} Windows Defender seul (sans gestion centralisée) est souvent insuffisant contre les menaces avancées actuelles .
+    \item \textbf{Erreur humaine :} L'attaque a probablement démarré par l'ouverture d'un email piégé, ce qui indique un manque de sensibilisation.
+    \item \textbf{Absence de sauvegardes hors ligne :} Si les sauvegardes étaient connectées, elles ont probablement été chiffrées aussi, aggravant l'impact .
+\end{enumerate}
+
+\section{Mesures d'urgence}
+5 actions immédiates pour contenir l'incident :
+
+\begin{enumerate}
+    \item \textbf{Déconnecter le réseau :} Débrancher la box et les switchs pour couper le lien avec les pirates .
+    \item \textbf{Isoler les machines :} Éteindre ou débrancher les postes infectés pour stopper la propagation .
+    \item \textbf{Protéger les sauvegardes :} Vérifier et isoler physiquement les disques de sauvegarde restants .
+    \item \textbf{Avertir la direction :} Informer le responsable pour la prise de décision (plainte, communication) .
+    \item \textbf{Ne pas éteindre le serveur (si possible) :} Pour permettre une analyse ultérieure (forensic), sauf si le chiffrement est encore en cours.
+\end{enumerate}
+
+\section{Mesures de prévention}
+8 mesures pour sécuriser l'avenir :
+
+\begin{itemize}
+    \item Politique de mots de passe complexes et changés régulièrement .
+    \item Sauvegardes régulières avec une copie déconnectée (règle 3-2-1) .
+    \item Installation d'un antivirus professionnel managé .
+    \item Mises à jour automatiques des systèmes et logiciels .
+    \item Mise en place d'un pare-feu matériel dédié .
+    \item Segmentation du réseau (VLAN) pour séparer le serveur des PC .
+    \item Sensibilisation des utilisateurs aux risques (emails, web) .
+    \item Restriction des droits (comptes utilisateurs standards, pas administrateurs).
+\end{itemize}
+
+\newpage
+
+\section*{Livrable : Rapport d'incident}
+
+\textbf{Date :} \today \\
+\textbf{Objet :} Rapport d'intervention -- Incident Ransomware
+
+\vspace{0.5cm}
+
+\textbf{1. Description de l'incident} \\
+Le réseau de la TPE a été frappé par un rançongiciel. L'attaque a rendu les fichiers du serveur et des postes illisibles (chiffrement). Une rançon est demandée pour récupérer la clé de déchiffrement. L'activité est bloquée.
+
+\vspace{0.3cm}
+
+\textbf{2. Chronologie probable} \\
+L'infection a débuté sur un poste client (pièce jointe malveillante ou site web). Profitant de mots de passe faibles (\og admin123 \fg{}) et d'un réseau plat, le virus s'est propagé latéralement jusqu'au contrôleur de domaine pour chiffrer les partages réseaux.
+
+\vspace{0.3cm}
+
+\textbf{3. Diagnostic} \\
+L'attaque a réussi à cause de trois facteurs majeurs :
+\begin{itemize}
+    \item Faiblesse des mots de passe.
+    \item Absence de cloisonnement réseau (serveur exposé).
+    \item Manque de protection antivirale proactive.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{4. Recommandations finales} \\
+Ne pas payer la rançon. Il faut reconstruire le réseau : formater les machines infectées et restaurer les données depuis une sauvegarde saine et isolée. Avant la remise en service, il est impératif de changer tous les mots de passe et d'installer un pare-feu professionnel.
+
+\end{document}

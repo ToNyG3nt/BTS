@@ -1,0 +1,227 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{amsmath}
+
+\geometry{margin=2.5cm}
+
+\title{TD - Modèle OSI}
+\author{Mignard Mael}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Partie I : Questions de cours}
+\begin{enumerate}
+    \item Quelles sont les 7 couches du modèle OSI et leurs rôles principaux ?
+    \begin{quote}
+        \begin{itemize}
+            \item \textbf{Couche 1 - Physique :} Transmission des bits sur le support physique.
+            \item \textbf{Couche 2 - Liaison de données :} Assure la communication fiable entre deux nœuds directement connectés.
+            \item \textbf{Couche 3 - Réseau :} Gère l'adressage logique et le routage des paquets.
+            \item \textbf{Couche 4 - Transport :} Assure la livraison de bout en bout des données (fiable ou non).
+            \item \textbf{Couche 5 - Session :} Gère les sessions de communication entre les applications.
+            \item \textbf{Couche 6 - Présentation :} Traduit les données (encodage, chiffrement, compression).
+            \item \textbf{Couche 7 - Application :} Fournit des services réseau aux applications utilisateur.
+        \end{itemize}
+    \end{quote}
+
+    \item Quelle est la différence entre le modèle OSI et le modèle TCP/IP?
+    \begin{quote}
+        Le modèle OSI est un modèle de référence théorique en 7 couches qui normalise les fonctions de communication. Le modèle TCP/IP est un modèle pratique en 4 couches, sur lequel est basé l'Internet. TCP/IP est plus simple et plus utilisé, tandis qu'OSI est plus détaillé et sert de guide pédagogique.
+    \end{quote}
+
+    \item Expliquez les notions suivantes : Protocole, service, primitive, entité.
+    \begin{quote}
+        \begin{itemize}
+            \item \textbf{Protocole :} Ensemble de règles qui gouvernent l'échange de données entre deux entités.
+            \item \textbf{Service :} Fonctionnalité fournie par une couche N à la couche supérieure (N+1).
+            \item \textbf{Primitive :} Commande de base permettant à une couche d'accéder aux services de la couche inférieure.
+            \item \textbf{Entité :} Élément actif au sein d'une couche, capable de communiquer avec d'autres entités de la même couche.
+        \end{itemize}
+    \end{quote}
+
+    \item Donnez un exemple de protocole de chaque couche du modèle OSI.
+    \begin{quote}
+        \begin{itemize}
+            \item Couche 1 - Physique : Ethernet (câblage), RS-232
+            \item Couche 2 - Liaison de données : Ethernet (trame), PPP
+            \item Couche 3 - Réseau : IP, ICMP
+            \item Couche 4 - Transport : TCP, UDP
+            \item Couche 5 - Session : NetBIOS, RPC
+            \item Couche 6 - Présentation : SSL/TLS, ASCII
+            \item Couche 7 - Application : HTTP, FTP, SMTP
+        \end{itemize}
+    \end{quote}
+    
+    \item Qu'entend-on par encapsulation et désencapsulation ?
+    \begin{quote}
+        L'\textbf{encapsulation} est le processus où chaque couche ajoute son propre en-tête (et parfois un en-queue) aux données reçues de la couche supérieure. La \textbf{désencapsulation} est le processus inverse chez le récepteur, où chaque couche retire l'en-tête correspondant avant de passer les données à la couche supérieure.
+    \end{quote}
+\end{enumerate}
+
+
+
+\section*{Partie II : Exercices pratiques}
+
+\subsection*{Exercice 1 : Couche Physique}
+\begin{enumerate}
+    \item Un fichier de 1Go est transféré sur un lien de 1 Gb/s. Calculer le temps de transmission.
+    \begin{quote}
+        Taille du fichier = $1~\text{Go} = 8~\text{Gb}$ (Gigabits)
+
+        Temps de transmission = $\dfrac{\text{Taille du fichier}}{\text{Débit}} = \dfrac{8~\text{Gb}}{1~\text{Gb/s}} = 8~\text{s}$
+    \end{quote}
+
+    \item Une trame de 1600 octets contient 1500 octets de données utiles. Calculer le pourcentage d'overhead.
+    \begin{quote}
+        Overhead (surcoût) = Taille totale - Taille utile = $1600 - 1500 = 100$ octets
+
+        Pourcentage d'overhead = $\dfrac{\text{Overhead}}{\text{Taille totale}} \times 100 = \dfrac{100}{1600} \times 100 = 6.25\%$
+    \end{quote}
+
+    \item Sur un câble de 120 km, calculez le délai de propagation (vitesse $2\times10^8$ m/s).
+    \begin{quote}
+        Délai de propagation = $\dfrac{\text{Distance}}{\text{Vitesse}} = \dfrac{120 \times 10^3~\text{m}}{2 \times 10^8~\text{m/s}} = 0.0006~\text{s} = 0.6~\text{ms}$
+    \end{quote}
+
+    \item Sur 10 millions de bits transmis, 5000 sont erronés. Calculez le BER.
+    \begin{quote}
+        BER (Bit Error Rate) = $\dfrac{\text{Nombre de bits erronés}}{\text{Nombre total de bits transmis}} = \dfrac{5000}{10 \times 10^6} = 5 \times 10^{-4}$
+    \end{quote}
+\end{enumerate}
+
+\subsection*{Exercice 2 : Couche Liaison de données}
+\begin{enumerate}
+    \item Expliquer le rôle de l'adresse MAC.
+    \begin{quote}
+        L'adresse MAC est un identifiant physique unique sur 48 bits, gravé sur chaque carte réseau. Elle permet d'identifier de manière unique un appareil sur un réseau local (LAN) et de lui acheminer les trames.
+    \end{quote}
+
+    \item Quelle est la différence entre un switch et un pont (bridge) ?
+    \begin{quote}
+        Un pont connecte deux segments de réseau. Un switch est un pont multi-ports qui examine l'adresse MAC de destination de chaque trame pour la commuter uniquement vers le port de destination, améliorant ainsi les performances par rapport à un hub.
+    \end{quote}
+
+    \item Une trame Ethernet fait 1518 octets. Sachant que l'en-tête est de 18 octets, calculez le pourcentage de données utiles.
+    \begin{quote}
+        Données utiles = $1518 - 18 = 1500$ octets
+
+        Pourcentage utile = $\dfrac{1500}{1518} \times 100 \approx 98.81\%$
+    \end{quote}
+\end{enumerate}
+
+\subsection*{Exercice 3 : Couche Réseau}
+\begin{enumerate}
+    \item Un message de 5000 octets doit être transmis en paquets IP de 1500 octets maximum (MTU). Déterminez le nombre de fragments générés.
+    \begin{quote}
+        L'en-tête IP standard est de 20 octets.
+        Taille max des données par fragment = $1500 - 20 = 1480$ octets.
+        
+        Nombre de fragments = $\lceil \dfrac{5000}{1480} \rceil = \lceil 3.37 \rceil = 4$ fragments.
+    \end{quote}
+
+    \item Calculez le temps nécessaire pour transmettre un paquet de 1200 octets sur un lien de 2 Mb/s.
+    \begin{quote}
+        Taille du paquet = $1200~\text{octets} = 1200 \times 8 = 9600~\text{bits}$
+        
+        Temps = $\dfrac{9600~\text{bits}}{2 \times 10^6~\text{b/s}} = 0.0048~\text{s} = 4.8~\text{ms}$
+    \end{quote}
+
+    \item Donnez deux différences entre IPv4 et IPv6.
+    \begin{quote}
+        \begin{itemize}
+            \item \textbf{Taille d'adresse :} 32 bits pour IPv4 contre 128 bits pour IPv6.
+            \item \textbf{Configuration :} IPv4 utilise principalement DHCP, tandis qu'IPv6 intègre l'autoconfiguration (SLAAC).
+        \end{itemize}
+    \end{quote}
+\end{enumerate}
+
+\subsection*{Exercice 4 : Couche Transport}
+\begin{enumerate}
+    \item Complétez la table de vérité d'un multiplexeur 4→1 (entrées $E_{1}$..$E_{4}$, commandes $C_{1}$, $C_{0}$, sortie S).
+    \begin{quote}
+        \begin{tabular}{|cc|c|}
+            \hline
+            $C_1$ & $C_0$ & S \\ 
+            \hline
+            0 & 0 & $E_1$ \\ 
+            0 & 1 & $E_2$ \\ 
+            1 & 0 & $E_3$ \\ 
+            1 & 1 & $E_4$ \\ 
+            \hline
+        \end{tabular}
+    \end{quote}
+    \item Donnez l'équation logique correspondante.
+    \begin{quote}
+        $S = (\overline{C_1} \cdot \overline{C_0} \cdot E_1) + (\overline{C_1} \cdot C_0 \cdot E_2) + (C_1 \cdot \overline{C_0} \cdot E_3) + (C_1 \cdot C_0 \cdot E_4)$
+    \end{quote}
+
+    \item Proposez un exemple où l'UDP est préférable au TCP.
+    \begin{quote}
+        Le streaming vidéo, les jeux en ligne ou la VoIP. Pour ces applications, la vitesse est cruciale et la perte occasionnelle d'un paquet est moins problématique que la latence induite par les retransmissions de TCP.
+    \end{quote}
+\end{enumerate}
+
+\subsection*{Exercice 5 : Couche Session}
+\begin{enumerate}
+    \item Donnez deux rôles de la couche Session.
+    \begin{quote}
+        \begin{itemize}
+            \item \textbf{Gestion du dialogue :} Contrôle le tour de parole entre les applications.
+            \item \textbf{Synchronisation :} Place des points de reprise dans le flux de données pour permettre une récupération efficace en cas d'échec.
+        \end{itemize}
+    \end{quote}
+    \item Un fichier de 250 Mo doit être transféré avec des points de reprise tous les 50 Mo. La coupure survient à 187 Mo. Combien de Mo doivent être retransmis ?
+    \begin{quote}
+        Le dernier point de reprise validé est à 150 Mo. La transmission doit donc reprendre à partir de ce point.
+        Quantité à retransmettre = $250 - 150 = 100$ Mo.
+    \end{quote}
+\end{enumerate}
+
+\subsection*{Exercice 6 : Couche Présentation}
+\begin{enumerate}
+    \item Citez deux fonctions de la couche Présentation.
+    \begin{quote}
+        \begin{itemize}
+            \item \textbf{Formatage des données :} Conversion entre différents encodages de caractères (ex: ASCII, Unicode).
+            \item \textbf{Chiffrement :} Assure la confidentialité des données.
+        \end{itemize}
+    \end{quote}
+    \item Un fichier de 40 Mo est compressé à 15 Mo. Calculez le taux de compression.
+    \begin{quote}
+        Taux de compression = $\dfrac{\text{Taille originale} - \text{Taille compressée}}{\text{Taille originale}} \times 100 = \dfrac{40 - 15}{40} \times 100 = 62.5\%$
+    \end{quote}
+    \item Comparez les temps de transmission sur un lien de $20~Mb/s$ pour la version compressée et non compressée.
+    \begin{quote}
+        Temps (non compressé) = $\dfrac{40 \times 8~\text{Mbits}}{20~\text{Mb/s}} = 16~\text{s}$
+
+        Temps (compressé) = $\dfrac{15 \times 8~\text{Mbits}}{20~\text{Mb/s}} = 6~\text{s}$
+    \end{quote}
+\end{enumerate}
+
+\subsection*{Exercice 7 : Couche Application}
+\begin{enumerate}
+    \item Associez les protocoles suivants à leur usage : HTTP, SMTP, DNS, FTP, DHCP.
+    \begin{quote}
+        \begin{itemize}
+            \item \textbf{HTTP :} Navigation web
+            \item \textbf{SMTP :} Envoi d'e-mails
+            \item \textbf{DNS :} Résolution de noms de domaine
+            \item \textbf{FTP :} Transfert de fichiers
+            \item \textbf{DHCP :} Configuration automatique d'adresse IP
+        \end{itemize}
+    \end{quote}
+    \item Un fichier de 10 Mo est téléchargé via HTTP avec une latence de 50 ms par requête. Calculez le temps total si 5 requêtes sont nécessaires (transmission incluse 8 s).
+    \begin{quote}
+        Latence totale = $5 \times 50~\text{ms} = 250~\text{ms} = 0.25~\text{s}$
+        
+        Temps total = Temps de transmission + Latence totale = $8~\text{s} + 0.25~\text{s} = 8.25~\text{s}$
+    \end{quote}
+\end{enumerate}
+
+\end{document}

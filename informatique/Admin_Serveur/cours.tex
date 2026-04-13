@@ -1,0 +1,93 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+\geometry{margin=2cm}
+
+\titleformat{\section}{\large\bfseries\color{blue!70!black}}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+
+\begin{document}
+
+\begin{center}
+    \LARGE \textbf{Administration Réseaux : Guide Complet Linux} \\
+    \large Synthèse de cours — Maël \& Collègue — BTS SIO
+\end{center}
+
+\vspace{0.5cm}
+
+\section{I. Structure Fondamentale du Shell}
+Une commande Bash est interprétée par le système selon une syntaxe précise :
+\begin{itemize}
+    \item \textbf{Le Programme :} L'exécutable appelé (ex: \texttt{ls}, \texttt{ps}, \texttt{cat}).
+    \item \textbf{L'Option :} Modifie le comportement (ex: \texttt{-l}). Les options peuvent être combinées ou interchangées.
+    \item \textbf{L'Argument :} La cible (ex: un chemin ou une variable d'environnement comme \texttt{\$HOME}).
+\end{itemize}
+
+\section{II. Gestion des Permissions (chmod)}
+Les droits d'accès sont répartis entre le propriétaire (\textbf{u}), le groupe (\textbf{g}) et les autres (\textbf{o}).
+
+\subsection{1. Valeurs Octales et Calcul}
+Chaque permission correspond à une valeur numérique cumulative :
+\begin{itemize}
+    \item \textbf{4 (Read - r) :} Autorise la lecture du contenu.
+    \item \textbf{2 (Write - w) :} Autorise la modification ou suppression.
+    \item \textbf{1 (Execute - x) :} Autorise l'exécution ou l'accès à un dossier.
+\end{itemize}
+
+\subsection{2. Sécurité Critique}
+Il est impératif de ne jamais accorder simultanément les droits \textbf{w} (2) et \textbf{x} (1) sur un même fichier. Cette configuration permet d'injecter du code malveillant et de l'exécuter immédiatement.
+
+\section{III. Répertoire Exhaustif des Commandes}
+
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Commande} & \textbf{Options Clés} & \textbf{Description et Usage} \\
+\hline
+\texttt{ls} & \texttt{-lah} & Liste le contenu. \texttt{-l} (format long), \texttt{-a} (tous/cachés), \texttt{-h} (taille lisible). \\
+\hline
+\texttt{cd} & & \textit{Change Directory}. Ramène à la racine utilisateur (\texttt{\$HOME}) par défaut. \\
+\hline
+\texttt{pwd} & & Affiche le chemin absolu du répertoire de travail actuel. \\
+\hline
+\texttt{mkdir} & \texttt{-p} & Crée un dossier. \texttt{-p} crée aussi les dossiers parents si nécessaire. \\
+\hline
+\texttt{touch} & & Crée un fichier vide ou met à jour sa date de modification. \\
+\hline
+\texttt{cat} & & Affiche le contenu d'un fichier ou permet de concaténer. \\
+\hline
+\texttt{nano} & & Éditeur de texte simple pour modifier des fichiers en terminal. \\
+\hline
+\texttt{rm} & \texttt{-rf} & Supprime. \texttt{-r} (récursif), \texttt{-f} (force sans confirmation). \textbf{Attention : } \texttt{rm -rf *}. \\
+\hline
+\texttt{cp} & \texttt{-R} & Copie des fichiers ou répertoires (mode récursif requis pour les dossiers). \\
+\hline
+\texttt{mv} & & Déplace ou renomme un fichier/répertoire. \\
+\hline
+\texttt{ps} & \texttt{-lah} & Visualise l'état des processus en cours d'exécution. \\
+\hline
+\texttt{clear} & & Nettoie l'écran du terminal et vide le buffer d'affichage. \\
+\hline
+\end{tabularx}
+
+\section{IV. Administration Système et Réseau}
+\begin{itemize}
+    \item \textbf{\texttt{sudo}} : \textit{Substitute User Do}. Exécute une commande avec les privilèges root.
+    \item \textbf{\texttt{su}} : \textit{Substitute User}. Connexion temporaire (ex: \texttt{su root} ou \texttt{su <user>}).
+    \item \textbf{\texttt{scp}} : Copie sécurisée de fichiers entre machines via le protocole SSH.
+    \item \textbf{Gestion des comptes :}
+    \begin{itemize}
+        \item \texttt{useradd} / \texttt{adduser} : Création d'un nouvel utilisateur.
+        \item \texttt{usermod} : Modification d'un compte (ex: changement de groupe).
+        \item \texttt{groupadd} / \texttt{addgroup} : Création d'un groupe propriétaire.
+        \item \texttt{passwd} : Modification du mot de passe (essentiel pour la sécurité).
+    \end{itemize}
+\end{itemize}
+
+\end{document}

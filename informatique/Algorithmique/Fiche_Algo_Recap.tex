@@ -1,0 +1,131 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{multicol}
+
+% --- Définitions ---
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\columnsep}{1cm}
+\pagestyle{empty}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\begin{document}
+
+\begin{center}
+    \huge\textbf{Fiche Récapitulative d'Algorithmique}
+\end{center}
+\vspace{0.4cm}
+
+\begin{multicols}{2}
+
+% --- STRUCTURE ---
+\section*{Structure Générale}
+Un algorithme est une suite d'opérations visant à résoudre un problème. Le pseudo-code le décrit en langage simple.
+\hrule
+\vspace{1mm}
+\textbf{ALGORITHME} Nom\_Algorithme \\
+\textbf{Variables} \\
+\quad \textit{...déclarations...} \\
+\textbf{DEBUT} \\
+\quad \textit{...instructions...} \\
+\textbf{FIN}
+
+% --- ALGORIGRAMMES ---
+\section*{Algorigrammes (Symboles)}
+Représentation graphique d'un algorithme.
+\hrule
+\vspace{1mm}
+\begin{tabular}{ll}
+    \textbf{Forme} & \textbf{Signification} \\
+    \hline
+    Ovale & Début ou Fin \\
+    Rectangle & Traitement, Action \\
+    Losange & Condition, Test \\
+    Parallélogramme & Entrée ou Sortie (Lire/Ecrire) \\
+    \hline
+\end{tabular}
+
+% --- VARIABLES ---
+\section*{Variables et Types}
+Une variable stocke une donnée. Elle est définie par un \textbf{nom} et un \textbf{type}.
+\hrule
+\begin{itemize}
+    \item \textbf{Numérique} : Nombres entiers ou réels. \\ \textit{Ex: Variable age en Numérique}
+    \item \textbf{Chaîne} : Texte (entre guillemets). \\ \textit{Ex: Variable nom en Chaîne}
+    \item \textbf{Booléen} : VRAI ou FAUX. \\ \textit{Ex: Variable estMajeur en Booléen}
+\end{itemize}
+
+% --- OPERATIONS ---
+\section*{Opérations de Base}
+\hrule
+\begin{description}
+    \item[Affectation] Stoque une valeur. \\ \code{variable $\leftarrow$ valeur} \textit{ ou } \code{variable = valeur}
+    \item[Lecture] Récupère une entrée utilisateur. \\ \code{Lire variable}
+    \item[Écriture] Affiche une valeur ou un message. \\ \code{Ecrire "Bonjour"}, \code{Ecrire variable}
+\end{description}
+
+\subsection*{Opérateurs}
+\begin{itemize}
+    \item \textbf{Arithmétiques} : +, -, *, /, \textasciicircum{} (puissance)
+    \item \textbf{Comparaison} : =, <>, <, >, <=, >= 
+    \item \textbf{Logiques} : ET, OU, NON
+\end{itemize}
+
+\columnbreak
+
+% --- STRUCTURES DE CONTROLE ---
+\section*{Structures de Contrôle}
+
+\subsection*{1. La Conditionnelle ("Si")}
+Exécute un code si une condition est vraie.
+\hrule
+\vspace{1mm}
+\textbf{Si} <condition> \textbf{Alors} \\
+\quad \textit{... instructions si VRAI ...} \\
+\textbf{Sinon} \\
+\quad \textit{... instructions si FAUX ...} \\
+\textbf{Fin Si}
+
+\subsection*{2. La Boucle "Tant Que"}
+Répète un bloc d'instructions \textbf{tant que} la condition est VRAIE. La condition est testée au début.
+\hrule
+\vspace{1mm}
+\textbf{Tant que} <condition> \textbf{faire} \\
+\quad \textit{... instructions à répéter ...} \\
+\textbf{Fin TantQue}
+
+\subsection*{3. La Boucle "Pour"}
+Répète un bloc pour un nombre \textbf{connu} d'itérations.
+\hrule
+\vspace{1mm}
+\textbf{Pour} compteur de \textit{début} à \textit{fin} \textbf{faire} \\
+\quad \textit{... instructions à répéter ...} \\
+\textbf{Fin Pour}
+
+\subsection*{4. La Boucle "Répéter"}
+Répète un bloc \textbf{jusqu'à} ce que la condition devienne VRAIE. S'exécute au moins une fois.
+\hrule
+\vspace{1mm}
+\textbf{Répéter} \\
+\quad \textit{... instructions à répéter ...} \\
+\textbf{Jusqu`a} <condition>
+
+% --- TABLEAUX ---
+\section*{Les Tableaux}
+Collection de valeurs de \textbf{même type}, accessibles via un \textbf{indice}.
+\hrule
+\begin{description}
+    \item[Déclaration] \textbf{Tableau} nomTableau[taille] \textbf{en} Type \\ \textit{Ex: Tableau notes[19] en Numérique (20 notes, de 0 à 19)}
+    \item[Accès] Se fait via l'indice (position). \\ \code{notes[0] $\leftarrow$ 15} \textit{ (affecte 15 à la première case)}
+    \item[Parcours] Souvent avec une boucle \textbf{Pour}. \\
+    \textbf{Pour} i de 0 à 19 \textbf{faire} \\
+    \quad Ecrire notes[i] \\
+    \textbf{Fin Pour}
+\end{description}
+
+\end{multicols}
+\end{document}

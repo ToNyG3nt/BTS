@@ -1,0 +1,183 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1cm]{geometry} % Marges réduites pour tout faire tenir
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage{multicol} % Pour faire des colonnes si besoin
+
+% --- DESIGN & COULEURS ---
+
+% Police sans serif (plus propre pour une fiche)
+\renewcommand{\familydefault}{\sfdefault}
+
+% Palette de couleurs
+\definecolor{mainBlue}{RGB}{0, 70, 100}      % Bleu foncé (Titres principaux)
+\definecolor{softTeal}{RGB}{0, 140, 160}     % Cyan (Sous-titres / Définitions)
+\definecolor{alertRed}{RGB}{180, 40, 40}     % Rouge (Attention / Important)
+\definecolor{bgGray}{RGB}{245, 247, 250}     % Gris très clair (Fond des boîtes)
+
+% Configuration des boites (tcolorbox)
+\tcbset{
+    colback=bgGray,           % Couleur de fond
+    colframe=mainBlue,        % Couleur du cadre
+    coltitle=white,           % Couleur du titre
+    fonttitle=\bfseries\large,% Police du titre
+    arc=3mm,                  % Arrondi des coins
+    boxrule=0.6mm,            % Épaisseur du trait
+    left=2mm, right=2mm, top=2mm, bottom=2mm, % Marges internes
+    after skip=0.4cm          % Espace après la boite
+}
+
+% Commandes rapides pour le texte
+\newcommand{\notion}[1]{\textbf{\textcolor{mainBlue}{#1}}}
+\newcommand{\important}[1]{\textit{\textcolor{alertRed}{#1}}}
+\newcommand{\definition}[1]{\textbf{\textcolor{softTeal}{#1}}}
+
+% --- DÉBUT DU DOCUMENT ---
+\begin{document}
+
+% EN-TÊTE
+\begin{center}
+    \colorbox{mainBlue}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+        \centering
+        \vspace{0.2cm}
+        {\Huge \textbf{\textcolor{white}{FICHE DE RÉVISION : CEJM Thème 1}}} \\
+        \vspace{0.1cm}
+        {\Large \textcolor{white}{Intégration de l'entreprise dans son environnement}}
+        \vspace{0.2cm}
+    }}
+\end{center}
+\vspace{0.3cm}
+
+% ---------------------------------------------------------
+% PARTIE 1 : ÉCONOMIE
+% ---------------------------------------------------------
+\begin{tcolorbox}[title=1. ÉCONOMIE : Agents et Marchés]
+    \begin{multicols}{2}
+        
+    \subsection*{A. Les Agents Économiques}
+    Regroupés selon leur fonction principale :
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Ménages} : Consommation.
+        \item \notion{Entreprises} : Production de biens et services \textbf{marchands} (But lucratif).
+        \item \notion{État} : Production de services \textbf{non marchands} (financés par impôts).
+        \item \notion{Banques} : Financement.
+    \end{itemize}
+
+    \subsection*{B. Le Marché}
+    Lieu de rencontre Offre/Demande.
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Loi de l'offre et la demande} :
+        \begin{itemize}
+            \item Offre > Demande $\rightarrow$ Prix $\searrow$
+            \item Demande > Offre $\rightarrow$ Prix $\nearrow$
+        \end{itemize}
+        \item \notion{Prix d'équilibre} : Offre = Demande.
+    \end{itemize}
+
+    \columnbreak
+
+    \subsection*{C. Dysfonctionnements}
+    Le marché n'est pas toujours parfait (CPP) :
+    \begin{itemize}[leftmargin=*]
+        \item \definition{Monopole} : 1 seul offreur.
+        \item \definition{Oligopole} : Quelques offreurs (risque d'entente).
+        \item \definition{Asymétrie d'information} : Déséquilibre d'info entre vendeur et acheteur (ex: occasion).
+        \item \definition{Externalités} :
+        \begin{itemize}
+            \item \important{Négative} (Pollution) : L'État taxe.
+            \item \notion{Positive} (Recherche) : L'État subventionne.
+        \end{itemize}
+    \end{itemize}
+
+    \end{multicols}
+\end{tcolorbox}
+
+% ---------------------------------------------------------
+% PARTIE 2 : DROIT
+% ---------------------------------------------------------
+\begin{tcolorbox}[title=2. DROIT : Le Contrat, colframe=softTeal]
+    
+    \subsection*{A. Principes Fondateurs}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Liberté contractuelle} : Libre de contracter ou non, de choisir son partenaire.
+        \item \notion{Force obligatoire} : Le contrat est la loi des parties.
+        \item \notion{Bonne foi} : Loyauté obligatoire.
+    \end{itemize}
+
+    \vspace{0.2cm}
+    \hrule
+    \vspace{0.2cm}
+
+    \subsection*{B. Validité du contrat (Art. 1128 C. Civ)}
+    3 conditions cumulatives pour éviter la \important{Nullité} :
+    \begin{enumerate}[leftmargin=*]
+        \item \definition{Consentement} : Doit être libre. Sans vices :
+        \begin{itemize}
+            \item \textbf{Erreur} : Involontaire.
+            \item \textbf{Dol} : Tromperie volontaire.
+            \item \textbf{Violence} : Pression physique/morale.
+        \end{itemize}
+        \item \definition{Capacité} : Être majeur capable.
+        \item \definition{Contenu} : Licite (légal) et Certain (existant).
+    \end{enumerate}
+
+    \subsection*{C. Clauses de sécurisation}
+    \begin{itemize}
+        \item \notion{Réserve de propriété} : Transfert de propriété seulement après paiement complet.
+        \item \notion{Clause pénale} : Fixe l'indemnité à l'avance en cas de problème.
+        \item \notion{Clause résolutoire} : Annulation automatique si inexécution.
+    \end{itemize}
+\end{tcolorbox}
+
+% ---------------------------------------------------------
+% PARTIE 3 : MANAGEMENT
+% ---------------------------------------------------------
+\begin{tcolorbox}[title=3. MANAGEMENT : Performance et RSE, colframe=alertRed]
+    \begin{multicols}{2}
+    
+    \subsection*{A. Finalités (P. Drucker)}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Économique} : Profit, pérennité.
+        \item \notion{Sociale} : Salariés (bien-être).
+        \item \notion{Sociétale} : RSE, Environnement.
+    \end{itemize}
+
+    \subsection*{B. Parties Prenantes (Freeman)}
+    Tout acteur affecté par l'entreprise :
+    \begin{itemize}[leftmargin=*]
+        \item \definition{Internes} : Salariés, Actionnaires.
+        \item \definition{Externes} : Clients, État, ONG.
+    \end{itemize}
+
+    \columnbreak 
+
+    \subsection*{C. La Performance}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Efficacité} : Atteindre l'objectif.
+        \item \notion{Efficience} : Optimiser les moyens.
+        \item \notion{Globale} : Éco + Sociale + Sociétale.
+    \end{itemize}
+    \textit{Outil :} Tableau de bord prospectif (Kaplan).
+    \end{multicols}
+\end{tcolorbox}
+
+% ---------------------------------------------------------
+% LEXIQUE
+% ---------------------------------------------------------
+\begin{tcolorbox}[title=LEXIQUE EXPRESS, colback=white, colframe=black]
+    \footnotesize
+    \begin{description}[style=multiline, leftmargin=3cm]
+        \item[\textcolor{mainBlue}{Agent Économique}] Centre de décision économique indépendant.
+        \item[\textcolor{mainBlue}{Contrat}] Accord de volontés créant des obligations (donner, faire, ne pas faire).
+        \item[\textcolor{mainBlue}{RSE}] Responsabilité Sociétale des Entreprises (impact social/écolo).
+        \item[\textcolor{mainBlue}{Externalité}] Effet de l'activité d'un agent sur un tiers sans compensation financière.
+        \item[\textcolor{mainBlue}{Nullité}] Anéantissement rétroactif du contrat (il n'a jamais existé).
+    \end{description}
+\end{tcolorbox}
+
+\end{document}

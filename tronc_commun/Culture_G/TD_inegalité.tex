@@ -1,0 +1,82 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+
+% Configuration de la page
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+}
+
+% Commandes personnalisées pour l'oral
+\newcommand{\IdeeP}[1]{\noindent\textbf{\textcolor{blue}{IDÉE PRINCIPALE : #1}}\par}
+\newcommand{\ChiffreCle}[1]{\noindent\textbf{\textcolor{red}{\textbullet\ Chiffre Clé : #1}}\par}
+\newcommand{\SousAxe}[1]{\vspace{0.5em}\noindent\underline{\textbf{#1}}\par}
+\newcommand{\Transition}[1]{\vspace{1em}\noindent\textit{\textcolor{gray}{[Transition : #1]}}\par}
+
+\title{\textbf{Prise de Notes Oral : Accès aux Soins en France}}
+\author{MIGNARD Maël}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty} % Supprime le numéro de page sur la première page
+
+% ----------------------------------------------------------------------
+% SECTION PRINCIPALE : L'ACCÈS AUX SOINS EN FRANCE
+% ----------------------------------------------------------------------
+
+\section*{L'Accès aux Soins en France : Un Système à Quatre Niveaux de Fracture}
+
+\IdeeP{Le système français garantit l'accès aux droits, mais la réalité socio-économique et territoriale crée de fortes inégalités d'accès.}
+
+\subsection*{\underline{1. La Carte Vitale et le Tiers Payant}}
+
+\IdeeP{La Carte Vitale est le pilier de la simplification, essentiel pour les plus modestes.}
+\SousAxe{Fonction principale : Facilitation administrative}
+\begin{itemize}
+    \item **Télétransmission :** Déclenchement rapide du remboursement.
+    \item **Tiers Payant :** Dispense d'avance de frais pour la part Sécurité Sociale (AMO).
+    \item **CSS :** Vital pour les bénéficiaires de la Complémentaire Santé Solidaire, annulant la barrière financière immédiate.
+\end{itemize}
+\ChiffreCle{Principe fondamental : L'assurance maladie publique est un puissant outil de redistribution en nature.}
+
+\Transition{Malgré son efficacité, la Carte Vitale est contournée par les barrières financières résiduelles...}
+
+\subsection*{\underline{2. Les Limites face aux Inégalités Sociales}}
+
+\IdeeP{Les inégalités se manifestent par un taux élevé de renoncement aux soins, directement lié au revenu.}
+\SousAxe{Le Reste à Charge (RAC) comme Barrière}
+\begin{itemize}
+    \item **Dépassements d'Honoraires :** Pratiqués en Secteur 2, le RAC est trop élevé sans une mutuelle coûteuse.
+    \item **Soins Spécifiques :** Fort renoncement sur l'Optique et le Dentaire, malgré le dispositif "100\% Santé" (dont les équipements peuvent ne pas suffire).
+    \item **Cumul des Désavantages :** Les personnes pauvres ont plus de pathologies, mais moins de ressources pour y faire face.
+\end{itemize}
+\ChiffreCle{Espérance de Vie : 13 ans d'écart chez les hommes entre les plus riches et les plus modestes (Insee).}
+
+\Transition{Ces obstacles financiers se combinent aux difficultés d'ordre géographique et matériel...}
+
+
+\subsection*{\underline{4. Les Déterminants Sociaux}}
+
+\IdeeP{L'état de santé est d'abord déterminé par la place dans la hiérarchie sociale, bien avant l'accès aux soins.}
+\SousAxe{Les Facteurs Structurels Profonds}
+\begin{itemize}
+    \item **Éducation :** Un niveau d'éducation faible est corrélé à une moins bonne espérance de vie (choix de vie, compréhension des risques, navigation dans le système).
+    \item **Emploi/Conditions de Travail :** Exposition aux risques professionnels, stress social et usure précoce du corps (ouvriers).
+    \item **Logement :** Le mal-logement (humidité, froid, insalubrité) est un facteur direct de maladie et de stress chronique.
+    \item **Fracture Administrative :** Difficulté d'accès à la Carte Vitale et aux droits pour les personnes sans domicile ou les plus isolées (risque d'exclusion par le numérique).
+\end{itemize}
+\ChiffreCle{Espérance de vie sans incapacité : 10 ans d'écart entre cadre et ouvrier (34 ans vs 24 ans à 35 ans).}
+
+% ----------------------------------------------------------------------
+% FIN DU DOCUMENT
+% ----------------------------------------------------------------------
+
+\end{document}

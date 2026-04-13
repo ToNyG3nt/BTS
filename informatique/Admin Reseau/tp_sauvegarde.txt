@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# =================================================================
+# TP : STRATÉGIE DE SAUVEGARDE ET PROTECTION DES FICHIERS
+# MAËL - BTS SIO
+# =================================================================
+
+# --- CONFIGURATION DES RÉPERTOIRES ---
+SOURCE="/home/mael/source_sensible"
+DEST_BASE="/home/mael/sauvegardes"
+LOG_SURVEILLANCE="/home/mael/surveillance_alerte.log"
+
+mkdir -p $SOURCE
+mkdir -p $DEST_BASE/complete
+mkdir -p $DEST_BASE/incrementielle
+mkdir -p $DEST_BASE/differentielle
+
+# Création de fichiers de test pour le TP
+touch $SOURCE/donnees_critiques.txt
+echo "Données confidentielles" > $SOURCE/donnees_critiques.txt
+
+# --- PARTIE 1 : SAUVEGARDES ---
+
+echo "--- Démarrage de la sauvegarde complète ---"
+# Copie l'intégralité des fichiers [cite: 20, 24]
+rsync -av --delete $SOURCE/ $DEST_BASE/complete/
+
+echo "--- Démarrage de la sauvegarde incrémentielle ---"
+# Enregistre uniquement les fichiers modifiés depuis la dernière fois 
+rsync -av --update $SOURCE/ $DEST_BASE/incrementielle/
+
+echo "--- Démarrage de la sauvegarde différentielle ---"
+# Archive toutes les modifications depuis la complète [cite: 22, 26]
+DATE=$(date +%Y%m%d_%H%M)
+tar -cvzf $DEST_BASE/differentielle/diff_$DATE.tar.gz $SOURCE/
+
+
+# --- PARTIE 2 : PROTECTION ET SURVEILLANCE ---
+
+echo "--- Mise en place de la protection du fichier ---"
+# Rend le fichier immuable (même pour root) [cite: 32, 34]
+sudo chattr +i $SOURCE/donnees_critiques.txt
+
+echo "--- Configuration de la surveillance (auditd) ---"
+# Génère une alerte en cas de modification [cite: 35]
+if command -v auditctl >/dev/null; then
+    sudo auditctl -w $SOURCE/donnees_critiques.txt -p wa -k alerte_tp_sio
+else
+    echo "Auditd n'est pas installé, surveillance désactivée."
+fi
+
+echo "TP terminé. Les fichiers sont sauvegardés dans $DEST_BASE."

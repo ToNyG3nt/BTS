@@ -1,0 +1,81 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+\setlist[itemize]{nosep}
+\setlist[enumerate]{nosep}
+
+\title{\textbf{Correction : TD -- Étude de cas : Perte d’accès Internet}\\
+\large BTS SIO -- Gestion d’incident \& Réseaux}
+\author{Maël}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Scénario 1 -- Poste isolé sans réseau}
+\begin{enumerate}
+    \item \textbf{Cause probable :} Échec de récupération d'une configuration IP via le serveur DHCP. L'adresse en 169.254.x.x indique que le poste s'est auto-attribué une adresse.
+    \item \textbf{Localisation :} Entre le poste client et le switxh d'accès ou le serveur DHCP (câble débranché, port défectueux).
+    \item \textbf{Action corrective :} Vérifier le branchement du câble Ethernet, tester avec un autre câble, ou forcer une nouvelle d'IP.
+    \item \textbf{Priorité :} Basse. Un seul utilisateur est impacté.
+\end{enumerate}
+
+
+
+
+\section*{Scénario 2 -- Problème de résolution DNS}
+\begin{enumerate}
+    \item \textbf{Réseau local :} Oui, le ping vers la passerelle est OK.
+    \item \textbf{Internet accessible :} Oui, le ping vers l'IP 8.8.8.8 (Google) répond. La connectivité IP est établie.
+    \item \textbf{Type de problème :} Problème de résolution de DNS. Le système ne parvient pas à traduire "google.fr" en adresse IP.
+    \item \textbf{Solution :} Vérifier la configuration des serveurs DNS sur le poste ou le serveur DHCP. Tester avec un DNS public (1.1.1.1) pour confirmer.
+\end{enumerate}
+
+
+
+
+\section*{Scénario 3 -- Incident global}
+\begin{enumerate}
+    \item \textbf{Nature :} Incident global (plusieurs utilisateurs impactés).
+    \item \textbf{Localisation :} Équipement d'interconnexion central (Routeur ou Switch cœur de réseau).
+    \item \textbf{Priorité :} Critique. L'activité de l'entreprise est paralysée.
+    \item \textbf{Escalade :} Oui, escalade fonctionnelle vers l'administrateur réseau (Niveau 2 ou 3) car le matériel semble hors service physiquement.
+\end{enumerate}
+
+
+
+
+\section*{Scénario 4 -- Panne fournisseur}
+\begin{enumerate}
+    \item \textbf{Réseau interne :} Oui, le ping passerelle et les services internes fonctionnent.
+    \item \textbf{Localisation :} Extérieure à l'entreprise. Lien WAN ou équipement de l'Opérateur.
+    \item \textbf{Action :} Contacter le support technique du fournisseur d'accès (Orange, SFR, etc.) pour ouvrir un ticket d'incident sur la ligne.
+    \item \textbf{Communication :} Informer les utilisateurs qu'une coupure généralisée d'Internet est en cours suite à une panne chez l'opérateur et donner un délai estimé de rétablissement si possible.
+\end{enumerate}
+\section*{Synthèse finale (Scénario 3)}
+\vspace{0.5cm}
+
+\noindent Dans un premier temps, création d'un ticket d'incident majeur, prise d'informations sur l'incident. Vérification de la passerelle et des branchement. 
+\vspace{0.3cm}
+
+\noindent Une Communication à tous les utilisateurs de la panne. Et recherche de slution temporaire pour continuer l'activité (partage de connection temporaire, redirection vers un autre site, etc).
+\vspace{0.3cm}
+
+\noindent Renseignement des infos et actions réalisées dans le tickets pour le suivi (test effectués, communications aux utiisateurs, etc) puis escalade vers le niveau 2 ou 3 pour une intervention sur le matériel.
+\vspace{0.3cm}
+
+\noindent Enfin, une fois le probleme resolu, une communication de fin d'incident et un rapport d'incident détaillé pour l'analyse.
+\vspace{0.3cm}
+
+\noindent Pour finir, proposition de cloture du ticket (verifier que tout conviens aux utilisateurs) avec une mise en place de mesures correctives pour eviter le retour du probleme.
+
+\end{document}

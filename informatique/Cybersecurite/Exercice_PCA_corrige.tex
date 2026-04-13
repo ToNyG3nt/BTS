@@ -1,0 +1,259 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{colortbl}
+\usepackage{hyperref}
+
+% --- DESIGN & COULEURS ---
+\renewcommand{\familydefault}{\sfdefault}
+
+\definecolor{mainBlue}{RGB}{0, 70, 100}
+\definecolor{softTeal}{RGB}{0, 140, 160}
+\definecolor{alertRed}{RGB}{180, 40, 40}
+\definecolor{bgGray}{RGB}{245, 247, 250}
+
+\tcbset{
+    colback=bgGray,
+    colframe=mainBlue,
+    coltitle=white,
+    fonttitle=\bfseries\large,
+    arc=3mm,
+    boxrule=0.6mm,
+    left=3mm, right=3mm, top=3mm, bottom=3mm,
+    after skip=0.5cm
+}
+
+\newcommand{\notion}[1]{\textbf{\textcolor{mainBlue}{#1}}}
+\newcommand{\important}[1]{\textit{\textcolor{alertRed}{#1}}}
+\newcommand{\definition}[1]{\textbf{\textcolor{softTeal}{#1}}}
+
+% --- DÉBUT DU DOCUMENT ---
+\begin{document}
+
+% EN-TÊTE
+\begin{center}
+    \colorbox{mainBlue}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+        \centering
+        \vspace{0.2cm}
+        {\Huge \textbf{\textcolor{white}{Exercice : Plan de Continuité d'Activité (PCA)}}} \\
+        \vspace{0.1cm}
+        {\Large \textcolor{white}{Étude de cas : TechNégoce}}
+        \vspace{0.2cm}
+    }}
+\end{center}
+\vspace{0.5cm}
+
+% ---------------------------------------------------------
+% PARTIE 1 : Activités Critiques
+% ---------------------------------------------------------
+\begin{tcolorbox}[title=1) Identifier les activités critiques]
+    Voici 5 activités critiques pour TechNégoce, avec leur justification et les conséquences d'une interruption de 24h.
+
+    \subsection*{a) Gestion des commandes clients}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Importance} : C'est le cœur de l'activité commerciale. Sans cela, aucune vente ne peut être enregistrée, traitée ou suivie.
+        \item \important{Conséquences (24h d'arrêt)} : Perte de chiffre d'affaires direct, mécontentement des clients pouvant aller voir la concurrence, retard dans tout le cycle de vente (préparation, livraison).
+    \end{itemize}
+
+    \subsection*{b) Accès au logiciel de gestion commerciale}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Importance} : Centralise toutes les données vitales : clients, produits, stocks, factures. Indispensable à la fois pour les ventes et la gestion administrative.
+        \item \important{Conséquences (24h d'arrêt)} : Impossibilité de créer des devis, de facturer, de suivre les paiements. L'activité commerciale et administrative est paralysée.
+    \end{itemize}
+
+    \subsection*{c) Accès aux fichiers de l'entreprise}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Importance} : Les employés ont besoin d'accéder aux documents partagés (propositions commerciales, documents techniques, etc.) pour travailler efficacement.
+        \item \important{Conséquences (24h d'arrêt)} : Forte baisse de productivité. Les employés ne peuvent pas accéder à leurs outils de travail quotidiens, retardant tous les projets en cours.
+    \end{itemize}
+    
+    \subsection*{d) Connexion Internet}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Importance} : Essentielle pour la communication (emails, téléphonie sur IP si utilisée), la gestion du site vitrine, et potentiellement l'accès à des services cloud.
+        \item \important{Conséquences (24h d'arrêt)} : Plus de communication avec l'extérieur (clients, fournisseurs). Le site vitrine n'est plus administrable. L'image de l'entreprise est dégradée.
+    \end{itemize}
+
+    \subsection*{e) Service de facturation}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Importance} : La facturation est vitale pour la trésorerie de l'entreprise. Sans facturation, pas de rentrée d'argent.
+        \item \important{Conséquences (24h d'arrêt)} : Retards de paiement des clients, impact direct sur la trésorerie et le besoin en fonds de roulement. Peut créer des tensions avec les clients et les services comptables.
+    \end{itemize}
+\end{tcolorbox}
+
+% ---------------------------------------------------------
+% PARTIE 2 : Risques Majeurs
+% ---------------------------------------------------------
+\begin{tcolorbox}[title=2) Identifier les risques majeurs]
+    Analyse de 5 risques majeurs pour TechNégoce.
+
+    \subsection*{a) Cyberattaque (Rançongiciel)}
+    \begin{itemize}[leftmargin=*]
+        \item \definition{Probabilité} : Moyenne. Les PME sont des cibles privilégiées et les attaques par rançongiciel sont en constante augmentation. Une erreur humaine (phishing) peut facilement en être la cause.
+        \item \definition{Gravité} : Forte. Potentiellement toutes les données de l'entreprise sont chiffrées et inaccessibles (fichiers, base de données commerciale).
+        \item \notion{Impact} : Très élevé. Arrêt complet de l'activité, perte de données potentiellement irrécupérable, impact financier majeur (rançon, coûts de remise en service), atteinte à la réputation.
+    \end{itemize}
+
+    \subsection*{b) Panne du serveur de fichiers}
+    \begin{itemize}[leftmargin=*]
+        \item \definition{Probabilité} : Moyenne. Dépend de l'âge et de la qualité du matériel. Une panne disque ou une défaillance d'un composant (alimentation) est un scénario classique.
+        \item \definition{Gravité} : Moyenne. L'impact est limité à l'accès aux documents. Le logiciel de gestion et les autres services peuvent rester fonctionnels.
+        \item \notion{Impact} : Important. Baisse de productivité des 20 utilisateurs. Entrave le bon déroulement des processus métiers qui s'appuient sur des documents partagés.
+    \end{itemize}
+
+    \subsection*{c) Perte de la connexion Internet}
+    \begin{itemize}[leftmargin=*]
+        \item \definition{Probabilité} : Moyenne. L'opérateur peut subir une panne, ou des travaux peuvent endommager la ligne. Le fait d'avoir une seule connexion fibre augmente ce risque.
+        \item \definition{Gravité} : Moyenne. L'activité interne principale (gestion commerciale sur site) peut continuer, mais toute la communication externe est coupée.
+        \item \notion{Impact} : Important. Plus d'email, plus d'accès à l'administration du site web, pas de nouvelles commandes via le web. L'entreprise est isolée.
+    \end{itemize}
+
+    \subsection*{d) Panne électrique}
+    \begin{itemize}[leftmargin=*]
+        \item \definition{Probabilité} : Faible. Les coupures de courant générales sont rares, mais peuvent arriver (travaux, incident sur le réseau).
+        \item \definition{Gravité} : Forte. Aucun équipement informatique ne fonctionne : serveurs, postes de travail, réseau.
+        \item \notion{Impact} : Très élevé. Arrêt total et immédiat de toute l'activité de l'entreprise.
+    \end{itemize}
+
+    \subsection*{e) Incendie ou dégât des eaux}
+    \begin{itemize}[leftmargin=*]
+        \item \definition{Probabilité} : Faible. C'est un risque rare mais dévastateur.
+        \item \definition{Gravité} : Très Forte. Destruction potentielle des infrastructures (serveurs, postes), des documents papier, et mise en danger des employés.
+        \item \notion{Impact} : Catastrophique. Arrêt complet et prolongé de l'activité. Coûts de reconstruction immenses. Perte de données potentiellement définitive si les sauvegardes sont aussi sur site.
+    \end{itemize}
+\end{tcolorbox}
+
+% ---------------------------------------------------------
+% PARTIE 3 : RTO et RPO
+% ---------------------------------------------------------
+\begin{tcolorbox}[title=3) RTO et RPO]
+    \subsection*{a) Définitions}
+    \begin{itemize}[leftmargin=*]
+        \item \definition{RTO (Recovery Time Objective)} : C'est la \important{durée maximale d'interruption admissible} pour une ressource informatique (serveur, application). En d'autres termes, c'est le temps maximal que l'entreprise se donne pour remettre en service un élément après une panne. Un RTO de 2h signifie que le service doit être rétabli en moins de 2 heures.
+        
+        \item \definition{RPO (Recovery Point Objective)} : C'est la \important{perte de données maximale admissible} lors d'une panne. Il s'exprime en durée et correspond à la période entre la dernière sauvegarde utilisable et le moment de l'incident. Un RPO de 4h signifie que l'entreprise accepte de perdre au maximum 4 heures de données saisies avant la panne.
+    \end{itemize}
+
+    \subsection*{b) Propositions pour TechNégoce}
+    \subsubsection*{\underline{Le logiciel de gestion commerciale}}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{RPO proposé : 15 minutes}. Les données commerciales (commandes, factures, clients) sont très volatiles et critiques. Une perte de plus de quelques minutes de saisie serait très coûteuse à rattraper et pourrait causer des erreurs commerciales graves.
+        \item \notion{RTO proposé : 2 heures}. L'activité commerciale étant le cœur de métier de TechNégoce, il est impératif de pouvoir reprendre les ventes le plus rapidement possible. 2 heures représentent un maximum acceptable pour ne pas paralyser l'entreprise.
+    \end{itemize}
+
+    \subsubsection*{\underline{Le serveur de fichiers}}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{RPO proposé : 24 heures}. Les documents bureautiques sont moins critiques et moins volatils que les données de gestion. Une sauvegarde par nuit semble un compromis acceptable entre sécurité et coût. Les utilisateurs peuvent souvent récupérer une version locale de leur travail en cours.
+        \item \notion{RTO proposé : 8 heures (une journée de travail)}. Bien que pénalisant, l'indisponibilité des fichiers partagés n'empêche pas totalement le travail (contrairement au logiciel de gestion). Un rétablissement dans la journée est un objectif réaliste et suffisant.
+    \end{itemize}
+
+    \subsubsection*{\underline{Le réseau interne}}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{RPO proposé : N/A (Non Applicable)}. Le réseau est une infrastructure, il ne stocke pas de données. Le RPO ne s'applique donc pas ici.
+        \item \notion{RTO proposé : 4 heures}. Le réseau est le socle qui permet l'accès à tous les autres services (serveur de fichiers, logiciel de gestion). Son rétablissement est une priorité élevée pour rendre le reste du système d'information de nouveau opérationnel.
+    \end{itemize}
+\end{tcolorbox}
+
+% ---------------------------------------------------------
+% PARTIE 4 : Solutions de Continuité
+% ---------------------------------------------------------
+\begin{tcolorbox}[title=4) Définir les solutions de continuité]
+    Tableau des mesures de continuité pour chaque risque identifié.
+    
+    \vspace{0.3cm}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|l|X|X|}
+        \hline
+        \rowcolor{mainBlue}
+        \textcolor{white}{\bfseries Risque} & \textcolor{white}{\bfseries Mesures Préventives} & \textcolor{white}{\bfseries Mesures Curatives / de Reprise} \\
+        \hline
+        
+        \notion{Cyberattaque (Rançongiciel)} &
+        - Formation des utilisateurs (anti-phishing). \newline
+        - Antivirus et pare-feu à jour. \newline
+        - Politique de mots de passe robustes. \newline
+        - Cloisonnement du réseau. &
+        - \important{Isoler la machine infectée} du réseau immédiatement. \newline
+        - Restaurer les données à partir de sauvegardes saines (stratégie 3-2-1 : 3 copies, 2 supports, 1 hors site). \newline
+        - Ne jamais payer la rançon. \\
+        \hline
+
+        \notion{Panne du serveur de fichiers} &
+        - Maintenance régulière du serveur. \newline
+        - Surveillance des indicateurs de santé (disques, température). \newline
+        - Avoir des pièces de rechange critiques (disques, alimentation). &
+        - Mettre en place un \definition{serveur de secours (NAS)} prêt à prendre le relais. \newline
+        - Restaurer les données depuis la dernière sauvegarde sur le serveur de secours. \\
+        \hline
+
+        \notion{Perte de la connexion Internet} &
+        - Contrat de service (GTR) avec l'opérateur. &
+        - Mettre en place une \definition{double connexion Internet} (Fibre + 4G/5G ou ADSL) avec basculement automatique (failover). \\
+        \hline
+
+        \notion{Panne électrique} &
+        - Protéger les équipements sensibles (serveurs, switches) avec des \definition{onduleurs (UPS)}. &
+        - Définir une procédure d'arrêt propre des serveurs en cas de coupure prolongée. \newline
+        - Pour une continuité totale : \definition{groupe électrogène}, mais le coût est élevé pour une PME. \\
+        \hline
+
+        \notion{Incendie / Dégât des eaux} &
+        - Détecteurs de fumée et extincteurs. \newline
+        - Salle serveur propre, loin des points d'eau. \newline
+        - Ne pas stocker de matériel inflammable près des serveurs. &
+        - La mesure la plus critique : avoir des \important{sauvegardes externalisées} (cloud ou autre site physique). \newline
+        - Activer le Plan de Reprise d'Activité (PRA) si un site de secours est prévu. \\
+        \hline
+        
+    \end{tabularx}
+\end{tcolorbox}
+
+% ---------------------------------------------------------
+% PARTIE 5 : Mini-PCA de TechNégoce
+% ---------------------------------------------------------
+\begin{tcolorbox}[title=5) Synthèse : Mini Plan de Continuité d'Activité (PCA)]
+    Ce document synthétise le plan de continuité pour l'entreprise TechNégoce.
+
+    \subsection*{a) Activités Critiques et Objectifs de Reprise}
+    \begin{itemize}[leftmargin=*]
+        \item \notion{Gestion des commandes et facturation} : RTO 2h, RPO 15 min. Cœur du métier.
+        \item \notion{Accès aux fichiers partagés} : RTO 8h, RPO 24h. Important pour la productivité.
+        \item \notion{Connectivité (Interne \& Externe)} : RTO 4h. Socle de tous les services.
+    \end{itemize}
+
+    \subsection*{b) Risques Majeurs et Solutions Retenues}
+    \begin{tabularx}{\textwidth}{lX}
+        \hline
+        \rowcolor{bgGray} \bfseries Risque & \bfseries Solution Clé \\ \hline
+        Cyberattaque & Sauvegardes externalisées et déconnectées (immuables). \\
+        Panne Matérielle (Serveur) & Serveur de secours (NAS) avec restauration des données. \\
+        Perte Connexion Internet & Double lien Internet (Fibre + 4G) en failover. \\
+        Panne Électrique & Onduleurs sur les équipements critiques (serveurs, réseau). \\
+        Incendie / Dégât des Eaux & Sauvegardes externalisées quotidiennes. \\
+        \hline
+    \end{tabularx}
+
+    \subsection*{c) Procédures d'Urgence en cas d'Incident Majeur}
+    En cas de sinistre avéré (panne générale, cyberattaque, etc.), suivre les étapes suivantes :
+    \begin{enumerate}[leftmargin=*]
+        \item \important{Contacter le responsable informatique} : Il est le seul habilité à déclarer l'état de crise.
+        \item \notion{Communication interne} : Informer immédiatement les employés de la nature de l'incident et des consignes à suivre (ex: "Ne plus utiliser les ordinateurs", "Passer sur les procédures papier").
+        \item \notion{Activation des solutions} :
+            \begin{itemize}
+                \item \textbf{Panne électrique > 30min} : Arrêt propre des serveurs via les onduleurs.
+                \item \textbf{Cyberattaque suspectée} : Débrancher physiquement les serveurs et postes du réseau.
+                \item \textbf{Panne d'un serveur critique} : Basculement sur le matériel de secours.
+            \end{itemize}
+        \item \notion{Communication externe} : Préparer un message à destination des clients si l'impact dépasse le RTO annoncé (ex: "Suite à un incident technique, nos services sont momentanément interrompus...").
+        \item \notion{Journal de crise} : Tenir un registre de toutes les actions menées (qui, quoi, quand) pour faciliter l'analyse post-mortem.
+    \end{enumerate}
+\end{tcolorbox}
+
+\end{document}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTS SIO JPO - Formations</title>
+    <link rel="icon" type="image/png" href="assets/images/sio.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="assets/images/baniere.png" data-light-src="assets/images/baniere.png" data-dark-src="assets/images/baniere_dark.png" alt="Bannière BTS SIO" style="width:100%;">
+        </div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="formations.html">Formations</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="dark-mode-item"><button id="darkModeToggle">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="formation-cards">
+            <h2>Nos Formations</h2>
+            <div class="card">
+                <img src="assets/images/sisr.png" alt="SISR icon">
+                <h3 id="sisr">SISR</h3>
+                <ul>
+                    <li id="sisr-admin-sup">Administration et supervision des systèmes et réseaux</li>
+                    <li id="sisr-cyber-data">Cybersécurité et protection des données</li>
+                    <li id="sisr-support-incidents">Support et résolution d'incidents (Maintenance)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <img src="assets/images/slam.png" alt="SLAM icon">
+                <h3 id="slam">SLAM</h3>
+                <ul>
+                    <li id="slam-dev-app">Conception et développement d'applications</li>
+                    <li id="slam-data-exploit">Gestion et exploitation des données</li>
+                    <li id="slam-maintenance-version">Maintenance évolutive et gestion de version</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="bts-subjects">
+            <h2>Matières du BTS SIO</h2>
+            <table class="subjects-table">
+                <thead>
+                    <tr>
+                        <th>Matière</th>
+                        <th>Description succincte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Culture Générale et Expression</td>
+                        <td>Améliorer la maîtrise de la langue et les capacités d'analyse.</td>
+                    </tr>
+                    <tr>
+                        <td>Culture Économique, Juridique et Managériale</td>
+                        <td>Comprendre l'environnement économique, juridique et managérial des entreprises.</td>
+                    </tr>
+                    <tr>
+                        <td>Mathématiques pour l'Informatique</td>
+                        <td>Acquérir les bases mathématiques nécessaires à l'informatique.</td>
+                    </tr>
+                    <tr>
+                        <td>Anglais</td>
+                        <td>Développer les compétences linguistiques pour le milieu professionnel.</td>
+                    </tr>
+                    <tr>
+                        <td>Conception et Développement d'Applications</td>
+                        <td>Apprendre à concevoir et développer des solutions logicielles.</td>
+                    </tr>
+                    <tr>
+                        <td>Réseaux et Infrastructures</td>
+                        <td>Maîtriser les bases des réseaux informatiques et des infrastructures.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>My-Digital-School -<span id="current-year"></span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

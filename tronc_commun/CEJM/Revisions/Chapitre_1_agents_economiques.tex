@@ -1,0 +1,208 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{fancyhdr}
+
+% --- DESIGN & COULEURS ---
+
+% Police sans serif (plus propre pour une fiche)
+\renewcommand{\familydefault}{\sfdefault}
+
+% Palette de couleurs
+\definecolor{mainBlue}{RGB}{0, 70, 100}      % Bleu foncé (Titres principaux)
+\definecolor{softTeal}{RGB}{0, 140, 160}     % Cyan (Sous-titres / Définitions)
+\definecolor{alertRed}{RGB}{180, 40, 40}     % Rouge (Attention / Important)
+\definecolor{bgGray}{RGB}{245, 247, 250}     % Gris très clair (Fond des boîtes)
+
+% Configuration des boites (tcolorbox)
+\tcbset{
+    colback=bgGray,           % Couleur de fond
+    colframe=mainBlue,        % Couleur du cadre
+    coltitle=white,           % Couleur du titre
+    fonttitle=\bfseries\large,% Police du titre
+    arc=3mm,                  % Arrondi des coins
+    boxrule=0.6mm,            % Épaisseur du trait
+    left=2mm, right=2mm, top=2mm, bottom=2mm, % Marges internes
+    after skip=0.4cm          % Espace après la boite
+}
+
+% Commandes rapides pour le texte
+\newcommand{\notion}[1]{\textbf{\textcolor{mainBlue}{#1}}}
+\newcommand{\important}[1]{\textit{\textcolor{alertRed}{#1}}}
+\newcommand{\definition}[1]{\textbf{\textcolor{softTeal}{#1}}}
+
+\begin{document}
+
+
+
+
+
+\section*{Problématique}
+\textbf{Comment s'établissent les relations entre l'entreprise et son environnement économique ?}
+
+\section{Définitions essentielles}
+
+\begin{tcolorbox}[title=\textbf{DÉFINITION : Agent économique}]
+Individu ou ensemble d'individus constituant un centre de décision économique indépendant, regroupés selon leur fonction principale.
+\end{tcolorbox}
+
+\vspace{3mm}
+\begin{tcolorbox}[title=\textbf{DÉFINITION : Production marchande}]
+Biens et services vendus sur un marché à un prix concurrentiel, assurée par les entreprises.
+\end{tcolorbox}
+
+\vspace{3mm}
+\begin{tcolorbox}[title=\textbf{DÉFINITION : Production non marchande}]
+Biens et services fournis gratuitement ou à des prix non significatifs (< 50\% du coût), assurée par les administrations publiques.
+\end{tcolorbox}
+
+\vspace{3mm}
+\begin{tcolorbox}[title=\textbf{DÉFINITION : Circuit économique}]
+Modèle schématique des échanges et interdépendances entre agents économiques, représentant flux réels et monétaires.
+\end{tcolorbox}
+
+\vspace{3mm}
+\begin{tcolorbox}[title=\textbf{DÉFINITION : Marché des capitaux}]
+Lieu de rencontre entre offreurs (épargnants) et demandeurs de capitaux (entreprises), où le prix du capital est le taux d'intérêt.
+\end{tcolorbox}
+
+\section{Les 4 agents économiques principaux}
+
+\subsection{Ménages}
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+Fonction principale : CONSOMMATION de biens et services pour satisfaire directement leurs besoins
+\end{tcolorbox}
+\begin{itemize}
+    \item Individus ou groupes vivant dans un même logement
+    \item Offrent leur travail sur le marché du travail
+    \item Consomment et épargnent
+\end{itemize}
+
+\subsection{Entreprises}
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+Fonction principale : PRODUCTION de biens et/ou services pour les vendre et réaliser un profit
+\end{tcolorbox}
+\begin{itemize}
+    \item Production marchande destinée à la vente
+    \item Demandeurs de travail et de capitaux
+    \item Relations B2B avec d'autres entreprises
+\end{itemize}
+
+\subsection{Banques}
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+Fonction principale : FINANCEMENT de l'économie par collecte et octroi de crédits
+\end{tcolorbox}
+\begin{itemize}
+    \item Intermédiaires financiers
+    \item Collectent l'épargne des ménages
+    \item Accordent des crédits aux entreprises et ménages
+\end{itemize}
+
+\subsection{Administrations publiques}
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+Fonction principale : Répondre aux besoins d'intérêt général et produire des services non marchands
+\end{tcolorbox}
+\begin{itemize}
+    \item État, Sécurité sociale, collectivités locales
+    \item Fournissent services publics (éducation, sécurité, justice)
+    \item Financés par impôts, taxes, cotisations sociales
+\end{itemize}
+
+\section{Les principaux marchés}
+
+\subsection{Marché des biens et services}
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+Échange : Biens/services (flux réels) contre Paiements (flux monétaires)
+\end{tcolorbox}
+\begin{itemize}
+    \item Entreprises → Ménages : produits et services
+    \item Ménages → Entreprises : chiffre d'affaires
+    \item Décisions influencées par la conjoncture économique
+\end{itemize}
+
+\subsection{Marché du travail}
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+Échange : Travail (flux réels) contre Salaires (flux monétaires)
+\end{tcolorbox}
+\begin{itemize}
+    \item Ménages → Entreprises : force de travail
+    \item Entreprises → Ménages : rémunération
+    \item Rencontre offre et demande de travail
+\end{itemize}
+
+\subsection{Marché financier}
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+Lieu d'émission et d'échange des valeurs mobilières (actions, obligations)
+\end{tcolorbox}
+\begin{itemize}
+    \item \textbf{Marché primaire} : émission de nouvelles valeurs
+    \item \textbf{Marché secondaire} : échange de titres existants
+    \item Financement externe direct (sans intermédiaire bancaire)
+\end{itemize}
+
+\section{Relations entreprise-État}
+
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+L'État fournit services non marchands, prestations sociales et subventions
+\end{tcolorbox}
+
+\subsection{Ce que l'État apporte aux entreprises}
+\begin{itemize}
+    \item Services publics (infrastructures, éducation, sécurité)
+    \item Subventions et aides publiques
+    \item Cadre juridique et réglementaire
+\end{itemize}
+
+\begin{tcolorbox}[title=\textbf{EXEMPLE}]
+Bpifrance : banque publique qui finance et accompagne les projets d'entreprises (innovation, international, fonds propres)
+\end{tcolorbox}
+
+\subsection{Ce que les entreprises apportent à l'État}
+\begin{itemize}
+    \item Impôt sur les sociétés
+    \item Cotisations sociales
+    \item Taxes diverses
+    \item Création d'emplois et de richesse
+\end{itemize}
+
+\section{Points clés à retenir}
+
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+L'entreprise est au centre d'un réseau de relations avec tous les agents économiques
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+Ces relations créent des flux réels (biens, services, travail) et des flux monétaires (paiements, salaires)
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+La conjoncture économique influence les comportements de consommation et d'investissement
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+Le numérique transforme les relations client et nécessite de nouvelles approches marketing
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=\textbf{POINT CLÉ}]
+Les entreprises collaborent avec leurs fournisseurs pour améliorer performance et création de valeur
+\end{tcolorbox}
+
+\section{Mots-clés à connaître}
+\begin{itemize}
+    \item Agents économiques
+    \item Production marchande/non marchande  
+    \item Circuit économique
+    \item Flux réels/monétaires
+    \item Marché des biens et services
+    \item Marché du travail
+    \item Marché des capitaux
+    \item Marché financier
+    \item Conjoncture économique
+    \item Financement externe direct/indirect
+\end{itemize}
+
+\end{document}

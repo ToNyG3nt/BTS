@@ -1,0 +1,30 @@
+{
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.autoClean.run": "never",
+    "latex-workshop.latex.watch.delay": 250,
+    "latex-workshop.latex.watch.files.ignore": ["**/*.tex", "**/*.bib", "**/*.cls", "**/*.sty"],
+    "latex-workshop.intellisense.enabled": true,
+    "latex-workshop.linting.enabled": false,
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
+    "latex-workshop.message.error.show": true,
+    "latex-workshop.message.warning.show": false,
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdflatex",
+            "tools": ["pdflatex"]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        }
+    ]
+}

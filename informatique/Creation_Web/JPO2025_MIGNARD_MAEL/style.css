@@ -1,0 +1,294 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: var(--header-bg);
+    color: var(--button-text-color);
+    padding-top: 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.banner {
+    background-color: var(--header-bg);
+    position: relative;
+    overflow: hidden;
+    height: 150px;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.banner h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--button-text-color);
+    z-index: 10;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+}
+
+nav {
+    width: 100%;
+    background: var(--nav-bg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav ul.nav-list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+}
+
+nav ul.nav-list li {
+    margin: 0 10px;
+}
+
+nav a {
+    color: var(--button-text-color);
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+}
+
+nav a:hover {
+    border-bottom: 2px solid var(--button-text-color);
+}
+
+main {
+    padding: 20px;
+    max-width: 960px;
+    margin: 20px auto;
+    background: var(--main-bg-color);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex-grow: 1;
+}
+
+section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid var(--section-border-color);
+    border-radius: 8px;
+    background: var(--section-bg-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.presentation img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.option-card img, .card img, .contact-section img {
+    max-width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.option-card, .card {
+    border: 1px solid var(--card-border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.option-card h3, .card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.subjects-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.subjects-table thead tr {
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    text-align: left;
+    font-weight: bold;
+}
+
+.subjects-table th,
+.subjects-table td {
+    padding: 10px 12px;
+    border: 1px solid var(--table-border-color);
+}
+
+.subjects-table tbody tr:nth-of-type(even) {
+    background-color: var(--table-even-row-bg);
+}
+
+.subjects-table tbody tr:last-of-type {
+    border-bottom: 1px solid var(--primary-color);
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    color: var(--dark-text);
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea,
+form select {
+    width: calc(100% - 24px);
+    padding: 10px 12px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+form button {
+    background: var(--primary-color);
+    color: var(--button-text-color);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+form button:hover {
+    background: var(--button-hover-bg);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: var(--footer-bg);
+    color: var(--button-text-color);
+    margin-top: auto;
+    font-size: 0.9em;
+}
+
+.dark-mode-item {
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+#darkModeToggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--button-text-color);
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+:root {
+    --primary-color: #043d8e;
+    --text-color: #043d8e;
+    --background-color: #f4f4f4;
+    --main-bg-color: #fff;
+    --section-bg-color: #fff;
+    --section-border-color: #eee;
+    --card-border-color: #ddd;
+    --table-border-color: #ccc;
+    --input-border-color: #bbb;
+    --light-gray-text: #555;
+    --dark-text: #333;
+    --table-even-row-bg: #f9f9f9;
+    --table-hover-bg: #eef;
+    --button-hover-bg: #002a66;
+    --button-text-color: #fff;
+    --header-bg: #043d8e;
+    --footer-bg: #043d8e;
+    --nav-bg: #043d8e;
+}
+
+body.dark-mode {
+    --primary-color: #90caf9;
+    --text-color: #e0e0e0;
+    --background-color: #121212;
+    --main-bg-color: #1e1e1e;
+    --section-bg-color: #252525;
+    --section-border-color: #333;
+    --card-border-color: #333;
+    --table-border-color: #444;
+    --input-border-color: #555;
+    --light-gray-text: #bbb;
+    --dark-text: #e0e0e0;
+    --table-even-row-bg: #2a2a2a;
+    --table-hover-bg: #3a3a3a;
+    --button-hover-bg: #64b5f6;
+    --button-text-color: #e0e0e0;
+    --header-bg: #1a1a1a;
+    --footer-bg: #1a1a1a;
+    --nav-bg: #2a2a2a;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    background: var(--nav-bg);
+    z-index: 1000;
+}

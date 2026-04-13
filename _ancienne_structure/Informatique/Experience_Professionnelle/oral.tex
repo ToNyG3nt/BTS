@@ -1,0 +1,90 @@
+\documentclass[12pt, a4paper]{article}
+
+% Encodage et langue
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Mise en page standard
+\usepackage{geometry}
+\geometry{hmargin=2.5cm, vmargin=2.5cm}
+\usepackage{xcolor}
+
+% Remplacement de 'parskip' par des commandes standard
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+% Définition de la couleur (Bleu)
+\definecolor{slideheader}{RGB}{30, 144, 255}
+
+% Commande simplifiée pour les en-têtes (sans le paquet calc)
+\newcommand{\slideheader}[2]{
+    \vspace{1cm}
+    \noindent
+    \colorbox{slideheader!20}{
+        % Utilisation de dimexpr natif pour éviter le paquet calc
+        \parbox{\dimexpr\linewidth-2\fboxsep\relax}{
+            \textbf{\Large \textcolor{black}{Diapositive #1 : #2}}
+        }
+    }
+    \vspace{0.5cm}
+}
+
+% Informations du document
+\title{Script de Soutenance Oral\\ \large Gestion de projet informatique}
+\author{Arnaud Gadille, Maël Mignard}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+\textit{(Transition après l'introduction générale du projet)}
+
+\slideheader{3}{Bases, acteurs et outils}
+
+«~Pour commencer à structurer notre approche, penchons-nous sur les fondations de la gestion de projet. Sur cette diapositive, nous avons synthétisé les trois piliers essentiels.
+
+D'abord, les \textbf{Bases}.\\
+Gérer un projet, ce n'est pas improviser. C'est un processus cyclique qui consiste à planifier, exécuter, suivre et enfin clôturer une action pour atteindre un but précis.
+
+Ensuite, les \textbf{Acteurs}.\\
+Un projet ne se fait jamais seul. On distingue trois entités clés :
+\begin{itemize}
+    \item Le \textbf{Chef de projet}, qui pilote le navire.
+    \item L'\textbf{Équipe technique}, qui réalise la production.
+    \item Et les \textbf{Clients}, pour qui le projet est réalisé.
+\end{itemize}
+
+Enfin, les \textbf{Outils}.\\
+Pour faire le lien entre eux, on utilise des logiciels spécifiques (Jira, Trello, MS Project). Ils sont indispensables pour organiser les tâches et suivre l'avancement.~»
+
+\slideheader{4}{Méthodes traditionnelles (Phases)}
+
+«~Entrons dans le vif du sujet avec les \textbf{Méthodes Traditionnelles} (dites "Waterfall").
+Comme vous le voyez, elles reposent sur une structure linéaire en \textbf{5 phases} :
+
+\begin{enumerate}
+    \item \textbf{L'Initiation} : Définir le projet et sa faisabilité.
+    \item \textbf{La Planification} : Tout écrire (budget, calendrier) avant de commencer.
+    \item \textbf{L'Exécution} : Produire en suivant le plan.
+    \item \textbf{Le Suivi et Contrôle} : Surveiller les écarts de budget ou de temps.
+    \item \textbf{La Clôture} : Livrer le produit final.
+\end{enumerate}
+
+L'objectif ici est la \textbf{prévisibilité} pour éviter les surprises.~»
+
+\slideheader{5}{Autres méthodes (Cycle en V vs PERT)}
+
+«~Comparons maintenant deux modèles spécifiques.
+
+\medskip
+\textit{(Geste vers la gauche)}
+\textbf{Le Cycle en V} : C'est le standard pour les besoins stables. Chaque étape de conception (descendante) correspond à une phase de test (montante). C'est très carré, mais rigide : revenir en arrière coûte cher.
+
+\medskip
+\textit{(Geste vers la gauche)}
+\textbf{Le PERT} : Ici, on voit le projet comme un \textbf{réseau de tâches}. On gère les dépendances (B ne commence pas avant A). Cela permet de trouver le \textbf{"chemin critique"}, c'est-à-dire la durée minimale incompressible du projet.~»
+
+\end{document}

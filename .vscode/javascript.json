@@ -1,0 +1,95 @@
+{
+  "Console Log": {
+    "prefix": "log",
+    "body": [
+      "console.log('${1:$TM_SELECTED_TEXT}$2');$0"
+    ],
+    "description": "Log output to console"
+  },
+  "Arrow Function": {
+    "prefix": "af",
+    "body": [
+      "const ${1:funcName} = (${2:params}) => {",
+      "  $3",
+      "};$0"
+    ],
+    "description": "Arrow function"
+  },
+  "Function Declaration": {
+    "prefix": "func",
+    "body": [
+      "function ${1:funcName}(${2:params}) {",
+      "  $3",
+      "}$0"
+    ],
+    "description": "Function declaration"
+  },
+  "If-Else Statement": {
+    "prefix": "ifelse",
+    "body": [
+      "if (${1:condition}) {",
+      "  $2",
+      "} else {",
+      "  $3",
+      "}$0"
+    ],
+    "description": "If-else statement"
+  },
+  "For Loop": {
+    "prefix": "for",
+    "body": [
+      "for (let ${1:i} = 0; ${1:i} < ${2:array}.length; ${1:i}++) {",
+      "  const ${3:element} = ${2:array}[${1:i}];",
+      "  $4",
+      "}$0"
+    ],
+    "description": "Standard for loop"
+  },
+  "ForEach Loop": {
+    "prefix": "foreach",
+    "body": [
+      "${1:array}.forEach(${2:element} => {",
+      "  $3",
+      "});$0"
+    ],
+    "description": "Array forEach loop"
+  },
+  "Event Listener": {
+    "prefix": "addevent",
+    "body": [
+      "${1:element}.addEventListener('${2:click}', (${3:event}) => {",
+      "  $4",
+      "});$0"
+    ],
+    "description": "Add event listener"
+  },
+  "Class Structure": {
+    "prefix": "class",
+    "body": [
+      "class ${1:ClassName} {",
+      "  constructor(${2:params}) {",
+      "    $3",
+      "  }",
+      "",
+      "  ${4:methodName}(${5:params}) {",
+      "    $6",
+      "  }",
+      "}$0"
+    ],
+    "description": "Basic JavaScript Class structure"
+  },
+  "Import Module": {
+    "prefix": "import",
+    "body": [
+      "import { ${1:defaultExport}, ${2:namedExport} } from '${3:module-name}';$0"
+    ],
+    "description": "Import ES6 module"
+  },
+  "Export Module": {
+    "prefix": "export",
+    "body": [
+      "export const ${1:name} = ${2:value};$0"
+    ],
+    "description": "Export ES6 module"
+  }
+}

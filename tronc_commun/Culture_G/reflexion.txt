@@ -1,0 +1,30 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Titre à définir}
+\author{Mignard Mael}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{À remplir}
+
+Salut,
+J'ai beaucoup réfléchi, parlé à mes proches et j'ai pris la décision de me séparer de Zoë quand je la vois ce week-end.
+Je viens te parler parce qu'il me semble qu'elle te voit dimanche après être venue à la maison.
+Je souhaite de tout cœur que ça se passe au mieux pour elle donc je viens te prévenir, car je pense qu'elle va se reposer sur toi.
+Je compte évidemment sur toi pour garder ça pour toi jusqu'à ce que je lui ai dit et je m'excuse 
+de te mettre dans cette position mais il me semblait important de te mettre au courant de ça pour son bien et que tu sois préparé.
+Je ne veux pas qu'elle me déteste, je fais le choix de la quitter pour mon bien à moi et je me rends 
+compte que la relation ne m'apporte pas ce dont j'ai besoins.
+Je lui souhaite sincèrement tout le bien du monde et que ça l'aide et qu'elle en ressortira plus forte.
+Merci pour tout ce que tu feras pour elle et encore désolé si ce message te met dans une mauvaise position.
+
+\end{document}
+

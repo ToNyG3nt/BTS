@@ -1,0 +1,271 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\lstdefinestyle{pythonstyle}{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    showstringspaces=false,
+    upquote=true
+}
+
+\lstdefinestyle{terminalstyle}{
+    backgroundcolor=\color{black},
+    basicstyle=\ttfamily\small\color{white},
+    frame=none,
+    breaklines=true,
+    showstringspaces=false,
+    xleftmargin=10pt,
+    xrightmargin=10pt,
+    aboveskip=0pt
+}
+
+\begin{document}
+
+\section*{Exercice 1 }
+\begin{lstlisting}[style=pythonstyle]
+notes = [12, 15, 9, 18, 7, 14]
+print(notes)
+print(len(notes))
+if len(notes) > 5:
+    print("Plus de 5 elements")
+else:
+    print("5 elements ou moins")
+for n in notes:
+    print(n)
+\end{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
+[12, 15, 9, 18, 7, 14]
+6
+Plus de 5 elements
+12
+15
+9
+18
+7
+14
+\end{lstlisting}
+
+\section*{Exercice 2 }
+\begin{lstlisting}[style=pythonstyle]
+liste = list(range(1, 11))
+print(liste)
+for n in liste:
+    if n % 2 == 0:
+        print(n)
+c = 0
+for n in liste:
+    if n >= 6:
+        c = c + 1
+print(c)
+\end{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+2
+4
+6
+8
+10
+5
+\end{lstlisting}
+\clearpage
+\section*{Exercice 3}
+\begin{lstlisting}[style=pythonstyle]
+depenses = [25, 40, 18, 32, 15]
+print(sum(depenses))
+print(sum(depenses) / len(depenses))
+if sum(depenses) > 100:
+    print("Somme > 100")
+c = 0
+for d in depenses:
+    if d > 20:
+        c = c + 1
+print(c)
+\end{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
+130
+26.0
+Somme > 100
+3
+\end{lstlisting}
+
+\section*{Exercice 4}
+\begin{lstlisting}[style=pythonstyle]
+temperatures = [18, 22, 17, 25, 19, 30, 16]
+print(min(temperatures))
+print(max(temperatures))
+print(max(temperatures) - min(temperatures))
+for t in temperatures:
+    if t > 20:
+        print(t)
+\end{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
+16
+30
+14
+22
+25
+30
+\end{lstlisting}
+
+\section*{Exercice 5}
+\begin{lstlisting}[style=pythonstyle]
+fruits = ["pomme", "banane", "orange", "fraise", "mangue"]
+print("banane" in fruits)
+print("kiwi" in fruits)
+f = input()
+if f in fruits:
+    print("Present")
+else:
+    print("Absent")
+\end{lstlisting}
+\begin{terminalstyle}
+True
+False
+fraise (saisie utilisateur)
+Present
+\end{terminalstyle}
+\clearpage
+\section*{Exercice 6}
+\begin{lstlisting}[style=pythonstyle]
+liste1 = [4, 8, 15, 16, 23, 42]
+liste2 = liste1.copy()
+print(liste1)
+print(liste2)
+liste2[0] = 0
+print(liste1)
+print(liste2)
+for x in liste2:
+    print(x)
+\end{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
+[4, 8, 15, 16, 23, 42]
+[4, 8, 15, 16, 23, 42]
+[4, 8, 15, 16, 23, 42]
+[0, 8, 15, 16, 23, 42]
+0
+...
+\end{lstlisting}
+
+\section*{Exercice 7}
+\begin{lstlisting}[style=pythonstyle]
+valeurs = [7, 12, 5, 18, 3, 12, 9]
+print(len(valeurs))
+print(sum(valeurs))
+print(min(valeurs))
+print(max(valeurs))
+print(12 in valeurs)
+c = 0
+for v in valeurs:
+    if v > 10:
+        c = c + 1
+print(c)
+\end{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
+7
+66
+3
+18
+True
+3
+\end{lstlisting}
+\clearpage
+\section*{Exercice 8}
+\begin{lstlisting}[style=pythonstyle]
+nombres = list(range(1, 21))
+print(nombres)
+print(len(nombres))
+print(sum(nombres))
+p = []
+for n in nombres:
+    if n % 2 == 0:
+        p.append(n)
+print(p)
+print(min(p))
+print(max(p))
+\end{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
+[1, ..., 20]
+20
+210
+[2, 4, ..., 20]
+2
+20
+\end{lstlisting}
+
+\section*{Grand Exercice 1}
+\begin{lstlisting}[style=pythonstyle]
+notes = [11, 14, 9, 16, 7, 18, 13, 10, 5, 19]
+print(len(notes))
+print(sum(notes))
+print(sum(notes)/len(notes))
+print(min(notes))
+print(max(notes))
+print(20 in notes)
+c = 0
+for n in notes:
+    if n >= 10:
+        c = c + 1
+print(c)
+cp = notes.copy()
+for i in range(len(cp)):
+    if cp[i] < 10:
+        cp[i] = 10
+print(notes)
+print(cp)
+\end{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
+10
+122
+12.2
+5
+19
+False
+7
+[11, 14, 9, 16, 7, 18, 13, 10, 5, 19]
+[11, 14, 10, 16, 10, 18, 13, 10, 10, 19]
+\end{lstlisting}
+
+\section*{Grand Exercice 2}
+\begin{lstlisting}[style=pythonstyle]
+stock = [12, 5, 8, 0, 17, 3, 0, 9]
+print(len(stock))
+print(sum(stock))
+print(min(stock))
+print(max(stock))
+r = 0
+for q in stock:
+    if q == 0:
+        r = r + 1
+print(r)
+print(17 in stock)
+cp = stock.copy()
+for i in range(len(cp)):
+    if cp[i] < 10:
+        cp[i] = cp[i] + 5
+print(stock)
+print(cp)
+d = []
+for q in stock:
+    if q > 0:
+        d.append(q)
+print(d)
+\end{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
+8
+54
+0
+17
+2
+True
+[12, 5, 8, 0, 17, 3, 0, 9]
+[12, 10, 13, 5, 17, 8, 5, 14]
+[12, 5, 8, 17, 3, 9]
+\end{lstlisting}
+
+\end{document}

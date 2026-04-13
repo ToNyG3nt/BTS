@@ -1,0 +1,379 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{multicol}
+% Pas de package enumitem
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Configuration de la page (Marges plus confortables)
+\geometry{top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em} % Espacement entre les paragraphes
+
+% Réglage manuel des listes (remplacement enumitem)
+\setlength{\leftmargini}{1.5em} 
+
+% Couleurs du code
+\definecolor{codebg}{rgb}{0.96,0.96,0.96}
+\definecolor{keyword}{rgb}{0.1,0.1,0.7}
+\definecolor{string}{rgb}{0.7,0.1,0.1}
+\definecolor{comment}{rgb}{0.3,0.6,0.3}
+
+% Configuration de l'affichage du code
+\lstset{
+    language=HTML,
+    basicstyle=\footnotesize\ttfamily, % Taille plus lisible
+    backgroundcolor=\color{codebg},
+    keywordstyle=\color{keyword}\bfseries,
+    commentstyle=\color{comment},
+    stringstyle=\color{string},
+    breaklines=true,
+    frame=leftline,
+    framesep=5pt,
+    showstringspaces=false,
+    tabsize=2,
+    extendedchars=true,
+    morekeywords={let, const, var, function, class, constructor, this, return, if, else, for, while, switch, case, break, new, extends, super, try, catch, document, window, console}
+}
+
+% Styles des titres
+\titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\hrule]
+\titleformat{\subsection}{\normalsize\bfseries\color{blue}}{}{0em}{}
+\titlespacing{\section}{0pt}{10pt}{5pt}
+\titlespacing{\subsection}{0pt}{10pt}{2pt}
+
+\begin{document}
+
+% Titre du document
+\begin{center}
+    {\Huge \textbf{Fiche Révision : HTML5 / CSS3 / JS}}
+\end{center}
+
+\begin{multicols*}{2}
+
+% ==========================================
+% PARTIE 1 : HTML5
+% ==========================================
+\section{I. HTML5 : Structure \& Sémantique}
+
+\subsection{Squelette standard}
+\begin{lstlisting}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    </body>
+</html>
+\end{lstlisting}
+
+\subsection{Principales balises sémantiques}
+Ces balises structurent le document pour le référencement et l'accessibilité.
+\begin{itemize}
+    \item \texttt{<header>} : En-tête de page ou de section.
+    \item \texttt{<nav>} : Liens de navigation principaux.
+    \item \texttt{<main>} : Contenu principal unique de la page.
+    \item \texttt{<section>} : Regroupement thématique de contenu.
+    \item \texttt{<article>} : Contenu autonome (ex: post de blog).
+    \item \texttt{<aside>} : Contenu indirectement lié (barre latérale).
+    \item \texttt{<footer>} : Pied de page (copyright, contacts).
+\end{itemize}
+
+\subsection{Formulaires}
+L'attribut \texttt{name} est indispensable pour l'envoi des données (PHP/Back-end).
+\begin{lstlisting}
+<form action="traitement.php" method="POST">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+
+    <input type="email" name="mail">
+    <input type="password" name="pass">
+
+    <input type="radio" name="genre" value="F"> Femme
+    <input type="radio" name="genre" value="H"> Homme
+    
+    <select name="pays">
+        <option value="fr">France</option>
+        <option value="be">Belgique</option>
+    </select>
+
+    <textarea name="message" rows="5"></textarea>
+
+    <input type="submit" value="Envoyer">
+</form>
+\end{lstlisting}
+
+\subsection{Tableaux}
+\begin{lstlisting}
+<table>
+    <thead>
+        <tr> <th>Titre 1</th> <th>Titre 2</th> </tr>
+    </thead>
+    <tbody>
+        <tr> <td>Data A</td> <td>Data B</td> </tr>
+    </tbody>
+</table>
+\end{lstlisting}
+
+\subsection{Médias}
+\begin{lstlisting}
+<img src="img.jpg" alt="Description">
+<a href="page.html" target="_blank">Lien</a>
+\end{lstlisting}
+
+% ==========================================
+% PARTIE 2 : CSS3
+% ==========================================
+\section{II. CSS3 : Mise en forme}
+
+\subsection{Sélecteurs courants}
+\begin{itemize}
+    \item \texttt{p} : Cible toutes les balises \texttt{<p>}.
+    \item \texttt{.maclasse} : Cible les éléments avec \texttt{class="maclasse"}.
+    \item \texttt{\#monid} : Cible l'élément unique avec \texttt{id="monid"}.
+    \item \texttt{div p} : Les \texttt{p} descendants de \texttt{div}.
+    \item \texttt{div > p} : Les \texttt{p} enfants directs de \texttt{div}.
+    \item \texttt{input[type="text"]} : Cible par attribut.
+\end{itemize}
+
+\subsection{Modèle de boîte (Box Model)}
+\begin{lstlisting}
+.box {
+    width: 300px;       /* Largeur contenu */
+    padding: 20px;      /* Marge interne */
+    border: 1px solid;  /* Bordure */
+    margin: 10px;       /* Marge externe */
+    box-sizing: border-box; /* Padding inclus dans width */
+}
+\end{lstlisting}
+
+\subsection{Flexbox (Mise en page 1D)}
+S'applique sur le conteneur parent pour aligner les enfants.
+\begin{lstlisting}
+.container {
+    display: flex;
+    /* Direction : row (defaut) | column */
+    flex-direction: row; 
+    
+    /* Axe Principal (horizontal si row) */
+    justify-content: space-between; /* center, flex-start... */
+    
+    /* Axe Secondaire (vertical si row) */
+    align-items: center; /* stretch, flex-start... */
+    
+    /* Retour a la ligne si manque de place */
+    flex-wrap: wrap; 
+}
+\end{lstlisting}
+
+\subsection{CSS Grid (Mise en page 2D)}
+\begin{lstlisting}
+.grille {
+    display: grid;
+    /* 3 colonnes : 1fr, 2fr et 1fr */
+    grid-template-columns: 1fr 2fr 1fr; 
+    gap: 20px; /* Espacement */
+}
+.item-a {
+    grid-column: 1 / 3; /* Occupe col 1 a 3 */
+}
+\end{lstlisting}
+
+% ==========================================
+% PARTIE 3 : JAVASCRIPT
+% ==========================================
+\section{III. JavaScript : Algorithmique}
+
+\subsection{Déclaration de variables}
+\begin{lstlisting}
+let score = 0;        // Variable modifiable (portee bloc)
+const PI = 3.14;      // Constante (non reassignable)
+var old = "vieux";    // Ancienne syntaxe (portee fonction)
+\end{lstlisting}
+
+\subsection{Structures de contrôle}
+\begin{lstlisting}
+// Condition
+if (age >= 18) {
+    console.log("Majeur");
+} else if (age > 12) {
+    console.log("Ado");
+} else {
+    console.log("Enfant");
+}
+
+// Switch
+switch(action) {
+    case 'START': demarrer(); break;
+    default: arret();
+}
+
+// Ternaire
+let statut = (age >= 18) ? "Adulte" : "Mineur";
+\end{lstlisting}
+
+\subsection{Boucles}
+\begin{lstlisting}
+// For classique (nombre d'iterations connu)
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+// While (tant que condition vraie)
+while (compteur < 10) {
+    compteur++;
+}
+
+// Parcours de tableau
+const fruits = ['Pomme', 'Poire', 'Banane'];
+fruits.forEach(fruit => {
+    console.log(fruit);
+});
+\end{lstlisting}
+
+\subsection{Fonctions}
+\begin{lstlisting}
+// Fonction nommee classique
+function somme(a, b) {
+    return a + b;
+}
+
+// Fonction flechee (Arrow Function - ES6)
+const carre = (x) => {
+    return x * x;
+};
+// Syntax courte si une seule ligne :
+const double = x => x * 2;
+\end{lstlisting}
+
+% ==========================================
+% PARTIE 4 : DOM & EVENTS
+% ==========================================
+\section{IV. JavaScript : DOM \& Events}
+
+\subsection{Sélection d'éléments (DOM)}
+\begin{lstlisting}
+// Selection unique (premier trouve)
+const titre = document.getElementById('main-title');
+const btn = document.querySelector('.btn-primary');
+
+// Selection multiple (NodeList)
+const liens = document.querySelectorAll('nav a');
+\end{lstlisting}
+
+\subsection{Manipulation du contenu et du style}
+\begin{lstlisting}
+const boite = document.querySelector('#box');
+
+// Lecture/Ecriture texte HTML
+boite.innerHTML = "<strong>Nouveau</strong> contenu";
+boite.textContent = "Texte brut uniquement";
+
+// Classes CSS
+boite.classList.add('active');
+boite.classList.remove('hidden');
+boite.classList.toggle('dark-mode');
+
+// Style direct
+boite.style.backgroundColor = "red";
+boite.style.display = "none";
+
+// Attributs HTML
+boite.setAttribute('title', 'Info-bulle');
+console.log(boite.getAttribute('href'));
+\end{lstlisting}
+
+\subsection{Gestion des événements (Events)}
+Méthode recommandée : \texttt{addEventListener}.
+
+\textbf{Principaux événements :}
+\begin{itemize}
+    \item \texttt{click}, \texttt{dblclick} (Souris)
+    \item \texttt{mouseover}, \texttt{mouseout} (Survol)
+    \item \texttt{input}, \texttt{change}, \texttt{submit} (Formulaires)
+    \item \texttt{keydown}, \texttt{keyup} (Clavier)
+    \item \texttt{DOMContentLoaded}, \texttt{load} (Chargement page)
+\end{itemize}
+
+\begin{lstlisting}
+const bouton = document.querySelector('#monBouton');
+
+bouton.addEventListener('click', function(event) {
+    // Empeche le comportement par defaut (ex: envoi formulaire)
+    event.preventDefault(); 
+    
+    alert("Bouton clique !");
+    console.log(event.target); // L'element clique
+});
+\end{lstlisting}
+
+\subsection{Création d'éléments dynamiques}
+\begin{lstlisting}
+// 1. Creation
+const newDiv = document.createElement('div');
+newDiv.textContent = "Je suis nouveau";
+
+// 2. Insertion
+const parent = document.querySelector('body');
+parent.appendChild(newDiv); 
+
+// Suppression
+// parent.removeChild(newDiv);
+\end{lstlisting}
+
+% ==========================================
+% PARTIE 5 : JS AVANCÉ (Objets)
+% ==========================================
+\section{V. JavaScript : Objets \& Tableaux}
+
+\subsection{Objet Littéral}
+\begin{lstlisting}
+const user = {
+    nom: "Dupont",
+    prenom: "Jean",
+    age: 25,
+    direBonjour: function() {
+        return "Salut " + this.prenom;
+    }
+};
+console.log(user.nom); // Acces propriete
+\end{lstlisting}
+
+\subsection{Tableaux et méthodes utiles}
+\begin{lstlisting}
+let tab = [10, 20, 30];
+
+tab.push(40);     // Ajoute a la fin
+tab.pop();        // Supprime dernier
+tab.length;       // Taille du tableau (3)
+tab.splice(0, 1); // Supprime 1 element a l'index 0
+\end{lstlisting}
+
+\subsection{Classes (POO ES6)}
+\begin{lstlisting}
+class Vehicule {
+    constructor(marque, couleur) {
+        this.marque = marque;
+        this.couleur = couleur;
+    }
+    
+    demarrer() {
+        console.log("Vrooom");
+    }
+}
+
+const maVoiture = new Vehicule("Peugeot", "Rouge");
+maVoiture.demarrer();
+\end{lstlisting}
+
+\end{multicols*}
+\end{document}

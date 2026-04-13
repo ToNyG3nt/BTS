@@ -1,0 +1,795 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage[breakable,skins]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usetikzlibrary{shapes.geometric, arrows, calc, positioning}
+\hypersetup{colorlinks=true, linkcolor=blue!50!black, urlcolor=blue!50!black}
+
+% ---------- Style ----------
+\setlist[itemize]{leftmargin=*, itemsep=2pt}
+\setlist[enumerate]{leftmargin=*, itemsep=3pt}
+
+\newtcolorbox{exobox}[1][]{
+  colback=blue!2,
+  colframe=blue!60!black,
+  boxrule=0.8pt,
+  arc=2mm,
+  left=6pt,right=6pt,top=6pt,bottom=6pt,
+  #1
+}
+
+\newtcolorbox{taskbox}[1][]{
+  colback=green!3,
+  colframe=green!50!black,
+  boxrule=0.8pt,
+  arc=2mm,
+  left=6pt,right=6pt,top=6pt,bottom=6pt,
+  title=\textbf{Travail demandé},
+  #1
+}
+
+\newtcolorbox{ansbox}[2][]{
+  colback=white,
+  colframe=black!55,
+  boxrule=0.6pt,
+  arc=1.5mm,
+  left=6pt,right=6pt,top=6pt,bottom=6pt,
+  title=\textbf{#2},
+  #1
+}
+
+\newcommand{\bigblank}[1]{\vspace{0.2cm}\rule{\linewidth}{0.4pt}\vspace{#1}}
+
+% Define TikZ styles for flowchart elements
+\tikzset{
+  startstop/.style = {rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!30},
+  io/.style        = {trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30},
+  process/.style   = {rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30},
+  decision/.style  = {diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30, aspect=2},
+  arrow/.style     = {thick,->,>=stealth},
+  rond/.style      = {circle, minimum width=1.5cm, minimum height=1.5cm, text centered, draw=black, fill=purple!30}
+}
+% ---------- Doc ----------
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{Feuille d’exercices — Affectations / Entrées-Sorties (BTS SIO)}}\\[4pt]
+{\large \textbf{Organigramme + Algorithme + Code Python}}\\[6pt]
+Nom : \rule{7cm}{0.4pt}\hfill Date : \rule{4cm}{0.4pt}
+\end{center}
+
+\begin{exobox}
+\textbf{Consigne générale :} Pour chaque exercice (sauf mention contraire), vous devez produire :
+\begin{itemize}
+  \item un \textbf{organigramme} (flowchart) clair et lisible ;
+  \item un \textbf{algorithme} en respectant la convention : \textit{Titre / Variables / Début...Fin} ;
+  \item le \textbf{code Python} correspondant (indentation correcte).
+\end{itemize}
+\textbf{Remarque :} Sur papier, l’organigramme peut être dessiné à la main dans la zone prévue.
+\end{exobox}
+
+% =========================================================
+\section*{2.1.1 Affectations}
+
+% ---------------- Ex 1 ----------------
+\begin{exobox}[title=\textbf{Exercice 1 — Jeu d’essai}]
+Après les affectations suivantes :
+\[
+\begin{array}{l}
+ A \leftarrow 1\\
+ B \leftarrow A + 1\\
+ A \leftarrow B + 2\\
+ B \leftarrow A + 2\\
+ A \leftarrow B + 3\\
+ B \leftarrow A + 3
+\end{array}
+\]
+Quelles sont les valeurs finales de \textbf{A} et de \textbf{B} ?
+\end{exobox}
+
+\begin{taskbox}
+\begin{enumerate}
+  \item Calculez à la main les valeurs finales de $A$ et $B$.
+  \item Donnez un organigramme, un algorithme, puis le code Python qui reproduit exactement ces affectations.
+  \item Affichez à la fin les valeurs de $A$ et $B$.
+\end{enumerate}
+\end{taskbox}
+
+\begin{ansbox}{Réponse attendue (calcul à la main)}
+\begin{itemize}
+    \item $A \leftarrow 1$ (A vaut 1)
+    \item $B \leftarrow A + 1$ (B vaut 1+1=2)
+    \item $A \leftarrow B + 2$ (A vaut 2+2=4)
+    \item $B \leftarrow A + 2$ (B vaut 4+2=6)
+    \item $A \leftarrow B + 3$ (A vaut 6+3=9)
+    \item $B \leftarrow A + 3$ (B vaut 9+3=12)
+\end{itemize}
+\textbf{Valeurs finales : A = 9, B = 12.}
+\end{ansbox}
+
+\begin{ansbox}{Organigramme}
+  
+\begin{tikzpicture}[node distance=1.5cm]
+\node (debut) [rond] {Début};
+\node (etape1) [process, below of=debut] {$A \leftarrow 1$};
+
+\node (etape2) [process, below of=etape1] {$B \leftarrow A + 1$};
+\node (etape3) [process, below of=etape2] {$A \leftarrow B + 2$};
+\node (etape4) [process, below of=etape3] {$B \leftarrow A + 2$};
+\node (etape5) [process, below of=etape4] {$A \leftarrow B + 3$};
+\node (etape6) [process, below of=etape5] {$B \leftarrow A + 3$};
+\node (afficherA) [io, below of=etape6] {Afficher "A = ", A};
+\node (afficherB) [io, below of=afficherA] {Afficher "B = ", B};
+\node (fin) [rond, below of=afficherB] {Fin};
+
+\draw[arrow] (debut) -- (etape1);
+\draw[arrow] (etape1) -- (etape2);
+\draw[arrow] (etape2) -- (etape3);
+\draw[arrow] (etape3) -- (etape4); 
+\draw[arrow] (etape4) -- (etape5);
+\draw[arrow] (etape5) -- (etape6);
+\draw[arrow] (etape6) -- (afficherA);
+\draw[arrow] (afficherA) -- (afficherB);
+\draw[arrow] (afficherB) -- (fin);
+
+\end{tikzpicture}
+\end{ansbox}
+
+\begin{ansbox}{Algorithme}
+\begin{verbatim}
+Algorithme JeuEssai
+Variables
+    A, B : Entier
+Début
+    A <- 1
+    B <- A + 1
+    A <- B + 2
+    B <- A + 2
+    A <- B + 3
+    B <- A + 3
+    Afficher "A = ", A
+    Afficher "B = ", B
+Fin
+\end{verbatim}
+\end{ansbox}
+
+\begin{ansbox}{Code Python}
+\begin{verbatim}
+A = 1
+B = A + 1
+A = B + 2
+B = A + 2
+A = B + 3
+B = A + 3
+print("A =", A)
+print("B =", B)
+\end{verbatim}
+\end{ansbox}
+
+% ---------------- Ex 2 ----------------
+\begin{exobox}[title=\textbf{Exercice 2 — Permutation des valeurs de 2 variables}]
+Quelle série d’instructions échange les valeurs des deux variables $A$ et $B$ (déjà initialisées) ?
+\end{exobox}
+
+\begin{taskbox}
+\begin{enumerate}
+  \item Proposez un algorithme de permutation en utilisant une \textbf{variable temporaire}.
+  \item Donnez l’organigramme.
+  \item Donnez le code Python correspondant.
+\end{enumerate}
+\end{taskbox}
+
+\begin{ansbox}{Organigramme}
+\begin{tikzpicture}[node distance=1.5cm]
+\node (debut) [rond] {Début};
+\node (etape1) [process, below of=debut] {Temp $\leftarrow$ A};
+\node (etape2) [process, below of=etape1] {A $\leftarrow$ B};
+\node (etape3) [process, below of=etape2] {B $\leftarrow$ Temp};
+\node (fin) [rond, below of=etape3] {Fin};   
+\draw [arrow] (debut) -- (etape1);
+\draw [arrow] (etape1) -- (etape2);
+\draw [arrow] (etape2) -- (etape3);
+\draw [arrow] (etape3) -- (fin);
+\end{tikzpicture}
+\end{ansbox}
+
+\begin{ansbox}{Algorithme}
+\begin{verbatim}
+Algorithme Permutation
+Variables
+    A, B, Temp : Entier
+Début
+    // A et B sont supposées initialisées
+    Temp <- A
+    A <- B
+    B <- Temp
+Fin
+\end{verbatim}
+\end{ansbox}
+
+\begin{ansbox}{Code Python}
+\begin{verbatim}
+A = 5
+B = 10
+print(f"Avant: A={A}, B={B}")
+temp = A
+A = B
+B = temp
+print(f"Après: A={A}, B={B}")
+\end{verbatim}
+\end{ansbox}
+
+% =========================================================
+\section*{2.1.2 Saisie, affichage, affectations}
+
+% ---------------- Ex 3 ----------------
+\begin{exobox}[title=\textbf{Exercice 3 — Nom et âge}]
+Saisir le nom et l’âge de l’utilisateur et afficher :\\
+\texttt{"Bonjour ..., tu as ... ans."}\\
+en remplaçant les \texttt{...} par le nom puis l’âge.
+\end{exobox}
+
+\begin{taskbox}
+\begin{enumerate}
+  \item Organigramme (entrées : nom, âge ; sortie : phrase).
+  \item Algorithme (déclarez les types).
+  \item Python (attention : \texttt{input()} renvoie du texte).
+\end{enumerate}
+\end{taskbox}
+
+\begin{ansbox}{Organigramme}
+\begin{tikzpicture}[node distance=1.5cm]
+    \node (debut) [rond] {Début};
+    \node (input1) [io, below of=debut] {Saisir nom};
+    \node (input2) [io, below of=input1] {Saisir age};
+    \node (output) [io, below of=input2] {Afficher "Bonjour ", nom, "..."};
+    \node (fin) [rond, below of=output] {Fin};
+    
+    \draw [arrow] (debut) -- (input1);
+    \draw [arrow] (input1) -- (input2);
+    \draw [arrow] (input2) -- (output);
+    \draw [arrow] (output) -- (fin);
+\end{tikzpicture}
+\end{ansbox}
+
+\begin{ansbox}{Algorithme}
+\begin{verbatim}
+Algorithme NomAge
+Variables
+    nom : Chaine
+    age : Entier
+Début
+    Afficher "Quel est votre nom ?"
+    Saisir nom
+    Afficher "Quel est votre âge ?"
+    Saisir age
+    Afficher "Bonjour ", nom, ", tu as ", age, " ans."
+Fin
+\end{verbatim}
+\end{ansbox}
+
+\begin{ansbox}{Code Python}
+\begin{verbatim}
+nom = str(input("Quel est votre nom ? "))
+age = int(input("Quel est votre âge ? "))
+print(f"Bonjour {nom}, tu as {age} ans.")
+\end{verbatim}
+\end{ansbox}
+
+% ---------------- Ex 4 ----------------
+\begin{exobox}[title=\textbf{Exercice 4 — Permutation de 2 variables saisies}]
+Saisir deux variables puis \textbf{les permuter} avant de les afficher.
+\end{exobox}
+
+\begin{taskbox}
+\begin{enumerate}
+  \item Organigramme.
+  \item Algorithme (avec variable temporaire).
+  \item Python.
+\end{enumerate}
+\end{taskbox}
+
+\begin{ansbox}{Organigramme}
+\begin{tikzpicture}[node distance=1.5cm]
+    \node (debut) [rond] {Début};
+    \node (input1) [io, below of=debut] {Saisir A};
+    \node (input2) [io, below of=input1] {Saisir B};
+    \node (proc1) [process, below of=input2] {Temp $\leftarrow$ A};
+    \node (proc2) [process, below of=proc1] {A $\leftarrow$ B};
+    \node (proc3) [process, below of=proc2] {B $\leftarrow$ Temp};
+    \node (output) [io, below of=proc3] {Afficher A, B};
+    \node (fin) [rond, below of=output] {Fin};
+    
+    \draw [arrow] (debut) -- (input1);
+    \draw [arrow] (input1) -- (input2);
+    \draw [arrow] (input2) -- (proc1);
+    \draw [arrow] (proc1) -- (proc2);
+    \draw [arrow] (proc2) -- (proc3);
+    \draw [arrow] (proc3) -- (output);
+    \draw [arrow] (output) -- (fin);
+\end{tikzpicture}
+\end{ansbox}
+
+\begin{ansbox}{Algorithme}
+\begin{verbatim}
+Algorithme PermutationSaisie
+Variables
+    A, B, Temp : Reel
+Début
+    Afficher "Saisir la valeur de A :"
+    Saisir A
+    Afficher "Saisir la valeur de B :"
+    Saisir B
+    Temp <- A
+    A <- B
+    B <- Temp
+    Afficher "Après permutation: A=", A, ", B=", B
+Fin
+\end{verbatim}
+\end{ansbox}
+
+\begin{ansbox}{Code Python}
+\begin{verbatim}
+A = int(input("Saisir la valeur de A : "))
+B = int(input("Saisir la valeur de B : "))
+print(f"Avant: A={A}, B={B}")
+A, B = B, A
+print(f"Après: A={A}, B={B}")
+\end{verbatim}
+\end{ansbox}
+
+% ---------------- Ex 5 ----------------
+\begin{exobox}[title=\textbf{Exercice 5 — Moyenne de 3 valeurs}]
+Saisir 3 valeurs, puis afficher leur moyenne.
+\end{exobox}
+
+\begin{taskbox}
+\begin{enumerate}
+  \item Organigramme.
+  \item Algorithme.
+  \item Python (choisissez le bon type : entier ou réel).
+\end{enumerate}
+\end{taskbox}
+
+\begin{ansbox}{Organigramme}
+\begin{tikzpicture}[node distance=1.5cm]
+    \node (debut) [rond] {Début};
+    \node (input1) [io, below of=debut] {Saisir v1};
+    \node (input2) [io, below of=input1] {Saisir v2};
+    \node (input3) [io, below of=input2] {Saisir v3};
+    \node (proc) [process, below of=input3] {moyenne $\leftarrow$ (v1+v2+v3)/3};
+    \node (output) [io, below of=proc] {Afficher moyenne};
+    \node (fin) [rond, below of=output] {Fin};
+    
+    \draw [arrow] (debut) -- (input1);
+    \draw [arrow] (input1) -- (input2);
+    \draw [arrow] (input2) -- (input3);
+    \draw [arrow] (input3) -- (proc);
+    \draw [arrow] (proc) -- (output);
+    \draw [arrow] (output) -- (fin);
+\end{tikzpicture}
+\end{ansbox}
+
+\begin{ansbox}{Algorithme}
+\begin{verbatim}
+Algorithme Moyenne
+Variables
+    v1, v2, v3, moyenne : Reel
+Début
+    Afficher "Saisir trois valeurs :"
+    Saisir v1, v2, v3
+    moyenne <- (v1 + v2 + v3) / 3
+    Afficher "La moyenne est : ", moyenne
+Fin
+\end{verbatim}
+\end{ansbox}
+
+\begin{ansbox}{Code Python}
+\begin{verbatim}
+v1 = float(input("Valeur 1: "))
+v2 = float(input("Valeur 2: "))
+v3 = float(input("Valeur 3: "))
+moyenne = (v1 + v2 + v3) / 3
+print("La moyenne est :", moyenne)
+\end{verbatim}
+\end{ansbox}
+
+% ---------------- Ex 6 ----------------
+\begin{exobox}[title=\textbf{Exercice 6 — Aire du rectangle}]
+Demander à l’utilisateur de saisir la longueur et la largeur d’un rectangle, puis afficher sa surface.
+\end{exobox}
+
+\begin{taskbox}
+\begin{enumerate}
+  \item Organigramme.
+  \item Algorithme.
+  \item Python.
+\end{enumerate}
+\end{taskbox}
+
+\begin{ansbox}{Organigramme}
+\begin{tikzpicture}[node distance=1.5cm]
+    \node (debut) [rond] {Début};
+    \node (input1) [io, below of=debut] {Saisir longueur};
+    \node (input2) [io, below of=input1] {Saisir largeur};
+    \node (proc) [process, below of=input2] {surface $\leftarrow$ longueur * largeur};
+    \node (output) [io, below of=proc] {Afficher surface};
+    \node (fin) [rond, below of=output] {Fin};
+    
+    \draw [arrow] (debut) -- (input1);
+    \draw [arrow] (input1) -- (input2);
+    \draw [arrow] (input2) -- (proc);
+    \draw [arrow] (proc) -- (output);
+    \draw [arrow] (output) -- (fin);
+\end{tikzpicture}
+\end{ansbox}
+
+\begin{ansbox}{Algorithme}
+\begin{verbatim}
+Algorithme AireRectangle
+Variables
+    longueur, largeur, surface : Reel
+Début
+    Afficher "Saisir la longueur :"
+    Saisir longueur
+    Afficher "Saisir la largeur :"
+    Saisir largeur
+    surface <- longueur * largeur
+    Afficher "La surface est : ", surface
+Fin
+\end{verbatim}
+\end{ansbox}
+
+\begin{ansbox}{Code Python}
+\begin{verbatim}
+longueur = float(input("Saisir la longueur : "))
+largeur = float(input("Saisir la largeur : "))
+surface = longueur * largeur
+print("La surface du rectangle est :", surface)
+\end{verbatim}
+\end{ansbox}
+
+% ---------------- Ex 7 ----------------
+\begin{exobox}[title=\textbf{Exercice 7 — Permutation de 4 valeurs}]
+Écrire un algorithme demandant à l’utilisateur de saisir 4 valeurs $A, B, C, D$ et qui permute :
+\[
+(A,B,C,D)\ \longrightarrow\ (C,D,A,B)
+\]
+Exemple : si l’utilisateur saisit $1,2,3,4$ alors on obtient $3,4,1,2$.
+\end{exobox}
+
+\begin{taskbox}
+\begin{enumerate}
+  \item Organigramme.
+  \item Algorithme (utilisez des temporaires si nécessaire).
+  \item Python.
+\end{enumerate}
+\end{taskbox}
+
+\begin{ansbox}{Organigramme}
+\begin{tikzpicture}[node distance=1.5cm]
+    \node (debut) [rond] {Début};
+    \node (input1) [io, below of=debut] {Saisir A, B, C, D};
+    \node (proc1) [process, below of=input1] {TempA $\leftarrow$ A};
+    \node (proc2) [process, below of=proc1] {TempB $\leftarrow$ B};
+    \node (proc3) [process, below of=proc2] {A $\leftarrow$ C};
+    \node (proc4) [process, below of=proc3] {B $\leftarrow$ D};
+    \node (proc5) [process, below of=proc4] {C $\leftarrow$ TempA};
+    \node (proc6) [process, below of=proc5] {D $\leftarrow$ TempB};
+    \node (output) [io, below of=proc6] {Afficher A, B, C, D};
+    \node (fin) [rond, below of=output] {Fin};
+    
+    \draw [arrow] (debut) -- (input1);
+    \draw [arrow] (input1) -- (proc1);
+    \draw [arrow] (proc1) -- (proc2);
+    \draw [arrow] (proc2) -- (proc3);
+    \draw [arrow] (proc3) -- (proc4);
+    \draw [arrow] (proc4) -- (proc5);
+    \draw [arrow] (proc5) -- (proc6);
+    \draw [arrow] (proc6) -- (output);
+    \draw [arrow] (output) -- (fin);
+\end{tikzpicture}
+\end{ansbox}
+
+\begin{ansbox}{Algorithme}
+\begin{verbatim}
+Algorithme Permutation4_CDBA
+Variables
+    A, B, C, D, TempA, TempB : Reel
+Début
+    Saisir A, B, C, D
+    TempA <- A
+    TempB <- B
+    A <- C
+    B <- D
+    C <- TempA
+    D <- TempB
+    Afficher A, B, C, D
+Fin
+\end{verbatim}
+\end{ansbox}
+
+\begin{ansbox}{Code Python}
+\begin{verbatim}
+A, B, C, D = 1, 2, 3, 4 # Exemple
+print(f"Avant: {(A,B,C,D)}")
+\end{verbatim}
+\end{ansbox}
+
+% ---------------- Ex 8 ----------------
+\begin{exobox}[title=\textbf{Exercice 8 — Permutation de 5 valeurs}]
+On considère la permutation :
+\[
+(A,B,C,D,E)\ \longrightarrow\ (D,C,E,A,B)
+\]
+Exemple : $1,2,3,4,5 \rightarrow 4,3,5,1,2$.
+\end{exobox}
+
+\begin{taskbox}
+\begin{enumerate}
+  \item Organigramme.
+  \item Algorithme.
+  \item Python.
+\end{enumerate}
+\end{taskbox}
+
+\begin{ansbox}{Organigramme}
+\begin{tikzpicture}[node distance=1.1cm]
+    \node (debut) [rond] {Début};
+    \node (input1) [io, below of=debut] {Saisir A, B, C, D, E};
+    \node (proc1) [process, below of=input1] {TempA $\leftarrow$ A};
+    \node (proc2) [process, below of=proc1] {TempB $\leftarrow$ B};
+    \node (proc3) [process, below of=proc2] {A $\leftarrow$ D};
+    \node (proc4) [process, below of=proc3] {B $\leftarrow$ C};
+    \node (proc5) [process, below of=proc4] {C $\leftarrow$ E};
+    \node (proc6) [process, below of=proc5] {D $\leftarrow$ TempA};
+    \node (proc7) [process, below of=proc6] {E $\leftarrow$ TempB};
+    \node (output) [io, below of=proc7] {Afficher A, B, C, D, E};
+    \node (fin) [rond, below of=output] {Fin};
+    
+    \draw [arrow] (debut) -- (input1);
+    \draw [arrow] (input1) -- (proc1);
+    \draw [arrow] (proc1) -- (proc2);
+    \draw [arrow] (proc2) -- (proc3);
+    \draw [arrow] (proc3) -- (proc4);
+    \draw [arrow] (proc4) -- (proc5);
+    \draw [arrow] (proc5) -- (proc6);
+    \draw [arrow] (proc6) -- (proc7);
+    \draw [arrow] (proc7) -- (output);
+    \draw [arrow] (output) -- (fin);
+\end{tikzpicture}
+\end{ansbox}
+
+\begin{ansbox}{Algorithme}
+\begin{verbatim}
+Algorithme Permutation5_DCEAB
+Variables
+    A, B, C, D, E, TempA, TempB : Reel
+Début
+    Saisir A, B, C, D, E
+    TempA <- A
+    TempB <- B
+    A <- D
+    B <- C
+    C <- E
+    D <- TempA
+    E <- TempB
+    Afficher A, B, C, D, E
+Fin
+\end{verbatim}
+\end{ansbox}
+
+\begin{ansbox}{Code Python}
+\begin{verbatim}
+A,B,C,D,E = 1,2,3,4,5 # Exemple
+print(f"Avant: {(A,B,C,D,E)}")
+A, B, C, D, E = D, C, E, A, B
+print(f"Après: {(A,B,C,D,E)}")
+\end{verbatim}
+\end{ansbox}
+
+% ---------------- Ex 9 ----------------
+\begin{exobox}[title=\textbf{Exercice 9 — Permutation ultime (6 valeurs)}]
+Même exercice avec :
+\[
+(A,B,C,D,E,F)\ \longrightarrow\ (C,D,E,A,F,B)
+\]
+Exemple : $1,2,3,4,5,6 \rightarrow 3,4,5,1,6,2$.
+\end{exobox}
+
+\begin{taskbox}
+\begin{enumerate}
+  \item Organigramme.
+  \item Algorithme.
+  \item Python.
+\end{enumerate}
+\end{taskbox}
+
+\begin{ansbox}{Organigramme}
+\begin{tikzpicture}[node distance=1.3cm]
+    \node (debut) [rond] {Début};
+    \node (input1) [io, below of=debut] {Saisir A, B, C, D, E, F};
+    \node (proc1) [process, below of=input1] {TempA $\leftarrow$ A};
+    \node (proc2) [process, below of=proc1] {TempB $\leftarrow$ B};
+    \node (proc3) [process, below of=proc2] {A $\leftarrow$ C};
+    \node (proc4) [process, below of=proc3] {B $\leftarrow$ D};
+    \node (proc5) [process, below of=proc4] {C $\leftarrow$ E};
+    \node (proc6) [process, below of=proc5] {D $\leftarrow$ TempA};
+    \node (proc7) [process, below of=proc6] {E $\leftarrow$ F};
+    \node (proc8) [process, below of=proc7] {F $\leftarrow$ TempB};
+    \node (output) [io, below of=proc8] {Afficher A, B, C, D, E, F};
+    \node (fin) [rond, below of=output] {Fin};
+    
+    \draw [arrow] (debut) -- (input1);
+    \draw [arrow] (input1) -- (proc1);
+    \draw [arrow] (proc1) -- (proc2);
+    \draw [arrow] (proc2) -- (proc3);
+    \draw [arrow] (proc3) -- (proc4);
+    \draw [arrow] (proc4) -- (proc5);
+    \draw [arrow] (proc5) -- (proc6);
+    \draw [arrow] (proc6) -- (proc7);
+    \draw [arrow] (proc7) -- (proc8);
+    \draw [arrow] (proc8) -- (output);
+    \draw [arrow] (output) -- (fin);
+\end{tikzpicture}
+\end{ansbox}
+
+\begin{ansbox}{Algorithme}
+\begin{verbatim}
+Algorithme Permutation6_CDEAFB
+Variables
+    A,B,C,D,E,F,TempA,TempB : Reel
+Début
+    Saisir A, B, C, D, E, F
+    TempA <- A
+    TempB <- B
+    A <- C
+    B <- D
+    C <- E
+    D <- TempA
+    E <- F
+    F <- TempB
+    Afficher A, B, C, D, E, F
+Fin
+\end{verbatim}
+\end{ansbox}
+
+\begin{ansbox}{Code Python}
+\begin{verbatim}
+A,B,C,D,E,F = 1,2,3,4,5,6 # Exemple
+print(f"Avant: {(A,B,C,D,E,F)}")
+A, B, C, D, E, F = C, D, E, A, F, B
+print(f"Après: {(A,B,C,D,E,F)}")
+\end{verbatim}
+\end{ansbox}
+\clearpage
+
+% ---------------- Ex 10 ----------------
+\begin{exobox}[title=\textbf{Exercice 10 — Pièces de monnaie (rendu de monnaie)}]
+On dispose d’un nombre illimité de pièces de \textbf{0,50} ; \textbf{0,20} ; \textbf{0,10} ; \textbf{0,05} ; \textbf{0,02} ; \textbf{0,01} euros.
+Pour une somme $S$, on veut payer avec un \textbf{nombre minimal de pièces}.
+Exemple : $0{,}96$ euro $\rightarrow$ $1\times 0{,}50$, $2\times 0{,}20$, $1\times 0{,}05$, $1\times 0{,}01$.
+\end{exobox}
+
+\begin{taskbox}
+\begin{enumerate}
+  \item Expliquez (sans formalisme excessif) l’idée intuitive qui justifie qu’on prend toujours la plus grande pièce possible, puis on continue avec le reste.
+  \item Écrire un algorithme demandant à l’utilisateur de saisir une valeur $S \ge 0$, puis afficher le détail des pièces (quantités) pour payer $S$ avec un minimum de pièces.
+\end{enumerate}
+
+\textbf{Conseil important :} Pour éviter les erreurs de virgule, travaillez en \textbf{centimes} (entier) :
+\[
+S_{\text{cent}} = \text{arrondi}(100 \times S)
+\]
+Puis utilisez des pièces en centimes : 50, 20, 10, 5, 2, 1.
+\end{taskbox}
+
+\begin{ansbox}{Explication (idée intuitive)}
+Pour minimiser le nombre total de pièces, il faut maximiser la valeur de chaque pièce choisie. C’est un algorithme "glouton". On prend la plus grande pièce possible (50c) autant de fois que possible. Avec le reste, on recommence avec la pièce la plus grande suivante (20c), et ainsi de suite. Ce système fonctionne car les valeurs des pièces sont choisies pour permettre de former n’importe quelle somme de manière optimale avec cette méthode.
+\end{ansbox}
+
+\begin{ansbox}{Organigramme}
+\begin{tikzpicture}[node distance=1.3cm]
+    \node (debut) [rond] {Début};
+    \node (input1) [io, below of=debut] {Saisir $S_{\text{euro}}$};
+    \node (proc1) [process, below of=input1] {$S_{\text{cent}} \leftarrow \text{Arrondi}(S_{\text{euro}} \times 100)$};
+    \node (proc2) [process, below of=proc1] {reste $\leftarrow S_{\text{cent}}$};
+    \node (proc3) [process, below of=proc2] {p50 $\leftarrow$ reste // 50};
+    \node (proc4) [process, below of=proc3] {reste $\leftarrow$ reste \% 50};
+    \node (proc5) [process, below of=proc4] {p20 $\leftarrow$ reste // 20};
+    \node (proc6) [process, below of=proc5] {reste $\leftarrow$ reste \% 20};
+    \node (proc7) [process, below of=proc6] {p10 $\leftarrow$ reste // 10};
+    \node (proc8) [process, below of=proc7] {reste $\leftarrow$ reste \% 10};
+    \node (proc9) [process, below of=proc8] {p5 $\leftarrow$ reste // 5};
+    \node (proc10) [process, below of=proc9] {reste $\leftarrow$ reste \% 5};
+    \node (proc11) [process, below of=proc10] {p2 $\leftarrow$ reste // 2};
+    \node (proc12) [process, below of=proc11] {reste $\leftarrow$ reste \% 2};
+    \node (proc13) [process, below of=proc12] {p1 $\leftarrow$ reste};
+    \node (output) [io, below of=proc13] {Afficher p50, p20, p10, p5, p2, p1};
+    \node (fin) [rond, below of=output] {Fin};
+    
+    \draw [arrow] (debut) -- (input1);
+    \draw [arrow] (input1) -- (proc1);
+    \draw [arrow] (proc1) -- (proc2);
+    \draw [arrow] (proc2) -- (proc3);
+    \draw [arrow] (proc3) -- (proc4);
+    \draw [arrow] (proc4) -- (proc5);
+    \draw [arrow] (proc5) -- (proc6);
+    \draw [arrow] (proc6) -- (proc7);
+    \draw [arrow] (proc7) -- (proc8);
+    \draw [arrow] (proc8) -- (proc9);
+    \draw [arrow] (proc9) -- (proc10);
+    \draw [arrow] (proc10) -- (proc11);
+    \draw [arrow] (proc11) -- (proc12);
+    \draw [arrow] (proc12) -- (proc13);
+    \draw [arrow] (proc13) -- (output);
+    \draw [arrow] (output) -- (fin);
+\end{tikzpicture}
+\end{ansbox}
+
+\begin{ansbox}{Algorithme}
+\begin{verbatim}
+Algorithme RenduMonnaie
+Variables
+    S_euro : Reel
+    S_cent, reste : Entier
+    p50, p20, p10, p5, p2, p1 : Entier
+Début
+    Afficher "Saisir la somme S en euros :"
+    Saisir S_euro
+    
+    S_cent <- Arrondi(S_euro * 100)
+    reste <- S_cent
+    
+    p50 <- reste DIV 50
+    reste <- reste MOD 50
+    p20 <- reste DIV 20
+    reste <- reste MOD 20
+    p10 <- reste DIV 10
+    reste <- reste MOD 10
+    p5 <- reste DIV 5
+    reste <- reste MOD 5
+    p2 <- reste DIV 2
+    p1 <- reste MOD 2
+    
+    Afficher S_cent, " centimes ="
+    Afficher p50,"x50c, ",p20,"x20c, ",p10,"x10c, "
+    Afficher p5,"x5c, ",p2,"x2c, ",p1,"x1c"
+Fin
+\end{verbatim}
+\end{ansbox}
+
+\begin{ansbox}{Code Python}
+\begin{verbatim}
+import math
+
+s_euro = float(input("Entrez la somme en euros: "))
+s_cent = int(round(s_euro * 100))
+reste = s_cent
+
+pieces = [50, 20, 10, 5, 2, 1]
+rendu = {}
+
+for p in pieces:
+    nb_pieces = reste // p
+    if nb_pieces > 0:
+        rendu[p] = nb_pieces
+    reste %= p
+
+print(f"{s_cent} centimes se décompose en :")
+for p, nb in rendu.items():
+    print(f"- {nb} pièce(s) de {p} centimes")
+
+\end{verbatim}
+\end{ansbox}
+
+\end{document}

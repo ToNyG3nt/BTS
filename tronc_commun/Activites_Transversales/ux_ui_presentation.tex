@@ -1,0 +1,152 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+% --- THÈME ET POLICES ---
+\usetheme{Boadilla}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+
+% --- COULEURS PERSONNALISÉES ---
+\definecolor{mainText}{HTML}{2d3748}
+\definecolor{mainBlue}{HTML}{AED6F1}
+\definecolor{strongBlue}{HTML}{2b6cb0}
+\definecolor{pastelRose}{HTML}{F4C7D8}
+\definecolor{pastelJaune}{HTML}{F9E79F}
+
+% --- APPLICATION DES COULEURS ---
+\setbeamercolor{title}{fg=mainText}
+\setbeamercolor{frametitle}{bg=mainBlue, fg=mainText}
+\setbeamercolor{palette primary}{bg=mainText}
+\setbeamercolor{structure}{fg=strongBlue} % Couleur des titres de section, etc.
+
+% Redéfinition de \textbf pour utiliser la couleur "strong"
+\let\oldtextbf\textbf
+\renewcommand{\textbf}[1]{{\color{strongBlue}\oldtextbf{#1}}}
+
+
+%--- METADONNÉES ---
+\title{Conception UX/UI - Application Cyber-Harcèlement}
+\subtitle{Justification des choix graphiques et ergonomiques}
+\author{Cible : Enfants 6-11 ans}
+\institute{Briffard Anna, Dupouët Camille, Gadille Arnaud, Mignard Maël, Trichard Joan}
+\date{\today}
+
+\begin{document}
+
+% --- SLIDE DE TITRE ---
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% --- INTRODUCTION ---
+\section{Introduction du Projet}
+\begin{frame}{Contexte et Objectifs}
+  \begin{block}{Contexte du projet}
+    Développement d'une application de sensibilisation au cyber-harcèlement dans le cadre du BTS SIO.
+  \end{block}
+  
+  \begin{block}{Objectif Principal}
+    Créer une interface \textbf{rassurante et ludique} pour libérer la parole des enfants (6-11 ans) et éduquer sans traumatiser.
+  \end{block}
+
+  \begin{alertblock}{Problématique UX}
+    Comment traiter un sujet grave (harcèlement) avec une cible jeune sans générer d'anxiété ?
+  \end{alertblock}
+\end{frame}
+
+% --- CHARTE GRAPHIQUE ---
+\section{La Charte Graphique}
+\begin{frame}{Psychologie des Couleurs}
+  \begin{block}{Une palette Pastel}
+    Choix d'une palette douce pour réduire la charge cognitive et l'agressivité visuelle.
+  \end{block}
+  
+  \begin{columns}[T]
+    \begin{column}{.33\textwidth}
+      \begin{beamercolorbox}[sep=1em, wd=\textwidth,
+      rounded=true, shadow=true]{block body,bg=pastelRose}
+        \centering
+        \textbf{Confiance}\\ (Rose)
+      \end{beamercolorbox}
+    \end{column}
+    \begin{column}{.33\textwidth}
+      \begin{beamercolorbox}[sep=1em, wd=\textwidth,
+      rounded=true, shadow=true]{block body,bg=pastelJaune}
+        \centering
+        \textbf{Éveil}\\ (Jaune)
+      \end{beamercolorbox}
+    \end{column}
+    \begin{column}{.33\textwidth}
+      \begin{beamercolorbox}[sep=1em, wd=\textwidth,
+      rounded=true, shadow=true]{block body,bg=mainBlue}
+        \centering
+        \textbf{Sécurité}\\ (Bleu)
+      \end{beamercolorbox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% --- NAVIGATION ---
+\section{Navigation : Le concept du "Hub"}
+\begin{frame}{Le menu "Fleur"}
+    \begin{block}{Interface}
+        Menu principal en forme de fleur où chaque "pétale" est une option.
+    \end{block}
+    
+    \begin{alertblock}{Justification UX}
+        \begin{itemize}
+            \item \textbf{Réduction du temps de décision :} Toutes les options sont visibles immédiatement.
+            \item \textbf{Pas de menus cachés :} Adapté aux enfants qui ont une maturité numérique limitée.
+            \item \textbf{Zones de clic larges :} Les "pétales" facilitent l'usage tactile.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+% --- ECRANS ---
+\section{Analyse des Écrans}
+\begin{frame}{Écrans d'Activité et Contenu}
+    \begin{columns}[T]
+        \begin{column}{.5\textwidth}
+            \begin{block}{Le Jeu (Ludification)}
+                \begin{itemize}
+                    \item \textbf{Feedback immédiat :} Valide les réponses avec des couleurs douces.
+                    \item \textbf{Engagement :} Fait passer des messages de prévention de manière ludique.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \begin{block}{La Lecture (Information)}
+                \begin{itemize}
+                    \item \textbf{Hiérarchie en Z :} Image -> Titre -> Texte court.
+                    \item \textbf{Charge mentale réduite :} Un seul message clé par écran.
+                    \item \textbf{Typographie lisible :} Police sans-serif adaptée aux jeunes lecteurs.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Écran d'Aide (Signalement)}
+    \begin{alertblock}{Analyse UX (Design Émotionnel)}
+        \begin{itemize}
+            \item \textbf{Rassurance :} Interface très épurée pour ne pas distraire l'enfant.
+            \item \textbf{Wording (Mots choisis) :} Vocabulaire simple et direct ("Je veux parler") au lieu de termes techniques ("Formulaire de contact").
+            \item \textbf{Absence de Rouge :} On évite le code couleur "Danger" pour encourager la demande d'aide sans peur.
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+% --- CONCLUSION ---
+\section{Conclusion}
+\begin{frame}{Synthèse}
+    \begin{block}{Deux impératifs}
+        L'architecture de l'application et les choix de design répondent à :
+        \begin{itemize}
+            \item \textbf{Technique :} Une structure modulaire simple et maintenable.
+            \item \textbf{Utilisateur :} Une interface bienveillante ("Care Design") qui transforme une procédure de signalement en une expérience sécurisante.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\end{document}

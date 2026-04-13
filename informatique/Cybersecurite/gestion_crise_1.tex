@@ -1,0 +1,94 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+\title{\textbf{Exercice : Gestion de crise Cyber}}
+\author{Maël - BTS SIO}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Partie 1 -- Analyse de la situation}
+
+\subsection*{Type d'attaque}
+Il s'agit d'un \textbf{Rançongiciel} (ou Ransomware). Un pirate a verrouillé les fichiers pour demander de l'argent.
+
+\subsection*{Deux symptômes visibles}
+\begin{itemize}
+    \item Des fichiers affichent une extension étrange (ex : \texttt{.locked}).
+    \item Un message apparaît sur les postes demandant de payer une rançon.
+\end{itemize}
+
+\subsection*{Deux risques majeurs pour l'entreprise}
+\begin{itemize}
+    \item \textbf{Perte d'accès aux fichiers et blocage du travail :} L'entreprise ne peut plus fonctionner car les documents sont illisibles.
+    \item \textbf{Perte financière :} Coût de la rançon (si payée) et coût lié à l'arrêt de la production.
+\end{itemize}
+
+\section{Partie 2 -- Réactions immédiates}
+
+\subsection*{3 premières actions d'urgence (Confinement)}
+\begin{enumerate}
+    \item \textbf{Couper immédiatement tous les réseaux :} Débrancher les câbles réseau des postes et des serveurs pour empêcher la propagation.
+    \item \textbf{Identifier les postes infectés :} Noter quels postes affichent le message de rançon.
+    \item \textbf{Vérifier les sauvegardes :} S'assurer que les copies sont saines et déconnectées du réseau.
+\end{enumerate}
+
+\subsection*{Pourquoi ne pas payer la rançon ?}
+\begin{itemize}
+    \item Rien ne garantit que les pirates fourniront la clé de déchiffrement après le paiement.
+    \item Payer finance les criminels et vous désigne comme une cible facile pour une future attaque.
+\end{itemize}
+
+\subsection*{Services internes à prévenir en priorité}
+\begin{itemize}
+    \item La Direction (Chef d'entreprise).
+    \item Le service Comptabilité/Finances (pour la gestion du risque financier).
+    \item L'ensemble des employés (pour stopper toute utilisation des postes).
+\end{itemize}
+
+\section{Partie 3 -- Communication de crise}
+
+\subsection*{Message aux employés}
+
+\begin{center}
+    \fbox{
+        \begin{minipage}{0.9\textwidth}
+            \textbf{OBJET : CONSIGNE URGENTE DE SÉCURITÉ} \\
+            
+            Nous sommes victimes d'une cyberattaque. Veuillez \textbf{éteindre immédiatement votre ordinateur} (bouton d'alimentation) et ne plus le rallumer. 
+            
+            N'essayez pas d'accéder à vos fichiers. Le service informatique prend les mesures nécessaires. Nous vous tiendrons informés dès que possible de la reprise du travail. 
+            
+            Merci de votre coopération.
+        \end{minipage}
+    }
+\end{center}
+
+\subsection*{2 acteurs extérieurs à informer (Légal)}
+\begin{itemize}
+    \item \textbf{La CNIL :} Obligatoire si des données personnelles (clients ou employés) sont touchées.
+    \item \textbf{L'ANSSI ou Cybermalveillance.gouv.fr :} Pour le signalement technique et l'assistance.
+\end{itemize}
+
+\section{Partie 4 -- Remédiation et prévention}
+
+\subsection*{Comment vérifier si les sauvegardes sont exploitables ?}
+\begin{itemize}
+    \item \textbf{Vérifier la date :} S'assurer qu'elles sont assez récentes pour limiter la perte de données.
+    \item \textbf{Tester la restauration :} Essayer de restaurer un fichier sur un système isolé (hors réseau) pour vérifier qu'il est lisible et non chiffré.
+\end{itemize}
+
+\subsection*{3 mesures pour réduire le risque de récidive}
+\begin{itemize}
+    \item \textbf{Mots de passe forts et MFA :} Activer la double authentification pour protéger les accès distants et les comptes administrateurs.
+    \item \textbf{Sauvegardes déconnectées :} Conserver une copie des données hors ligne (disque dur externe, bande) inaccessible au virus.
+    \item \textbf{Sensibilisation des employés :} Former le personnel à détecter le hameçonnage (phishing) et les pièces jointes suspectes.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTS SIO JPO - Contact</title>
+    <link rel="icon" href="assets/images/sio.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="assets/images/baniere.png" data-light-src="assets/images/baniere.png" data-dark-src="assets/images/baniere_dark.png" alt="Bannière BTS SIO" style="width:100%;">
+        </div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="formations.html">Formations</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="dark-mode-item"><button id="darkModeToggle">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <h2>Nous Contacter</h2>
+            <form id="contact-form">
+                <label for="nom">Nom (obligatoire) :</label>
+                <input type="text" id="nom" name="nom" required>
+
+                <label for="email">Email (obligatoire) :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Sujet :</label>
+                <select id="subject" name="subject">
+                    <option value="information">Information</option>
+                    <option value="question">Question</option>
+                    <option value="support">Support</option>
+                    <option value="other">Autre</option>
+                </select>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>My-Digital-School - <span id="current-year"></span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

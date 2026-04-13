@@ -1,0 +1,265 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% TikZ libraries for flowcharts
+\usetikzlibrary{shapes.geometric, arrows, calc, positioning}
+
+\geometry{
+    hmargin=2.5cm,
+    vmargin=2.5cm
+}
+
+% Define TikZ styles for flowchart elements
+\tikzset{
+    startstop/.style = {rectangle, rounded corners, minimum width=3cm, minimum height=1cm, align=center, draw=black, fill=red!30},
+    io/.style = {trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, align=center, draw=black, fill=blue!30},
+    process/.style = {rectangle, minimum width=3cm, minimum height=1cm, align=center, draw=black, fill=orange!30},
+    decision/.style = {diamond, minimum width=3cm, minimum height=1cm, align=center, draw=black, fill=green!30, aspect=2},
+    arrow/.style = {thick,->,>=stealth}
+}
+
+\title{TD2 - Construction d'organigrammes}
+\author{Adel HACHACHE}
+\date{3 décembre 2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Exercice 1: Calcul du discriminant}
+
+\paragraph{Énoncé}
+Créer un organigramme pour résoudre une équation quadratique \(ax^2 + bx + c = 0\).
+
+\begin{center}
+\makebox[\textwidth]{
+\resizebox{\textwidth}{!}{
+\begin{tikzpicture}[node distance=1.5cm and 2cm]
+    \node (start) [startstop] {Début};
+    \node (in1)   [io, below=of start] {Saisir a, b, c};
+    \node (proc1) [process, below=of in1] {\(\Delta \leftarrow b^2 - 4ac\)};
+    \node (dec1)  [decision, below=of proc1, yshift=-0.5cm] {\(\Delta > 0\) ?};
+    
+    % Branche Delta > 0
+    \node (proc_gt) [process, right=of dec1] {\(x_1, x_2 \leftarrow \frac{-b \pm \sqrt{\Delta}}{2a}\)};
+    \node (out_gt) [io, below=of proc_gt] {Afficher \(x_1, x_2\)};
+    
+    % Branche Delta = 0 ou Delta < 0
+    \node (dec2)  [decision, left=of dec1] {\(\Delta = 0\) ?};
+    
+    % Branche Delta = 0
+    \node (proc_eq) [process, below=of dec2] {\(x_0 \leftarrow \frac{-b}{2a}\)};
+    \node (out_eq) [io, below=of proc_eq] {Afficher \(x_0\)};
+
+    % Branche Delta < 0
+    \node (out_lt) [io, left=of dec2] {Afficher "Solutions complexes"};
+    
+    % Fin
+    \node (stop) [startstop, below=of dec1, yshift=-6cm] {Fin};
+    
+    % Flèches
+    \draw [arrow] (start) -- (in1);
+    \draw [arrow] (in1) -- (proc1);
+    \draw [arrow] (proc1) -- (dec1);
+    
+    % Chemin Delta > 0
+    \draw [arrow] (dec1.east) -- node[above] {Oui} (proc_gt);
+    \draw [arrow] (proc_gt) -- (out_gt);
+    \draw [arrow] (out_gt) |- (stop);
+    
+    % Chemin vers Delta = 0?
+    \draw [arrow] (dec1.west) -- node[above] {Non} (dec2);
+    
+    % Chemin Delta = 0
+    \draw [arrow] (dec2.south) -- node[left] {Oui} (proc_eq);
+    \draw [arrow] (proc_eq) -- (out_eq);
+    \draw [arrow] (out_eq) -- (stop);
+    
+    % Chemin Delta < 0
+    \draw [arrow] (dec2.west) -- node[above] {Non} (out_lt);
+    \draw [arrow] (out_lt) |- (stop);
+\end{tikzpicture}
+}
+}
+\end{center}
+
+\newpage
+
+\section*{Exercice 2: Conversion de température}
+
+\begin{center}
+\makebox[\textwidth]{
+\resizebox{\textwidth}{!}{
+\begin{tikzpicture}[node distance=1.5cm and 2cm]
+    \node (start) [startstop] {Début};
+    \node (in1) [io, below=of start] {Saisir Température C};
+    \node (in2) [io, below=of in1] {Saisir Choix (1=F, 2=K)};
+    \node (dec1) [decision, below=of in2, yshift=-0.5cm] {Choix = 1 ?};
+
+    % Branche Fahrenheit
+    \node (proc_f) [process, right=of dec1] {\(F \leftarrow C \times \frac{9}{5} + 32\)};
+    \node (out_f) [io, below=of proc_f] {Afficher F};
+
+    % Branche Kelvin ou Invalide
+    \node (dec2) [decision, left=of dec1] {Choix = 2 ?};
+    
+    % Branche Kelvin
+    \node (proc_k) [process, below=of dec2] {\(K \leftarrow C + 273.15\)};
+    \node (out_k) [io, below=of proc_k] {Afficher K};
+    
+    % Branche invalide
+    \node (out_err) [io, left=of dec2] {Afficher "Erreur: choix invalide"};
+
+    % Fin
+    \node (stop) [startstop, below=of dec1, yshift=-5cm] {Fin};
+
+    % Flèches
+    \draw [arrow] (start) -- (in1);
+    \draw [arrow] (in1) -- (in2);
+    \draw [arrow] (in2) -- (dec1);
+
+    % Vers F
+    \draw [arrow] (dec1.east) -- node[above] {Oui} (proc_f);
+    \draw [arrow] (proc_f) -- (out_f);
+    \draw [arrow] (out_f) |- (stop);
+
+    % Vers dec2
+    \draw [arrow] (dec1.west) -- node[above] {Non} (dec2);
+    
+    % Vers K
+    \draw [arrow] (dec2.south) -- node[left] {Oui} (proc_k);
+    \draw [arrow] (proc_k) -- (out_k);
+    \draw [arrow] (out_k) -- (stop);
+
+    % Vers Erreur
+    \draw [arrow] (dec2.west) -- node[above] {Non} (out_err);
+    \draw [arrow] (out_err) |- (stop);
+\end{tikzpicture}
+}
+}
+\end{center}
+
+\newpage
+
+\section*{Exercice 3: Calcul des aires de figures géométriques}
+
+\begin{center}
+\makebox[\textwidth]{
+\resizebox{\textwidth}{!}{
+\begin{tikzpicture}[node distance=1.2cm and 0.5cm]
+    \node (start) [startstop] {Début};
+    \node (in1) [io, below=of start, yshift=-0.5cm] {Afficher Menu \& Saisir Choix};
+    
+    \node (dec_rect) [decision, below=of in1, yshift=-1cm] {Rectangle ?};
+    \node (dec_cerc) [decision, right=of dec_rect, xshift=4cm] {Cercle ?};
+    \node (dec_tri) [decision, right=of dec_cerc, xshift=4cm] {Triangle ?};
+    \node (dec_trap) [decision, right=of dec_tri, xshift=4cm] {Trapèze ?};
+
+    \node (proc_rect) [process, below=of dec_rect, yshift=-0.5cm] {Saisir L, l Aire $\leftarrow$ L $\times$ l};
+    \node (proc_cerc) [process, below=of dec_cerc, yshift=-0.5cm] {Saisir r Aire $\leftarrow$ $\pi \times r^2$};
+    \node (proc_tri) [process, below=of dec_tri, yshift=-0.5cm] {Saisir b, h Aire $\leftarrow$ (b $\times$ h)/2};
+    \node (proc_trap) [process, below=of dec_trap, yshift=-0.5cm] {Saisir b1, b2, h Aire $\leftarrow$ ((b1+b2)h)/2};
+    
+    \node (out_err) [io, left=of dec_rect, xshift=-4cm] {Afficher "Erreur"};
+
+    \node (out) [io, below=of proc_cerc, yshift=-2.5cm, xshift=2cm] {Afficher Aire};
+    \node (stop) [startstop, below=of out] {Fin};
+    
+    % Flèches
+    \draw [arrow] (start) -- (in1);
+    \draw [arrow] (in1) -- (dec_rect);
+    
+    \draw [arrow] (dec_rect.east) -- node[above] {Non} (dec_cerc);
+    \draw [arrow] (dec_cerc.east) -- node[above] {Non} (dec_tri);
+    \draw [arrow] (dec_tri.east) -- node[above] {Non} (dec_trap);
+
+    \draw [arrow] (dec_rect.south) -- node[left] {Oui} (proc_rect);
+    \draw [arrow] (dec_cerc.south) -- node[left] {Oui} (proc_cerc);
+    \draw [arrow] (dec_tri.south) -- node[left] {Oui} (proc_tri);
+    \draw [arrow] (dec_trap.south) -- node[right] {Oui} (proc_trap);
+
+    \draw [arrow] (dec_trap.east) -| node[above,pos=0.1] {Non} (out_err);
+    \draw [arrow] (dec_rect.west) -| node[above,pos=0.1] {Choix invalide} (out_err);
+
+    \draw [arrow] (proc_rect) -- (out);
+    \draw [arrow] (proc_cerc) -- (out);
+    \draw [arrow] (proc_tri) -- (out);
+    \draw [arrow] (proc_trap) -- (out);
+
+    \draw [arrow] (out) -- (stop);
+    \draw [arrow] (out_err) |- (stop);
+\end{tikzpicture}
+}
+}
+\end{center}
+
+\newpage
+
+\section*{Exercice 4: Calculatrice d\'opérations de base}
+
+\begin{center}
+\makebox[\textwidth]{
+\resizebox{\textwidth}{!}{
+\begin{tikzpicture}[node distance=1.5cm and 0.8cm]
+    \node (start) [startstop] {Début};
+    \node (in1) [io, below=of start] {Saisir Opération (+, -, *, /)};
+    \node (in2) [io, below=of in1] {Saisir x, y};
+
+    \node (dec_add) [decision, below=of in2, yshift=-1cm] {Op = '+'?};
+    \node (dec_sub) [decision, right=of dec_add, xshift=3.5cm] {Op = '-'?};
+    \node (dec_mul) [decision, right=of dec_sub, xshift=3.5cm] {Op = '*'?};
+    \node (dec_div) [decision, right=of dec_mul, xshift=3.5cm] {Op = '/'?};
+    
+    \node (proc_add) [process, below=of dec_add] {res $\leftarrow$ x + y};
+    \node (proc_sub) [process, below=of dec_sub] {res $\leftarrow$ x - y};
+    \node (proc_mul) [process, below=of dec_mul] {res $\leftarrow$ x * y};
+
+    % Division
+    \node (dec_y) [decision, below=of dec_div] {y = 0?};
+    \node (out_div_err) [io, right=of dec_y, xshift=2.5cm] {Afficher "Div/0 Erreur"};
+    \node (proc_div) [process, below=of dec_y] {res $\leftarrow$ x / y};
+    
+    \node (out_err) [io, right=of dec_div, xshift=4.5cm] {Afficher "Op. invalide"};
+
+    \node (out) [io, below=of proc_add, yshift=-2.5cm] {Afficher res};
+    \node (stop) [startstop, below=of out] {Fin};
+
+    \draw [arrow] (start) -- (in1);
+    \draw [arrow] (in1) -- (in2);
+    \draw [arrow] (in2) -- (dec_add);
+
+    \draw [arrow] (dec_add.east) -- node[above] {Non} (dec_sub);
+    \draw [arrow] (dec_sub.east) -- node[above] {Non} (dec_mul);
+    \draw [arrow] (dec_mul.east) -- node[above] {Non} (dec_div);
+    \draw [arrow] (dec_div.east) -- node[above] {Non} (out_err);
+
+    \draw [arrow] (dec_add.south) -- node[left] {Oui} (proc_add);
+    \draw [arrow] (dec_sub.south) -- node[left] {Oui} (proc_sub);
+    \draw [arrow] (dec_mul.south) -- node[left] {Oui} (proc_mul);
+    \draw [arrow] (dec_div.south) -- node[right] {Oui} (dec_y);
+    
+    \draw [arrow] (dec_y.east) -- node[above] {Oui} (out_div_err);
+    \draw [arrow] (dec_y.south) -- node[left] {Non} (proc_div);
+    
+    \draw [arrow] (proc_add) -- (out);
+    \draw [arrow] (proc_sub) -- (out);
+    \draw [arrow] (proc_mul) -- (out);
+    \draw [arrow] (proc_div) -- (out);
+
+    \draw [arrow] (out) -- (stop);
+    \draw [arrow] (out_err) |- (stop);
+    \draw [arrow] (out_div_err) |- (stop);
+    
+\end{tikzpicture}
+}
+}
+\end{center}
+
+
+\end{document}

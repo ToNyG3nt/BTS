@@ -1,0 +1,78 @@
+{
+  "HTML5 Basic Structure": {
+    "prefix": "html5",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"en\">",
+      "<head>",
+      "  <meta charset=\"UTF-8\">
+      "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+      "  <title>${1:Document}</title>",
+      "</head>",
+      "<body>",
+      "  $0",
+      "</body>",
+      "</html>"
+    ],
+    "description": "Basic HTML5 document structure"
+  },
+  "Header Section": {
+    "prefix": "header",
+    "body": [
+      "<header>",
+      "  <h1>${1:Site Title}</h1>",
+      "  <nav>",
+      "    <ul>",
+      "      <li><a href=\"#\">${2:Home}</a></li>",
+      "      <li><a href=\"#\">${3:About}</a></li>",
+      "      <li><a href=\"#\">${4:Contact}</a></li>",
+      "    </ul>",
+      "  </nav>",
+      "</header>$0"
+    ],
+    "description": "HTML header section with navigation"
+  },
+  "Footer Section": {
+    "prefix": "footer",
+    "body": [
+      "<footer>",
+      "  <p>&copy; ${1:$CURRENT_YEAR} ${2:Your Name}. All rights reserved.</p>$0",
+      "</footer>"
+    ],
+    "description": "HTML footer section"
+  },
+  "Basic Table": {
+    "prefix": "table",
+    "body": [
+      "<table>",
+      "  <thead>",
+      "    <tr>",
+      "      <th>${1:Header 1}</th>",
+      "      <th>${2:Header 2}</th>",
+      "    </tr>",
+      "  </thead>",
+      "  <tbody>",
+      "    <tr>",
+      "      <td>${3:Data 1}</td>",
+      "      <td>${4:Data 2}</td>",
+      "    </tr>",
+      "  </tbody>",
+      "</table>$0"
+    ],
+    "description": "Basic HTML table structure"
+  },
+  "Image Tag": {
+    "prefix": "img",
+    "body": [
+      "<img src=\"${1:image.jpg}\" alt=\"${2:Description of image}\" width=\"${3:500}\" height=\"${4:300}\">$0"
+    ],
+    "description": "HTML image tag with src, alt, width, and height"
+  },
+  "Anchor Link": {
+    "prefix": "a",
+    "body": [
+      "<a href=\"${1:#}\">${2:Link Text}</a>$0"
+    ],
+    "description": "Basic HTML anchor link"
+  }
+}

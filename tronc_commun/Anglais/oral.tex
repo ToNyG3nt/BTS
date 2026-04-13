@@ -1,0 +1,44 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Essential Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+% --- Styling ---
+\definecolor{darkblue}{RGB}{0, 51, 102}
+
+\begin{document}
+
+\section*{Evolution of Edge Computing: 2019--2026}
+
+\noindent \textbf{Transition (After Maël speaks):} \\
+\textit{``Thank you, Maël. To understand why Edge is so powerful today, we need to look at the innovations made since 2019.''}
+
+\vspace{1.5em}
+\hrule
+\vspace{1.5em}
+
+\begin{description}[style=multiline, leftmargin=3.5cm, font=\bfseries\color{darkblue}]
+    \item[Point 1: 5G Standalone (SA)] \hfill \\
+    The first big change is \textbf{5G Standalone}. In 2019, 5G was just starting. Today, it provides the ``backbone'' for Edge. It offers ultra-low latency—less than \textbf{10 milliseconds}. Without this speed, real-time Edge operations simply wouldn't work.
+
+    \item[Point 2: Edge AI \& TinyML] \hfill \\
+    Second, we have \textbf{Edge AI}, sometimes called \textbf{TinyML}. In the past, we sent data to the Cloud to be analyzed. Now, we run \textbf{Small Language Models} (SLMs) directly on the local microchips. This means the device can ``think'' and make decisions instantly, even without an internet connection.
+
+    \item[Point 3: Management \& Orchestration] \hfill \\
+    Finally, we have solved the problem of scale. Managing thousands of small, scattered servers is a nightmare. But thanks to innovations like \textbf{KubeEdge}, which is a specialized version of \textbf{Kubernetes}, we can now manage decentralized nodes as easily as a single data center.
+\end{description}
+
+\vspace{1.5em}
+\hrule
+\vspace{1.5em}
+
+\noindent \textbf{Transition (To Camille):} \\
+\textit{``Now, Camille will explain how these technologies contribute to environmental preservation.''}
+
+\end{document}

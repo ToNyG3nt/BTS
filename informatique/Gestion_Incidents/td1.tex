@@ -1,0 +1,106 @@
+\documentclass[12pt,a4paper]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\setlist[itemize]{nosep}
+\setlist[enumerate]{nosep}
+
+\title{\textbf{Correction TD -- Les Fondamentaux de la Gestion d’Incident}\\
+BTS SIO}
+\author{Maël}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\vspace{2cm}
+\section*{Exercice 1 -- Classification des situations}
+
+\begin{enumerate}
+    \item \textbf{Incident} : Il s'agit d'une interruption non planifiée qui empêche l'utilisateur de réaliser ses missions quotidiennes.
+    \item \textbf{Demande} : C'est une requête de service. L'installation n'est pas une panne mais une évolution du poste de travail pour répondre à un besoin métier.
+    \item \textbf{Problème} : La répétition de incident indique une cause inconnue. Une analyse est nécessaire pour identifier la source du probleme récurrent.
+    \item \textbf{Changement} : Action planifiée et préparée visant à modifier un composant de l'infrastructure réseau pour améliorer ou maintenir le service.
+    \item \textbf{Incident} : Interruption d'un service matériel. Le service RH est impacté dans son travail habituel.
+    \item \textbf{Demande} : Procédure standard d'accès à une ressource (VPN). Ce n'est pas un incident mais une activation de droits.
+    \item \textbf{Problème} : L'aspect systématique et temporel (tous les lundis) suggère un défaut de configuration ou un conflit applicatif latent qu'il faut diagnostiquer.
+    \item \textbf{Changement} : Intervention programmée de maintenance corrective ou évolutive sur un système en production.
+\end{enumerate}
+
+\vspace{0.5cm}
+\clearpage
+\section*{Exercice 2 -- Analyse d’impact}
+
+\begin{enumerate}
+    \item \textbf{Service concerné :} Direction, Administratif, Technique (Global).\\
+          \textbf{Impact :} Critique. arret de l'activité car les données partagées sont inaccessibles. Risque de chômage yechnique immédiat.
+    \item \textbf{Service concerné :} Individuel.\\
+          \textbf{Impact :} Faible. La gêne est limitée à une personne. Des solutions existent pour contourner temporairement le probleme (imprimer sur un autre poste ou dans un autre service).
+    \item \textbf{Service concerné :} Commercial / Marketing. (Dans le cas ou le web n'est pas le coeur de metier de l'entreprise)\\
+          \textbf{Impact :} Élevé. Perte de visibilité externe, impossibilité pour les clients de passer commande.
+    \item \textbf{Service concerné :} Tous les services.\\
+          \textbf{Impact :} Moyen à Élevé. Blocage des flux de communication internes et externes. Retard dans le traitement des dossiers urgents.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+
+\section*{Exercice 3 -- Communication professionnelle}
+
+\begin{enumerate}
+    \item \textbf{Réaction :} Garder son calme, faire preuve d'empathie. Il faut laisser l'utilisateur exprimer son probleme sans l'interrompre.
+    \item \textbf{Attitude :} Rester neutre, courtois et rassurant. Reformuler le problème pour montrer qu'il a été pris en compte et expliquer les étapes de prise en charge.
+    \item \textbf{À éviter :} Entrer dans le conflit, prendre les remarques personnellement, utiliser un jargon technique complexe ou rejeter la faute sur l'utilisateur ou d'autres collègues.
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\section*{Exercice 4 -- Typologie des incidents}
+
+\begin{enumerate}
+    \item Ordinateur qui ne démarre plus : \textbf{Matériel}
+    \item Virus détecté sur un poste : \textbf{Sécurité}
+    \item Erreur “404” sur l’intranet : \textbf{Logiciel}
+    \item Mot de passe oublié : \textbf{Utilisateur}
+    \item Coupure Internet dans tout le bâtiment : \textbf{Réseau}
+    \item Écran bleu au démarrage : \textbf{logiciel}
+\end{enumerate}
+
+\vspace{0.5cm}
+
+
+\section*{Exercice 5 -- Cycle de vie simplifié}
+
+\begin{enumerate}
+    \item Signalement
+    \item Analyse
+    \item Résolution
+    \item Validation utilisateur
+    \item Clôture
+\end{enumerate}
+
+\vspace{0.5cm}
+
+
+\section*{Exercice 6 -- Étude de cas complète}
+
+\begin{enumerate}
+    \item \textbf{Nature du cas :} Incident Majeur (incident impactant un grand nombre d'utilisateurs).
+    \item \textbf{Impact métier :} Arret des services pour un quart ou un tiers des utilisateurs, empêchant l'accès aux documents de travail.
+    \item \textbf{Priorité :} \textbf{Critique}. L'impact est collectif et le service (serveur de fichiers) est vital pour la production.
+    \item \textbf{Premières actions :}
+    \begin{itemize}
+        \item Vérifier l'état physique du serveur (alimentation, connectique).
+        \item Tester la connectivité réseau (Ping, services de partage).
+        \item Communiquer auprès des utilisateurs via un canal général pour éviter l'engorgement du standard.
+    \end{itemize}
+    \item \textbf{Importance de la traçabilité :} Elle permet de documenter les solutions trouvées pour la base de connaissances (KEDB), de justifier le temps d'intervention et d'analyser l'incident plus tard s'il se transforme en Problème.
+\end{enumerate}
+
+\end{document}

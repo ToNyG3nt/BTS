@@ -1,0 +1,75 @@
+\documentclass[a4paper,11pt]{article}
+
+% --- Packages de configuration ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% --- Mise en page ---
+\geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
+\setlist[itemize]{label=\textbullet, noitemsep, topsep=3pt}
+\titleformat{\section}{\large\bfseries\color{blue!80!black}}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries\color{darkgray}}{}{0em}{}
+
+% --- Informations ---
+\title{\textbf{Rapport d'Expertise Cybersécurité : Identité et Preuve Numérique}\\ \Large Diagnostic et Plan de Remédiation pour M@Banque}
+\author{Maël - BTS Services Informatiques aux Organisations}
+\date{28 Janvier 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Analyse de la Crise de l'Identité Numérique}
+[cite_start]L'identité numérique de M@Banque est gravement compromise par deux attaques simultanées visant la confiance des usagers[cite: 3, 9]. [cite_start]La défiguration du site et les campagnes de phishing génèrent un « bad buzz » sur les réseaux sociaux, menaçant la pérennité économique de l'entreprise[cite: 13, 142, 143].
+
+\section{Diagnostic Technique de l'Intrusion}
+
+\subsection{Identification de la faille FTP}
+[cite_start]L'analyse du fichier de journalisation (\textit{log}) du serveur FTP permet de confirmer une intrusion illégitime[cite: 85]:
+\begin{itemize}
+    [cite_start]\item \textbf{Utilisateur compromis :} L'identifiant \texttt{admiweb} a été utilisé pour une session FTP[cite: 93].
+    [cite_start]\item \textbf{Vecteur d'attaque :} Une connexion TLS a été établie depuis l'adresse IP \texttt{172.16.56.20} le 17/01/2024 à 13:52:57[cite: 83, 86, 90].
+    [cite_start]\item \textbf{Non-conformité :} Cette adresse est externe au poste dédié du développeur (\texttt{172.16.8.10/16}), seul point d'accès légitime pour la mise à jour des scripts[cite: 42].
+\end{itemize}
+
+\subsection{Évaluation du Phishing}
+[cite_start]Le courriel frauduleux reçu par les clients présente plusieurs caractéristiques d'une attaque de type \textit{Hameçonnage}[cite: 164, 202]:
+\begin{itemize}
+    [cite_start]\item \textbf{Urgence et collecte de données :} Demande inhabituelle de renvoi d'un contrat avec saisie directe de l'identifiant et du mot de passe[cite: 205, 206].
+    [cite_start]\item \textbf{Incohérence de l'émetteur :} L'adresse source \texttt{servicejuridique@mabanques.com} comporte un « s » parasite, signe d'un typosquatting[cite: 208].
+    [cite_start]\item \textbf{Absence de personnalisation :} Le message est générique (« Cher(e)s clients »), contrairement aux standards bancaires[cite: 204, 211].
+\end{itemize}
+
+\section{Stratégie de Protection et Preuve Électronique}
+
+\subsection{Renforcement de l'administration du site}
+[cite_start]Conformément aux recommandations du CERT-FR, la sécurisation immédiate repose sur[cite: 137]:
+\begin{itemize}
+    [cite_start]\item \textbf{Filtrage IP (White List) :} Configuration de l'option « IP Filter » du serveur FileZilla pour bloquer toutes les adresses sauf l'IP statique de confiance[cite: 105, 111, 138].
+    [cite_start]\item \textbf{Authentification forte :} Remplacement de la simple paire identifiant/mot de passe par une validation de certificats clients[cite: 141].
+\end{itemize}
+
+\subsection{Déploiement du Chiffrement Asymétrique (PGP)}
+[cite_start]Pour sécuriser les échanges contractuels et garantir la valeur légale des documents dématérialisés[cite: 236]:
+\begin{itemize}
+    [cite_start]\item \textbf{Processus de chiffrement :} Utilisation de la clé publique du destinataire pour garantir la confidentialité des données transmises[cite: 246, 251].
+    [cite_start]\item \textbf{Intégrité et Authentification :} Utilisation d'une clé privée pour signer numériquement les messages, répondant ainsi aux exigences de la législation sur la preuve électronique[cite: 233, 234, 261].
+\end{itemize}
+
+\subsection{Service de Coffre-fort Numérique}
+[cite_start]Mise à disposition d'un espace certifié pour restaurer l'e-réputation[cite: 191, 270]:
+\begin{itemize}
+    [cite_start]\item \textbf{Fonctionnalité :} Aspiration automatique et archivage sécurisé des relevés et contrats sans transformation possible[cite: 272, 275].
+    [cite_start]\item \textbf{Garanties :} Chiffrement des données au repos et lors des transferts pour assurer un accès exclusif à l'utilisateur[cite: 276, 278].
+\end{itemize}
+
+\section{Conclusion et Risques Résiduels}
+[cite_start]La persistance des rumeurs sur les réseaux sociaux impose une communication proactive[cite: 142]. [cite_start]Si ces mesures techniques protègent l'infrastructure, le risque juridique lié à la fuite des données personnelles reste engagé pour M@Banque[cite: 31, 40].
+
+\end{document}

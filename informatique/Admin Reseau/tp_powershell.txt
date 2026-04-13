@@ -1,0 +1,84 @@
+TP1 Recherche d'information :
+
+    Q1:
+        Get-Help Get-Alias
+    Q2:
+        Get-Help Get-Alias -Example
+    Q3:
+        Get-Alias -Name *f
+    Q4:
+        Get-Location
+    Q5:
+        CD C:\  ou  Set-Location C:\
+    Q6:
+        mkdir test
+    Q7:
+        cd test
+    Q8:
+        New-Item -Path . -Name "ecole.txt" -ItemType "File" -Value "ECOLE"
+    Q9:
+        Rename-Item -Path "ecole.txt" -NewName "ecole.txt"
+    Q10:
+        mkdir ecole
+    Q11:
+        Remove-Item -Path C:\test -Recurse
+    Q12:
+        Get-ChildItem -Path C:\Windows
+    Q13: 
+        Get-ChildItem -Path C:\Windows\*.exe 
+    Q14:
+        $Drive = Get-PSDrive C  
+    Q15: 
+        $Drive | Get-Member 
+    Q16: 
+        $Drive.Used 
+    Q17: 
+        $Drive.Free
+
+TP2 Script de partage :
+
+    $path = "C:\share"
+
+    if (Test-Path $path) {
+        Write-Host "Le dossier existe déjà"
+        exit
+    } else {
+        New-Item -Path $path -ItemType Directory
+        New-SmbShare -Name "share" -Path $path -FullAccess "Administrateurs"
+    }
+
+TP3 Liste d'utilisateurs :
+
+    $filePath = "users.txt"
+
+    if (Test-Path $filePath) {
+        Remove-Item $filePath
+    }
+
+    $users = Get-LocalUser
+    $count = $users.Count
+    $time = Get-Date -Format "HH:mm"
+
+    "$time $count" | Out-File $filePath
+    $users | Select-Object * | Out-File $filePath -Append
+
+TP4 Réalisation d'un menu :
+
+    do {
+        Write-Host "1. Affichage répertoire courant"
+        Write-Host "2. Liste des fichiers du répertoire"
+        Write-Host "3. Afficher le nom de l'utilisateur courant"
+        Write-Host "4. Afficher le nom de la machine"
+        Write-Host "5. Quitter"
+
+        $choice = Read-Host "Votre choix"
+
+        switch ($choice) {
+            1 { Get-Location }
+            2 { Get-ChildItem }
+            3 { $env:USERNAME }
+            4 { $env:COMPUTERNAME }
+            5 { break }
+            default { Write-Host "Erreur de saisie" }
+        }
+    } while ($choice -ne 5)

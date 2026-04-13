@@ -1,0 +1,21 @@
+\documentclass{article}\usepackage[utf8]{inputenc}\usepackage[T1]{fontenc}\usepackage[french]{babel}\usepackage{geometry}\geometry{margin=2.5cm}\begin{document}\section*{Vérification de l'efficacité de la protection - MSAP}\subsection*{1. Diagnostic des habilitations et autorisations (Documents 1 et 2)}
+Les tests effectués valident la pertinence des nouvelles restrictions mises en place :
+\begin{itemize}
+\item \textbf{Étanchéité des accès aux données} : Le compte "Enedis" accède normalement à ses fichiers clients , tandis que la tentative de connexion du compte "MSA" au même dossier est bloquée par un message d'erreur d'autorisation. Les permissions NTFS sont donc effectives.
+\item \textbf{Contrôle de l'installation logicielle} : La tentative d'installation de PuTTY par l'utilisateur "Enedis" déclenche une demande de mot de passe administrateur. Cela confirme que les utilisateurs ne possèdent plus de privilèges élevés sur leurs sessions locales.
+\end{itemize}\subsection*{2. Solution de renforcement du SI (Documents 3 et 4)}
+Pour améliorer la surveillance et la réactivité face aux incidents, une solution complémentaire est nécessaire :
+\begin{itemize}
+\item \textbf{Centralisation des journaux (Logs)} : Bien que les événements de sécurité soient enregistrés localement sur chaque poste , il est souhaitable d'utiliser le dossier "Abonnements" de l'observateur d'événements du serveur d'administration.
+\item \textbf{Objectif} : Transférer les logs des postes clients vers le serveur de M. Jivon pour permettre une analyse globale et détecter plus rapidement des tentatives d'intrusion ou des erreurs d'authentification massives.
+\end{itemize}\subsection*{3. Efficacité de l'infrastructure physique et logique (Documents 5, 6 et 7)}
+L'analyse des tests réseau montre que les objectifs de segmentation sont \textbf{partiellement} atteints :
+\begin{itemize}
+\item \textbf{Accès au serveur de fichiers} : L'objectif est rempli. Le \texttt{ping} et le \texttt{tracert} depuis un poste Enedis vers le serveur (192.168.100.1) sont réussis. L'ACL "ctsrv" autorise explicitement ce flux.
+\item \textbf{Isolation entre partenaires} : L'objectif n'est \textbf{pas totalement rempli} selon les outils utilisés :
+\begin{itemize}
+\item Le \texttt{ping} vers un autre partenaire échoue avec le message "Destination host unreachable" , et le simulateur indique que le paquet est rejeté par la règle \texttt{deny ip any any}.
+\item Cependant, la commande \texttt{tracert} vers 192.168.20.1 (MSA) semble aboutir dans certains tests.
+\end{itemize}
+\item \textbf{Anomalie de configuration} : Le document 5 montre que les ports \texttt{Fa0/1} et \texttt{Fa0/2} sont bien assignés aux VLAN 10 et 20. Toutefois, l'ACL est appliquée en \texttt{in} sur les interfaces sub-ethernet , ce qui bloque le trafic entrant vers le routeur mais peut nécessiter un affinage pour garantir une isolation totale et sans exception entre les sous-réseaux IP.
+\end{itemize}\end{document}

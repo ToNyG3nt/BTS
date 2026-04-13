@@ -1,0 +1,94 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule]
+
+\title{\textbf{Business Plan : Obscurus Anti-Cheat Solutions}}
+\author{Maël - Fondateur \& CTO}
+\date{Mars 2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Genèse et Vision du Projet}
+Le projet Obscurus naît du constat que les solutions anti-triche actuelles sont soit trop intrusives (Kernel obligatoire), soit inefficaces face aux nouvelles menaces (DMA, IA). Obscurus propose une rupture technologique par l'hybridation : une protection adaptative qui évolue avec le cycle de vie du jeu vidéo.
+
+\section{Organisation des Ressources Humaines}
+L'entreprise est une SARL organisée pour maximiser la réactivité technique et commerciale.
+
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Maël (PDG / CTO) :} 
+    \begin{itemize}
+        \item Développement du cœur système (C++/ASM) et du pilote Kernel.
+        \item Architecture des micro-services Cloud (Go/Rust) pour l'analyse en temps réel.
+        \item Vision technologique et roadmap R\&D.
+    \end{itemize}
+    \item \textbf{Anna (Responsable Cybersécurité / RSO) :} 
+    \begin{itemize}
+        \item Direction des missions "Red Team" (Reverse-engineering des binaires clients).
+        \item Analyse de la menace et création de signatures de détection.
+        \item Veille sur le "Dark Web" et les forums spécialisés en création de cheats.
+    \end{itemize}
+    \item \textbf{Joan (Responsable Commercial \& Communication) :} 
+    \begin{itemize}
+        \item Négociation des contrats B2B avec les studios et éditeurs.
+        \item Stratégie de "Content Marketing" pour crédibiliser la solution auprès des joueurs.
+        \item Gestion des relations publiques et salons (Gamescom, GDC).
+    \end{itemize}
+    \item \textbf{Camille (Responsable RH \& Comptabilité) :} 
+    \begin{itemize}
+        \item Gestion de la facturation récurrente (SaaS) et des bilans financiers.
+        \item Aspects juridiques : conformité RGPD (protection des données joueurs) et EULA.
+        \item Recrutement des futurs ingénieurs support et développeurs.
+    \end{itemize}
+\end{itemize}
+
+\section{Architecture Technique et Offre Modulaire}
+Obscurus ne vend pas un produit unique, mais une suite de services activables à la demande.
+
+\subsection{Phase 1 : Obscurus Cloud \& IA}
+\begin{itemize}
+    \item \textbf{Moteur comportemental :} Analyse de la télémétrie (positions, angles de vue, inputs).
+    \item \textbf{Module IA (Premium) :} Réseaux de neurones entraînés à détecter le "Smoothing" des Aimbots et les micro-corrections de trajectoire non-humaines.
+    \item \textbf{Infrastructure :} Déploiement sur AWS/Azure avec une latence d'analyse < 50ms.
+\end{itemize}
+
+\subsection{Phase 2 : Obscurus Kernel Shield}
+\begin{itemize}
+    \item \textbf{Protection Ring 0 :} Pilote de périphérique bloquant l'accès à la mémoire du jeu par des processus tiers non autorisés.
+    \item \textbf{Anti-Debugging :} Techniques avancées pour empêcher les tricheurs d'analyser le fonctionnement d'Obscurus.
+\end{itemize}
+
+\subsection{Prestation Audit Red Team}
+\begin{itemize}
+    \item Test d'intrusion applicatif (Pentest).
+    \item Rapport détaillé des failles de logique de jeu (ex: duplication d'items, bypass de boutique).
+    \item Recommandations de correction de code.
+\end{itemize}
+
+\section{Stratégie de Développement et Plan d'Action}
+\begin{enumerate}
+    \item \textbf{Mois 1-4 :} Développement du MVP Cloud et du Dashboard de gestion. Anna réalise les premiers audits rémunérés pour financer l'infrastructure.
+    \item \textbf{Mois 5-8 :} Phase de bêta-test avec des studios partenaires. Entraînement de l'IA sur des données réelles. Joan lance la campagne de pré-commercialisation.
+    \item \textbf{Mois 9-15 :} Lancement de la version Kernel et certification WHQL par Microsoft. Camille structure les contrats de support 24/7.
+\end{enumerate}
+
+\section{Analyse Financière Prévisionnelle (Résumé)}
+\begin{itemize}
+    \item \textbf{Coûts fixes :} Salaires, infrastructure Cloud, certifications de sécurité.
+    \item \textbf{Revenus :} Abonnements SaaS (au nombre de joueurs actifs), Prestations d'audit (forfaitaire), Support premium.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,102 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+
+% --- Configuration des entêtes ---
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Étude de Marché Stratégique - Obscurus}
+\rhead{Confidentiel - 2026}
+\cfoot{\thepage}
+
+\title{\textbf{Analyse de Marché et Positionnement Stratégique \\ Obscurus Anti-Cheat Solutions}}
+\author{Maël - Fondateur \& CTO}
+\date{Mars 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Segmentation du Marché et État de l'Existant}
+
+\subsection{Segment 1 : Studios Indépendants}
+\begin{itemize}
+    \item \textbf{Profil :} Petites structures (1-20 personnes), budgets limités, besoin de simplicité.
+    \item \textbf{Exemples de cibles :} Landfall Games (\textit{Content Warning}), Iron Gate (\textit{Valheim}), ou Shiro Games (\textit{Wartales}).
+    \item \textbf{Solutions existantes :} Souvent protégés par \textbf{VAC} (Valve Anti-Cheat) sur Steam ou des outils "Open Source". Ces protections sont basiques et facilement contournables par des scripts simples.
+    \item \textbf{Solution Obscurus :} Phase 1 (Cloud \& IA). Une protection comportementale légère basée sur la télémétrie.
+\end{itemize}
+
+\subsection{Segment 2 : Studios Moyens / AA}
+\begin{itemize}
+    \item \textbf{Profil :} Studios établis (50-200 personnes), titres compétitifs en forte croissance.
+    \item \textbf{Exemples de cibles :} Facepunch Studios (\textit{Rust}), Sloclap (\textit{Sifu}), ou Battlestate Games (\textit{Escape from Tarkov}).
+    \item \textbf{Solutions existantes :} Utilisation massive de \textbf{BattlEye} ou \textbf{Easy Anti-Cheat (EAC)}. Ces solutions sont efficaces mais souffrent d'un manque de personnalisation face aux failles de logique spécifique au code du jeu.
+    \item \textbf{Solution Obscurus :} Offre hybride (Kernel Shield) couplée à des audits Red Team pour sécuriser les failles de logique métier.
+\end{itemize}
+
+\subsection{Segment 3 : Grands Éditeurs AAA}
+\begin{itemize}
+    \item \textbf{Profil :} Leaders mondiaux, millions de joueurs, enjeux e-sportifs majeurs.
+    \item \textbf{Exemples de cibles :} Ubisoft (\textit{Rainbow Six Siege}), Activision (\textit{Call of Duty}), Riot Games (\textit{Valorant}).
+    \item \textbf{Solutions existantes :} Solutions propriétaires ultra-agressives comme \textbf{Riot Vanguard} ou \textbf{Ricochet}. Ces outils sont très intrusifs et génèrent parfois des polémiques sur la vie privée et la stabilité système.
+    \item \textbf{Solution Obscurus :} Suite certifiée WHQL, détection du "smoothing" via IA et support critique 24/7.
+\end{itemize}
+
+\section{Organisation des Ressources Humaines}
+\begin{itemize}
+    \item \textbf{Direction Technique (Maël) :} Développement du cœur système (C++/ASM) et architecture du pilote Kernel.
+    \item \textbf{Sécurité Offensive (Anna) :} Réalisation des tests d'intrusion (Pentest) et veille active sur le Dark Web.
+    \item \textbf{Pôle Commercial (Joan) :} Négociation des contrats B2B et gestion de l'image de marque.
+    \item \textbf{Pôle Administratif (Camille) :} Gestion de la facturation SaaS et garantie de la conformité RGPD.
+\end{itemize}
+
+\section{Analyse de la Concurrence et Géographie}
+
+\subsection{Tableau Comparatif des Solutions}
+Le marché se divise entre acteurs historiques massifs et nouvelles solutions purement logicielles. Obscurus se positionne sur une hybridation unique.
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}lXXX@{}}
+\toprule
+\textbf{Acteur} & \textbf{Technologie} & \textbf{Point Faible} & \textbf{Avantage Obscurus} \\ \midrule
+\textbf{Leaders (EAC/BE)} & Pilote Kernel & Manque d'agilité offensive ; rigide & Hybridation Cloud/IA ; audit sur mesure \\ \midrule
+\textbf{Vanguard} & Kernel (Boot-time) & Très intrusif ; rejet par une partie de la communauté & Offre modulaire flexible (Cloud d'abord) \\ \midrule
+\textbf{Solutions IA} & Cloud uniquement & Pas de barrière système ; vulnérable aux injections directes & Protection Ring 0 intégrée (Phase 2) \\ \bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Dynamiques Régionales et Opportunités}
+L'offre Obscurus s'adapte aux contraintes légales et techniques de chaque zone géographique.
+
+\begin{itemize}
+    \item \textbf{France (Ancrage Local) :} Focus sur la proximité avec les studios locaux (Ubisoft, Focus Entertainment). Utilisation des prestations d'audit Red Team comme "pied dans la porte" pour instaurer une relation de confiance technique avant le déploiement logiciel.
+    \item \textbf{Europe (Souveraineté \& RGPD) :} Positionnement stratégique sur le respect strict du RGPD. Contrairement aux acteurs américains, Obscurus garantit que la télémétrie traitée par l'IA reste sur le territoire européen, répondant aux besoins de souveraineté numérique des éditeurs de l'UE.
+    \item \textbf{Mondial (Lutte Hardware) :} Focus sur la détection des triches hardware (DMA) invisibles pour les solutions classiques. L'IA d'Obscurus, entraînée sur des patterns de mouvements non-humains, cible le marché mondial des jeux compétitifs (FPS/MOBA) où la triche haut de gamme est omniprésente.
+\end{itemize}
+
+\subsection{Barrières à l'entrée et Menaces Concurrence}
+\begin{itemize}
+    \item \textbf{Crédibilité technique :} Nécessité d'obtenir la certification WHQL de Microsoft pour éviter les "Faux Positifs" de l'OS, ce qui constitue une barrière majeure pour les nouveaux entrants.
+    \item \textbf{Vitesse d'évolution :} Les créateurs de cheats (SaaS illégaux) réinvestissent massivement leurs profits. La veille d'Anna sur le Dark Web est critique pour maintenir l'avance technologique d'Obscurus.
+\end{itemize}
+
+\section{Plan d'Action Stratégique}
+\begin{enumerate}
+    \item \textbf{Mois 1-4 :} MVP Cloud et premières missions d'audit Red Team rémunérées.
+    \item \textbf{Mois 5-8 :} Bêta-test avec partenaires et entraînement des réseaux de neurones.
+    \item \textbf{Mois 9-15 :} Certification Microsoft WHQL et déploiement de la version Kernel Shield.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,265 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+
+% Configuration des titres
+\titleformat{\section}{\LARGE\textbf{\color{blue!80!black}}\centering}{}{0em}{}[\vspace{1ex}\titlerule]
+\titleformat{\subsection}{\Large\textbf{\color{blue!60!black}}}{}{0em}{\medskip}
+\titleformat{\subsubsection}{\large\textbf}{}{0em}{\smallskip}
+
+% Mise en page
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Obscurus Anti-Cheat Solutions}
+\rhead{Fiche de Poste H/F - 2026}
+\cfoot{\thepage}
+
+\begin{document}
+
+% --- FICHE : MAËL (PDG / CTO) ---
+\section{DIRECTEUR GÉNÉRAL \& TECHNIQUE (H/F)}
+\textbf{Titulaire : Maël}
+
+\subsection{Identification du Poste}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Département} : Direction Générale / Direction Technique (R\&D)
+    \item \textbf{Liaisons hiérarchiques} : Rapport direct au Conseil d'Administration
+    \item \textbf{Liaisons fonctionnelles} : Direction Commerciale, Direction Juridique, Équipes Engineering
+    \item \textbf{Finalité} : Garantir la souveraineté technologique de la solution anti-cheat et assurer la pérennité économique de l'entreprise
+\end{itemize}
+
+\subsection{Missions et Activités Principales}
+
+\subsubsection{Pilotage de la Stratégie et du Business (Pôle CEO)}
+\begin{itemize}[label=\textbullet]
+    \item Définition des objectifs annuels et pluriannuels de croissance de l'entreprise.
+    \item Élaboration et suivi du budget R\&D et d'exploitation, incluant la validation des investissements en infrastructure Cloud et serveurs.
+    \item Reporting financier et stratégique régulier auprès des actionnaires et investisseurs.
+    \item Garantie de la conformité éthique et respect du RGPD pour les méthodes de scan mémoire et de télémétrie.
+\end{itemize}
+
+\subsubsection{Direction de l'Ingénierie Kernel (Pôle CTO)}
+\begin{itemize}[label=\textbullet]
+    \item Conception de l'architecture du driver Windows (Ring 0) et des mécanismes d'auto-protection comme l'Anti-debugging et l'Anti-VM.
+    \item Revue de code critique pour prévenir toute instabilité système (BSOD) chez les clients.
+    \item Arbitrage technologique sur les langages (C++, Rust, Go) et les frameworks de traitement de données massives.
+    \item Supervision du cycle de vie des détections, de l'identification d'un nouveau cheat au déploiement des heuristiques.
+\end{itemize}
+
+\subsubsection{Management des Ressources Humaines}
+\begin{itemize}[label=\textbullet]
+    \item Définition des besoins en recrutement pour les ingénieurs système et Data Scientists.
+    \item Réalisation des entretiens annuels des directeurs techniques et leads de pôles.
+    \item Maintien d'un haut niveau d'expertise interne via la formation continue sur les nouvelles vulnérabilités OS.
+\end{itemize}
+
+\subsection{Compétences et Aptitudes Requises}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Savoir-faire (Expertise)} : Architecture système (Windows Internals), gestion de la mémoire et cybersécurité offensive.
+    \item \textbf{Savoir-être (Comportement)} : Leadership d'opinion reconnu par l'industrie, sang-froid en cas de crise technique majeure et vision à long terme.
+\end{itemize}
+
+\subsection{Critères d'Évaluation (KPIs)}
+\begin{itemize}[label=\textbullet]
+    \item Taux de détection (Detection Rate) des cheats connus et stabilité logicielle (absence de crashs/BSOD).
+    \item Performance business mesurée par l'atteinte des objectifs de chiffre d'affaires et de marge brute.
+\end{itemize}
+
+\newpage
+
+% --- FICHE : JOAN (COMMERCIAL & COM) ---
+\section{CONSEILLER COMMERCIAL \& CHARGÉ DE COMMUNICATION (H/F)}
+\textbf{Titulaire : Joan}
+
+\subsection{Identification du Poste}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Département} : Direction Commerciale / Marketing
+    \item \textbf{Finalité} : Convertir les studios de jeux vidéo et valoriser l'expertise technique de l'entreprise.
+\end{itemize}
+
+\subsection{Missions et Activités Principales}
+
+\subsubsection{Développement Commercial et Prospection (B2B)}
+\begin{itemize}[label=\textbullet]
+    \item Chasse de comptes auprès des studios en phase de développement sur PC et Consoles.
+    \item Qualification des besoins selon le type de jeu pour proposer la couche de protection adaptée (Kernel-level, Server-side, hybride).
+    \item Présentation du Dashboard et négociation contractuelle basée sur le nombre d'utilisateurs actifs mensuels (MAU).
+    \item Suivi d'intégration du SDK et vente de modules complémentaires (IA, anti-DDOS).
+\end{itemize}
+
+\subsubsection{Communication Institutionnelle et B2B}
+\begin{itemize}[label=\textbullet]
+    \item Création de supports d'aide à la vente, études de cas et livres blancs techniques.
+    \item Organisation de la présence de l'entreprise sur les salons professionnels comme la GDC ou la Gamescom.
+    \item Gestion du site web pour mettre en avant le positionnement expertise Kernel/Cloud.
+\end{itemize}
+
+\subsubsection{Communication et Gestion de Crise}
+\begin{itemize}[label=\textbullet]
+    \item Surveillance en temps réel des signaux faibles sur les réseaux sociaux (Reddit, Discord) pour identifier une faille de sécurité.
+    \item Coordination de la "War Room" avec le CTO en cas de bypass massif pour aligner les éléments de langage.
+    \item Rédaction de communiqués officiels gradués selon la gravité de l'incident technique.
+    \item Interface avec les Community Managers des clients pour fournir des réponses unifiées aux joueurs.
+\end{itemize}
+
+\subsection{Compétences et Aptitudes Requises}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Savoir-faire (Expertise)} : Vente complexe (Solution Selling), culture gaming technologique (hooks, drivers) et maîtrise du CRM.
+    \item \textbf{Communication} : Qualités rédactionnelles irréprochables et anglais courant de négociation.
+    \item \textbf{Savoir-être (Comportement)} : Diplomatie face aux communautés hostiles, réactivité et persévérance commerciale.
+\end{itemize}
+
+\subsection{Critères d'Évaluation (KPIs)}
+\begin{itemize}[label=\textbullet]
+    \item Chiffre d'Affaires (New Business) signé et taux de conversion des prospects.
+    \item E-réputation globale de la solution et sentiment de la communauté sur l'efficacité de l'outil.
+\end{itemize}
+
+\newpage
+
+% --- FICHE : CAMILLE (RH & COMPTA) ---
+\section{DIRECTEUR RH \& CHARGÉ DE COMPTABILITÉ (H/F)}
+\textbf{Titulaire : Camille}
+
+\subsection{Identification du Poste}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Département} : Ressources Humaines / Direction Financière
+    \item \textbf{Finalité} : Recruter des experts rares et garantir la fiabilité des informations financières.
+\end{itemize}
+
+\subsection{Missions et Activités Principales}
+
+\subsubsection{Stratégie de Recrutement d'Élite}
+\begin{itemize}[label=\textbullet]
+    \item Sourcing spécifique de profils atypiques (Kernel, Reverse Engineering) sur GitHub et forums de sécurité.
+    \item Mise en place de tests techniques de haut niveau en collaboration avec le CTO.
+    \item Valorisation de la marque employeur pour attirer les passionnés de bas-niveau et de lutte contre la fraude.
+\end{itemize}
+
+\subsubsection{Gestion de la Performance et QVT}
+\begin{itemize}[label=\textbullet]
+    \item Pilotage des packages salariaux (fixe, variable, actions) et suivi des plans de formation continue.
+    \item Prévention du burn-out des équipes techniques lors des périodes de crises de bypass.
+    \item Veille au respect du Code du Travail et rédaction des clauses de confidentialité (NDA) renforcées.
+\end{itemize}
+
+\subsubsection{Comptabilité Générale et Clients}
+\begin{itemize}[label=\textbullet]
+    \item Enregistrement des flux bancaires et gestion des factures fournisseurs (Cloud, serveurs, matériel de test).
+    \item Émission des factures SaaS pour les studios selon le nombre de joueurs actifs (MAU).
+    \item Suivi des règlements internationaux et gestion des relances clients en coordination avec les commerciaux.
+    \item Établissement des déclarations fiscales (TVA, liasse fiscale) et support pour la paie.
+\end{itemize}
+
+\subsubsection{Reporting et Fiscalité R\&D}
+\begin{itemize}[label=\textbullet]
+    \item Centralisation des dépenses R\&D pour le montage des dossiers de Crédit Impôt Recherche (CIR/CII).
+    \item Actualisation du plan de trésorerie prévisionnel et production des indicateurs de burn rate.
+\end{itemize}
+
+\subsection{Compétences et Aptitudes Requises}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Savoir-faire (Expertise)} : Chasse de tête, droit social, normes comptables (PCG) et Excel avancé.
+    \item \textbf{Savoir-être (Comportement)} : Rigueur extrême, intégrité totale sur les données sensibles et intelligence émotionnelle.
+\end{itemize}
+
+\subsection{Critères d'Évaluation (KPIs)}
+\begin{itemize}[label=\textbullet]
+    \item Délai de recrutement (Time-to-hire) des experts et taux de rétention des talents clés.
+    \item Fiabilité des comptes et respect des échéances fiscales et sociales.
+\end{itemize}
+
+\newpage
+
+% --- FICHE : ANNA (RSO) ---
+\section{RESPONSABLE DE LA SÉCURITÉ OFFENSIVE (H/F)}
+\textbf{Titulaire : Anna}
+
+\subsection{Identification du Poste}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Département} : Direction Technique (R\&D) / Pôle Sécurité
+    \item \textbf{Liaisons hiérarchiques} : Rapport direct au CTO
+    \item \textbf{Finalité} : Identifier les vulnérabilités de l'anti-cheat et valider la robustesse des défenses avant déploiement.
+\end{itemize}
+
+\subsection{Missions et Activités Principales}
+
+\subsubsection{Red Teaming et Simulation d'Attaques}
+\begin{itemize}[label=\textbullet]
+    \item Développement de PoC (Proof of Concept) d'outils de triche internes (aimbots, wallhacks) pour tester les détections.
+    \item Tentatives actives de contournement du driver Kernel (Ring 0) via des techniques de Manual Mapping ou Kernel ROP.
+    \item Tests de résistance de l'infrastructure de télémétrie contre les injections de données faussées.
+\end{itemize}
+
+\subsubsection{Reverse Engineering et Veille Adverse}
+\begin{itemize}[label=\textbullet]
+    \item Analyse approfondie des cheats payants du marché pour comprendre leurs méthodes d'obfuscation.
+    \item Audits de sécurité sur le code source de l'entreprise pour identifier des failles potentielles (buffer overflows).
+\end{itemize}
+
+\subsubsection{Collaboration et Remédiation (Purple Teaming)}
+\begin{itemize}[label=\textbullet]
+    \item Rédaction de rapports d'infiltration documentant chaque vulnérabilité avec score de criticité et preuve d'exploitation.
+    \item Collaboration avec les développeurs Kernel pour concevoir des contre-mesures et renforcer l'auto-protection du logiciel.
+\end{itemize}
+
+\subsection{Compétences et Aptitudes Requises}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Savoir-faire (Expertise)} : Maîtrise experte d'IDA Pro, Ghidra et du debugging noyau (WinDbg).
+    \item \textbf{Développement} : Capacité à coder des outils offensifs en C++, Assembly (x64) et Python.
+    \item \textbf{Savoir-être (Comportement)} : Curiosité insatiable, éthique irréprochable et esprit critique sur la solidité des défenses.
+\end{itemize}
+
+\subsection{Critères d'Évaluation (KPIs)}
+\begin{itemize}[label=\textbullet]
+    \item Nombre de failles critiques découvertes en interne avant exploitation externe.
+    \item Délai de reproduction d'un bypass signalé par la communauté ou détecté sur le marché.
+    \item Qualité des préconisations de renforcement effectif du produit.
+\end{itemize}
+
+% --- BLOC À INSÉRER APRÈS LA PREMIÈRE FICHE (MAËL) ---
+\newpage
+\section*{ORGANIGRAMME DE LA STRUCTURE}
+\vspace{3cm}
+\begin{center}
+\begin{tikzpicture}[
+    node distance=1.5cm and 1cm,
+    base/.style={rectangle, draw, rounded corners, fill=blue!5, text width=4.5cm, align=center, minimum height=1.2cm, font=\small},
+    dir/.style={base, fill=blue!20, text width=5.5cm},
+    tech/.style={base, fill=red!10}
+]
+
+    % Niveaux
+    \node (mael) [dir] {\textbf{Maël} \\ Directeur Général \& CTO};
+    
+    \node (anna) [tech, below=2cm of mael] {\textbf{Anna} \\ Responsable Sécurité Offensive};
+    
+    \node (joan) [base, below left=3cm and 0.5cm of anna] {\textbf{Joan} \\ Conseiller Commercial};
+    
+    \node (camille) [base, below right=3cm and 0.5cm of anna] {\textbf{Camille} \\ Dir. RH \& Comptabilité};
+
+    % Liens hiérarchiques (Maël vers les autres)
+    \draw [-{Stealth}, thick] (mael) -- (anna);
+    \draw [-{Stealth}, thick] (mael) -| (joan);
+    \draw [-{Stealth}, thick] (mael) -| (camille);
+
+    % Liens fonctionnels / collaboration avec étiquettes décalées vers le bas
+    \draw [dashed, gray] (anna) -- (joan) 
+        node[pos=0.7, xshift=-0.5cm, sloped, font=\tiny, black] {Alerte Crise};
+        
+    \draw [dashed, gray] (anna) -- (camille) 
+        node[pos=0.7, xshift=0.5cm, sloped, font=\tiny, black] {Recrutement Expert};
+
+\end{tikzpicture}
+\end{center}
+\vfill
+
+\end{document}

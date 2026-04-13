@@ -1,0 +1,135 @@
+/* =========================================
+   1. HEADER PRINCIPAL (Menu) - VERRE DÉPOLI
+   ========================================= */
+#masthead {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    margin-top: 0 !important;
+    
+    /* MAGIE DU FLOU ICI */
+    /* 0.85 = 85% d'opacité (le texte disparait bien derrière) */
+    background-color: transparent !important; 
+    backdrop-filter: blur(10px); /* Le flou qui lisse tout */
+    -webkit-backdrop-filter: blur(10px); /* Pour Safari */
+    
+    padding-bottom: 0px;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* Correction Layout 5 */
+.bloglo-header-layout-5 #bloglo-header {
+    margin-top: 0 !important;
+    padding-top: 10px;
+    border: none !important;
+}
+
+html body {
+    background-position: 50% 0 !important;
+}
+
+/* =========================================
+   2. BARRE "BREAKING" - VERRE DÉPOLI
+   ========================================= */
+.bloglo-ticker-slider {
+    position: fixed !important;
+    z-index: 900;
+    
+    /* Positionnement */
+    top: 80px; 
+    left: 0;
+    width: 100%;
+    
+    /* MÊME EFFET DE FLOU QUE LE HEADER */
+    background-color: transparent !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    box-shadow: none !important;
+    padding-bottom: 5px;
+}
+
+/* Espace de sécurité pour le contenu */
+.home #content {
+    padding-top: 80px !important; 
+}
+
+/* =========================================
+   3. FIL D'ARIANE (Breadcrumbs)
+   ========================================= */
+.single .bloglo-breadcrumbs {
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 900;
+    top: 100px; 
+    
+    /* Idem : fond semi-transparent et flou pour uniformiser */
+    background-color: rgba(235, 232, 230, 0.85); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    padding-bottom: 15px;
+    margin-top: -1px;
+    width: 100%;
+}
+
+/* =========================================
+   4. AJUSTEMENTS BARRE ADMIN
+   ========================================= */
+.admin-bar #masthead {
+    top: 32px;
+}
+
+.admin-bar .bloglo-ticker-slider,
+.admin-bar .single .bloglo-breadcrumbs {
+    top: 132px;
+}
+
+@media screen and (max-width: 782px) {
+    .admin-bar #masthead {
+        top: 46px;
+    }
+    .admin-bar .bloglo-ticker-slider,
+    .admin-bar .single .bloglo-breadcrumbs {
+        top: 146px; 
+    }
+}
+/* =========================================
+   5. CORRECTION DU CONTENU CACHÉ (Padding)
+   ========================================= */
+
+/* Pour les ARTICLES (Single) : On pousse le texte vers le bas */
+/* Le menu fait environ 100px + fil d'ariane, donc on met 150px de sécurité */
+.single #content, 
+.single .site-content {
+    padding-top: 150px !important; 
+}
+
+/* Pour l'ACCUEIL (Home) : On pousse encore plus car il y a la barre Breaking */
+.home #content,
+.home .site-content {
+    /* Menu (100px) + Breaking (environ 40px) + Espace (30px) */
+    padding-top: 180px !important; 
+}
+
+/* Pour les autres pages (Catégories, Contact, etc.) */
+.archive #content,
+.blog #content,
+.page #content {
+    padding-top: 150px !important;
+}
+/* =========================================
+   6. CORRECTION BARRE LATÉRALE (Sidebar)
+   ========================================= */
+
+#secondary {
+    /* On ajoute une marge pour la descendre visuellement au chargement */
+    margin-top: 165px !important; 
+    
+    /* Si ton thème rend la sidebar "Sticky" (collante), 
+       ceci l'empêchera de remonter trop haut sous le menu */
+    top: 160px !important; 
+}
