@@ -1,0 +1,90 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{eurosym}
+\usepackage{titlesec}
+
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\titlerule]
+
+\begin{document}
+
+\begin{center}
+    \textbf{\huge DEVIS PRESTATION} \\
+    \vspace{2mm}
+    \large Intégration Solution OBSCURUS
+\end{center}
+
+\vspace{1cm}
+
+\begin{minipage}[t]{0.5\textwidth}
+    \textbf{Prestataire :} \\
+    SARL OBSCURUS Anti-Cheat \\
+    59 avenue de Fès \\
+    34080 Montpellier
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+    \textbf{Destinataire :} \\
+    NEBULA Games Studio \\
+    310 avenue des développeurs \\
+    69000 Lyon
+\end{minipage}
+
+\vspace{1cm}
+
+\noindent \textbf{Date :} 2 avril 2026 \\
+\textbf{Référence :} DEV-2026-042 \\
+\textbf{Validité :} 30 jours
+
+\section{1. Configuration de la Solution}
+
+\begin{tabularx}{\textwidth}{|X|c|r|r|}
+\hline
+\textbf{Description} & \textbf{Quantité} & \textbf{Prix Unitaire HT} & \textbf{Total HT} \\
+\hline
+Licence OBSCURUS "Guardian" (Accès SDK \& API) & 1 & 5 000 \euro & 5 000 \euro \\
+\hline
+Implémentation Kernel-Mode (Ring 0) & 1 & 12 000 \euro & 12 000 \euro \\
+\hline
+Module d'Obfuscation de Code \& Anti-Tamper & 1 & 4 500 \euro & 4 500 \euro \\
+\hline
+Support Intégration Directe (10h ingénierie) & 1 & 1 500 \euro & 1 500 \euro \\
+\hline
+\end{tabularx}
+
+\section{2. Frais Récurrents (Maintenance \& Analyse)}
+
+Ces frais sont calculés sur une base mensuelle selon l'usage constaté :
+\begin{itemize}
+    \item \textbf{Protection Serveur \& Heartbeat :} 0,05 \euro / joueur actif par mois.
+    \item \textbf{Mise à jour Signature \& Heuristique :} Inclus dans le forfait maintenance.
+    \item \textbf{Accès Dashboard Analytics :} 450 \euro / mois.
+\end{itemize}
+
+\section{Récapitulatif Financier (Mise en service)}
+
+\begin{flushright}
+\begin{tabular}{|l|r|}
+\hline
+Total Hors Taxes & 23 000,00 \euro \\
+\hline
+TVA (20\%) & 4 600,00 \euro \\
+\hline
+\textbf{Total TTC} & \textbf{27 600,00 \euro} \\
+\hline
+\end{tabular}
+\end{flushright}
+
+\section{Clauses de Service}
+
+\begin{itemize}
+    \item \textbf{Garantie de Disponibilité :} OBSCURUS garantit un taux de disponibilité des serveurs d'authentification de 99,9\%.
+    \item \textbf{Confidentialité :} Les données collectées sur les machines des utilisateurs finaux sont strictement limitées aux processus liés au jeu et sont pseudonymisées conformément au RGPD.
+    \item \textbf{Évolutivité :} Le client bénéficie des mises à jour de sécurité majeures tous les mois pour contrer les nouveaux types de "cheats" (DMA, injection DLL, etc.).
+\end{itemize}
+
+\end{document}

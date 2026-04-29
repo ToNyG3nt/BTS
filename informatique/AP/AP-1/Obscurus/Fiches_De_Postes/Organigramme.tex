@@ -1,0 +1,92 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[landscape, margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
+
+% Mise en page
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Obscurus Anti-Cheat Solutions}
+\rhead{Organigramme - 2026}
+\cfoot{\thepage}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\textbf{\color{blue!80!black}ORGANIGRAMME DE LA STRUCTURE}}\\[1ex]
+    \textcolor{blue!80!black}{\rule{\linewidth}{0.4pt}}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+\begin{tikzpicture}[
+    >=Stealth,
+    box/.style={
+        rectangle, draw=blue!60!black, rounded corners=4pt,
+        fill=blue!5, text width=3.4cm, align=center,
+        minimum height=1.4cm, font=\small\bfseries
+    },
+    dirbox/.style={box, fill=blue!20, text width=4.8cm},
+    techbox/.style={box, fill=red!10}
+]
+
+    % Noeud racine (centré)
+    \node (dg) [dirbox] at (0,0)
+        {Directeur Général \& CTO};
+
+    % 5 subordonnés sur la même ligne, espacés régulièrement
+    \node (rso)     [techbox] at (-9,-3.5)
+        {Responsable\\Sécurité Offensive};
+
+    \node (dev)     [techbox] at (-4.5,-3.5)
+        {Développeur\\Logiciel};
+
+    \node (comm)    [box]     at (0,-3.5)
+        {Commercial\\\& Communication};
+
+    \node (rh)      [box]     at (4.5,-3.5)
+        {Responsable RH\\\& Comptabilité};
+
+    \node (support) [box]     at (9,-3.5)
+        {Agent Support\\24/7};
+
+    % Liens hiérarchiques
+    \draw[->, thick, blue!60!black] (dg) -- (rso);
+    \draw[->, thick, blue!60!black] (dg) -- (dev);
+    \draw[->, thick, blue!60!black] (dg) -- (comm);
+    \draw[->, thick, blue!60!black] (dg) -- (rh);
+    \draw[->, thick, blue!60!black] (dg) -- (support);
+
+    % Liens fonctionnels
+    \draw[dashed, gray, thick] (rso) -- (dev)
+        node[midway, above, font=\scriptsize\itshape, black] {Tests \& Specs};
+
+    \draw[dashed, gray, thick] (rso.south) to[out=-60, in=-120]
+        node[midway, below, font=\scriptsize\itshape, black] {Alerte Crise}
+        (comm.south);
+
+    \draw[dashed, gray, thick] (support.south) to[out=-60, in=-120]
+        node[midway, below, font=\scriptsize\itshape, black] {Remontées}
+        (dev.south);
+
+    \draw[dashed, gray, thick] (rh) -- (support)
+        node[midway, above, font=\scriptsize\itshape, black] {Planification};
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{1cm}
+\begin{center}
+    \small
+    \textbf{Légende :}
+    \quad \tikz[baseline=-0.5ex]{\draw[->, thick, blue!60!black] (0,0) -- (1,0);} Lien hiérarchique
+    \qquad \tikz[baseline=-0.5ex]{\draw[dashed, gray, thick] (0,0) -- (1,0);} Lien fonctionnel
+\end{center}
+
+\end{document}

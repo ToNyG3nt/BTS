@@ -1,0 +1,245 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\geometry{margin=2.5cm}
+
+\definecolor{primary}{RGB}{30, 90, 160}
+\definecolor{secondary}{RGB}{230, 240, 255}
+\definecolor{accent}{RGB}{200, 50, 50}
+
+\titleformat{\section}{\large\bfseries\color{primary}}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries\color{primary}}{}{0em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\textcolor{primary}{AP2 — Contexte M2L}}
+\lhead{\textcolor{gray}{BTS SIO — SISR}}
+\cfoot{\thepage}
+
+\hypersetup{colorlinks=true, linkcolor=primary, urlcolor=primary}
+
+\begin{document}
+
+% ─── Titre ───────────────────────────────────────────────────────────────────
+\begin{center}
+    {\LARGE\bfseries\color{primary} AP2 — Contexte Maison des Ligues de Lorraine}\\[0.4em]
+    {\large\color{gray} Récapitulatif SISR — PPE2}\\[0.2em]
+    {\small BTS SIO | Réseau CERTA | Version 1.1}
+\end{center}
+\vspace{1em}
+
+% ─── 1. Présentation M2L ─────────────────────────────────────────────────────
+\section{Présentation de la M2L}
+
+La \textbf{Maison des Ligues de Lorraine (M2L)} est un établissement du Conseil Régional de Lorraine,
+cogéré avec le \textbf{CROSL} (Comité Régional Olympique et Sportif de Lorraine).
+Sa mission est de fournir des espaces et des services aux ligues sportives régionales et structures hébergées.
+
+\subsection{Structure physique}
+\begin{itemize}[noitemsep]
+    \item 4 bâtiments : A et C (4 étages), B et D (plain-pied)
+    \item 80 bureaux pour 24 structures hébergées (ligues sportives, comités départementaux, CROSL)
+    \item Espaces mutualisés : amphithéâtre 200 places, 8 salles de réunion (12–50 places),
+          salle multimédia 24 postes, salle de convivialité, salle de reprographie
+\end{itemize}
+
+\subsection{Réseau informatique}
+
+\begin{tabularx}{\textwidth}{>{\bfseries}lX}
+    \toprule
+    Zone & Équipement \\
+    \midrule
+    Bâtiment A & 4 armoires secondaires (1/étage), switches 26 ports (24×100M + 2×Giga), câblage Cat5 \\
+    Bâtiment C & 1 armoire centrale (2\ieme\ étage), 4 switches 48 ports tout-Giga, câblage Cat6, liaison fibre vers armoire B \\
+    Armoire principale (Bat. B) & 2 switches 24 ports + routeur + armoire serveurs (salle climatisée) \\
+    \bottomrule
+\end{tabularx}
+
+\subsection{Services proposés}
+\begin{itemize}[noitemsep]
+    \item Internet, Wifi (bornes en quinconce dans tous les étages + RDC), Téléphonie IP
+    \item Serveur FTP documentaire (utilisé à seulement 10\% de sa capacité)
+    \item Intranet/Extranet : réservation salles (MRBS), annuaire des ligues, presse sportive régionale
+    \item Réseau d'affichage numérique (3 écrans 42\textquotedbl\ dans les espaces de circulation)
+    \item Système de gestion des configurations des postes ligues
+    \item Affranchissement et reprographie numérique (facturés par le CROSL)
+\end{itemize}
+
+% ─── 2. Projets PPE2 ─────────────────────────────────────────────────────────
+\section{Projets PPE2 disponibles (SISR)}
+
+\begin{tabularx}{\textwidth}{>{\bfseries}l>{\itshape}lX}
+    \toprule
+    Projet & Durée & Résumé \\
+    \midrule
+    ASSIZ    & 12h & Couverture Wifi d'une manifestation sous chapiteau — VLANs, DHCP, NAT, filtrage \\
+    DYLAN    & 8h  & Insertion dynamique d'un portable dans le VLAN de sa ligue par adresse MAC \\
+    VELANNE  & —   & Segmentation complète du réseau M2L en VLANs (peu cadré) \\
+    DEPLOG   & —   & Déploiement de logiciels à distance via gestionnaire de configs \\
+    STATIP   & —   & DHCP statique : IP fixe assignée par adresse MAC \\
+    SUPERVIZ & —   & Supervision des éléments actifs et gestion d'incidents \\
+    \bottomrule
+\end{tabularx}
+
+\vspace{0.5em}
+\colorbox{secondary}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
+    \textbf{\color{primary}Recommandation SISR :} choisir \textbf{ASSIZ + DYLAN}.
+    Les deux projets couvrent l'essentiel du référentiel SISR2 sans se répéter,
+    sont bien documentés avec des livrables clairs, et sont valorisants à l'oral.
+}}
+
+% ─── 3. Projet ASSIZ ─────────────────────────────────────────────────────────
+\section{Projet ASSIZ — Couverture Wifi des Assises de l'Escrime}
+
+\subsection{Contexte}
+La ligue d'Escrime organise une manifestation sous chapiteaux (2500 visiteurs attendus) à quelques centaines
+de mètres de la M2L. Le service informatique doit prototyper l'infrastructure réseau nomade.
+
+\subsection{Architecture à mettre en place}
+
+\begin{itemize}[noitemsep]
+    \item \textbf{2 SSIDs} sur chaque borne Wifi :
+    \begin{itemize}[noitemsep]
+        \item \texttt{"public"} — diffusé, WPA2 (clé sur le badge visiteur), isolation entre postes
+        \item \texttt{"orga"} — non diffusé, WPA2 (clé connue des organisateurs uniquement)
+    \end{itemize}
+    \item \textbf{2 VLANs} :
+    \begin{itemize}[noitemsep]
+        \item VLAN 2 → réseau orga
+        \item VLAN 3 → réseau public
+    \end{itemize}
+    \item \textbf{DHCP} sur le routeur MDL :
+    \begin{itemize}[noitemsep]
+        \item Plage \texttt{10.10.10.0/24} pour le SSID orga
+        \item Plage \texttt{172.31.1.0/24} pour le SSID public
+    \end{itemize}
+    \item \textbf{NAT} sur le routeur MDL (le routeur France Télécom ne peut pas être configuré)
+    \item \textbf{Filtrage} : les postes du réseau public ne doivent pas accéder aux ressources du réseau orga
+          (imprimante réseau, traceur à banderoles, afficheur géant)
+\end{itemize}
+
+\subsection{Éléments techniques clés}
+\begin{itemize}[noitemsep]
+    \item Les bornes Wifi et le switch s'administrent dans le \textbf{VLAN 1} par défaut
+    \item Le switch et les bornes doivent supporter la gestion de VLANs associés à des SSIDs
+    \item On peut choisir un routeur + switch séparés, ou un seul routeur/switch combiné
+\end{itemize}
+
+\subsection{Livrables attendus}
+\begin{enumerate}[noitemsep]
+    \item Démonstration du prototype fonctionnel
+    \item Notice technique : configuration borne Wifi + switch + routeur
+    \item Fichier de configuration du routeur sauvegardé sur serveur TFTP
+\end{enumerate}
+
+\subsection{Compétences SISR2 mobilisées}
+\begin{itemize}[noitemsep]
+    \item Configurer une maquette ou un prototype pour valider une solution
+    \item Configurer les éléments d'interconnexion permettant la séparation des flux
+    \item Configurer les éléments d'interconnexion permettant d'établir des périmètres de sécurité
+    \item Configurer les éléments d'interconnexion permettant d'assurer la connexion avec les réseaux externes
+    \item Valider et documenter une solution — Justifier le choix d'une solution technique
+\end{itemize}
+
+% ─── 4. Projet DYLAN ─────────────────────────────────────────────────────────
+\section{Projet DYLAN — Insertion dynamique dans le VLAN par adresse MAC}
+
+\subsection{Contexte}
+Depuis la mise en place des VLANs (projet VELANNE), les personnels des ligues ne peuvent plus accéder
+à leurs données depuis la salle de réunion commune de l'étage. Il faut qu'un PC portable se place
+\textbf{automatiquement dans le bon VLAN} selon l'adresse MAC de la machine connectée.
+
+\subsection{Architecture à mettre en place}
+
+\begin{itemize}[noitemsep]
+    \item Sur un switch \textbf{Cisco SF-300} (bâtiments A et B) :
+    \begin{enumerate}[noitemsep]
+        \item Créer les VLANs 121 (volley), 122 (escrime), 123 (badminton) — numérotation : bâtiment + étage + ligue
+        \item Mettre les ports bureaux en mode \textbf{ACCESS} dans leur VLAN respectif
+        \item Mettre le port de la prise de la salle de réunion en mode \textbf{GÉNÉRAL} (partagé entre les 3 VLANs)
+        \item Déclarer des \textbf{groupes d'adresses MAC} (un groupe par ligue) via \texttt{VLAN Management > MAC-Based Groups}
+        \item Mapper chaque groupe MAC vers son VLAN via \texttt{Mapping Group to VLAN}
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Principe de fonctionnement}
+Quand un portable de la ligue de volley (adresse MAC dans le groupe 121) se branche sur la prise
+de la salle de réunion, le switch l'affecte \textbf{automatiquement} au VLAN 121.
+Il peut alors communiquer avec les postes fixes de la ligue de volley.
+
+\subsection{Numérotation des VLANs M2L}
+Format : \textbf{[Bâtiment][Étage][Numéro ligue]} — ex : VLAN 121 = bâtiment A, étage 2, ligue 1 (volley)
+
+\subsection{Livrables attendus}
+\begin{enumerate}[noitemsep]
+    \item Démonstration du prototype (affectation MAC → VLAN)
+    \item Notice technique : implémentation VLAN par adresse MAC sur Cisco SF-300
+    \item Document avantages/inconvénients de la solution
+    \item Support de formation : partage de dossiers Windows entre postes de deux machines du même VLAN
+\end{enumerate}
+
+\subsection{Compétences SISR2 mobilisées}
+\begin{itemize}[noitemsep]
+    \item Configurer une maquette ou un prototype pour valider une solution
+    \item Configurer les éléments d'interconnexion permettant la séparation des flux
+    \item Configurer les éléments d'interconnexion permettant d'établir des périmètres de sécurité
+    \item Valider et documenter une solution — Justifier le choix d'une solution technique
+\end{itemize}
+
+% ─── 5. Pourquoi ce combo ────────────────────────────────────────────────────
+\section{Pourquoi le combo ASSIZ + DYLAN est fort}
+
+\begin{tabularx}{\textwidth}{lXX}
+    \toprule
+    & \textbf{ASSIZ} & \textbf{DYLAN} \\
+    \midrule
+    Thème central    & Wifi + sécurité réseau nomade & VLANs dynamiques par MAC \\
+    Compétence clé   & NAT, filtrage, DHCP, VLANs    & VLAN-per-MAC sur Cisco \\
+    Matériel         & Borne Wifi + switch + routeur  & Switch Cisco SF-300 \\
+    Durée estimée    & 12h                            & 8h \\
+    Originalité      & Fort (infrastructure nomade)   & Très fort (concept peu courant) \\
+    \bottomrule
+\end{tabularx}
+
+\vspace{0.8em}
+Les deux projets se \textbf{complètent sans se répéter} :
+ASSIZ couvre la couche réseau complète (DHCP, NAT, filtrage, Wifi),
+DYLAN approfondit les VLANs avec une mécanique plus avancée (affectation dynamique par MAC).
+Ensemble ils couvrent presque tout le référentiel \textbf{SISR2}.
+
+À l'oral, la progression est naturelle et cohérente :
+\textit{« J'ai d'abord conçu une infrastructure Wifi sécurisée pour une manifestation nomade,
+puis j'ai approfondi les VLANs en mettant en place une affectation dynamique par adresse MAC. »}
+
+% ─── 6. Rappel modules SISR ──────────────────────────────────────────────────
+\section{Rappel — Modules SISR exploitables sur M2L}
+
+\begin{tabularx}{\textwidth}{>{\bfseries}lX}
+    \toprule
+    Module & Activité M2L correspondante \\
+    \midrule
+    SI1 & Intégration PC de ligue, antivirus, client FTP, image de restauration \\
+    SI2 & Création VLAN ligue, modification affectation bureaux, analyse appel d'offres switches \\
+    SI3 & Consultation BDD réservation salles, extraction/modification données \\
+    SI5 & DHCP + relais, FTP sécurisé, sauvegarde automatique \\
+    SISR1 & Assistance à distance, restauration poste de ligue \\
+    SISR2 & VLANs, VPN, Wifi double réseau, tolérance de panne, VLAN dynamique \\
+    SISR3 & Proxy avec priorisation, logs d'activité, haute disponibilité LDAP/Web \\
+    SISR4 & Virtualisation salle formation, contrôleur de domaine secondaire \\
+    SISR5 & Supervision éléments actifs M2L (switches, serveurs) \\
+    SI7 & Logiciel de gestion d'incidents et des configurations \\
+    \bottomrule
+\end{tabularx}
+
+\end{document}

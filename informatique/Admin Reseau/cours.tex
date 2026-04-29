@@ -1,0 +1,370 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+
+\geometry{margin=2.5cm}
+
+% Style pour le code
+\lstset{
+    backgroundcolor=\color{gray!10},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{gray!50},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{orange},
+}
+
+% En-tête / pied de page
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Admin Réseaux}
+\lhead{\leftmark}
+\cfoot{\thepage}
+
+\title{\Huge\textbf{Admin Réseaux}\\[0.5em]\large Notes de cours}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%-----------------------------------------------------------
+\section{Rappels commandes Linux}
+%-----------------------------------------------------------
+
+\subsection{Structure d'une commande Bash}
+
+Une commande Bash est constituée de :
+\begin{itemize}
+    \item un \textbf{programme}
+    \item un \textbf{argument}
+    \item une \textbf{option}
+\end{itemize}
+
+Exemple :
+\begin{lstlisting}
+ls /etc/apache2 -lah
+ls -lah /etc/apache2   % equivalent, peuvent etre interchanges
+\end{lstlisting}
+
+\begin{itemize}
+    \item \texttt{ls} : fait appel à un programme
+    \item \texttt{/etc/apache2} : argument du programme
+    \item \texttt{-lah} : une option
+\end{itemize}
+
+\textit{Si on met juste le programme, a-t-on un argument par défaut ?}\\
+Oui, par défaut — pour \texttt{ls} c'est \texttt{.} (répertoire courant).
+
+\subsection{Commandes de base}
+
+\begin{description}[leftmargin=3cm, style=nextline]
+    \item[\texttt{ls -lah}] Lister les fichiers (human-readable, all, droits)
+    \item[\texttt{cd}] Changer de répertoire (\textit{change directory})\\
+        Sans argument : revient à la racine utilisateur courant (\texttt{\$HOME})
+    \item[\texttt{cat}] Concaténer / afficher le contenu d'un fichier
+    \item[\texttt{mkdir}] Créer un répertoire (\textit{make directory})\\
+        \texttt{-p} : crée les dossiers parents si nécessaire
+    \item[\texttt{pwd}] Donne le chemin absolu courant
+    \item[\texttt{passwd}] Modifier le mot de passe
+    \item[\texttt{rm}] Supprimer (\textit{remove})\\
+        \texttt{rm -Rf /*} \textbf{(à ne surtout pas faire !)} — \texttt{-R} récursif, \texttt{-f} force
+    \item[\texttt{touch}] Créer un fichier vide
+    \item[\texttt{nano}] Éditeur de texte
+    \item[\texttt{cp <src> <dest>}] Copie de fichier ; \texttt{-R} pour récursif
+    \item[\texttt{scp <src> <dest>}] Idem mais via SSH
+    \item[\texttt{mv <src> <dest>}] Déplacer un fichier
+    \item[\texttt{clear}] Vider le buffer / nettoyer le terminal
+    \item[\texttt{usermod}] Ajouter un utilisateur dans un groupe
+    \item[\texttt{useradd / adduser}] Créer un utilisateur
+    \item[\texttt{groupadd / addgroup}] Créer un groupe
+    \item[\texttt{sudo}] \textit{Substitute User Do} — par défaut l'utilisateur de substitution est \texttt{root}
+    \item[\texttt{su}] \textit{Substitute User} : connexion temporaire à un autre utilisateur\\
+        \texttt{su -} : root\\
+        \texttt{su <nom\_utilisateur>}
+\end{description}
+
+%-----------------------------------------------------------
+\section{Permissions Linux}
+%-----------------------------------------------------------
+
+\subsection{Lecture des permissions}
+
+Exemple de sortie \texttt{ls -l} :
+\begin{lstlisting}
+-rw- rw- --x   root  root  script.sh
+\end{lstlisting}
+
+\begin{itemize}
+    \item 1\textsuperscript{er} caractère : type d'élément
+        \begin{itemize}
+            \item \texttt{d} : directory
+            \item \texttt{-} : fichier brut
+            \item \texttt{l} : lien symbolique
+        \end{itemize}
+    \item Colonnes suivantes (par groupe de 3) : \textbf{utilisateur propriétaire} | \textbf{groupe propriétaire} | \textbf{autres utilisateurs}
+\end{itemize}
+
+\subsection{Permissions en octet}
+
+\begin{center}
+\begin{tabular}{|c|c|}
+    \hline
+    \textbf{Permission} & \textbf{Valeur} \\
+    \hline
+    r (read)    & 4 \\
+    w (write)   & 2 \\
+    x (execute) & 1 \\
+    0 (rien)    & 0 \\
+    \hline
+\end{tabular}
+\end{center}
+
+\subsection{chmod — changer les permissions}
+
+\begin{lstlisting}
+chmod 0554 script.sh
+       ^  groupe
+  type d'elt
+\end{lstlisting}
+
+Option : \texttt{-R} pour appliquer récursivement.
+
+\textbf{Bonne pratique :} ne jamais donner \texttt{w} et \texttt{x} simultanément — risque d'injection de code malveillant et d'exécution.
+
+\begin{lstlisting}
+chmod 0331 truc.exe   % DANGEREUX : ecriture + execution
+chmod 0510 truc.exe   % ok
+chmod +x   truc.exe   % A bannir (trop permissif)
+\end{lstlisting}
+
+Pour faire face : accorder soit \texttt{w} soit \texttt{x}, \textbf{jamais les deux}.
+
+%-----------------------------------------------------------
+\section{Scripts Bash}
+%-----------------------------------------------------------
+
+\subsection{Généralités}
+
+Un script bash est une suite de commandes/instructions. Il permet de \textbf{limiter les erreurs humaines}.
+
+\textbf{Règle :} on ne fait JAMAIS les MAS (Mises À jour planifiées) directement — il faut tester avant.
+
+La \textbf{première ligne} doit toujours être le \textit{shebang} :
+\begin{lstlisting}
+#!/bin/bash
+\end{lstlisting}
+
+Un script peut être rendu exécutable avec \texttt{chmod} ou lancé via :
+\begin{lstlisting}
+bash script.sh
+\end{lstlisting}
+
+\subsection{Variables}
+
+\begin{lstlisting}
+var1="Hello"
+\end{lstlisting}
+En bash, les variables n'ont pas de type.
+
+\subsection{PAM}
+
+PAM dans l'environnement Linux : \textit{Pluggable Authentication Module} — plateforme d'auto-identification.
+
+\subsection{Pipe et redirections}
+
+\begin{lstlisting}
+cat test.txt | tail -n k
+\end{lstlisting}
+Le \textbf{pipe} (\texttt{|}) permet d'envoyer le résultat d'une commande dans une autre (« tuyau »).\\
+On peut enchaîner autant de pipes qu'on veut.
+
+\medskip
+\begin{tabular}{ll}
+    \texttt{>}  & Redirige stdout vers un fichier \\
+    \texttt{2>} & Redirige stderr vers un fichier \\
+    \texttt{\&>} & Redirige stdout ET stderr vers un fichier \\
+\end{tabular}
+
+\subsection{Horodater un nom de fichier}
+
+\begin{lstlisting}
+touch "truc-$(date +%y%m%d%H%M).txt"
+\end{lstlisting}
+
+\subsection{Code de retour}
+
+\begin{lstlisting}
+echo $?
+\end{lstlisting}
+\begin{itemize}
+    \item Retour \texttt{= 0} : commande bien exécutée, sans erreur
+    \item Retour \texttt{$\neq$ 0} : erreur
+\end{itemize}
+
+Si code erreur = 1 et erreur = 2, le problème est une couche au-dessus.
+
+\subsection{stdin, stdout, stderr}
+
+\begin{itemize}
+    \item \texttt{stdin}  : entrée standard
+    \item \texttt{stdout} : sortie standard
+    \item \texttt{stderr} : sortie d'erreur
+\end{itemize}
+
+\subsection{grep et expressions régulières}
+
+\texttt{grep} affiche toute la ligne contenant le mot cherché.
+
+Utilisation avec Regex (option \texttt{-E}) :
+\begin{lstlisting}
+grep -Eo '([0-9a-zA-Z]{1,3}\.){3}'
+      ^  valeurs cherchees
+      nb de car. par bloc
+      separateur
+      nb de fois
+\end{lstlisting}
+L'option \texttt{-o} n'affiche que ce qui est entre guillemets (la correspondance).\\
+On peut ajouter une autre expression régulière.
+
+\subsection{ping}
+
+Sous Linux, \texttt{ping} ne s'arrête pas tout seul.
+
+\begin{lstlisting}
+ping ... -c n &    # -c n : nombre de requetes, & : arriere-plan
+ping ... -c n | grep "suite de caracteres"
+\end{lstlisting}
+
+\subsection{Fonctions bash}
+
+\begin{lstlisting}
+nom() {
+    echo "hello" $1   # $1 : 1er parametre
+}
+
+nom "truc en plus"    # affiche : hello truc en plus
+\end{lstlisting}
+
+\subsection{Conditions (if)}
+
+\begin{lstlisting}
+if [ x condition x ]; then   # espaces obligatoires entre crochets
+    instruction
+else / elif
+    instruction
+fi
+\end{lstlisting}
+
+Opérateurs de comparaison :
+\begin{center}
+\begin{tabular}{|c|l|}
+    \hline
+    \textbf{Opérateur} & \textbf{Signification} \\
+    \hline
+    \texttt{-eq} & equal \\
+    \texttt{-lt} & lower than \\
+    \texttt{-gt} & greater than \\
+    \hline
+\end{tabular}
+\end{center}
+
+Négation d'une condition :
+\begin{lstlisting}
+if [ ! -d $dossier ]   # -d : est-ce un dossier ?
+\end{lstlisting}
+
+\subsection{Boucle while}
+
+\begin{lstlisting}
+while [ condition ]; do
+    instruction
+done
+
+sleep 2   # attendre 2 secondes
+\end{lstlisting}
+
+\subsection{Paramètres d'un script}
+
+\begin{lstlisting}
+# exemple.sh
+echo "des trucs" $1 $2
+
+# Appel :
+./exemple.sh machin bidule
+# Affiche : des trucs machin bidule
+\end{lstlisting}
+
+%-----------------------------------------------------------
+\section{TP du 17/04 — Informations}
+%-----------------------------------------------------------
+
+\begin{itemize}
+    \item Groupe et identifiant de l'utilisateur courant :
+        \begin{itemize}
+            \item \texttt{uid} pour l'utilisateur
+            \item \texttt{gid} pour le groupe
+        \end{itemize}
+    \item Date sur 2 lignes différentes
+    \item Nombre de fichiers dans un dossier : via pipe
+    \item Horodater le fichier archivé
+\end{itemize}
+
+Commandes utiles :
+\begin{lstlisting}
+head -n -X        # supprime les X premieres lignes
+ls -lah           # 40k = taille totale du repertoire courant (-l)
+watch ls -l chemin  # voir les changements dans le dossier en direct
+ls truc 2> log.log  # ecrit les codes d'erreur vers log.log
+\end{lstlisting}
+
+\textbf{Indication devoir :} $\approx 83$ lignes\\
+Dossier de sortie : \texttt{/tmp} — fichier log\\
+En cas d'échec : réessayage avec un nombre limité d'essais\\
+\textbf{Rendu :} le fichier \texttt{.sh}
+
+%-----------------------------------------------------------
+\section{Sauvegarde}
+%-----------------------------------------------------------
+
+Outil Linux pour la sauvegarde :
+\begin{itemize}
+    \item \texttt{dd} : copie bit à bit (bytes ou bits)
+    \item \textbf{Rsync} : sauvegarde fichiers
+\end{itemize}
+
+\begin{description}
+    \item[Sauvegarde différentielle] Se base sur la sauvegarde complète
+    \item[Sauvegarde incrémentielle] Se base sur la dernière sauvegarde
+\end{description}
+
+\subsection{Règle 3-2-1-0}
+
+\begin{center}
+\begin{tabular}{|c|l|}
+    \hline
+    \textbf{Chiffre} & \textbf{Signification} \\
+    \hline
+    3 & 3 sauvegardes \\
+    2 & 2 supports différents \\
+    1 & 1 hors site \\
+    0 & 0 erreur de restauration \\
+    \hline
+\end{tabular}
+\end{center}
+
+La sauvegarde doit être \textbf{immuable} (ne peut pas être modifiée) et testée régulièrement.
+
+\end{document}

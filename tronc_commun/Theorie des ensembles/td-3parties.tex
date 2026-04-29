@@ -1,0 +1,189 @@
+\documentclass[12pt,a4paper]{article}
+
+% --------------------------------------------------
+% PACKAGES
+% --------------------------------------------------
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+
+% --------------------------------------------------
+% MISE EN PAGE
+% --------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\renewcommand{\arraystretch}{1.2}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{BTS SIO}
+\fancyhead[C]{TD --- Logique (Corrigé)}
+\fancyhead[R]{Mathématiques}
+\fancyfoot[C]{\thepage}
+
+% --------------------------------------------------
+% COMMANDES
+% --------------------------------------------------
+\newcommand{\etlog}{\wedge}
+\newcommand{\oulog}{\vee}
+\newcommand{\non}{\neg}
+\newcommand{\implique}{\Rightarrow}
+\newcommand{\ssi}{\Leftrightarrow}
+
+\newcounter{exo}
+\newcommand{\exo}[1]{%
+  \refstepcounter{exo}
+  \vspace{0.9em}
+  {\large\textbf{Exercice \theexo{} --- #1}}
+  \vspace{0.4em}
+}
+
+% Style pour les réponses
+\newcommand{\reponse}[1]{\smallskip\textcolor{blue!70!black}{\textbf{Réponse : }#1}}
+
+% --------------------------------------------------
+% DOCUMENT
+% --------------------------------------------------
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Feuille de TD --- Logique et raisonnement}}\\[0.3em]
+    {\large BTS SIO1}\\[0.3em]
+    {\small Corrigé complet}
+\end{center}
+
+\hrule
+\vspace{0.8em}
+
+% ==================================================
+\section*{Partie I --- Propositions et connecteurs logiques}
+
+\exo{Reconnaître une proposition}
+\begin{enumerate}[label=\alph*)]
+    \item $5$ est un nombre pair. \reponse{Proposition (Fausse).}
+    \item $2+7=9$. \reponse{Proposition (Vraie).}
+    \item Fermez la fenêtre. \reponse{Non proposition (Impératif).}
+    \item Le langage Python est un langage de programmation. \reponse{Proposition (Vraie).}
+    \item $x+3=8$. \reponse{Non proposition (Prédicat, dépend de $x$).}
+    \item Nîmes est en France. \reponse{Proposition (Vraie).}
+    \item Quelle est la date d'aujourd'hui ? \reponse{Non proposition (Question).}
+    \item Un triangle possède trois côtés. \reponse{Proposition (Vraie).}
+\end{enumerate}
+
+\exo{Écrire une négation simple}
+\begin{enumerate}[label=\alph*)]
+    \item Le serveur n'est pas allumé.
+    \item L'utilisateur n'est pas connecté.
+    \item Le mot de passe est incorrect (ou n'est pas correct).
+    \item La page web n'est pas accessible.
+    \item Le programme ne compile pas.
+    \item La base de données ne contient aucun enregistrement.
+\end{enumerate}
+
+\exo{Traduire en français}
+\reponse{
+\begin{enumerate}[label=\alph*)]
+    \item Le réseau fonctionne et le serveur répond.
+    \item Le réseau fonctionne ou le serveur répond.
+    \item Le réseau ne fonctionne pas.
+    \item Si le réseau fonctionne, alors le serveur répond.
+    \item Le réseau fonctionne si et seulement si le serveur répond.
+    \item Le réseau fonctionne et le serveur ne répond pas.
+    \item Il est faux que le réseau fonctionne ou que le serveur réponde (Ni l'un, ni l'autre).
+\end{enumerate}}
+
+\exo{Traduire en écriture logique}
+\reponse{
+\begin{enumerate}[label=\alph*)]
+    \item $A \etlog B$
+    \item $\non A$
+    \item $B \oulog A$
+    \item $A \implique B$
+    \item $B \ssi A$
+    \item $A \etlog \non B$
+\end{enumerate}}
+
+\exo{Valeur de vérité ($P=V, Q=F, R=V$)}
+\reponse{
+\begin{enumerate}[label=\alph*)]
+    \item $\non V \to F$
+    \item $V \etlog F \to F$
+    \item $V \oulog F \to V$
+    \item $F \oulog V \to V$
+    \item $V \etlog V \to V$
+    \item $\non F \to V$
+    \item $\non(F) \to V$
+    \item $(V \oulog F) \etlog V \to V \etlog V \to V$
+\end{enumerate}}
+
+\exo{Connecteur principal}
+\begin{enumerate}[label=\alph*)]
+    \item $\non(P \oulog Q)$ \reponse{La négation ($\non$).}
+    \item $(P \etlog Q)\oulog R$ \reponse{La disjonction ($\oulog$).}
+    \item $P \implique (Q \etlog R)$ \reponse{L'implication ($\implique$).}
+    \item $(P \implique Q)\ssi R$ \reponse{L'équivalence ($\ssi$).}
+    \item $(P \oulog Q)\implique \non R$ \reponse{L'implication ($\implique$).}
+\end{enumerate}
+
+\newpage
+% ==================================================
+\section*{Partie II --- Tables de vérité}
+
+\exo{Exemple de table : $\non P \oulog Q$}
+\begin{center}
+\begin{tabular}{cc|c|c}
+\toprule
+$P$ & $Q$ & $\non P$ & $\non P \oulog Q$ \\
+\midrule
+V & V & F & V \\
+V & F & F & F \\
+F & V & V & V \\
+F & F & V & V \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\exo{Tautologie, contradiction ou cas intermédiaire}
+\begin{enumerate}[label=\alph*)]
+    \item $P \oulog \non P$ \reponse{Tautologie.}
+    \item $P \etlog \non P$ \reponse{Contradiction.}
+    \item $(P \etlog Q)\implique P$ \reponse{Tautologie.}
+    \item $(P \oulog Q)\etlog \non P \etlog \non Q$ \reponse{Contradiction (équivalent à $\non(P \oulog Q) \etlog (P \oulog Q)$).}
+\end{enumerate}
+
+% ==================================================
+\section*{Partie III --- Équivalences logiques}
+
+\exo{Lois de De Morgan}
+\reponse{
+\begin{enumerate}[label=\alph*)]
+    \item $\non P \etlog \non Q$
+    \item $\non P \oulog \non Q$
+    \item $\non A \etlog \non B \etlog \non C$
+    \item $\non(P \etlog Q) \etlog \non R \equiv (\non P \oulog \non Q) \etlog \non R$
+\end{enumerate}}
+
+\exo{Simplification informatique}
+\reponse{
+\begin{enumerate}[label=\arabic*)]
+    \item $U \etlog M$
+    \item $A \oulog U$
+    \item $U \implique M$
+    \item L'utilisateur est connecté et possède le bon mot de passe, ou il est administrateur.
+    \item $\non((U \etlog M) \oulog A) \equiv (\non U \oulog \non M) \etlog \non A$.
+\end{enumerate}}
+
+\vfill
+\begin{center}
+\textit{Fin du corrigé de la feuille de TD}
+\end{center}
+
+\end{document}

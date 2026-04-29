@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obscurus - Anticheat Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="Assets/Logo_sans_fond.png" alt="Obscurus" class="nav-logo"></a>
+            </div>
+            <div class="nav-title">Obscurus</div>
+            <ul class="nav-links">
+                <li><a href="#mission">Fonctionnalités</a></li>
+                <li><a href="#pricing">Tarifs</a></li>
+                <li><a href="#avis">Avis</a></li>
+                <li><a href="equipe.html">L'Équipe</a></li>
+                <li><a href="status.html">Statut</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="fade-in">Obscurus</h1>
+            <p class="fade-in delay-1">The Cloaked Eye</p>
+
+            <div class="scroll-indicator fade-in delay-1">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Mission Plein Écran -->
+        <section id="mission" class="mission-services-section">
+            <div class="widget mission-widget">
+                <h3>Notre Mission</h3>
+                <p>Obscurus protège vos jeux contre les tricheurs les plus avancés du marché. Notre système fonctionne à deux niveaux : un driver intégré au cœur de Windows bloque les attaques hardware et logiciel avant même le démarrage du jeu, pendant que notre infrastructure cloud analyse les comportements suspects en temps réel. Deux couches de protection, zéro compromis sur la stabilité de vos serveurs et la vie privée de vos joueurs.</p>
+            </div>
+
+        </section>
+
+        <!-- Séparateur -->
+        <div class="section-separator"></div>
+
+        <!-- Sections Détails Interactives (Accordéon) -->
+        <section id="details" class="interactive-details-section">
+            <h2 class="section-title">Nos Services</h2>
+            <div id="kernel-details" class="widget details-widget">
+                <div class="details-header">
+                    <h2>🛡️ Anticheat Kernel : Protection Ring 0</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="details-content">
+                    <p>Le driver Obscurus s'intègre au cœur de Windows, là où les outils de triche les plus avancés opèrent. Il surveille en permanence la mémoire système, les accès hardware non autorisés, les injections de code et les processus suspects tournant en arrière-plan — le tout avant même que le jeu ne démarre.</p>
+                    <p style="margin-top:1rem;">Si quelque chose de suspect est détecté, vous choisissez la réponse : ban immédiat, shadow ban différé ou simple alerte dans votre dashboard. Signé par Microsoft, testé sur plus de 200 configurations, sans aucun crash système en 18 mois de production.</p>
+                </div>
+            </div>
+
+            <div id="cloud-details" class="widget details-widget">
+                <div class="details-header">
+                    <h2>☁️ Anticheat Cloud : Intelligence Heuristique</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="details-content">
+                    <p>Chaque action de jeu transite vers notre infrastructure et est analysée en moins de 80 ms. Nos modèles détectent les comportements impossibles : précision surhumaine, déplacements qui défient la physique, données falsifiées dans la télémétrie. Pas de driver à installer côté joueur, aucun impact sur vos serveurs.</p>
+                    <p style="margin-top:1rem;">Les modèles se mettent à jour en continu sans aucune interruption de service. Vos joueurs honnêtes ne voient rien — et les tricheurs, eux, ne passent pas.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Séparateur -->
+        <div class="section-separator"></div>
+
+        <!-- Section Tarifs / Comparatif -->
+        <section id="pricing" class="pricing-section">
+            <h2 class="section-title">Nos Offres</h2>
+
+            <!-- Cartes de prix -->
+            <div class="pricing-cards">
+                <a href="checkout-kernel.html" class="pricing-card widget">
+                    <div class="pricing-card-icon">🛡️</div>
+                    <h3>Anticheat Kernel</h3>
+                    <p class="pricing-card-desc">Pour les jeux PC compétitifs. Le driver s'intègre au niveau système et bloque les outils de triche les plus sophistiqués, ceux que les solutions classiques ne voient pas.</p>
+                    <span class="price-button">2 800 € HT / mois</span>
+                </a>
+                <a href="checkout-cloud.html" class="pricing-card widget">
+                    <div class="pricing-card-icon">☁️</div>
+                    <h3>Anticheat Cloud</h3>
+                    <p class="pricing-card-desc">Pour tous les types de jeux, PC et cross-platform. Aucune installation côté joueur. La protection fonctionne entièrement depuis nos serveurs et s'intègre via une simple API.</p>
+                    <span class="price-button">1 200 € HT / mois</span>
+                </a>
+                <a href="checkout-pack.html" class="pricing-card featured widget">
+                    <div class="pricing-card-icon">⚡</div>
+                    <h3>Pack Complet</h3>
+                    <p class="pricing-card-desc">La protection maximale. Kernel et Cloud fonctionnent ensemble et se renforcent mutuellement. La meilleure option pour les titres compétitifs à fort enjeu.</p>
+                    <span class="price-button">3 800 € HT / mois</span>
+                </a>
+            </div>
+
+            <!-- Section Audit -->
+            <h2 class="section-title comparatif-title" style="margin-top:1rem;">Audit de Sécurité</h2>
+            <div class="pricing-cards">
+                <a href="contact.html" class="pricing-card widget">
+                    <div class="pricing-card-icon">🔍</div>
+                    <h3>Audit Surface</h3>
+                    <p class="pricing-card-desc">Un diagnostic rapide de votre sécurité anticheat. On identifie les vulnérabilités principales et vous remet un rapport d'actions prioritaires.</p>
+                    <span class="price-button">À partir de 1 500 € HT</span>
+                </a>
+                <a href="contact.html" class="pricing-card widget">
+                    <div class="pricing-card-icon">🔎</div>
+                    <h3>Audit Avancé</h3>
+                    <p class="pricing-card-desc">Une analyse complète de votre infrastructure, de vos intégrations SDK et de vos politiques de ban. Recommandations détaillées et plan de remédiation inclus.</p>
+                    <span class="price-button">À partir de 3 500 € HT</span>
+                </a>
+                <a href="contact.html" class="pricing-card featured widget">
+                    <div class="pricing-card-icon">🏆</div>
+                    <h3>Audit Approfondi</h3>
+                    <p class="pricing-card-desc">L'audit complet : tests d'intrusion, simulation de cheats avancés, review du code d'intégration et accompagnement sur la durée. Tarif selon périmètre.</p>
+                    <span class="price-button">Sur devis</span>
+                </a>
+            </div>
+
+            <h2 class="section-title comparatif-title">Comparatif détaillé</h2>
+            <div class="table-container">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Fonctionnalités & Capacités</th>
+                            <th>Anticheat Kernel 🛡️</th>
+                            <th>Anticheat Cloud ☁️</th>
+                            <th style="color:#e0607a;">Pack Complet ⚡</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Protection Ring 0 (Niveau Noyau)</td>
+                            <td class="check">✅</td>
+                            <td class="cross">❌</td>
+                            <td class="check">✅</td>
+                        </tr>
+                        <tr>
+                            <td>Analyse Heuristique & Machine Learning</td>
+                            <td class="cross">❌</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                        </tr>
+                        <tr>
+                            <td>Détection des accès mémoire directs (DMA)</td>
+                            <td class="check">✅</td>
+                            <td class="cross">❌</td>
+                            <td class="check">✅</td>
+                        </tr>
+                        <tr>
+                            <td>Mises à jour des signatures en temps réel</td>
+                            <td class="cross">❌</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                        </tr>
+                        <tr>
+                            <td>Impact sur les performances du serveur</td>
+                            <td>Faible</td>
+                            <td>Nul (Déporté)</td>
+                            <td>Faible</td>
+                        </tr>
+                        <tr>
+                            <td>Protection contre l'injection de code</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                        </tr>
+                        <tr>
+                            <td>Corrélation croisée Kernel × Cloud</td>
+                            <td class="cross">❌</td>
+                            <td class="cross">❌</td>
+                            <td class="check">✅</td>
+                        </tr>
+                        <tr>
+                            <td>Support Premium 24/7 (en option)</td>
+                            <td>+ 2 000 € HT/mois</td>
+                            <td>+ 2 000 € HT/mois</td>
+                            <td>+ 3 000 € HT/mois</td>
+                        </tr>
+                        <tr>
+                            <td>Tarif mensuel HT</td>
+                            <td>2 800 €</td>
+                            <td>1 200 €</td>
+                            <td style="color:#e0607a;font-weight:600;">3 800 €</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Séparateur -->
+        <div class="section-separator"></div>
+
+        <!-- Section Avis + Simulation Bans -->
+        <section id="avis" class="avis-section">
+            <h2 class="section-title">Ce que disent nos clients</h2>
+            <div class="avis-layout">
+
+                <!-- Colonne gauche : avis -->
+                <div class="avis-cards">
+                    <div class="avis-card">
+                        <p class="avis-text">« Avant Obscurus, notre communauté était ravagée par les outils DMA. En deux semaines d'intégration, les reports de triche ont chuté de 94 %. Le driver Ring 0 détecte des vecteurs que notre ancienne solution ne voyait pas du tout. »</p>
+                        <div class="avis-author">
+                            <span class="avis-author-name">Thomas Reinholt</span>
+                            <span class="avis-author-role">CTO — ArenaForge Studio</span>
+                            <span class="avis-badge kernel">Anticheat Kernel</span>
+                        </div>
+                    </div>
+                    <div class="avis-card">
+                        <p class="avis-text">« Nous développons un FPS cross-platform — déployer un driver côté joueur était hors de question. La solution Cloud s'est intégrée en quelques jours via l'API REST. La latence d'analyse est imperceptible, et nos joueurs ne savent même pas qu'elle tourne. »</p>
+                        <div class="avis-author">
+                            <span class="avis-author-name">Léa Marchetti</span>
+                            <span class="avis-author-role">Lead Backend — NexGen Interactive</span>
+                            <span class="avis-badge cloud">Anticheat Cloud</span>
+                        </div>
+                    </div>
+                    <div class="avis-card">
+                        <p class="avis-text">« On a opté pour le Pack Complet dès le lancement de notre ranked mode. La corrélation Kernel × Cloud attrape des profils que ni l'un ni l'autre n'aurait signalé seul. C'est clairement la meilleure décision qu'on ait prise pour la santé de notre compétitif. »</p>
+                        <div class="avis-author">
+                            <span class="avis-author-name">Samir Aouad</span>
+                            <span class="avis-author-role">Game Director — BlueSky Games</span>
+                            <span class="avis-badge pack">Pack Complet</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne droite : simulation bans en direct -->
+                <div class="ban-feed widget">
+                    <div class="ban-feed-header">
+                        <div class="ban-live-dot"></div>
+                        <h3>Bans en direct</h3>
+                        <span class="ban-counter" id="ban-total">0 bans aujourd'hui</span>
+                    </div>
+                    <div id="ban-feed-list"></div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Obscurus. Tous droits réservés.</p>
+            <ul class="footer-links">
+                <li><a href="#">Mentions légales</a></li>
+                <li><a href="#">Politique de confidentialité</a></li>
+                <li><a href="#">Conditions Générales d'Utilisation</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const banData = [
+            { player: 'xXsn1perXx',   game: 'Nexus Arena',   reason: 'Aimbot',            method: 'Cloud'  },
+            { player: 'DMA_G0d',       game: 'Strike Force',  reason: 'Attaque DMA',        method: 'Kernel' },
+            { player: 'w4llhack3r',    game: 'Dark Rift',     reason: 'Wallhack',           method: 'Cloud'  },
+            { player: 'inj3ct0r_exe',  game: 'Nexus Arena',   reason: 'Injection noyau',    method: 'Kernel' },
+            { player: 'sp33dh4x',      game: 'Valor Online',  reason: 'Speed Hack',         method: 'Cloud'  },
+            { player: 'gh0st_aim',     game: 'Strike Force',  reason: 'Aimbot',             method: 'Cloud'  },
+            { player: 'SSDT_byp4ss',   game: 'Apex Clone',    reason: 'Hook SSDT',          method: 'Kernel' },
+            { player: 'mem0ry_r34d',   game: 'Dark Rift',     reason: 'Manual Mapping',     method: 'Kernel' },
+            { player: 'TriggerB0t99',  game: 'Valor Online',  reason: 'Triggerbot',         method: 'Cloud'  },
+            { player: 'PCIe_h4ck3r',   game: 'Nexus Arena',   reason: 'Attaque DMA',        method: 'Kernel' },
+            { player: 'r4ge_ch3at',    game: 'Apex Clone',    reason: 'Aimbot',             method: 'Cloud'  },
+            { player: 'DK0M_rider',    game: 'Strike Force',  reason: 'Manipulation DKOM',  method: 'Kernel' },
+            { player: 'sm00th_b0t',    game: 'Valor Online',  reason: 'Smoothing IA',       method: 'Cloud'  },
+            { player: 'shellc0de_x',   game: 'Dark Rift',     reason: 'Shellcode',          method: 'Kernel' },
+            { player: 'wallX_pr0',     game: 'Nexus Arena',   reason: 'Wallhack',           method: 'Cloud'  },
+        ];
+
+        let totalBans = Math.floor(Math.random() * 800) + 3200;
+
+        function addBanEntry() {
+            const feed = document.getElementById('ban-feed-list');
+            if (!feed) return;
+
+            totalBans++;
+            document.getElementById('ban-total').textContent = totalBans.toLocaleString('fr-FR') + ' bans aujourd\'hui';
+
+            const d = banData[Math.floor(Math.random() * banData.length)];
+            const now = new Date();
+            const time = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+            const entry = document.createElement('div');
+            entry.className = 'ban-entry new';
+            const reasonColor = d.method === 'Kernel' ? '#e0607a' : '#7dd3fc';
+            entry.innerHTML = `
+                <div class="ban-entry-header">
+                    <span class="ban-player">${d.player}</span>
+                    <span class="ban-time">${time}</span>
+                </div>
+                <div class="ban-entry-details">
+                    <span class="ban-game">${d.game}</span>
+                    <span class="ban-reason" style="color:${reasonColor}">${d.reason}</span>
+                    <span class="ban-method ban-method-${d.method.toLowerCase()}">${d.method}</span>
+                </div>`;
+
+            feed.insertBefore(entry, feed.firstChild);
+            setTimeout(() => entry.classList.remove('new'), 400);
+
+            if (feed.children.length > 8) {
+                const last = feed.lastChild;
+                last.classList.add('fading');
+                setTimeout(() => { if (last.parentNode) last.remove(); }, 400);
+            }
+        }
+
+        // Pré-remplissage initial
+        for (let i = 0; i < 6; i++) setTimeout(() => addBanEntry(), i * 120);
+        // Nouveaux bans périodiques
+        setInterval(() => addBanEntry(), 2200 + Math.random() * 1600);
+    </script>
+</body>
+</html>

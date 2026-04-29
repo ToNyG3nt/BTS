@@ -20,3 +20,7 @@ Thumbs.db
 *~
 *.swp
 *.swo
+
+# Fichiers de configuration personnels (contiennent des credentials)
+stats.php
+Portfoliio_Mael_Mignard/proxmox-api.php

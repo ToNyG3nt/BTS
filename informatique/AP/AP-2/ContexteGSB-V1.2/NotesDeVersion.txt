@@ -1,0 +1,23 @@
+Version septembre 2012
+
+Revu : PPE 03-Compte Rendus
+-------------------------------------------------
+On a dissocié le descriptif de 2003 de la demande d'actualisation. 
+
+
+Revu : Documentation technique
+-------------------------------------------------
+Dissociation du contexte dans la page de garde et dans le nom du fichier.
+Ajout d'une table des matières
+Suppression des liens morts. 
+
+
+Nouveau : PPE 02-BackOffice
+-------------------------------------------------
+Demandes relatives à la gestion de l'environnement mis en production pour la sauvegarde, la gestion des équipements et incidents, l'authentification des utilsiateurs, etc
+
+
+Nouveau : PPE 03-ServiceWeb
+-------------------------------------------------
+Un service Web est mis à disposition des services de développement pour l'exploitation des données médecin.
+

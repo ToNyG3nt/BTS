@@ -1,0 +1,222 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage[explicit]{titlesec}
+\usepackage{tcolorbox}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\geometry{margin=2.5cm}
+
+% --- Style des sections ---
+\titleformat{\section}
+{\normalfont\Large\bfseries\sffamily}
+{}
+{0pt}
+{\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, left=5pt, sharp corners, boxrule=0pt, leftrule=3pt] \thesection. #1 \end{tcolorbox}}
+
+% --- Style des listes ---
+\setlist[itemize,1]{label=\color{blue!75!black}\bullet, font=\bfseries, leftmargin=2em, labelsep=1em}
+\setlist[enumerate,1]{label=\color{blue!75!black}\arabic*., font=\bfseries, leftmargin=2em, labelsep=1em}
+\setlist{nosep}
+
+\title{CCNA-1}
+\author{Mignard Mael / Dupouët Camille}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+Le TP a été réalisé à 2 à partir de spanning tree, nous nous permettons donc de rendre un seul rapport.
+\tableofcontents
+\newpage
+
+\section{Commutation}
+
+\subsection{Prérequis : Adressage du réseau}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{Équipement} & \textbf{Adresse IP} \\
+\midrule
+PC0 & 192.168.10.1 \\
+PC1 & 192.168.10.2 \\
+PC2 & 192.168.10.3 \\
+PC3 & 192.168.10.4 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{1em}
+
+\subsection{Table MAC}
+
+\textbf{Question : Que contiennent les tables MAC des switchs ?} \\
+\textit{Réponse :} Tant que les PC n'ont pas communiqué entre eux, elles contiennent uniquement l'adresse MAC de l'autre switch.
+\vspace{1em}
+
+\textbf{Question : Relancez la commande show mac-address-table, que constatez-vous ?} \\
+\textit{Réponse :} Tous les PC qui ont reçu un ping ont leur adresse inscrite dans la table (PC0, PC1...).
+\vspace{1em}
+
+\textbf{Question : Lancez la même commande sur le Switch1, que constatez-vous ? Est-ce un normal ? Expliquez.} \\
+\textit{Réponse :} Les PC ayant lancé un ping apparaissent sur le Switch1. C'est normal car il n'y a pas de segmentation, donc l'adresse MAC est envoyée sur les deux switchs.
+\vspace{1em}
+
+\textbf{Question : Vérifiez l'état de la table MAC du Switch1 après avoir testé la connectivité vers PC3.} \\
+\textit{Réponse :} L'adresse de PC3 est présente.
+\vspace{1em}
+\newpage
+\section{Protocole ARP}
+
+\textbf{Question : Pourquoi le premier paquet émis depuis votre PC vers le switch n'est pas un paquet ICMP ?} \\
+\textit{Réponse :} Car il s'agit d'un paquet ARP envoyé à tout le réseau pour récupérer l'adresse MAC de destination, et non pour vérifier si l'équipement répond au paquet ICMP.
+\vspace{1em}
+
+\textbf{Question : Que signifie la MAC adresse de destination de cette requête ?} \\
+\textit{Réponse :} Une adresse broadcast.
+\vspace{1em}
+
+\textbf{Question : Que constatez-vous en tapant "show arp" sur les switchs ? Est-ce normal ?} \\
+\textit{Réponse :} La table ARP est vide car le switch est un équipement qui fonctionne sur la couche 2 (physique), alors que ARP est un protocole de couche 3 (réseau).
+\vspace{1em}
+
+\section{Routage statique}
+
+\subsection{Configuration des passerelles}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{Interface Router0} & \textbf{Adresse IP (Passerelle)} \\
+\midrule
+Vers Switch0 (LAN A) & 192.168.10.254 \\
+Vers Switch1 (LAN B) & 172.16.0.254 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{1em}
+
+\textbf{Question : Est-ce que la connectivité est assurée depuis le routeur ?} \\
+\textit{Réponse :} Oui, après avoir configuré les interfaces.
+\vspace{1em}
+
+\textbf{Question : Quelle différence entre "show arp" (routeur) et "show mac-address-table" (switch) ?} \\
+\textit{Réponse :} La table ARP montre l'IP, l'adresse MAC et l'interface, alors que la table MAC montre uniquement l'adresse MAC, le port et le VLAN.
+\vspace{1em}
+
+\textbf{Question : Est-ce que la connectivité est assurée depuis Switch0 vers PC3 ? Pourquoi ?} \\
+\textit{Réponse :} Non, car les PC ne sont pas configurés pour sortir de leur réseau local et ils n'ont pas de passerelle par défaut.
+\vspace{1em}
+
+\section{MTU}
+
+\textbf{Question : Relevez et expliquez la valeur du TTL.} \\
+\textit{Réponse :} PC0 vers Routeur : TTL=255. PC0 vers PC3 : TTL=127.
+\vspace{1em}
+
+\textbf{Question : Expliquez la valeur du TTL.}
+\textit{Réponse :} Le ping vers PC3 affiche un TTL réduit de 1 car, à chaque fois qu'un paquet traverse un routeur, celui-ci diminue sa valeur de 1 pour empêcher le paquet de tourner en boucle indéfiniment dans le réseau.
+\vspace{1em}
+
+\textbf{Question : Expliquez le fonctionnement du cheminement des paquets.} \\
+\textit{Réponse :} Le paquet part de PC0 vers PC3. Il passe par la passerelle (192.168.10.254) sur l'interface Gig0/0 de R0, puis ressort par l'interface Gig0/1 vers PC3.
+\vspace{1em}
+
+\textbf{Question : Différence avec une taille de paquet de 300 octets ?} \\
+\textit{Réponse :} Le routeur doit fragmenter le fichier car la MTU est de 200 sur l'interface de sortie.
+\vspace{1em}
+
+\section{Spanning Tree}
+
+\textbf{Question : Êtes-vous capable de recevoir les informations CDP sur une interface "bloquée" ?} \\
+\textit{Réponse :} Oui, depuis les switchs, on voit les autres, le STP empeche les boucles, pas la communication.
+\vspace{1em}
+
+\textbf{Question : Qu'observez-vous sur le ping -t après avoir coupé le lien ?} \\
+\textit{Réponse :} Le temps de ping est plus long.
+\vspace{1em}
+
+\textbf{Question : Quelle a été la durée de la coupure ?} \\
+\textit{Réponse :} La durée de la coupure est de 40 secondes (8 timeout), le temps que le Spanning Tree calcule le nouveau chemin.
+\vspace{1em}
+
+\textbf{Question : Quelle est la durée de la coupurecette fois-ci ?} \\
+\textit{Réponse : } Pas de timeout, juste un delais plus long (22ms).
+\vspace{1em}
+
+\textbf{Question : La connectivité est-elle possible immédiatement depuis PC2 ?} \\
+\textit{Réponse :} Non car le port du Switch2 doit passer par les états Listening et Learning avant de devenir Forwarding.
+\vspace{1em}
+
+\textbf{Question : La connectivité a-t-elle été impacté entre PC0 et PC1 ?} \\
+\textit{Réponse :} Non car ils sont sur le même switch et n'utilisent pas le lien inter-switch.
+\vspace{1em}
+
+\textbf{Question : Quelle différence constatez-vous avec le spanning-tree portfast ?} \\
+\textit{Réponse :} Le port passe immédiatement en état Forwarding, supprimant les délais de calcul.
+\vspace{1em}
+
+\section{Multicast (HSRP)}
+
+\textbf{Question : Que pouvez-vous dire de l'adresse MAC destination ?} \\
+\textit{Réponse :} Adresse MAC : 0100.5E00.0002. C'est l'adresse standard pour le multicast IPv4.
+\vspace{1em}
+
+\textbf{Question : Est-ce cohérent par rapport à l'IP destination (224.0.0.2) ?} \\
+\textit{Réponse :} Oui, l'IP est en classe D (224-239), réservée au multicast.
+\vspace{1em}
+
+\textbf{Question : Que pouvez-vous conclure de ce type de trafic par rapport au fonctionnement du switch ?} \\
+\textit{Réponse :} Le switch diffuse le multicast à tous les ports s'il ne connaît pas les membres du groupe (inondation).
+\vspace{1em}
+
+\section{Routage dynamique (RIP)}
+
+\textbf{Question : Pourquoi la connectivité n'est pas assurée au départ ?} \\
+\textit{Réponse :} Car les tables de routage des routeurs ne connaissent pas les réseaux distants.
+\vspace{1em}
+
+\textbf{Question : La connectivité est-elle assurée après coupure d'un lien en routage dynamique ?} \\
+\textit{Réponse :} Oui, car le protocole RIP trouve automatiquement un chemin alternatif via les autres routeurs.
+\vspace{1em}
+\newpage
+\section{IPv6}
+
+\textbf{Question : Qu'observez-vous sur l'adresse IPv6 attribuée (Auto-config) ?} \\
+\textit{Réponse :} L'adresse utilise le préfixe configuré sur le routeur et l'ID d'interface est généré automatiquement.
+\vspace{1em}
+
+\textbf{Question : Testez la connectivité entre les 2 réseaux IPv6, cela fonctionne-t-il ?} \\
+\textit{Réponse :} Oui.
+\vspace{1em}
+
+\textbf{Question : Avez-vous eu besoin de configurer une passerelle par défaut ?} \\
+\textit{Réponse :} Non, l'IPv6 utilise les annonces de routeur (RA) pour la découvrir tout seul.
+\vspace{1em}
+
+\textbf{Question : Vers quelle adresse IPv6 est émis le paquet NDP ?} \\
+\textit{Réponse :} Vers une adresse de type "Solicited-node multicast" (commençant par FF02::1:FF).
+\vspace{1em}
+
+\textbf{Question : Observez l'adresse MAC destination, comment est-elle construite ?} \\
+\textit{Réponse :} Elle commence par 33-33, ce qui est le préfixe réservé pour le multicast IPv6 au niveau de la couche liaison.
+\vspace{1em}
+
+\textbf{Question : Que signifie l'adresse IPv6 destination du paquet NDP émis par le Router0 ?} \\
+\textit{Réponse :} Il s'agit d'une adresse de diffusion multicast pour joindre tous les hôtes du lien local.
+\vspace{1em}
+
+\textbf{Question : Pourquoi n'y a-t-il pas de requête ARP par le PC client ?} \\
+\textit{Réponse :} Car ARP n'existe plus en IPv6 ; il est remplacé par le protocole NDP qui utilise des messages ICMPv6.
+\vspace{1em}
+
+\textbf{Question : Envoyez maintenant un ping avec une taille de 1300 octets. Que s'est-il passé ?} \\
+\textit{Réponse :} Si le paquet dépasse la MTU, il est rejeté car les routeurs IPv6 ne fragmentent pas les paquets ; c'est à l'émetteur de vérifier la MTU du chemin.
+\vspace{1em}
+
+\end{document}

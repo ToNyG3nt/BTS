@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander Anticheat Kernel – Obscurus</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="Assets/Logo_sans_fond.png" alt="Obscurus" class="nav-logo"></a>
+            </div>
+            <div class="nav-title">Obscurus</div>
+            <ul class="nav-links">
+                <li><a href="index.html#mission">Fonctionnalités</a></li>
+                <li><a href="index.html#pricing" class="nav-active">Tarifs</a></li>
+                <li><a href="index.html#avis">Avis</a></li>
+                <li><a href="equipe.html">L'Équipe</a></li>
+                <li><a href="status.html">Statut</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <h1 class="fade-in">🛡️ Anticheat Kernel</h1>
+            <p class="fade-in delay-1">Protection Ring 0 — le niveau d'exécution le plus privilégié du noyau Windows. Déployez la sécurité là où les cheaters opèrent vraiment.</p>
+        </section>
+
+        <section class="checkout-section">
+            <div class="checkout-layout">
+
+                <!-- Colonne gauche : descriptif + plans -->
+                <div class="checkout-summary">
+
+                    <!-- Carte service -->
+                    <div class="widget">
+                        <div class="checkout-service-header">
+                            <span class="checkout-service-icon">🛡️</span>
+                            <h2>Anticheat Kernel</h2>
+                        </div>
+                        <p class="checkout-tagline">Le driver Obscurus s'initialise en Ring 0 avant même que le processus de jeu ne démarre. Il surveille en temps réel les tentatives les plus avancées de contournement — celles que les solutions userland ne voient tout simplement pas.</p>
+                    </div>
+
+                    <!-- Ce qui est inclus -->
+                    <div class="widget">
+                        <h3 style="color:var(--bright-white);margin-bottom:1.2rem;">Ce qui est inclus</h3>
+                        <ul class="checkout-features-list">
+                            <li>Driver Ring 0 signé WHQL Microsoft, compatible Windows 10/11 (toutes éditions)</li>
+                            <li>Détection des injections DLL, manual mapping et shellcode en mémoire noyau</li>
+                            <li>Protection contre les attaques DMA (Direct Memory Access via carte PCIe externe)</li>
+                            <li>Surveillance des hooks posés sur les appels système critiques (SSDT, DKOM)</li>
+                            <li>Détection des processus suspects et des pilotes non signés en arrière-plan</li>
+                            <li>Réponse configurable : ban immédiat, shadow ban différé ou alerte dashboard</li>
+                            <li>0 BSOD imputable à Obscurus sur 18 mois de production en conditions réelles</li>
+                            <li>Testé sur 200+ configurations matérielles (Intel / AMD, DDR4 / DDR5)</li>
+                            <li>SDK d'intégration C++ avec documentation complète et exemples de code</li>
+                            <li>Dashboard de gestion en temps réel : bans, alertes, logs d'événements</li>
+                            <li>Mises à jour du driver sans redémarrage du serveur de jeu</li>
+                            <li>Support technique dédié (réponse &lt; 2h pour incidents critiques clients)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tarification -->
+                    <div class="widget">
+                        <h3 style="color:var(--bright-white);margin-bottom:1.2rem;">Tarification</h3>
+                        <div class="plan-option selected" style="pointer-events:none;">
+                            <div class="plan-option-left">
+                                <span class="plan-option-name">Prix de base</span>
+                                <span class="plan-option-desc">Jusqu'à 1 million de joueurs actifs · Engagement annuel · Certification WHQL incluse</span>
+                            </div>
+                            <div class="plan-option-price">
+                                2 800 € <small>/ mois HT</small>
+                            </div>
+                        </div>
+                        <p style="color:var(--text-secondary);font-size:0.88rem;margin-top:1rem;">Au-delà de 1 million de joueurs ou pour des besoins spécifiques, le tarif est ajusté sur devis. Notre équipe commerciale vous contacte sous 24h ouvrées.</p>
+                    </div>
+
+                    <!-- Support Premium -->
+                    <div class="widget">
+                        <h3 style="color:var(--bright-white);margin-bottom:1.2rem;">Option Support Premium 24/7</h3>
+                        <label class="plan-option" id="addon-support" style="cursor:pointer;">
+                            <input type="checkbox" id="support-premium-check" style="width:18px;height:18px;accent-color:var(--primary-color);flex-shrink:0;">
+                            <div class="plan-option-left">
+                                <span class="plan-option-name">Support Premium & Monitoring 24/7</span>
+                                <span class="plan-option-desc">Ligne dédiée · SLA &lt; 1h pour incidents majeurs · Surveillance proactive et ajustement immédiat des filtres</span>
+                            </div>
+                            <div class="plan-option-price">
+                                + 2 000 € <small>/ mois HT</small>
+                            </div>
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- Colonne droite : formulaire de devis -->
+                <div class="checkout-form-box widget">
+                    <h3>Demander un devis</h3>
+
+                    <div class="order-summary" id="order-summary">
+                        <div class="order-summary-line">
+                            <span>Anticheat Kernel</span>
+                            <span>2 800 € / mois HT</span>
+                        </div>
+                        <div class="order-summary-line" id="support-line" style="display:none;">
+                            <span>Support Premium 24/7</span>
+                            <span style="color:#4ade80;">+ 2 000 € / mois HT</span>
+                        </div>
+                        <div class="order-summary-line">
+                            <span>Engagement</span>
+                            <span>Annuel</span>
+                        </div>
+                        <div class="order-summary-line total">
+                            <span>Estimation HT</span>
+                            <span id="total-price">2 800 € / mois</span>
+                        </div>
+                    </div>
+
+                    <form class="card-fields" onsubmit="handleCheckout(event)">
+                        <div class="form-group">
+                            <label for="co-name">Nom complet *</label>
+                            <input type="text" id="co-name" placeholder="Jean Dupont" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="co-studio">Studio / Société *</label>
+                            <input type="text" id="co-studio" placeholder="Nom du studio ou de l'éditeur" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="co-email">Email professionnel *</label>
+                            <input type="email" id="co-email" placeholder="vous@studio.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="co-phone">Téléphone</label>
+                            <input type="tel" id="co-phone" placeholder="+33 1 00 00 00 00">
+                        </div>
+                        <div class="form-group">
+                            <label for="co-game">Nom du jeu *</label>
+                            <input type="text" id="co-game" placeholder="Titre du jeu concerné" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="co-players">Joueurs actifs estimés *</label>
+                            <select id="co-players" required>
+                                <option value="" disabled selected>Sélectionner…</option>
+                                <option value="lt100k">Moins de 100 000</option>
+                                <option value="100k-500k">100 000 – 500 000</option>
+                                <option value="500k-1m">500 000 – 1 million</option>
+                                <option value="gt1m">Plus de 1 million</option>
+                            </select>
+                        </div>
+
+                        <div class="divider-or">Coordonnées commerciales</div>
+
+                        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.2rem;margin-bottom:1.5rem;">
+                            <p style="color:var(--text-secondary);font-size:0.88rem;margin-bottom:1rem;">Notre équipe commerciale vous contactera sous 24h ouvrées pour finaliser votre devis.</p>
+                            <div style="display:flex;flex-direction:column;gap:0.7rem;">
+                                <div style="display:flex;align-items:center;gap:0.7rem;">
+                                    <span>✉️</span>
+                                    <a href="mailto:contact@obscurus.io" style="color:var(--primary-color);text-decoration:none;">contact@obscurus.io</a>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:0.7rem;">
+                                    <span>📞</span>
+                                    <span style="color:var(--text-secondary);">+33 1 XX XX XX XX — Lun–Ven, 9h–18h</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="checkout-cta" id="checkout-btn">
+                            Demander un devis →
+                        </button>
+                    </form>
+
+                    <p class="checkout-legal">
+                        En soumettant ce formulaire, vous acceptez notre <a href="#">Politique de confidentialité</a>. Aucun prélèvement n'est effectué à ce stade — votre devis vous sera transmis par email sous 24h ouvrées.
+                    </p>
+                </div>
+
+                <!-- Sidebar : autres offres -->
+                <aside class="checkout-sidebar">
+                    <h4>Autres offres</h4>
+                    <a href="checkout-cloud.html" class="sidebar-offer">
+                        <span class="sidebar-offer-icon">☁️</span>
+                        <span class="sidebar-offer-name">Anticheat Cloud</span>
+                        <span class="sidebar-offer-price">À partir de 1 200 € / mois HT</span>
+                    </a>
+                    <a href="checkout-pack.html" class="sidebar-offer">
+                        <span class="sidebar-offer-icon">⚡</span>
+                        <span class="sidebar-offer-name">Pack Complet</span>
+                        <span class="sidebar-offer-price">À partir de 3 800 € / mois HT</span>
+                    </a>
+                    <a href="index.html#pricing" class="sidebar-offer" style="border-style:dashed;opacity:0.6;">
+                        <span style="font-size:0.75rem;color:#909090;">← Voir toutes les offres</span>
+                    </a>
+                </aside>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Obscurus. Tous droits réservés.</p>
+            <ul class="footer-links">
+                <li><a href="#">Mentions légales</a></li>
+                <li><a href="#">Politique de confidentialité</a></li>
+                <li><a href="#">Conditions Générales d'Utilisation</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        let supportEnabled = false;
+
+        function updateSummary() {
+            const supportLine = document.getElementById('support-line');
+            supportLine.style.display = supportEnabled ? '' : 'none';
+            const total = 2800 + (supportEnabled ? 2000 : 0);
+            document.getElementById('total-price').textContent = total.toLocaleString('fr-FR') + ' € / mois';
+        }
+
+        document.getElementById('support-premium-check').addEventListener('change', e => {
+            supportEnabled = e.target.checked;
+            document.getElementById('addon-support').classList.toggle('selected', supportEnabled);
+            updateSummary();
+        });
+
+        function handleCheckout(e) {
+            e.preventDefault();
+            const btn = document.getElementById('checkout-btn');
+            btn.textContent = 'Demande envoyée ✓';
+            btn.style.background = '#1a6e2e';
+            btn.disabled = true;
+        }
+    </script>
+</body>
+</html>

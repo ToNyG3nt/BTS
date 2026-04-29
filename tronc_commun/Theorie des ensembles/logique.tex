@@ -1,0 +1,203 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage[explicit]{titlesec}
+\usepackage{tcolorbox}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{amssymb} % Nécessaire pour \mathbb, \forall, \exists
+
+\geometry{margin=2.5cm}
+
+% --- Style des sections ---
+\titleformat{\section}
+{\normalfont\Large\bfseries\sffamily}
+{}
+{0pt}
+{\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, left=5pt, sharp corners, boxrule=0pt, leftrule=3pt] \thesection. #1 \end{tcolorbox}}
+
+% --- Style des listes (itemize/enumerate) ---
+\setlist[itemize,1]{label=\color{blue!75!black}\bullet, font=\bfseries, leftmargin=2em, labelsep=1em}
+\setlist[enumerate,1]{label=\color{blue!75!black}\arabic*., font=\bfseries, leftmargin=2em, labelsep=1em}
+\setlist{nosep} 
+
+\title{Logique Mathématique}
+\author{Mignard Mael}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Logique des propositions}
+\subsection{Définitions}
+
+C'est un énoncé déclaratif qu'on peut dire vrai ou faux, sinon ce n'est pas une proposition.
+\begin{itemize}
+    \item Exemples de propositions : "Il pleut", "2+2=4", "Le ciel est bleu".
+    \item Exemple de prédicat (une "proposition" avec une variable) : "$x+1=4$".
+    \item Exemples de non-propositions : "Quel temps fait-il ?", "Fais tes devoirs !", "Si j'étais riche...".
+\end{itemize}
+
+\subsection{Opérateurs logiques}
+
+\begin{itemize}
+    \item Négation : $\neg P$ (non P) est vrai si et seulement si P est faux.
+    \item Conjonction : $P \wedge Q$ (P et Q) est vrai si et seulement si P et Q sont tous les deux vrais.
+    \item Disjonction : $P \vee Q$ (P ou Q) est vrai si au moins l'un de P ou Q est vrai.
+    \item Implication : $P \Rightarrow Q$ (si P alors Q) est faux uniquement lorsque P est vrai et Q est faux.
+    \item Équivalence : $P \Leftrightarrow Q$ (P si et seulement si Q) est vrai lorsque P et Q ont la même valeur de vérité.
+\end{itemize}
+
+\subsection{Tableau de vérité des opérateurs logiques}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+P & Q & $\neg P$ & $P \wedge Q$ & $P \vee Q$ & $P \Rightarrow Q$ \\
+\hline
+V & V & F & V & V & V \\ 
+V & F & F & F & V & F \\ 
+F & V & V & F & V & V \\ 
+F & F & V & F & F & V \\ 
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Exercices}
+
+Construire les tableaux de vérité pour les expressions suivantes :
+
+1) $P \wedge \neg Q$ 
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+P & Q & $P \wedge \neg Q$ \\
+\hline
+V & V & F \\
+V & F & V \\
+F & V & F \\
+F & F & F \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+2) $\neg P \vee Q$ 
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+P & Q & $\neg P \vee Q$ \\
+\hline
+V & V & F \\
+V & F & V \\
+F & V & F \\
+F & F & F \\
+\hline
+\end{tabular}
+\end{center}
+
+3) $(P \wedge \neg Q) \vee (\neg P \wedge Q)$ 
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+P & Q & $(P \wedge \neg Q) \vee (\neg P \wedge Q)$ \\
+\hline
+V & V & F \\
+V & F & V \\
+F & V & V \\
+F & F & F \\
+\hline
+\end{tabular}
+\end{center}
+
+4) Conclure.
+On a construit le ou exclusif (XOR) : $P \oplus Q = (P \wedge \neg Q) \vee (\neg P \wedge Q)$.
+
+\section{Propriétés des formules}
+\subsection{Tautologie}
+Une formule est une tautologie si sa table de vérité ne contient que des "Vrai".
+Exemple : $P \vee \neg P$ ("Être ou ne pas être"), toujours vrai.
+
+\subsection{Contradiction}
+Une formule est une contradiction si sa table de vérité ne contient que des "Faux".
+Exemple : $P \wedge \neg P$, toujours faux.
+
+\subsection{Formule Neutre}
+Ni une tautologie, ni une contradiction (mélange de V et F).
+
+\newpage
+\section{Théorème de De Morgan}
+
+\subsection{Négation d'une conjonction : $\neg (P \wedge Q)$}
+La règle est : $\neg (P \wedge Q) \iff \neg P \vee \neg Q$. Vérification :
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+P & Q & $P \wedge Q$ & $\neg (P \wedge Q)$ \\
+\hline
+F & F & F & V \\
+F & V & F & V \\
+V & F & F & V \\
+V & V & V & F \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Négation d'une disjonction : $\neg (P \vee Q)$}
+La règle est : $\neg (P \vee Q) \iff \neg P \wedge \neg Q$. Vérification :
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+P & Q & $P \vee Q$ & $\neg (P \vee Q)$ \\
+\hline
+F & F & F & V \\
+F & V & V & F \\ 
+V & F & V & F \\
+V & V & V & F \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+\section{Quantificateurs}
+\subsection{Les différents quantificateurs}
+
+\subsubsection{Quantificateur universel : $\forall$}
+$ \forall x, P(x) $ signifie que pour tout $x$, $P(x)$ est vrai.
+
+\subsubsection{Quantificateur existentiel : $\exists$}
+$ \exists x, P(x) $ signifie qu'il existe au moins un $x$ pour lequel $P(x)$ est vrai.
+
+\subsubsection{Exercices d'application}
+\begin{itemize}
+    \item $ \forall x \in \mathbb{R}, x^2 \geq 0 $ (Vrai)
+    \item $ \exists x \in \mathbb{N}, x^2 = 25 $ (Vrai, $x=5$)
+    \item $ \forall x \in \mathbb{N}, x^2 = x $ (Faux, $2^2 \neq 2$)
+    \item $ \exists x \in \mathbb{R}, x^2 = -1 $ (Faux)
+    \item $ \exists x \in \mathbb{C}, x^2 = -1 $ (Vrai, $x=i$)
+\end{itemize}
+
+\subsection{Négation des quantificateurs}
+\subsubsection{Règles de passage}
+\begin{itemize}
+    \item $\neg (\forall x, P(x)) \iff \exists x, \neg P(x)$
+    \item $\neg (\exists x, P(x)) \iff \forall x, \neg P(x)$
+\end{itemize}
+
+\subsubsection{Exercices de négation}
+Faisons la négation des propositions précédentes :
+\begin{itemize}
+    \item $ \exists x \in \mathbb{R}, x^2 < 0 $ (Faux)
+    \item $ \forall x \in \mathbb{N}, x^2 \neq 25 $ (Faux)
+    \item $ \exists x \in \mathbb{N}, x^2 \neq x $ (Vrai, $x=2$)
+    \item $ \forall x \in \mathbb{R}, x^2 \neq -1 $ (Vrai)
+    \item $\forall x \in \mathbb{C}, x^2 \neq -1$ (Faux)
+\end{itemize}
+
+\end{document}

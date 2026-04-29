@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statut des Serveurs – Obscurus</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="Assets/Logo_sans_fond.png" alt="Obscurus" class="nav-logo"></a>
+            </div>
+            <div class="nav-title">Obscurus</div>
+            <ul class="nav-links">
+                <li><a href="index.html#mission">Fonctionnalités</a></li>
+                <li><a href="index.html#pricing">Tarifs</a></li>
+                <li><a href="index.html#avis">Avis</a></li>
+                <li><a href="equipe.html">L'Équipe</a></li>
+                <li><a href="status.html" class="nav-active">Statut</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <h1 class="fade-in">Statut des Infrastructures</h1>
+            <p class="fade-in delay-1">État en temps réel de chaque serveur, par service et par emplacement géographique.</p>
+        </section>
+
+        <section class="status-page-section">
+
+            <!-- Bannière globale -->
+            <div class="status-overview-banner all-ok widget">
+                <div class="overview-left">
+                    <span class="overview-icon">✅</span>
+                    <div>
+                        <div class="overview-text">Tous les systèmes sont opérationnels</div>
+                        <div class="overview-sub">16 serveurs actifs · Aucun incident en cours · Dernière mise à jour il y a 42 secondes</div>
+                    </div>
+                </div>
+                <div class="overview-updated" id="last-updated">Mise à jour : chargement…</div>
+            </div>
+
+            <!-- SERVICE 1 : Anticheat Kernel API -->
+            <div class="status-service-group">
+                <div class="status-service-title">
+                    🛡️ Anticheat Kernel — API de licences &amp; mises à jour driver
+                </div>
+                <div class="status-servers-grid">
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">FR-KERN-01</div>
+                                <div class="server-location">📍 Paris, France (CDG)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="kern-cdg-lat">12 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,97 %</span></div>
+                        </div>
+                    </div>
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">DE-KERN-01</div>
+                                <div class="server-location">📍 Francfort, Allemagne (FRA)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="kern-fra-lat">18 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,98 %</span></div>
+                        </div>
+                    </div>
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">GB-KERN-01</div>
+                                <div class="server-location">📍 Londres, Royaume-Uni (LHR)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="kern-lhr-lat">15 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,95 %</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SERVICE 2 : Analyse Comportementale Cloud -->
+            <div class="status-service-group">
+                <div class="status-service-title">
+                    ☁️ Anticheat Cloud — Moteurs d'analyse comportementale (ML)
+                </div>
+                <div class="status-servers-grid">
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">FR-CLOUD-01</div>
+                                <div class="server-location">📍 Paris, France (CDG)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="cloud-cdg-lat">44 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,92 %</span></div>
+                        </div>
+                    </div>
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">DE-CLOUD-01</div>
+                                <div class="server-location">📍 Francfort, Allemagne (FRA)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="cloud-fra-lat">51 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,94 %</span></div>
+                        </div>
+                    </div>
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">GB-CLOUD-01</div>
+                                <div class="server-location">📍 Londres, Royaume-Uni (LHR)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="cloud-lhr-lat">48 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,91 %</span></div>
+                        </div>
+                    </div>
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">NL-CLOUD-01</div>
+                                <div class="server-location">📍 Amsterdam, Pays-Bas (AMS)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="cloud-ams-lat">38 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,96 %</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SERVICE 3 : Mise à jour des signatures -->
+            <div class="status-service-group">
+                <div class="status-service-title">
+                    🔄 Mise à jour des signatures — Distribution CDN des patterns de détection
+                </div>
+                <div class="status-servers-grid">
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">FR-SIG-01</div>
+                                <div class="server-location">📍 Paris, France (CDG)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="sig-cdg-lat">8 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>100 %</span></div>
+                        </div>
+                    </div>
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">DE-SIG-01</div>
+                                <div class="server-location">📍 Francfort, Allemagne (FRA)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="sig-fra-lat">9 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>100 %</span></div>
+                        </div>
+                    </div>
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">NL-SIG-01</div>
+                                <div class="server-location">📍 Amsterdam, Pays-Bas (AMS)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="sig-ams-lat">7 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>100 %</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SERVICE 4 : Dashboard & Analytiques -->
+            <div class="status-service-group">
+                <div class="status-service-title">
+                    📊 Dashboard &amp; Analytiques — Interface client &amp; API reporting
+                </div>
+                <div class="status-servers-grid">
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">FR-DASH-01</div>
+                                <div class="server-location">📍 Paris, France (CDG)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="dash-cdg-lat">22 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,89 %</span></div>
+                        </div>
+                    </div>
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">DE-DASH-01</div>
+                                <div class="server-location">📍 Francfort, Allemagne (FRA)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="dash-fra-lat">28 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,91 %</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SERVICE 5 : Authentification & Licences -->
+            <div class="status-service-group">
+                <div class="status-service-title">
+                    🔐 Authentification &amp; Licences — Validation des clés SDK &amp; tokens clients
+                </div>
+                <div class="status-servers-grid">
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">FR-AUTH-01</div>
+                                <div class="server-location">📍 Paris, France (CDG)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="auth-cdg-lat">5 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,99 %</span></div>
+                        </div>
+                    </div>
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">GB-AUTH-01</div>
+                                <div class="server-location">📍 Londres, Royaume-Uni (LHR)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="auth-lhr-lat">6 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,99 %</span></div>
+                        </div>
+                    </div>
+
+                    <div class="server-status-card widget">
+                        <div class="server-header">
+                            <div>
+                                <div class="server-name">DE-AUTH-01</div>
+                                <div class="server-location">📍 Francfort, Allemagne (FRA)</div>
+                            </div>
+                            <span class="status-badge operational"><span class="badge-dot"></span>Actif</span>
+                        </div>
+                        <div class="server-metrics">
+                            <div class="server-metric">Latence<span id="auth-fra-lat">5 ms</span></div>
+                            <div class="server-metric">Uptime 30j<span>99,99 %</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Obscurus. Tous droits réservés.</p>
+            <ul class="footer-links">
+                <li><a href="#">Mentions légales</a></li>
+                <li><a href="#">Politique de confidentialité</a></li>
+                <li><a href="#">Conditions Générales d'Utilisation</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Afficher l'heure de la dernière mise à jour
+        function updateTimestamp() {
+            const now = new Date();
+            const hh = String(now.getHours()).padStart(2, '0');
+            const mm = String(now.getMinutes()).padStart(2, '0');
+            const ss = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('last-updated').textContent = 'Mise à jour : ' + hh + ':' + mm + ':' + ss;
+        }
+        updateTimestamp();
+        setInterval(updateTimestamp, 30000);
+
+        // Simuler de légères variations de latence pour rendre le widget vivant
+        const latencyNodes = {
+            'kern-cdg-lat': [10, 14],
+            'kern-fra-lat': [15, 22],
+            'kern-lhr-lat': [13, 18],
+            'cloud-cdg-lat': [40, 52],
+            'cloud-fra-lat': [46, 58],
+            'cloud-lhr-lat': [43, 55],
+            'cloud-ams-lat': [34, 44],
+            'sig-cdg-lat': [6, 10],
+            'sig-fra-lat': [7, 11],
+            'sig-ams-lat': [5, 9],
+            'dash-cdg-lat': [18, 28],
+            'dash-fra-lat': [22, 34],
+            'auth-cdg-lat': [4, 7],
+            'auth-lhr-lat': [4, 8],
+            'auth-fra-lat': [4, 7]
+        };
+
+        function refreshLatencies() {
+            for (const [id, [min, max]] of Object.entries(latencyNodes)) {
+                const el = document.getElementById(id);
+                if (el) {
+                    const val = Math.floor(Math.random() * (max - min + 1)) + min;
+                    el.textContent = val + ' ms';
+                }
+            }
+        }
+
+        // Première actualisation après 5 secondes, puis toutes les 30 secondes
+        setTimeout(() => {
+            refreshLatencies();
+            setInterval(refreshLatencies, 30000);
+        }, 5000);
+    </script>
+</body>
+</html>
