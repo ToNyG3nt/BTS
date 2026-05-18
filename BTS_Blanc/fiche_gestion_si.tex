@@ -1,0 +1,292 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty}
+\setlist{nosep, leftmargin=1.5em}
+
+\definecolor{navy}{RGB}{0,51,102}
+\definecolor{teal}{RGB}{0,120,120}
+\definecolor{crimson}{RGB}{180,0,0}
+\definecolor{green}{RGB}{0,120,50}
+\definecolor{lightbg}{RGB}{245,248,252}
+\definecolor{orange}{RGB}{200,100,0}
+\definecolor{purple}{RGB}{100,0,160}
+
+\tcbset{basebox/.style={
+  colback=lightbg, colframe=navy, coltitle=white,
+  fonttitle=\bfseries, arc=2mm, boxrule=0.5mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, after skip=6pt
+}}
+
+\newcommand{\key}[1]{\textbf{\textcolor{navy}{#1}}}
+\newcommand{\warn}[1]{\textbf{\textcolor{crimson}{#1}}}
+\newcommand{\ok}[1]{\textbf{\textcolor{green}{#1}}}
+
+\begin{document}
+
+\begin{center}
+  \colorbox{green}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+    \centering\vspace{3pt}
+    {\LARGE\bfseries\textcolor{white}{GESTION DU SI — Patrimoine, Incidents, GLPI}}\\
+    {\normalsize\textcolor{white}{BTS SIO — Maël Mignard}}
+    \vspace{3pt}
+  }}
+\end{center}
+\vspace{6pt}
+
+\begin{multicols}{2}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=1. Gestion du Patrimoine Informatique]
+\key{Patrimoine informatique} = ensemble des ressources matérielles et logicielles d'une organisation.\\[4pt]
+\textbf{Composantes :}
+\begin{itemize}
+  \item \key{Matériel} : PC, serveurs, imprimantes, routeurs, switches
+  \item \key{Logiciel} : OS, applications, licences
+  \item \key{Réseau} : câblage, équipements actifs
+  \item \key{Données} : fichiers, bases de données, sauvegardes
+\end{itemize}
+\vspace{4pt}
+\textbf{Cycle de vie d'un équipement :}
+\begin{enumerate}
+  \item Achat / Approvisionnement
+  \item Réception et inventaire
+  \item Déploiement / Installation
+  \item Utilisation et maintenance
+  \item Mise hors service / Recyclage
+\end{enumerate}
+\vspace{4pt}
+\key{Inventaire} : recensement exhaustif du parc \\
+\key{Numéro de série} : identification unique du matériel
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=2. GLPI — Présentation]
+\key{GLPI} (Gestionnaire Libre de Parc Informatique) :\\
+Outil open-source de gestion du parc et des tickets.\\[4pt]
+\textbf{Fonctionnalités principales :}
+\begin{itemize}
+  \item \ok{Inventaire matériel et logiciel}
+  \item \ok{Gestion des tickets (incidents et demandes)}
+  \item \ok{Base de connaissances}
+  \item \ok{Gestion des contrats et fournisseurs}
+  \item \ok{Statistiques et tableaux de bord}
+\end{itemize}
+\vspace{4pt}
+\key{FusionInventory} : plugin d'inventaire automatique \\
+\key{Agent GLPI} : logiciel installé sur chaque poste \\
+\quad $\to$ remonte les informations matérielles/logicielles \\[4pt]
+\key{CMDB} (Configuration Management Database) : base centralisant toutes les configurations
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=3. GLPI — Gestion des tickets]
+\textbf{Types de tickets :}
+\begin{itemize}
+  \item \key{Incident} : dysfonctionnement signalé
+  \item \key{Demande} : requête de service (installation, accès...)
+\end{itemize}
+\vspace{4pt}
+\textbf{Cycle de vie d'un ticket :}
+\begin{enumerate}
+  \item Ouverture (création par l'utilisateur ou technicien)
+  \item Attribution (à un technicien ou groupe)
+  \item Traitement (diagnostic, résolution)
+  \item Validation / Clôture
+\end{enumerate}
+\vspace{4pt}
+\textbf{Informations d'un ticket :}
+\begin{itemize}
+  \item Titre et description
+  \item Priorité (très haute / haute / moyenne / basse)
+  \item Urgence et Impact
+  \item Catégorie
+  \item Technicien assigné
+  \item Date d'ouverture / clôture
+\end{itemize}
+\vspace{4pt}
+\key{SLA} (Service Level Agreement) : délais de traitement contractuels
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=4. Gestion des Incidents — ITIL]
+\key{ITIL} (Information Technology Infrastructure Library) :\\
+Référentiel de bonnes pratiques pour la gestion IT.\\[4pt]
+\textbf{Différencier les situations :}
+\begin{tabular}{ll}
+\toprule
+\textbf{Type} & \textbf{Définition} \\
+\midrule
+\key{Incident} & Interruption non planifiée d'un service \\
+\key{Problème} & Cause inconnue d'un ou plusieurs incidents \\
+\key{Demande} & Requête standard de service \\
+\key{Changement} & Modification planifiée et contrôlée \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\textbf{Exemples :}
+\begin{itemize}
+  \item \warn{Incident} : PC qui ne démarre plus
+  \item \warn{Problème} : panne réseau répétée chaque lundi
+  \item \ok{Demande} : installer un logiciel
+  \item \ok{Changement} : migrer un serveur
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=5. Analyse d'impact et priorité]
+\key{Impact} : étendue des perturbations causées
+\begin{itemize}
+  \item \warn{Critique} : arrêt total de l'activité (serveur central)
+  \item Élevé : service majeur impacté (messagerie HS)
+  \item Moyen : contournement possible (imprimante HS)
+  \item Faible : utilisateur unique impacté
+\end{itemize}
+\vspace{4pt}
+\key{Urgence} : vitesse à laquelle résoudre\\[4pt]
+\key{Priorité} = f(Impact, Urgence)\\[4pt]
+\textbf{Communication en situation de crise :}
+\begin{itemize}
+  \item Garder son calme et faire preuve d'empathie
+  \item Reformuler pour montrer la compréhension
+  \item Rester neutre, courtois et rassurant
+  \item Éviter le jargon technique avec l'utilisateur
+  \item Ne jamais rejeter la faute sur l'utilisateur
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=6. Processus de résolution d'incident]
+\begin{enumerate}
+  \item \key{Identification} : détecter et signaler l'incident
+  \item \key{Enregistrement} : créer un ticket avec toutes les infos
+  \item \key{Classification} : catégorie, priorité, impact
+  \item \key{Diagnostic initial} : first-level (hotline)
+  \item \key{Escalade} si nécessaire vers niveau 2 ou 3
+  \item \key{Résolution} : corriger le problème
+  \item \key{Clôture} : confirmer avec l'utilisateur
+  \item \key{Retour d'expérience} : documenter la solution
+\end{enumerate}
+\vspace{4pt}
+\key{Niveaux de support :}
+\begin{itemize}
+  \item N1 : Hotline, 1er contact (réinitialisation MDP...)
+  \item N2 : Technicien spécialisé (installation, config)
+  \item N3 : Expert/éditeur (bug logiciel, infrastructure)
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=7. Gestion des licences logicielles]
+\key{Licence propriétaire} : coût, restrictions d'usage \\
+\key{Logiciel libre} (open-source) : code accessible, modifiable \\[4pt]
+\textbf{Types de licences :}
+\begin{itemize}
+  \item \key{OEM} : liée au matériel (ne peut pas être transférée)
+  \item \key{Monoposte} : 1 installation sur 1 PC
+  \item \key{Volume} : entreprise, nombre de postes
+  \item \key{SaaS} : abonnement, logiciel en ligne
+  \item \key{GPL / MIT / Apache} : licences open-source
+\end{itemize}
+\vspace{4pt}
+\warn{Utiliser un logiciel sans licence = délit} \\
+\key{Audit logiciel} : vérifier la conformité des licences \\
+\key{SAM} (Software Asset Management) : gestion des actifs logiciels
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=purple, title=8. Masterisation et déploiement]
+\key{Masterisation} : créer une image système de référence \\
+\quad $\to$ Cloner sur de nombreux postes rapidement \\[4pt]
+\textbf{Outils :}
+\begin{itemize}
+  \item \key{Clonezilla} : clonage disque open-source
+  \item \key{FOG} : déploiement réseau (PXE boot)
+  \item \key{MDT / WDS} : déploiement Windows
+  \item \key{Ansible / Puppet} : automatisation configuration
+\end{itemize}
+\vspace{4pt}
+\key{PXE} (Preboot Execution Environment) : démarrage réseau \\
+\key{Sysprep} : préparer Windows pour le clonage \\
+\key{WSUS} : serveur de mises à jour Windows en entreprise
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=9. Télémaintenance et assistance]
+\key{Télémaintenance} : intervention à distance sur un poste \\[4pt]
+\textbf{Outils de prise en main à distance :}
+\begin{itemize}
+  \item \key{RDP} (Remote Desktop Protocol) : Windows, port 3389
+  \item \key{VNC} : multiplateforme
+  \item \key{TeamViewer / AnyDesk} : solutions commerciales
+  \item \key{SSH} : ligne de commande Linux, port 22
+\end{itemize}
+\vspace{4pt}
+\textbf{Procédure :}
+\begin{enumerate}
+  \item Identifier l'utilisateur et son problème
+  \item Obtenir son accord pour la prise en main
+  \item Intervenir en expliquant les actions
+  \item Clore la session et documenter
+\end{enumerate}
+\warn{Toujours demander l'autorisation avant de prendre la main}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=10. Documentation et base de connaissances]
+\key{Base de connaissances} : recueil de solutions aux incidents récurrents \\[4pt]
+\textbf{Avantages :}
+\begin{itemize}
+  \item Résolution plus rapide (solution déjà documentée)
+  \item Autonomie des utilisateurs (self-service)
+  \item Capitalisation des compétences
+\end{itemize}
+\vspace{4pt}
+\textbf{Format d'une fiche de résolution :}
+\begin{itemize}
+  \item Titre (symptôme)
+  \item Catégorie / Environnement
+  \item Description du problème
+  \item Cause identifiée
+  \item Solution étape par étape
+  \item Date et auteur
+\end{itemize}
+\vspace{4pt}
+\key{GLPI} intègre une base de connaissances native \\
+\key{Confluence / Notion} : outils de documentation wiki
+\end{tcolorbox}
+
+\end{multicols}
+
+\vspace{4pt}
+\begin{tcolorbox}[basebox, colframe=green, title=Points clés à retenir pour l'examen]
+\begin{multicols}{2}
+\begin{itemize}
+  \item \key{GLPI} = gestion de parc + ticketing, open-source
+  \item \key{ITIL} = référentiel de bonnes pratiques IT
+  \item Incident ≠ Problème ≠ Demande ≠ Changement
+  \item Incident = interruption non planifiée ; Problème = cause inconnue récurrente
+  \item Priorité = f(Impact, Urgence)
+  \item N1/N2/N3 : niveaux d'escalade du support
+  \item \key{SLA} = engagement contractuel sur les délais de résolution
+  \item Cycle de vie : Achat $\to$ Déploiement $\to$ Maintenance $\to$ Fin de vie
+  \item Licence OEM = liée au matériel, non transférable
+  \item Masterisation = image disque de référence pour clonage de masse
+  \item RDP port 3389 = accès bureau à distance Windows
+  \item \warn{Jamais de prise en main sans accord de l'utilisateur}
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\end{document}
