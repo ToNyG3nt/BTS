@@ -1,0 +1,294 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{listings}
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty}
+\setlist{nosep, leftmargin=1.5em}
+
+\definecolor{navy}{RGB}{0,51,102}
+\definecolor{teal}{RGB}{0,120,120}
+\definecolor{crimson}{RGB}{180,0,0}
+\definecolor{green}{RGB}{0,120,50}
+\definecolor{lightbg}{RGB}{245,248,252}
+\definecolor{orange}{RGB}{200,100,0}
+\definecolor{codebg}{RGB}{30,30,30}
+\definecolor{codetext}{RGB}{220,220,220}
+
+\lstset{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small\color{codetext},
+  breaklines=true, frame=none,
+  keywordstyle=\color{cyan},
+  commentstyle=\color{gray},
+  stringstyle=\color{yellow},
+}
+
+\tcbset{basebox/.style={
+  colback=lightbg, colframe=navy, coltitle=white,
+  fonttitle=\bfseries, arc=2mm, boxrule=0.5mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, after skip=6pt
+}}
+
+\newcommand{\key}[1]{\textbf{\textcolor{navy}{#1}}}
+\newcommand{\warn}[1]{\textbf{\textcolor{crimson}{#1}}}
+\newcommand{\cmd}[1]{\texttt{\textcolor{navy}{#1}}}
+
+\begin{document}
+
+\begin{center}
+  \colorbox{navy}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+    \centering\vspace{3pt}
+    {\LARGE\bfseries\textcolor{white}{ADMINISTRATION LINUX \& SERVEUR — Fiche de révision}}\\
+    {\normalsize\textcolor{white}{BTS SIO — Maël Mignard}}
+    \vspace{3pt}
+  }}
+\end{center}
+\vspace{6pt}
+
+\begin{multicols}{2}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=1. Structure d'une commande Bash]
+Syntaxe : \cmd{programme [options] [arguments]} \\[4pt]
+\begin{tabular}{ll}
+\textbf{Élément} & \textbf{Exemple} \\
+\hline
+Programme & \cmd{ls}, \cmd{cp}, \cmd{mkdir} \\
+Option & \cmd{-l}, \cmd{-a}, \cmd{-h}, \cmd{-rf} \\
+Argument & \cmd{/etc/apache2}, \cmd{fichier.txt} \\
+\end{tabular}
+\vspace{4pt}\\
+Ex: \cmd{ls -lah /var/log}\\
+\tip{Les options peuvent souvent s'interchanger avec les arguments.}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=2. Commandes essentielles]
+\begin{tabularx}{\columnwidth}{lX}
+\toprule
+\textbf{Commande} & \textbf{Description} \\
+\midrule
+\cmd{ls -lah}    & Liste fichiers (droits, taille lisible, cachés) \\
+\cmd{pwd}        & Chemin courant absolu \\
+\cmd{cd /path}   & Changer de répertoire \\
+\cmd{mkdir -p}   & Créer répertoire (parents inclus) \\
+\cmd{touch file} & Créer fichier vide \\
+\cmd{cat file}   & Afficher contenu \\
+\cmd{nano file}  & Éditer fichier (terminal) \\
+\cmd{rm -rf dir} & Supprimer récursivement (\warn{dangereux}) \\
+\cmd{cp -R src dst} & Copier récursivement \\
+\cmd{mv src dst} & Déplacer / renommer \\
+\cmd{scp user@ip:/src /dst} & Copie via SSH \\
+\cmd{grep "mot" fichier} & Recherche de texte \\
+\cmd{find . -name "*.txt"} & Recherche de fichier \\
+\cmd{ps aux}     & Processus en cours \\
+\cmd{top / htop} & Moniteur système interactif \\
+\cmd{kill -9 PID} & Tuer un processus \\
+\cmd{df -h}      & Espace disque \\
+\cmd{du -sh dossier} & Taille d'un dossier \\
+\cmd{tar -czf archive.tar.gz dossier} & Archiver + compresser \\
+\bottomrule
+\end{tabularx}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=3. Gestion des permissions (chmod)]
+Format : \cmd{-[u][g][o]} \quad ex: \cmd{-rwxr-xr--}\\[4pt]
+
+\begin{tabular}{lll}
+\toprule
+\textbf{Valeur} & \textbf{Lettre} & \textbf{Droit} \\
+\midrule
+4 & r & Lecture (read) \\
+2 & w & Écriture (write) \\
+1 & x & Exécution (execute) \\
+0 & - & Aucun \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\textbf{Exemples :}
+\begin{itemize}
+  \item \cmd{chmod 755 fichier} $\to$ \cmd{rwxr-xr-x}
+  \item \cmd{chmod 644 fichier} $\to$ \cmd{rw-r--r--}
+  \item \cmd{chmod 600 secret.key} $\to$ \cmd{rw-------}
+  \item \cmd{chmod u+x script.sh} $\to$ ajoute exécution à l'user
+\end{itemize}
+\vspace{4pt}
+\warn{Règle de sécurité} : ne jamais donner \textbf{w+x} simultanément à others (permet injection et exécution de code).\\[4pt]
+\key{Propriétaire} : \cmd{chown user:group fichier}\\
+\cmd{chown -R www-data:www-data /var/www/html}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=4. Gestion des utilisateurs et groupes]
+\begin{tabular}{ll}
+\toprule
+\textbf{Commande} & \textbf{Action} \\
+\midrule
+\cmd{useradd mael} & Créer utilisateur (minimal) \\
+\cmd{adduser mael} & Créer utilisateur (interactif) \\
+\cmd{passwd mael} & Modifier mot de passe \\
+\cmd{usermod -aG sudo mael} & Ajouter au groupe sudo \\
+\cmd{groupadd devs} & Créer un groupe \\
+\cmd{id mael} & Infos UID/GID de l'utilisateur \\
+\cmd{who / whoami} & Utilisateurs connectés \\
+\cmd{su - mael} & Changer d'utilisateur \\
+\cmd{sudo commande} & Exécuter en root \\
+\cmd{visudo} & Éditer les droits sudo \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{/etc/passwd} : liste des utilisateurs \\
+\key{/etc/shadow} : mots de passe (hachés) \\
+\key{/etc/group} : liste des groupes
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=5. Gestion des services (systemd)]
+\begin{tabular}{ll}
+\toprule
+\textbf{Commande} & \textbf{Action} \\
+\midrule
+\cmd{systemctl start apache2} & Démarrer un service \\
+\cmd{systemctl stop apache2} & Arrêter \\
+\cmd{systemctl restart apache2} & Redémarrer \\
+\cmd{systemctl enable apache2} & Démarrage auto au boot \\
+\cmd{systemctl disable apache2} & Désactiver au boot \\
+\cmd{systemctl status apache2} & État du service \\
+\cmd{journalctl -u apache2} & Logs du service \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{Services courants} : \cmd{apache2}, \cmd{nginx}, \cmd{ssh}, \cmd{mysql}, \cmd{cron}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=6. Gestion des paquets (Debian/Ubuntu)]
+\begin{tabular}{ll}
+\toprule
+\cmd{apt update} & Mettre à jour la liste \\
+\cmd{apt upgrade} & Mettre à jour les paquets \\
+\cmd{apt install paquet} & Installer \\
+\cmd{apt remove paquet} & Désinstaller \\
+\cmd{apt purge paquet} & Désinstaller + configs \\
+\cmd{apt search nom} & Rechercher un paquet \\
+\cmd{dpkg -l | grep nom} & Lister paquets installés \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{/etc/apt/sources.list} : dépôts configurés
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=7. Réseau sous Linux]
+\begin{tabular}{ll}
+\toprule
+\cmd{ip addr show} & Afficher les interfaces \\
+\cmd{ip route} & Table de routage \\
+\cmd{ping 8.8.8.8} & Test connectivité \\
+\cmd{ss -tuln} & Ports ouverts (successeur netstat) \\
+\cmd{curl -I http://site.com} & Tester une URL \\
+\cmd{ssh user@ip} & Connexion SSH \\
+\cmd{scp fichier user@ip:/dest} & Copie sécurisée \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{/etc/network/interfaces} : config réseau (Debian) \\
+\key{/etc/hosts} : résolution locale de noms \\
+\key{/etc/resolv.conf} : serveurs DNS
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=8. Fichiers importants du système]
+\begin{tabular}{ll}
+\toprule
+\textbf{Fichier/Dossier} & \textbf{Rôle} \\
+\midrule
+\cmd{/etc/} & Configuration système \\
+\cmd{/var/log/} & Journaux système \\
+\cmd{/home/user/} & Répertoire personnel \\
+\cmd{/tmp/} & Fichiers temporaires \\
+\cmd{/bin/ et /usr/bin/} & Binaires/exécutables \\
+\cmd{/boot/} & Noyau et GRUB \\
+\cmd{/dev/} & Périphériques \\
+\cmd{/proc/} & Processus (pseudo-FS) \\
+\bottomrule
+\end{tabular}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=9. PowerShell — Administration Windows]
+\begin{tabular}{ll}
+\toprule
+\cmd{Get-ChildItem} & Lister (équiv. \cmd{ls}) \\
+\cmd{Set-Location} & Changer répertoire (cd) \\
+\cmd{New-Item} & Créer fichier/dossier \\
+\cmd{Remove-Item -Recurse} & Supprimer \\
+\cmd{Copy-Item} & Copier \\
+\cmd{Get-Process} & Lister processus \\
+\cmd{Get-Service} & Lister services \\
+\cmd{Start-Service nom} & Démarrer service \\
+\cmd{Get-EventLog -LogName System} & Journaux Windows \\
+\cmd{Get-NetIPAddress} & Config réseau \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{Alias} : \cmd{ls}, \cmd{cd}, \cmd{cp} fonctionnent aussi en PS \\
+\key{Pipeline} : \cmd{Get-Process | Where \{...\}}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=10. Sauvegarde \& Restauration]
+\key{Stratégie 3-2-1} :
+\begin{itemize}
+  \item 3 copies des données
+  \item Sur 2 supports différents
+  \item Dont 1 hors site (cloud, distant)
+\end{itemize}
+\vspace{4pt}
+\textbf{Types de sauvegarde :}
+\begin{itemize}
+  \item \key{Complète} : tout sauvegarder (lente, sûre)
+  \item \key{Incrémentale} : depuis la dernière sauvegarde
+  \item \key{Différentielle} : depuis la dernière complète
+\end{itemize}
+\vspace{4pt}
+\key{Commandes tar :}\\
+\cmd{tar -czf backup.tar.gz /data} \quad (créer)\\
+\cmd{tar -xzf backup.tar.gz} \quad (extraire)\\[4pt]
+\key{rsync} : synchronisation de fichiers :\\
+\cmd{rsync -avz /src user@srv:/dest}
+\end{tcolorbox}
+
+\end{multicols}
+
+\vspace{4pt}
+\begin{tcolorbox}[basebox, colframe=crimson, title=Points clés à retenir pour l'examen]
+\begin{multicols}{2}
+\begin{itemize}
+  \item \cmd{chmod 755} = \cmd{rwxr-xr-x} (user: tout, group+others: lecture+exec)
+  \item \cmd{chmod 644} = \cmd{rw-r--r--} (fichier web standard)
+  \item \warn{Ne jamais faire rm -rf /} (supprime tout le système)
+  \item \key{sudo} = exécuter une commande en tant que root
+  \item \cmd{systemctl enable} = démarrage automatique au boot
+  \item \cmd{apt update} avant \cmd{apt install} (toujours)
+  \item SSH port 22 — connexion sécurisée chiffrée
+  \item \cmd{grep -r "texte" /dossier} = recherche récursive
+  \item Propriétaire fichier : \cmd{chown user:group fichier}
+  \item \cmd{/etc/passwd} : comptes, \cmd{/etc/shadow} : mots de passe hachés
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\end{document}
