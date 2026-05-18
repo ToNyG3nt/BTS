@@ -1,0 +1,145 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+
+\definecolor{navy}{RGB}{0,51,102}
+\definecolor{lightbg}{RGB}{245,248,252}
+
+\pagestyle{empty}
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+
+% =============================================
+% PAGE DE GARDE
+% =============================================
+\begin{titlepage}
+  \pagecolor{navy}
+  \begin{center}
+    \vspace*{3cm}
+
+    {\Huge\bfseries\textcolor{white}{BTS SIO}}\\[0.5cm]
+    {\LARGE\textcolor{white}{Brevet de Technicien Supérieur}}\\
+    {\LARGE\textcolor{white}{Services Informatiques aux Organisations}}\\[2cm]
+
+    \begin{tcolorbox}[colback=white, colframe=white, arc=5mm, width=0.8\textwidth]
+      \centering
+      {\huge\bfseries\textcolor{navy}{DOSSIER DE RÉVISIONS}}\\[0.3cm]
+      {\Large\textcolor{navy}{BTS Blanc — 1\textsuperscript{ère} Année}}
+    \end{tcolorbox}
+
+    \vspace{2cm}
+
+    {\LARGE\textcolor{white}{Maël Mignard}}\\[0.5cm]
+    {\large\textcolor{white}{\today}}
+
+    \vspace{3cm}
+
+    \begin{tcolorbox}[colback=navy!80!black, colframe=white, arc=3mm, width=0.9\textwidth, boxrule=0.5mm]
+      \centering\textcolor{white}{\textbf{Matières couvertes :}}\\[0.3cm]
+      \textcolor{white}{
+        Réseaux \& Routage \quad|\quad
+        Administration Linux \& Serveur \\[0.2cm]
+        Cybersécurité \quad|\quad
+        Programmation (Algo, C\#, Python) \\[0.2cm]
+        Création Web \quad|\quad
+        Gestion du SI (GLPI, Incidents) \\[0.2cm]
+        Mathématiques \quad|\quad
+        CEJM \quad|\quad
+        Culture G \& Anglais
+      }
+    \end{tcolorbox}
+
+  \end{center}
+\end{titlepage}
+\nopagecolor
+
+% =============================================
+% TABLE DES MATIÈRES
+% =============================================
+\newpage
+\begin{center}
+  \colorbox{navy}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+    \centering\vspace{4pt}
+    {\LARGE\bfseries\textcolor{white}{TABLE DES MATIÈRES}}
+    \vspace{4pt}
+  }}
+\end{center}
+\vspace{1cm}
+
+\begin{tcolorbox}[colback=lightbg, colframe=navy, arc=3mm, boxrule=0.5mm]
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{lll}
+\textbf{N°} & \textbf{Matière} & \textbf{Contenu} \\
+\hline
+0 & \textbf{Fiche Globale} & Vue d'ensemble de toutes les matières \\
+\hline
+1 & \textbf{Réseaux \& Routage} & OSI, TCP/IP, IPv4/6, VLAN, STP, Cisco \\
+2 & \textbf{Administration Linux \& Serveur} & Commandes Bash, permissions, services, PowerShell \\
+3 & \textbf{Cybersécurité} & CIA, RGPD, menaces, PCA/PRA, chiffrement \\
+4 & \textbf{Programmation} & Algorithmique, C\#, Python, POO \\
+5 & \textbf{Création Web} & HTML, CSS, JavaScript, PHP, sécurité web \\
+6 & \textbf{Gestion du SI} & GLPI, ITIL, Incidents, Patrimoine, Licences \\
+7 & \textbf{Mathématiques} & Algèbre booléenne, bases de numération, ensembles \\
+8 & \textbf{CEJM} & Économie, Droit, Management, RSE \\
+9 & \textbf{Culture G \& Anglais} & Analyse de corpus, vocabulaire IT, grammaire \\
+\end{tabular}
+\end{tcolorbox}
+
+\vspace{1.5cm}
+
+\begin{tcolorbox}[colback=red!5, colframe=red!70!black, arc=3mm, boxrule=0.5mm, title=\textbf{Conseils pour le BTS Blanc}]
+\begin{itemize}
+  \item \textbf{Commencez par la fiche globale} pour avoir une vue d'ensemble avant les épreuves
+  \item \textbf{Relisez les « Points clés »} en bas de chaque fiche — ce sont les éléments les plus souvent évalués
+  \item \textbf{Cybersécurité} : maîtrisez la triade CIA, le RGPD et la différence PCA/PRA
+  \item \textbf{Réseaux} : sachez réciter les 7 couches OSI avec leurs protocoles associés
+  \item \textbf{CEJM} : révisez la hiérarchie des normes, les conditions du contrat et les styles de management
+  \item \textbf{Programmation} : pratiquez la lecture de code C\# et d'algorithmes en pseudo-code
+  \item \textbf{Anglais} : apprenez le vocabulaire IT et les connecteurs logiques (\textit{furthermore, however, in addition...})
+\end{itemize}
+\end{tcolorbox}
+
+% =============================================
+% INCLUSION DES FICHES
+% =============================================
+
+% --- Fiche 0 : Globale ---
+\newpage
+\includepdf[pages=-, fitpaper=true]{fiche_globale.pdf}
+
+% --- Fiche 1 : Réseaux ---
+\includepdf[pages=-, fitpaper=true]{fiche_reseaux.pdf}
+
+% --- Fiche 2 : Admin Linux ---
+\includepdf[pages=-, fitpaper=true]{fiche_admin_linux.pdf}
+
+% --- Fiche 3 : Cybersécurité ---
+\includepdf[pages=-, fitpaper=true]{fiche_cybersecurite.pdf}
+
+% --- Fiche 4 : Programmation ---
+\includepdf[pages=-, fitpaper=true]{fiche_programmation.pdf}
+
+% --- Fiche 5 : Web ---
+\includepdf[pages=-, fitpaper=true]{fiche_web.pdf}
+
+% --- Fiche 6 : Gestion SI ---
+\includepdf[pages=-, fitpaper=true]{fiche_gestion_si.pdf}
+
+% --- Fiche 7 : Maths ---
+\includepdf[pages=-, fitpaper=true]{fiche_maths.pdf}
+
+% --- Fiche 8 : CEJM ---
+\includepdf[pages=-, fitpaper=true]{fiche_cejm.pdf}
+
+% --- Fiche 9 : Culture G & Anglais ---
+\includepdf[pages=-, fitpaper=true]{fiche_culture_anglais.pdf}
+
+\end{document}
