@@ -304,18 +304,18 @@ echo somme(3, 4); // 7
 \begin{tcolorbox}[basebox, colframe=green, title=8. PHP — Formulaires et BDD]
 \begin{lstlisting}[style=php]
 <?php
-// Récupérer données formulaire (SÉCURISÉ)
+// Recuperer donnees formulaire (SECURISE)
 $nom = htmlspecialchars($_POST["nom"]);
 $email = filter_var($_POST["email"],
          FILTER_VALIDATE_EMAIL);
 
-// Connexion MySQL (PDO - recommandé)
+// Connexion MySQL (PDO - recommande)
 $pdo = new PDO(
     "mysql:host=localhost;dbname=mabase",
     "user", "password"
 );
 
-// Requête préparée (anti-SQLi)
+// Requete preparee (anti-SQLi)
 $stmt = $pdo->prepare(
     "SELECT * FROM users WHERE email = ?"
 );
