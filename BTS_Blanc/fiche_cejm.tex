@@ -1,0 +1,268 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty}
+\setlist{nosep, leftmargin=1.5em}
+
+\definecolor{navy}{RGB}{0,51,102}
+\definecolor{teal}{RGB}{0,120,120}
+\definecolor{crimson}{RGB}{180,0,0}
+\definecolor{green}{RGB}{0,120,50}
+\definecolor{lightbg}{RGB}{245,248,252}
+\definecolor{orange}{RGB}{200,100,0}
+\definecolor{purple}{RGB}{100,0,160}
+\definecolor{darkblue}{RGB}{0,60,130}
+
+\tcbset{basebox/.style={
+  colback=lightbg, colframe=darkblue, coltitle=white,
+  fonttitle=\bfseries, arc=2mm, boxrule=0.5mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, after skip=6pt
+}}
+
+\newcommand{\key}[1]{\textbf{\textcolor{darkblue}{#1}}}
+\newcommand{\warn}[1]{\textbf{\textcolor{crimson}{#1}}}
+\newcommand{\ok}[1]{\textbf{\textcolor{green}{#1}}}
+
+\begin{document}
+
+\begin{center}
+  \colorbox{darkblue}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+    \centering\vspace{3pt}
+    {\LARGE\bfseries\textcolor{white}{CEJM — Contexte Économique, Juridique et Managérial}}\\
+    {\normalsize\textcolor{white}{BTS SIO — Maël Mignard}}
+    \vspace{3pt}
+  }}
+\end{center}
+\vspace{6pt}
+
+\begin{multicols}{2}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=darkblue, title=1. ÉCONOMIE — Les agents économiques]
+\begin{tabular}{lll}
+\toprule
+\textbf{Agent} & \textbf{Fonction} & \textbf{Ressource} \\
+\midrule
+Ménages & Consommation & Salaires \\
+Entreprises & Production marchande & Profits \\
+État & Production non marchande & Impôts \\
+Banques & Financement & Intérêts \\
+Reste du monde & Échanges ext. & Export/Import \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{Flux réels} : biens et services \\
+\key{Flux monétaires} : paiements correspondants \\
+\key{Circuit économique} : interactions entre agents
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=darkblue, title=2. ÉCONOMIE — Marchés et prix]
+\key{Marché} : lieu (physique ou virtuel) de rencontre entre l'offre et la demande.\\[4pt]
+\textbf{Loi de l'offre et la demande :}
+\begin{itemize}
+  \item Demande $>$ Offre $\to$ Prix $\nearrow$
+  \item Offre $>$ Demande $\to$ Prix $\searrow$
+  \item Équilibre : Offre = Demande $\to$ Prix d'équilibre
+\end{itemize}
+\vspace{4pt}
+\textbf{Structures de marché :}
+\begin{itemize}
+  \item \key{Concurrence pure et parfaite} : nombreux acteurs, produits identiques
+  \item \key{Monopole} : 1 seul vendeur (ex: SNCF sur certaines lignes)
+  \item \key{Oligopole} : quelques vendeurs (ex: opérateurs télécom)
+  \item \key{Duopole} : 2 vendeurs (ex: Airbus/Boeing)
+\end{itemize}
+\vspace{4pt}
+\key{Inflation} : hausse générale et durable des prix \\
+\key{PIB} : Produit Intérieur Brut, richesse créée par un pays
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=3. ÉCONOMIE — Mondialisation et numérique]
+\key{Mondialisation} : interdépendance économique mondiale (libre-échange, division internationale du travail) \\[4pt]
+\key{Commerce international} : exportations et importations \\
+\key{Balance commerciale} : exports - imports \\
+\quad $> 0$ : excédent ; $< 0$ : déficit \\[4pt]
+\key{Économie numérique} :
+\begin{itemize}
+  \item \key{Plateformes} : Uber, Amazon, Airbnb (effet de réseau)
+  \item \key{Big Data} : exploitation des données massives
+  \item \key{IA} : automatisation, nouveaux métiers
+  \item \key{Uberisation} : mise en relation directe via appli
+\end{itemize}
+\vspace{4pt}
+\key{GAFAM} : Google, Apple, Facebook, Amazon, Microsoft
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=4. DROIT — Sources du droit]
+\textbf{Hiérarchie des normes (pyramide de Kelsen) :}
+\begin{enumerate}
+  \item Constitution (loi fondamentale)
+  \item Traités internationaux
+  \item Lois (Parlement) et ordonnances
+  \item Décrets (gouvernement)
+  \item Arrêtés (ministres/préfets)
+\end{enumerate}
+\vspace{4pt}
+\key{Droit public} : relations État/citoyens \\
+\key{Droit privé} : relations entre particuliers \\
+\quad - Droit civil, droit commercial, droit du travail \\[4pt]
+\key{Droit pénal} : infractions et sanctions (contravention, délit, crime)
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=5. DROIT — Formation du contrat]
+\textbf{Conditions de validité du contrat (art. 1128 Code civil) :}
+\begin{itemize}
+  \item \key{Consentement} : libre, éclairé, non vicié
+  \item \key{Capacité} : être majeur ou émancipé
+  \item \key{Objet} : licite et déterminé
+  \item \key{Cause} : licite et réelle
+\end{itemize}
+\vspace{4pt}
+\textbf{Vices du consentement (rendent le contrat annulable) :}
+\begin{itemize}
+  \item \warn{Erreur} : mauvaise compréhension de l'objet
+  \item \warn{Dol} : tromperie, manœuvres frauduleuses
+  \item \warn{Violence} : contrainte physique ou morale
+\end{itemize}
+\vspace{4pt}
+\key{Nullité relative} : peut être demandée par la victime \\
+\key{Nullité absolue} : si ordre public violé (annulation par tous)
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=6. DROIT — Droit du travail]
+\key{CDI} : Contrat à Durée Indéterminée (droit commun) \\
+\key{CDD} : Contrat à Durée Déterminée (cas limitatifs) \\
+\key{Stage} : non salarié, en formation \\
+\key{Intérim} : via agence, entreprise utilisatrice \\[4pt]
+\textbf{Rupture du contrat de travail :}
+\begin{itemize}
+  \item \key{Démission} : à l'initiative du salarié
+  \item \key{Licenciement} : à l'initiative de l'employeur
+    \begin{itemize}
+      \item Personnel (motif réel et sérieux)
+      \item Économique (raisons économiques)
+    \end{itemize}
+  \item \key{Rupture conventionnelle} : accord commun
+\end{itemize}
+\vspace{4pt}
+\key{Préavis} : délai de prévenance avant départ \\
+\key{Indemnités} : compensations financières \\
+\key{Conventions collectives} : accords de branche (supérieurs au Code du travail)
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=7. MANAGEMENT — Entreprise et formes juridiques]
+\begin{tabular}{lll}
+\toprule
+\textbf{Forme} & \textbf{Responsabilité} & \textbf{Capital min.} \\
+\midrule
+EI & Illimitée & Aucun \\
+EURL & Limitée & 1€ \\
+SARL & Limitée & 1€ \\
+SA & Limitée & 37 000€ \\
+SAS/SASU & Limitée & 1€ \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{Entrepreneur individuel} : pas de séparation patrimoine \\
+\key{SARL} : 2 à 100 associés, gérant, parts sociales \\
+\key{SA} : actionnaires, PDG, Conseil d'administration \\
+\key{Micro-entreprise} : régime simplifié (ex auto-entrepreneur)
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=8. MANAGEMENT — Finalité et performance]
+\key{Finalité lucrative} : maximiser le profit \\
+\key{Finalité non lucrative} : association, syndicat, service public \\[4pt]
+\textbf{Types de performance :}
+\begin{itemize}
+  \item \key{Efficacité} : atteindre les objectifs fixés
+  \item \key{Efficience} : atteindre les objectifs avec le minimum de ressources
+  \item \key{RSE} : performance sociale et environnementale
+\end{itemize}
+\vspace{4pt}
+\key{Indicateurs} : chiffre d'affaires, part de marché, taux de satisfaction, ROI \\[4pt]
+\key{SWOT} : Forces, Faiblesses, Opportunités, Menaces
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=9. MANAGEMENT — Styles et organisation]
+\textbf{Styles de management (Likert) :}
+\begin{tabular}{ll}
+\toprule
+\textbf{Style} & \textbf{Description} \\
+\midrule
+Directif & Ordres, peu d'autonomie, contrôle fort \\
+Persuasif & Explique, motive, guide \\
+Participatif & Concertation, équipe impliquée \\
+Délégatif & Forte autonomie, confiance totale \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{Organisation} = structure + coordination \\
+\textbf{Structures :}
+\begin{itemize}
+  \item \key{Hiérarchique} : autorité verticale (pyramide)
+  \item \key{Fonctionnelle} : spécialisation par fonctions
+  \item \key{Matricielle} : projets + fonctions croisés
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=purple, title=10. MANAGEMENT — Parties prenantes et RSE]
+\key{Parties prenantes (stakeholders)} : tous ceux impactés par l'entreprise
+\begin{itemize}
+  \item \textbf{Internes} : dirigeants, salariés, actionnaires
+  \item \textbf{Externes} : clients, fournisseurs, État, société civile
+\end{itemize}
+\vspace{4pt}
+\key{RSE} (Responsabilité Sociétale des Entreprises) :\\
+Intégrer les enjeux sociaux et environnementaux dans la stratégie.
+\begin{itemize}
+  \item Environnement : réduire l'empreinte carbone
+  \item Social : conditions de travail, diversité
+  \item Gouvernance : éthique, transparence
+\end{itemize}
+\vspace{4pt}
+\key{Développement durable} : satisfaire les besoins du présent sans compromettre ceux du futur
+\end{tcolorbox}
+
+\end{multicols}
+
+\vspace{4pt}
+\begin{tcolorbox}[basebox, colframe=darkblue, title=Points clés à retenir pour l'examen CEJM]
+\begin{multicols}{2}
+\begin{itemize}
+  \item Agents éco : Ménages, Entreprises, État, Banques, Reste du monde
+  \item Offre $>$ Demande $\to$ Prix baisse ; Demande $>$ Offre $\to$ Prix monte
+  \item Monopole = 1 vendeur ; Oligopole = peu ; CPP = beaucoup
+  \item Pyramide des normes : Constitution $>$ Loi $>$ Décret $>$ Arrêté
+  \item Contrat valide : consentement + capacité + objet licite + cause licite
+  \item Vices : erreur, dol (tromperie), violence
+  \item CDI = droit commun ; CDD = cas exceptionnels limitatifs
+  \item Rupture conventionnelle = commun accord salarié + employeur
+  \item Efficacité ≠ Efficience : atteindre l'objectif ≠ le faire avec le minimum
+  \item RSE = Triple bottom line : économique + social + environnemental
+  \item SARL : 1€ de capital, responsabilité limitée, parts sociales
+  \item Styles management : Directif / Persuasif / Participatif / Délégatif
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\end{document}
