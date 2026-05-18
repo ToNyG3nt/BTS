@@ -1,0 +1,384 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{listings}
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty}
+\setlist{nosep, leftmargin=1.5em}
+
+\definecolor{navy}{RGB}{0,51,102}
+\definecolor{teal}{RGB}{0,120,120}
+\definecolor{crimson}{RGB}{180,0,0}
+\definecolor{green}{RGB}{0,120,50}
+\definecolor{lightbg}{RGB}{245,248,252}
+\definecolor{orange}{RGB}{200,100,0}
+\definecolor{purple}{RGB}{100,0,160}
+\definecolor{codebg}{RGB}{28,28,36}
+\definecolor{codecyan}{RGB}{100,200,220}
+\definecolor{codeorange}{RGB}{255,165,0}
+\definecolor{codegreen}{RGB}{100,200,100}
+\definecolor{codemagenta}{RGB}{220,100,220}
+
+\lstdefinestyle{html}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small\color{white},
+  keywordstyle=\color{codecyan}\bfseries,
+  stringstyle=\color{codeorange},
+  commentstyle=\color{gray}\itshape,
+  frame=none, breaklines=true,
+  language=HTML,
+  morekeywords={header, nav, main, section, article, aside, footer, figure, figcaption},
+}
+
+\lstdefinestyle{css}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small\color{white},
+  keywordstyle=\color{codemagenta}\bfseries,
+  stringstyle=\color{codeorange},
+  commentstyle=\color{gray}\itshape,
+  frame=none, breaklines=true,
+}
+
+\lstdefinestyle{js}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small\color{white},
+  keywordstyle=\color{codecyan}\bfseries,
+  stringstyle=\color{codeorange},
+  commentstyle=\color{gray}\itshape,
+  frame=none, breaklines=true,
+  language=JavaScript,
+}
+
+\lstdefinestyle{php}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small\color{white},
+  keywordstyle=\color{codegreen}\bfseries,
+  stringstyle=\color{codeorange},
+  commentstyle=\color{gray}\itshape,
+  frame=none, breaklines=true,
+  language=PHP,
+}
+
+\tcbset{basebox/.style={
+  colback=lightbg, colframe=navy, coltitle=white,
+  fonttitle=\bfseries, arc=2mm, boxrule=0.5mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, after skip=6pt
+}}
+
+\newcommand{\key}[1]{\textbf{\textcolor{navy}{#1}}}
+\newcommand{\warn}[1]{\textbf{\textcolor{crimson}{#1}}}
+
+\begin{document}
+
+\begin{center}
+  \colorbox{orange}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+    \centering\vspace{3pt}
+    {\LARGE\bfseries\textcolor{white}{CRÉATION WEB — HTML, CSS, JavaScript, PHP}}\\
+    {\normalsize\textcolor{white}{BTS SIO — Maël Mignard}}
+    \vspace{3pt}
+  }}
+\end{center}
+\vspace{6pt}
+
+\begin{multicols}{2}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=1. HTML — Structure d'une page]
+\begin{lstlisting}[style=html]
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width">
+  <title>Ma page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Accueil</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Titre principal</h1>
+    <p>Paragraphe de texte.</p>
+    <img src="img.jpg" alt="Description">
+  </main>
+  <footer>
+    <p>Pied de page</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
+\end{lstlisting}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=2. HTML — Balises importantes]
+\begin{tabular}{ll}
+\toprule
+\textbf{Balise} & \textbf{Rôle} \\
+\midrule
+\texttt{<h1>...<h6>} & Titres (hiérarchie) \\
+\texttt{<p>} & Paragraphe \\
+\texttt{<a href="">} & Lien hypertexte \\
+\texttt{<img src="" alt="">} & Image \\
+\texttt{<ul> / <ol>} & Liste non/ordonnée \\
+\texttt{<li>} & Élément de liste \\
+\texttt{<div>} & Conteneur bloc (générique) \\
+\texttt{<span>} & Conteneur inline \\
+\texttt{<form>} & Formulaire \\
+\texttt{<input type="">} & Champ de saisie \\
+\texttt{<button>} & Bouton \\
+\texttt{<table>} & Tableau HTML \\
+\texttt{<strong>} & Texte important (gras) \\
+\texttt{<em>} & Texte en emphase (italic) \\
+\bottomrule
+\end{tabular}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=3. CSS — Sélecteurs et propriétés]
+\begin{lstlisting}[style=css]
+/* Sélecteur de balise */
+h1 { color: navy; font-size: 2em; }
+
+/* Sélecteur de classe */
+.card { background: white; padding: 1rem; }
+
+/* Sélecteur d'id */
+#header { width: 100%; }
+
+/* Combinaisons */
+nav > a { color: blue; }
+div:hover { opacity: 0.8; }
+input::placeholder { color: gray; }
+
+/* Boîte */
+.box {
+  margin: 10px;       /* extérieur */
+  border: 1px solid;  /* bordure */
+  padding: 15px;      /* intérieur */
+  width: 300px;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=4. CSS — Flexbox \& Grid]
+\begin{lstlisting}[style=css]
+/* FLEXBOX */
+.container {
+  display: flex;
+  flex-direction: row;     /* ou column */
+  justify-content: center; /* axe principal */
+  align-items: center;     /* axe secondaire */
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* GRID */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+\end{lstlisting}
+\key{Flexbox} : 1D (ligne ou colonne) \\
+\key{Grid} : 2D (lignes ET colonnes)
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=5. JavaScript — Manipulation du DOM]
+\begin{lstlisting}[style=js]
+// Sélectionner des éléments
+const btn = document.getElementById("btn");
+const items = document.querySelectorAll(".item");
+
+// Modifier le contenu
+btn.textContent = "Cliquez";
+btn.innerHTML = "<strong>OK</strong>";
+
+// Modifier le style
+btn.style.color = "red";
+btn.classList.add("active");
+btn.classList.remove("hidden");
+
+// Événements
+btn.addEventListener("click", function() {
+  alert("Bouton cliqué !");
+});
+
+// Créer et ajouter un élément
+const p = document.createElement("p");
+p.textContent = "Nouveau paragraphe";
+document.body.appendChild(p);
+\end{lstlisting}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=6. JavaScript — Fetch API (AJAX)]
+\begin{lstlisting}[style=js]
+// GET : récupérer des données
+fetch("https://api.example.com/data")
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(error => console.error(error));
+
+// POST : envoyer des données
+fetch("/api/users", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ nom: "Mael", age: 20 })
+})
+  .then(r => r.json())
+  .then(data => console.log(data));
+
+// Avec async/await (plus lisible)
+async function getData() {
+  const r = await fetch("/api/data");
+  const data = await r.json();
+  return data;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=7. PHP — Bases côté serveur]
+\begin{lstlisting}[style=php]
+<?php
+// Variables
+$nom = "Mael";
+$age = 20;
+$majeur = $age >= 18;
+
+// Affichage
+echo "Bonjour $nom";
+echo "<br>";
+
+// Condition
+if ($majeur) {
+    echo "Majeur";
+} else {
+    echo "Mineur";
+}
+
+// Tableaux
+$notes = [12, 15, 18];
+foreach ($notes as $note) {
+    echo $note . "<br>";
+}
+
+// Fonctions
+function somme($a, $b) {
+    return $a + $b;
+}
+echo somme(3, 4); // 7
+?>
+\end{lstlisting}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=8. PHP — Formulaires et BDD]
+\begin{lstlisting}[style=php]
+<?php
+// Récupérer données formulaire (SÉCURISÉ)
+$nom = htmlspecialchars($_POST["nom"]);
+$email = filter_var($_POST["email"],
+         FILTER_VALIDATE_EMAIL);
+
+// Connexion MySQL (PDO - recommandé)
+$pdo = new PDO(
+    "mysql:host=localhost;dbname=mabase",
+    "user", "password"
+);
+
+// Requête préparée (anti-SQLi)
+$stmt = $pdo->prepare(
+    "SELECT * FROM users WHERE email = ?"
+);
+$stmt->execute([$email]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Sessions
+session_start();
+$_SESSION["user"] = $nom;
+
+// Cookies
+setcookie("token", "abc123", time()+3600);
+?>
+\end{lstlisting}
+\warn{Toujours utiliser des requêtes préparées} (PDO/MySQLi) pour éviter les injections SQL !
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=9. Sécurité Web — À ne jamais oublier]
+\begin{itemize}
+  \item \warn{XSS} : toujours utiliser \texttt{htmlspecialchars()} sur les données affichées
+  \item \warn{SQLi} : toujours utiliser des requêtes préparées (PDO)
+  \item \warn{CSRF} : utiliser des tokens de formulaire
+  \item \warn{Uploads} : valider le type MIME, ne pas exécuter les fichiers uploadés
+  \item \warn{Mots de passe} : hasher avec \texttt{password\_hash()} / \texttt{password\_verify()}
+  \item HTTPS partout (certificat TLS)
+  \item Valider les données côté serveur (jamais juste côté client)
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=purple, title=10. WordPress — Points clés]
+\key{CMS} : Content Management System \\
+\key{Thème} : apparence du site \\
+\key{Plugin} : fonctionnalités supplémentaires \\
+\key{Pages} vs \key{Articles} : statique vs dynamique \\[4pt]
+\textbf{Structure fichiers WordPress :}
+\begin{itemize}
+  \item \texttt{wp-content/themes/} : thèmes
+  \item \texttt{wp-content/plugins/} : plugins
+  \item \texttt{wp-config.php} : config BDD
+\end{itemize}
+\vspace{4pt}
+\key{WP-CLI} : gérer WordPress en ligne de commande \\
+\key{BDD} : MySQL, tables préfixées \texttt{wp\_}
+\end{tcolorbox}
+
+\end{multicols}
+
+\vspace{4pt}
+\begin{tcolorbox}[basebox, colframe=orange, title=Points clés à retenir pour l'examen]
+\begin{multicols}{2}
+\begin{itemize}
+  \item HTML = structure, CSS = style, JS = comportement, PHP = serveur
+  \item \texttt{<!DOCTYPE html>} : déclaration obligatoire en HTML5
+  \item Balises sémantiques : \texttt{<header>}, \texttt{<nav>}, \texttt{<main>}, \texttt{<footer>}
+  \item \texttt{@media (max-width: 768px)} : breakpoint responsive mobile
+  \item Flexbox : \texttt{display:flex} — 1D ; Grid : \texttt{display:grid} — 2D
+  \item \texttt{htmlspecialchars()} = protection contre XSS en PHP
+  \item Requêtes préparées PDO = protection contre SQLi
+  \item \texttt{\$\_POST} = données formulaire (POST), \texttt{\$\_GET} = URL (GET)
+  \item \texttt{session\_start()} avant tout dans un fichier PHP avec sessions
+  \item JS : \texttt{querySelector}, \texttt{addEventListener}, \texttt{fetch} sont les 3 essentiels
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\end{document}
