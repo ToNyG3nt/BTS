@@ -1,0 +1,298 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty}
+\setlist{nosep, leftmargin=1.5em}
+
+\definecolor{navy}{RGB}{0,51,102}
+\definecolor{teal}{RGB}{0,120,120}
+\definecolor{crimson}{RGB}{180,0,0}
+\definecolor{green}{RGB}{0,120,50}
+\definecolor{lightbg}{RGB}{245,248,252}
+\definecolor{orange}{RGB}{200,100,0}
+\definecolor{brown}{RGB}{120,60,0}
+\definecolor{darkred}{RGB}{140,0,0}
+
+\tcbset{basebox/.style={
+  colback=lightbg, colframe=navy, coltitle=white,
+  fonttitle=\bfseries, arc=2mm, boxrule=0.5mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, after skip=6pt
+}}
+
+\newcommand{\key}[1]{\textbf{\textcolor{navy}{#1}}}
+\newcommand{\warn}[1]{\textbf{\textcolor{crimson}{#1}}}
+\newcommand{\en}[1]{\textit{\textcolor{teal}{#1}}}
+
+\begin{document}
+
+\begin{center}
+  \colorbox{brown}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+    \centering\vspace{3pt}
+    {\LARGE\bfseries\textcolor{white}{CULTURE GÉNÉRALE \& ANGLAIS — Fiche de révision}}\\
+    {\normalsize\textcolor{white}{BTS SIO — Maël Mignard}}
+    \vspace{3pt}
+  }}
+\end{center}
+\vspace{6pt}
+
+\begin{multicols}{2}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=brown, title=1. Culture G — Méthodologie]
+\textbf{Épreuve de culture générale :}\\
+Analyse d'un corpus de documents (textes, images, chiffres).\\[4pt]
+\textbf{Structure de la réponse :}
+\begin{enumerate}
+  \item \key{Introduction} : présenter le corpus et la problématique
+  \item \key{Développement} : analyse des documents (thèse, arguments, exemples)
+  \item \key{Conclusion} : synthèse et ouverture
+\end{enumerate}
+\vspace{4pt}
+\textbf{Outils d'analyse :}
+\begin{itemize}
+  \item Repérer la thèse défendue
+  \item Identifier les arguments et exemples
+  \item Décrypter le contexte (auteur, date, support)
+  \item Confronter les points de vue des documents
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=brown, title=2. Culture G — Thèmes traités]
+\textbf{Thèmes vus en cours :}
+\begin{itemize}
+  \item \key{Les inégalités} : économiques, sociales, numériques
+  \item \key{La surconsommation} : société de consommation, obsolescence programmée
+  \item \key{Les Temps Modernes} (Chaplin) : travail à la chaîne, déshumanisation
+  \item \key{Le Truman Show} : surveillance, société du spectacle
+  \item \key{Le journalisme} : liberté de la presse, fake news
+  \item \key{L'histoire} : modernité, progrès, crises
+\end{itemize}
+\vspace{4pt}
+\textbf{Notions clés :}
+\begin{itemize}
+  \item \key{Aliénation} : perte de liberté face au système (Marx)
+  \item \key{Surveillance} : contrôle social, Big Brother (Orwell, 1984)
+  \item \key{Progrès} : technique vs humain
+  \item \key{Liberté d'expression} : droit fondamental (art. 11 DDHC)
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=darkred, title=3. Culture G — Auteurs et œuvres de référence]
+\begin{tabular}{lll}
+\toprule
+\textbf{Œuvre} & \textbf{Auteur} & \textbf{Thème} \\
+\midrule
+1984 & Orwell & Totalitarisme, surveillance \\
+Le Meilleur des Mondes & Huxley & Société contrôlée \\
+Les Temps Modernes & Chaplin & Travail, déshumanisation \\
+Le Truman Show & Weir & Spectacle, surveillance \\
+La Société du Spectacle & Debord & Médias, consommation \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{Taylorisme} : organisation scientifique du travail (division des tâches) \\
+\key{Fordisme} : production de masse, travail à la chaîne \\
+\key{DDHC} (1789) : Déclaration des Droits de l'Homme
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=4. ANGLAIS — Vocabulaire informatique]
+\begin{tabular}{ll}
+\toprule
+\textbf{Anglais} & \textbf{Français} \\
+\midrule
+network & réseau \\
+firewall & pare-feu \\
+server & serveur \\
+database & base de données \\
+backup & sauvegarde \\
+patch / update & correctif / mise à jour \\
+bug & anomalie, erreur \\
+software & logiciel \\
+hardware & matériel \\
+bandwidth & bande passante \\
+latency & latence \\
+uptime & temps de fonctionnement \\
+downtime & temps d'arrêt \\
+troubleshoot & diagnostiquer, dépanner \\
+deployment & déploiement \\
+workflow & flux de travail \\
+stakeholder & partie prenante \\
+breach & violation (de données) \\
+password & mot de passe \\
+encryption & chiffrement \\
+\bottomrule
+\end{tabular}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=5. ANGLAIS — Expressions professionnelles]
+\textbf{Lors d'un entretien ou d'une présentation :}
+\begin{itemize}
+  \item \en{I'd like to introduce myself...} (se présenter)
+  \item \en{My name is ... and I'm currently studying IT.}
+  \item \en{I'm responsible for...} (je suis responsable de)
+  \item \en{As you can see in the chart...} (comme le montre le graphique)
+  \item \en{In conclusion, I would like to emphasize...}
+  \item \en{Could you clarify...?} (pouvez-vous préciser)
+  \item \en{To sum up / To summarize...}
+\end{itemize}
+\vspace{4pt}
+\textbf{Pour un e-mail professionnel :}
+\begin{itemize}
+  \item \en{Dear Mr./Ms. [Name],}
+  \item \en{I am writing to...}
+  \item \en{Please find attached...} (veuillez trouver ci-joint)
+  \item \en{I look forward to hearing from you.}
+  \item \en{Yours sincerely / Best regards,}
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=6. ANGLAIS — Structure d'un texte argumentatif]
+\textbf{Introduction :}
+\begin{itemize}
+  \item \en{This document deals with...}
+  \item \en{The author argues that...}
+  \item \en{The main issue is...}
+\end{itemize}
+\vspace{4pt}
+\textbf{Développement :}
+\begin{itemize}
+  \item \en{First of all / Firstly,...}
+  \item \en{Furthermore / Moreover / In addition,...}
+  \item \en{On the other hand,...} (d'un autre côté)
+  \item \en{For instance / For example,...}
+  \item \en{According to the author,...}
+\end{itemize}
+\vspace{4pt}
+\textbf{Conclusion :}
+\begin{itemize}
+  \item \en{To conclude / In conclusion,...}
+  \item \en{All things considered,...}
+  \item \en{This raises the question of...}
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=7. ANGLAIS — Temps et grammaire essentiels]
+\begin{tabular}{lll}
+\toprule
+\textbf{Temps} & \textbf{Forme} & \textbf{Usage} \\
+\midrule
+Présent simple & do/does & habitudes, faits \\
+Présent continu & am/is/are + -ing & action en cours \\
+Prétérit & V-ed/irrég. & passé révolu \\
+Present perfect & have/has + V3 & passé lié au présent \\
+Futur (will) & will + V inf. & décision, prédiction \\
+Conditionnel & would + V inf. & hypothèse, politesse \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\textbf{Voix passive :} \en{The server \textbf{was} configured \textbf{by} the admin.}\\
+\textbf{Modaux :} can, could, must, should, may, might\\
+Ex: \en{You \textbf{must} use HTTPS.} / \en{You \textbf{should} update regularly.}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=8. ANGLAIS — Vocabulaire CEJM en anglais]
+\begin{tabular}{ll}
+\toprule
+\textbf{Anglais} & \textbf{Français} \\
+\midrule
+supply and demand & offre et demande \\
+market share & part de marché \\
+shareholder & actionnaire \\
+CEO & PDG \\
+employee / staff & salarié / personnel \\
+contract & contrat \\
+wage / salary & salaire \\
+turnover & chiffre d'affaires \\
+profit / loss & bénéfice / perte \\
+supply chain & chaîne d'approvisionnement \\
+merger & fusion (d'entreprises) \\
+outsourcing & externalisation \\
+compliance & conformité \\
+regulation & réglementation \\
+\bottomrule
+\end{tabular}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=9. Activités Transversales — UX/UI]
+\key{UX} (User eXperience) : expérience globale de l'utilisateur \\
+\key{UI} (User Interface) : interface graphique \\[4pt]
+\textbf{Principes UX :}
+\begin{itemize}
+  \item \key{Utilisabilité} : facile à utiliser
+  \item \key{Accessibilité} : utilisable par tous (handicap)
+  \item \key{Cohérence} : même style partout
+  \item \key{Feedback} : réponse aux actions utilisateur
+  \item \key{Affordance} : l'objet suggère son usage
+\end{itemize}
+\vspace{4pt}
+\textbf{Outils :} Figma, Adobe XD, Sketch \\
+\key{Wireframe} : maquette filaire (structure) \\
+\key{Prototype} : maquette interactive \\
+\key{Test utilisateur} : observer de vrais utilisateurs
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=10. Activités Transversales — Veille technologique]
+\key{Veille technologique} : surveiller l'évolution des technologies pour rester à jour.\\[4pt]
+\textbf{Types de veille :}
+\begin{itemize}
+  \item \key{Veille techno} : nouvelles technologies, outils
+  \item \key{Veille concurrentielle} : surveiller la concurrence
+  \item \key{Veille réglementaire} : nouvelles lois et normes
+  \item \key{Veille sécurité} : nouvelles failles et menaces
+\end{itemize}
+\vspace{4pt}
+\textbf{Outils de veille :}
+\begin{itemize}
+  \item \key{RSS} (Really Simple Syndication) : flux d'actualités
+  \item \key{Google Alerts} : alertes e-mail sur mots-clés
+  \item \key{Twitter/LinkedIn} : réseaux professionnels
+  \item \key{CVE} : liste des failles connues (cybersécurité)
+  \item \key{ANSSI} : agence nationale de sécurité informatique
+\end{itemize}
+\vspace{4pt}
+\key{GitLab} : plateforme DevOps (CI/CD, issues, wiki, versions)
+\end{tcolorbox}
+
+\end{multicols}
+
+\vspace{4pt}
+\begin{tcolorbox}[basebox, colframe=brown, title=Points clés à retenir pour l'examen]
+\begin{multicols}{2}
+\begin{itemize}
+  \item Analyse de corpus : thèse + arguments + exemples dans chaque doc
+  \item Introduction = présenter le corpus + poser la problématique
+  \item Les Temps Modernes = Chaplin = critique du taylorisme/fordisme
+  \item 1984 = Orwell = surveillance, totalitarisme, Big Brother
+  \item \en{Please find attached} = veuillez trouver ci-joint
+  \item Present perfect : have/has + V3 (passé lié au présent)
+  \item Voix passive en anglais = be + V3
+  \item UX = expérience ; UI = interface (l'UI fait partie de l'UX)
+  \item Wireframe = maquette filaire ; Prototype = interactif
+  \item Veille techno : RSS, Google Alerts, CVE pour les failles
+  \item \warn{Freedom of speech} = liberté d'expression
+  \item \en{According to} = selon, d'après (pour citer un auteur)
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\end{document}
