@@ -1,0 +1,313 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty}
+\setlist{nosep, leftmargin=1.5em}
+
+\definecolor{navy}{RGB}{0,51,102}
+\definecolor{teal}{RGB}{0,120,120}
+\definecolor{crimson}{RGB}{180,0,0}
+\definecolor{green}{RGB}{0,120,50}
+\definecolor{lightbg}{RGB}{245,248,252}
+\definecolor{orange}{RGB}{200,100,0}
+\definecolor{purple}{RGB}{100,0,160}
+
+\tcbset{basebox/.style={
+  colback=lightbg, colframe=navy, coltitle=white,
+  fonttitle=\bfseries, arc=2mm, boxrule=0.5mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, after skip=6pt
+}}
+
+\newcommand{\key}[1]{\textbf{\textcolor{navy}{#1}}}
+\newcommand{\warn}[1]{\textbf{\textcolor{crimson}{#1}}}
+
+\begin{document}
+
+\begin{center}
+  \colorbox{purple}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+    \centering\vspace{3pt}
+    {\LARGE\bfseries\textcolor{white}{MATHÉMATIQUES — Algèbre booléenne, Bases, Ensembles}}\\
+    {\normalsize\textcolor{white}{BTS SIO — Maël Mignard}}
+    \vspace{3pt}
+  }}
+\end{center}
+\vspace{6pt}
+
+\begin{multicols}{2}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=1. Systèmes de numération]
+\begin{tabular}{llll}
+\toprule
+\textbf{Base} & \textbf{Nom} & \textbf{Symboles} & \textbf{Préfixe} \\
+\midrule
+2  & Binaire      & 0, 1        & \texttt{0b} \\
+8  & Octal        & 0--7        & \texttt{0o} \\
+10 & Décimal      & 0--9        & — \\
+16 & Hexadécimal  & 0--9, A--F  & \texttt{0x} \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\textbf{Équivalences :}
+\begin{tabular}{cccc}
+\textbf{Déc} & \textbf{Bin} & \textbf{Oct} & \textbf{Hex} \\
+0  & 0000 & 0  & 0 \\
+1  & 0001 & 1  & 1 \\
+8  & 1000 & 10 & 8 \\
+10 & 1010 & 12 & A \\
+15 & 1111 & 17 & F \\
+16 & 10000 & 20 & 10 \\
+\end{tabular}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=2. Conversions de bases]
+\textbf{Décimal $\to$ Binaire} (divisions successives par 2) :\\
+Ex: $42_{10}$
+\begin{center}
+\begin{tabular}{r|l}
+42 & reste \\
+\hline
+21 & \textbf{0} \\
+10 & \textbf{1} \\
+5  & \textbf{0} \\
+2  & \textbf{1} \\
+1  & \textbf{0} \\
+0  & \textbf{1} \\
+\end{tabular}
+\quad $\to$ lire de bas en haut : $\mathbf{101010_2}$
+\end{center}
+\vspace{4pt}
+\textbf{Binaire $\to$ Décimal} (puissances de 2) :\\
+$1011_2 = 1{\times}2^3 + 0{\times}2^2 + 1{\times}2^1 + 1{\times}2^0 = 8+0+2+1 = \mathbf{11}$\\[4pt]
+\textbf{Binaire $\to$ Hexadécimal} (groupes de 4 bits) :\\
+$\underbrace{1010}_{A}\underbrace{1111}_{F} = \mathbf{AF_{16}}$\\[4pt]
+\textbf{Hexadécimal $\to$ Binaire} (4 bits par chiffre hex) :\\
+$\text{B}4_{16} = \underbrace{1011}_{B}\underbrace{0100}_{4} = \mathbf{10110100_2}$
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=purple, title=3. Algèbre Booléenne — Opérateurs]
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+\multicolumn{2}{c}{\textbf{Entrées}} & \multicolumn{2}{c}{\textbf{Sorties}} \\
+A & B & \textbf{A ET B} $(A \cdot B)$ & \textbf{A OU B} $(A+B)$ \\
+\midrule
+0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 \\
+1 & 0 & 0 & 1 \\
+1 & 1 & 1 & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{4pt}
+\textbf{NON (NOT)} : $\overline{A}$ — inverse la valeur (0$\to$1, 1$\to$0)\\[4pt]
+\textbf{XOR (OU exclusif)} :
+\begin{center}
+\begin{tabular}{ccc}
+A & B & $A \oplus B$ \\
+\hline
+0 & 0 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+1 & 1 & 0 \\
+\end{tabular}
+\end{center}
+XOR = 1 si les entrées sont \textbf{différentes}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=purple, title=4. Algèbre Booléenne — Propriétés et lois]
+\textbf{Lois élémentaires :}
+\begin{align*}
+A \cdot 0 &= 0 \quad & A + 0 &= A \\
+A \cdot 1 &= A \quad & A + 1 &= 1 \\
+A \cdot A &= A \quad & A + A &= A \\
+A \cdot \overline{A} &= 0 \quad & A + \overline{A} &= 1 \\
+\overline{\overline{A}} &= A &&
+\end{align*}
+
+\textbf{Lois de De Morgan :}
+\[
+\overline{A \cdot B} = \overline{A} + \overline{B}
+\]
+\[
+\overline{A + B} = \overline{A} \cdot \overline{B}
+\]
+
+\textbf{Commutativité :}
+$A+B = B+A$ \quad; \quad $A \cdot B = B \cdot A$\\[4pt]
+\textbf{Distributivité :}
+$A \cdot (B+C) = (A \cdot B) + (A \cdot C)$
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=5. Tables de vérité — Méthode]
+\textbf{Étapes pour construire une table de vérité :}
+\begin{enumerate}
+  \item Compter le nombre d'entrées $n$
+  \item Nombre de lignes : $2^n$
+  \item Remplir les colonnes d'entrées (A, B, C...)
+  \item Calculer chaque colonne intermédiaire
+  \item Calculer la sortie finale
+\end{enumerate}
+\vspace{4pt}
+\textbf{Exemple avec 3 variables ($n=3$, $2^3=8$ lignes) :}
+\begin{center}
+\begin{tabular}{ccc|c}
+A & B & C & $S = A \cdot B + C$ \\
+\hline
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 0 \\
+0 & 1 & 1 & 1 \\
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\
+\end{tabular}
+\end{center}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=6. Arithmétique — Opérations en binaire]
+\textbf{Addition binaire (règles) :}
+\begin{align*}
+0 + 0 &= 0 \\
+0 + 1 &= 1 \\
+1 + 0 &= 1 \\
+1 + 1 &= 10 \text{ (0, retenue 1)}
+\end{align*}
+\textbf{Exemple :} $1011_2 + 0110_2$
+\begin{center}
+\begin{tabular}{r}
+  \texttt{\ 1011} \\
++ \texttt{\ 0110} \\
+\hline
+  \texttt{10001} \\
+\end{tabular}
+\end{center}
+$= 11_{10} + 6_{10} = 17_{10}$ \checkmark \\[4pt]
+\textbf{Complément à 2} (représenter les négatifs) :\\
+$-N$ = inverser tous les bits de $N$ puis $+1$ \\
+Ex: $-5$ en 8 bits : $5=00000101$ $\to$ $11111010 + 1 = 11111011$
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=7. Théorie des Ensembles]
+\key{Ensemble} : collection d'éléments distincts.\\
+Notation : $E = \{1, 2, 3, 4\}$\\[4pt]
+\textbf{Opérations :}
+\begin{itemize}
+  \item \key{Union} $A \cup B$ : tous les éléments de A ou B
+  \item \key{Intersection} $A \cap B$ : éléments communs à A et B
+  \item \key{Complémentaire} $\overline{A}$ : éléments pas dans A
+  \item \key{Différence} $A \setminus B$ : dans A mais pas dans B
+\end{itemize}
+\vspace{4pt}
+\textbf{Relations :}
+\begin{itemize}
+  \item $a \in E$ : $a$ appartient à $E$
+  \item $A \subseteq B$ : $A$ est inclus dans $B$ (sous-ensemble)
+  \item $\emptyset$ : ensemble vide
+  \item $|E|$ : cardinal (nombre d'éléments)
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=8. Logique — Propositions]
+\key{Proposition} : énoncé vrai ou faux (jamais les deux).\\[4pt]
+\textbf{Connecteurs logiques :}
+\begin{tabular}{lll}
+\toprule
+\textbf{Connecteur} & \textbf{Symbole} & \textbf{Nom} \\
+\midrule
+ET & $\wedge$ & Conjonction \\
+OU & $\vee$ & Disjonction \\
+NON & $\neg$ & Négation \\
+IMPLIQUE & $\Rightarrow$ & Implication \\
+ÉQUIVALENT & $\Leftrightarrow$ & Équivalence \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\textbf{Implication} $P \Rightarrow Q$ : « Si P alors Q »\\
+Fausse uniquement si P est vrai et Q est faux.\\[4pt]
+\textbf{Contraposée} : $P \Rightarrow Q \equiv \neg Q \Rightarrow \neg P$ (toujours équivalente)
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=9. Représentation des données informatiques]
+\begin{tabular}{ll}
+\toprule
+\textbf{Unité} & \textbf{Valeur} \\
+\midrule
+1 bit & 0 ou 1 \\
+1 octet (byte) & 8 bits \\
+1 Ko (kilo-octet) & $10^3$ octets = 1000 o \\
+1 Mo & $10^6$ octets \\
+1 Go & $10^9$ octets \\
+1 To & $10^{12}$ octets \\
+1 Kio (kibioctet) & $2^{10}$ = 1024 octets \\
+1 Mio & $2^{20}$ = 1 048 576 octets \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{Codage ASCII} : 7 bits, 128 caractères (lettres, chiffres, symboles) \\
+\key{Codage UTF-8} : 1 à 4 octets, compatible avec tous les caractères (dont accents, kanji, emojis)
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=10. Arithmétique — PGCD et arithmétique modulo]
+\textbf{PGCD} (Plus Grand Commun Diviseur) :\\
+Algorithme d'Euclide : $\text{pgcd}(a, b) = \text{pgcd}(b, a \mod b)$\\
+Jusqu'à ce que le reste soit 0.\\
+Ex: $\text{pgcd}(48, 18)$:\\
+$48 = 2 \times 18 + 12 \to \text{pgcd}(18, 12)$\\
+$18 = 1 \times 12 + 6 \to \text{pgcd}(12, 6)$\\
+$12 = 2 \times 6 + 0 \to$ PGCD = \textbf{6}\\[4pt]
+\textbf{Modulo (reste de division euclidienne)} :\\
+$17 \mod 5 = 2$ (car $17 = 3 \times 5 + 2$)\\[4pt]
+\textbf{Critères de divisibilité courants :}
+\begin{itemize}
+  \item par 2 : dernier chiffre pair
+  \item par 3 : somme des chiffres divisible par 3
+  \item par 9 : somme des chiffres divisible par 9
+\end{itemize}
+\end{tcolorbox}
+
+\end{multicols}
+
+\vspace{4pt}
+\begin{tcolorbox}[basebox, colframe=purple, title=Points clés à retenir pour l'examen]
+\begin{multicols}{2}
+\begin{itemize}
+  \item Décimal $\to$ Binaire : divisions successives par 2, lire les restes de bas en haut
+  \item Binaire $\to$ Hex : groupes de 4 bits ($\underbrace{1010}_{A}\underbrace{0011}_{3}$)
+  \item $A \cdot 0 = 0$ ; $A + 1 = 1$ ; $\overline{\overline{A}} = A$
+  \item De Morgan : $\overline{A \cdot B} = \overline{A} + \overline{B}$ et $\overline{A + B} = \overline{A} \cdot \overline{B}$
+  \item Table de vérité avec $n$ variables = $2^n$ lignes
+  \item XOR = 1 si les entrées sont différentes
+  \item 1 octet = 8 bits ; 1 Go $\approx 10^9$ octets
+  \item Union $\cup$ = tout ; Intersection $\cap$ = commun
+  \item Implication $P \Rightarrow Q$ : fausse si P vrai et Q faux
+  \item PGCD par algorithme d'Euclide (divisions successives)
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\end{document}
