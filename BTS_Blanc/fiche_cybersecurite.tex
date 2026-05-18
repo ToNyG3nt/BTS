@@ -1,0 +1,269 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty}
+\setlist{nosep, leftmargin=1.5em}
+
+\definecolor{navy}{RGB}{0,51,102}
+\definecolor{teal}{RGB}{0,120,120}
+\definecolor{crimson}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,120,50}
+\definecolor{lightbg}{RGB}{245,248,252}
+\definecolor{orange}{RGB}{200,100,0}
+\definecolor{purple}{RGB}{100,0,160}
+
+\tcbset{basebox/.style={
+  colback=lightbg, colframe=navy, coltitle=white,
+  fonttitle=\bfseries, arc=2mm, boxrule=0.5mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, after skip=6pt
+}}
+
+\newcommand{\key}[1]{\textbf{\textcolor{navy}{#1}}}
+\newcommand{\warn}[1]{\textbf{\textcolor{crimson}{#1}}}
+\newcommand{\ok}[1]{\textbf{\textcolor{green}{#1}}}
+\newcommand{\def}[2]{\textbf{\textcolor{teal}{#1}} : #2}
+
+\begin{document}
+
+\begin{center}
+  \colorbox{crimson}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+    \centering\vspace{3pt}
+    {\LARGE\bfseries\textcolor{white}{CYBERSÉCURITÉ — Fiche de révision détaillée}}\\
+    {\normalsize\textcolor{white}{BTS SIO — Maël Mignard}}
+    \vspace{3pt}
+  }}
+\end{center}
+\vspace{6pt}
+
+\begin{multicols}{2}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=1. Triade CIA — Piliers fondamentaux]
+\begin{tcolorbox}[colback=red!5, colframe=crimson, boxrule=0.3mm, arc=1mm]
+  \textbf{\textcolor{crimson}{C}onfidentialité} : seules les personnes autorisées accèdent aux données.\\
+  \textbf{\textcolor{crimson}{I}ntégrité} : les données ne sont pas altérées sans autorisation.\\
+  \textbf{\textcolor{crimson}{D}isponibilité} : le service est accessible quand on en a besoin.
+\end{tcolorbox}
+\vspace{4pt}
+\key{Authentification} : vérifier l'identité d'un utilisateur \\
+\key{Autorisation} : vérifier ce qu'il a le droit de faire \\
+\key{Non-répudiation} : prouver qu'une action a eu lieu
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=2. Menaces et attaques]
+\textbf{Attaques sur les données :}
+\begin{itemize}
+  \item \warn{Phishing} : faux e-mail imitant une entité de confiance $\to$ vol identifiants
+  \item \warn{Spear-phishing} : phishing ciblé (sur une personne précise)
+  \item \warn{Ransomware} : chiffrement des données + demande de rançon
+  \item \warn{Keylogger} : enregistre les frappes clavier
+\end{itemize}
+\vspace{4pt}
+\textbf{Attaques sur les applications web :}
+\begin{itemize}
+  \item \warn{XSS} (Cross-Site Scripting) : injection JS malveillant dans une page
+  \item \warn{SQLi} (Injection SQL) : manipulation de requêtes BDD
+  \item \warn{CSRF} : forcer un utilisateur connecté à effectuer une action
+  \item \warn{Brute Force} : essai massif de mots de passe
+\end{itemize}
+\vspace{4pt}
+\textbf{Attaques réseau :}
+\begin{itemize}
+  \item \warn{DDoS} : saturation d'un serveur par des requêtes massives
+  \item \warn{Man-in-the-Middle} : interception de communication
+  \item \warn{RCE} : Remote Code Execution, exécution distante de code
+  \item \warn{Sniffing} : écoute passive du trafic réseau
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=3. Gestion des accès et identités]
+\key{IAM} (Identity and Access Management) :\\
+Gérer qui peut accéder à quoi.\\[4pt]
+\key{RBAC} (Role-Based Access Control) :\\
+Les droits sont liés au rôle, pas à l'individu.\\
+Ex: Comptable $\to$ accès finances seulement\\[4pt]
+\key{Principe du moindre privilège} :\\
+Donner uniquement les droits nécessaires.\\[4pt]
+\key{MFA} (Multi-Factor Authentication) :\\
+Combiner plusieurs facteurs :
+\begin{itemize}
+  \item Ce qu'on sait : mot de passe
+  \item Ce qu'on a : téléphone (OTP)
+  \item Ce qu'on est : empreinte digitale
+\end{itemize}
+\key{OTP} : One-Time Password (code à usage unique) \\
+\key{SSO} : Single Sign-On (une seule authentification) \\
+\key{IDP} : Identity Provider (ex: Google, Azure AD)
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=4. Chiffrement et cryptographie]
+\key{Chiffrement symétrique} :\\
+Même clé pour chiffrer et déchiffrer.\\
+Rapide, mais partage de clé délicat.\\
+Ex: AES-256\\[4pt]
+\key{Chiffrement asymétrique} :\\
+Clé publique (chiffrement) + clé privée (déchiffrement).\\
+Ex: RSA, utilisé pour HTTPS, SSH.\\[4pt]
+\key{Hashage} : transformation irréversible.\\
+Ex: SHA-256, bcrypt (pour les mots de passe).\\
+\warn{MD5 et SHA-1 : obsolètes, vulnérables}\\[4pt]
+\key{TLS/SSL} : chiffre les communications web \\
+\key{HTTPS} = HTTP + TLS \\
+\key{PKI} : Infrastructure à clé publique (certificats)\\
+\key{Certificat} : lie une identité à une clé publique
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=5. RGPD — Règlement Général Protection Données]
+\key{En vigueur depuis} : 25 mai 2018 (UE)\\[4pt]
+\textbf{Droits des personnes :}
+\begin{itemize}
+  \item Droit d'accès à ses données
+  \item Droit de rectification
+  \item Droit à l'effacement (« droit à l'oubli »)
+  \item Droit à la portabilité
+  \item Droit d'opposition au traitement
+\end{itemize}
+\vspace{4pt}
+\textbf{Obligations des entreprises :}
+\begin{itemize}
+  \item Consentement explicite et éclairé
+  \item Notification de violation de données : \warn{72h max}
+  \item Désigner un \key{DPO} si traitement à grande échelle
+  \item \textit{Privacy by design} : sécurité intégrée dès la conception
+\end{itemize}
+\vspace{4pt}
+\textbf{Sanctions :}\\
+Jusqu'à \warn{4\% du CA mondial} ou 20M€ \\
+\key{CNIL} : autorité de contrôle en France
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=purple, title=6. PCA / PRA — Continuité et reprise]
+\key{PCA} (Plan de Continuité d'Activité) :\\
+Maintenir l'activité malgré un incident majeur.\\[4pt]
+\key{PRA} (Plan de Reprise d'Activité) :\\
+Remettre en marche le SI après un sinistre.\\[4pt]
+\textbf{Indicateurs clés :}
+\begin{itemize}
+  \item \key{RTO} (Recovery Time Objective) : durée maximale d'interruption tolérée
+  \item \key{RPO} (Recovery Point Objective) : perte de données maximale acceptable (en temps)
+\end{itemize}
+\vspace{4pt}
+\textbf{Risques couverts :} incendie, inondation, panne serveur, cyberattaque, erreur humaine.\\[4pt]
+\key{Site de secours} : site miroir ou cloud de repli\\
+\key{Redondance} : dupliquer les équipements critiques
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=7. Analyse des risques]
+\key{Risque} = Menace $\times$ Vulnérabilité $\times$ Impact\\[4pt]
+\textbf{Méthode EBIOS Risk Manager (ANSSI)} :\\
+Identifier, évaluer et traiter les risques.\\[4pt]
+\textbf{Niveaux de criticité :}
+\begin{tabular}{ll}
+\textbf{Probabilité} & Faible / Moyenne / Forte \\
+\textbf{Impact} & Mineur / Significatif / Critique \\
+\end{tabular}
+\vspace{4pt}\\
+\textbf{Traitements possibles :}
+\begin{itemize}
+  \item \ok{Réduction} : mesures de sécurité
+  \item Transfert : assurance, externalisation
+  \item Acceptation : risque trop faible pour agir
+  \item Évitement : arrêter l'activité risquée
+\end{itemize}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=8. Sécurité des réseaux]
+\key{Firewall} : filtre le trafic entrant/sortant \\
+\key{IDS} (Intrusion Detection System) : détecte les intrusions \\
+\key{IPS} (Intrusion Prevention System) : bloque les intrusions \\
+\key{DMZ} (Demilitarized Zone) : zone réseau semi-sécurisée (serveurs web publics) \\
+\key{VPN} : tunnel chiffré sur réseau public \\
+\key{VLAN} : isolation logique du réseau \\[4pt]
+\textbf{Architecture en couches :}\\
+Internet $\to$ Firewall $\to$ DMZ $\to$ Firewall $\to$ LAN interne
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=9. Gestion de crise — Réponse à incident]
+\textbf{Étapes de réponse à un incident :}
+\begin{enumerate}
+  \item \key{Détection} : identifier l'incident
+  \item \key{Confinement} : isoler les systèmes compromis
+  \item \key{Éradication} : supprimer la menace
+  \item \key{Restauration} : remettre en service
+  \item \key{Retour d'expérience} : documenter, améliorer
+\end{enumerate}
+\vspace{4pt}
+\key{CERT/CSIRT} : équipe de réponse à incident \\
+\key{Forensique} : analyse post-incident des preuves \\
+\warn{Toujours documenter les actions menées pendant la crise}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=10. Bonnes pratiques de sécurité]
+\textbf{Pour les utilisateurs :}
+\begin{itemize}
+  \item Mot de passe long et unique (gestionnaire de mots de passe)
+  \item Activer le MFA sur tous les comptes sensibles
+  \item Ne jamais cliquer sur un lien suspect
+  \item Mettre à jour régulièrement les logiciels (patchs)
+\end{itemize}
+\vspace{4pt}
+\textbf{Pour les développeurs :}
+\begin{itemize}
+  \item Valider et échapper toutes les entrées utilisateurs
+  \item Utiliser HTTPS partout
+  \item Ne jamais stocker les mots de passe en clair (utiliser bcrypt)
+  \item Principe du moindre privilège pour les comptes BDD
+\end{itemize}
+\vspace{4pt}
+\textbf{Pour les administrateurs :}
+\begin{itemize}
+  \item Journalisation et surveillance des logs
+  \item Segmentation réseau (VLAN, DMZ)
+  \item Tests de pénétration réguliers (pentest)
+  \item Politique de sauvegarde 3-2-1
+\end{itemize}
+\end{tcolorbox}
+
+\end{multicols}
+
+\vspace{4pt}
+\begin{tcolorbox}[basebox, colframe=crimson, title=Points clés à retenir pour l'examen]
+\begin{multicols}{2}
+\begin{itemize}
+  \item \textbf{CIA} : Confidentialité, Intégrité, Disponibilité
+  \item \textbf{RBAC} = droits liés au rôle, pas à l'individu
+  \item \textbf{MFA} = ce qu'on sait + ce qu'on a + ce qu'on est
+  \item \textbf{RGPD} : notification violation = \warn{72 heures}
+  \item \textbf{PCA} = maintenir ; \textbf{PRA} = reprendre après sinistre
+  \item \textbf{RTO} = durée max d'interruption ; \textbf{RPO} = perte max de données
+  \item \textbf{XSS} = injection JS ; \textbf{SQLi} = injection SQL
+  \item \textbf{Phishing} = usurpation d'identité par mail
+  \item \textbf{Chiffrement asymétrique} : clé publique/privée (RSA)
+  \item \textbf{Hashage} = irréversible (SHA-256, bcrypt)
+  \item \textbf{DMZ} = zone exposée internet, entre 2 firewalls
+  \item \textbf{DPO} = responsable RGPD dans l'entreprise
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\end{document}
