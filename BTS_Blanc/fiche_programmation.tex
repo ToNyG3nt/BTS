@@ -1,0 +1,357 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{listings}
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty}
+\setlist{nosep, leftmargin=1.5em}
+
+\definecolor{navy}{RGB}{0,51,102}
+\definecolor{teal}{RGB}{0,120,120}
+\definecolor{crimson}{RGB}{180,0,0}
+\definecolor{green}{RGB}{0,120,50}
+\definecolor{lightbg}{RGB}{245,248,252}
+\definecolor{orange}{RGB}{200,100,0}
+\definecolor{codebg}{RGB}{28,28,36}
+\definecolor{codegreen}{RGB}{100,200,100}
+\definecolor{codeorange}{RGB}{255,165,0}
+\definecolor{codecyan}{RGB}{100,200,220}
+
+\lstdefinestyle{algo}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small\color{white},
+  keywordstyle=\color{codecyan}\bfseries,
+  stringstyle=\color{codeorange},
+  commentstyle=\color{gray}\itshape,
+  frame=none, breaklines=true,
+  morekeywords={ALGORITHME, Variables, DEBUT, FIN, Si, Sinon, FinSi, TantQue, FinTantQue, Pour, FinPour, Lire, Ecrire, Alors, Faire, jusqu, en},
+}
+
+\lstdefinestyle{csharp}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small\color{white},
+  keywordstyle=\color{codecyan}\bfseries,
+  stringstyle=\color{codeorange},
+  commentstyle=\color{gray}\itshape,
+  frame=none, breaklines=true,
+  language=[Sharp]C,
+}
+
+\lstdefinestyle{python}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\small\color{white},
+  keywordstyle=\color{codecyan}\bfseries,
+  stringstyle=\color{codeorange},
+  commentstyle=\color{gray}\itshape,
+  frame=none, breaklines=true,
+  language=Python,
+}
+
+\tcbset{basebox/.style={
+  colback=lightbg, colframe=navy, coltitle=white,
+  fonttitle=\bfseries, arc=2mm, boxrule=0.5mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, after skip=6pt
+}}
+
+\newcommand{\key}[1]{\textbf{\textcolor{navy}{#1}}}
+\newcommand{\warn}[1]{\textbf{\textcolor{crimson}{#1}}}
+
+\begin{document}
+
+\begin{center}
+  \colorbox{teal}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+    \centering\vspace{3pt}
+    {\LARGE\bfseries\textcolor{white}{PROGRAMMATION — Algorithmique, C\#, Python}}\\
+    {\normalsize\textcolor{white}{BTS SIO — Maël Mignard}}
+    \vspace{3pt}
+  }}
+\end{center}
+\vspace{6pt}
+
+\begin{multicols}{2}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=1. Algorithmique — Structure générale]
+\begin{lstlisting}[style=algo]
+ALGORITHME NomAlgorithme
+Variables
+  age    : Numérique
+  nom    : Chaîne
+  majeur : Booléen
+DEBUT
+  Ecrire "Entrez votre age : "
+  Lire age
+  majeur <- (age >= 18)
+  Si majeur Alors
+    Ecrire "Vous êtes majeur."
+  Sinon
+    Ecrire "Vous êtes mineur."
+  FinSi
+FIN
+\end{lstlisting}
+\key{Types} : Numérique, Chaîne, Booléen \\
+\key{Opérateurs} : +, -, *, /, \% (modulo) \\
+\key{Comparaison} : =, <>, <, >, <=, >= \\
+\key{Logiques} : ET, OU, NON
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=2. Algorithmique — Structures de contrôle]
+\textbf{Condition :}
+\begin{lstlisting}[style=algo]
+Si condition Alors
+  ...
+SinonSi condition2 Alors
+  ...
+Sinon
+  ...
+FinSi
+\end{lstlisting}
+\vspace{4pt}
+\textbf{Boucle TantQue (While) :}
+\begin{lstlisting}[style=algo]
+TantQue condition Faire
+  ...
+FinTantQue
+\end{lstlisting}
+\vspace{4pt}
+\textbf{Boucle Pour (For) :}
+\begin{lstlisting}[style=algo]
+Pour i <- 1 jusqu'à 10 Faire
+  Ecrire i
+FinPour
+\end{lstlisting}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=3. Algorigrammes — Symboles]
+\begin{tabular}{ll}
+\toprule
+\textbf{Forme} & \textbf{Signification} \\
+\midrule
+Ovale          & Début / Fin \\
+Rectangle      & Traitement / Action \\
+Losange        & Condition / Test (Oui/Non) \\
+Parallélogramme & Entrée (Lire) / Sortie (Ecrire) \\
+Flèche         & Flux / Direction \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{Règle} : toujours commencer par Début et finir par Fin.\\
+Un losange a \textbf{toujours 2 branches} : OUI et NON.
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=4. C\# — Bases du langage]
+\begin{lstlisting}[style=csharp]
+// Variables et types
+int age = 20;
+string nom = "Mael";
+bool majeur = age >= 18;
+double pi = 3.14;
+
+// Affichage
+Console.WriteLine($"Bonjour {nom}");
+
+// Condition
+if (age >= 18) {
+    Console.WriteLine("Majeur");
+} else {
+    Console.WriteLine("Mineur");
+}
+
+// Boucle for
+for (int i = 0; i < 5; i++) {
+    Console.WriteLine(i);
+}
+
+// Boucle while
+while (age < 65) {
+    age++;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=5. C\# — Tableaux et collections]
+\begin{lstlisting}[style=csharp]
+// Tableau statique
+int[] notes = { 12, 15, 18, 10 };
+Console.WriteLine(notes[0]); // 12
+
+// foreach
+foreach (int n in notes) {
+    Console.WriteLine(n);
+}
+
+// Liste dynamique
+List<string> noms = new List<string>();
+noms.Add("Mael");
+noms.Add("Camille");
+Console.WriteLine(noms.Count); // 2
+
+// Dictionnaire (clé/valeur)
+Dictionary<string, int> ages = new();
+ages["Mael"] = 20;
+ages["Camille"] = 21;
+\end{lstlisting}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=6. C\# — Programmation Orientée Objet]
+\begin{lstlisting}[style=csharp]
+public class Personne {
+    // Propriétés
+    public string Nom { get; set; }
+    public int Age { get; set; }
+
+    // Constructeur
+    public Personne(string nom, int age) {
+        Nom = nom;
+        Age = age;
+    }
+
+    // Méthode
+    public void SePresenter() {
+        Console.WriteLine(
+            $"Je suis {Nom}, j'ai {Age} ans.");
+    }
+}
+
+// Instanciation
+Personne p = new Personne("Mael", 20);
+p.SePresenter();
+\end{lstlisting}
+\vspace{4pt}
+\key{Héritage} : \lstinline[style=csharp]{class Etudiant : Personne} \\
+\key{Interface} : contrat de méthodes (pas d'implémentation) \\
+\key{Encapsulation} : \lstinline[style=csharp]{private}, \lstinline[style=csharp]{public}, \lstinline[style=csharp]{protected} \\
+\key{Polymorphisme} : méthode redéfinie dans classe fille (\lstinline[style=csharp]{override})
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=7. Python — Bases]
+\begin{lstlisting}[style=python]
+# Variables (typage dynamique)
+age = 20
+nom = "Mael"
+majeur = age >= 18
+
+# Affichage
+print(f"Bonjour {nom}")
+
+# Condition
+if age >= 18:
+    print("Majeur")
+else:
+    print("Mineur")
+
+# Boucle for
+for i in range(5):
+    print(i)
+
+# Boucle while
+compteur = 0
+while compteur < 10:
+    compteur += 1
+
+# Fonction
+def aire_rectangle(l, h):
+    return l * h
+
+result = aire_rectangle(5, 3)  # 15
+\end{lstlisting}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=8. Python — Listes et structures]
+\begin{lstlisting}[style=python]
+# Liste
+notes = [12, 15, 18, 10]
+notes.append(14)
+print(notes[0])  # 12
+print(len(notes))  # 5
+
+# Dictionnaire
+personne = {
+    "nom": "Mael",
+    "age": 20
+}
+print(personne["nom"])
+
+# Compréhension de liste
+carres = [x**2 for x in range(10)]
+
+# Tri
+notes.sort()
+notes.sort(reverse=True)
+\end{lstlisting}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=9. Comparaison Algorithme / C\# / Python]
+\begin{tabularx}{\columnwidth}{lXX}
+\toprule
+\textbf{Concept} & \textbf{C\#} & \textbf{Python} \\
+\midrule
+Afficher & \lstinline{Console.Write} & \lstinline{print()} \\
+Lire & \lstinline{Console.ReadLine} & \lstinline{input()} \\
+Si/Sinon & \lstinline{if / else \{\}} & \lstinline{if / else:} \\
+Boucle for & \lstinline{for(int i=0;..)} & \lstinline{for i in range:} \\
+Fonction & \lstinline{public int Fn()} & \lstinline{def fn():} \\
+Commentaire & \lstinline{// texte} & \lstinline{# texte} \\
+Tableau & \lstinline{int[] tab} & \lstinline{liste = []} \\
+\bottomrule
+\end{tabularx}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=10. Concepts fondamentaux POO]
+\begin{tabular}{ll}
+\toprule
+\textbf{Concept} & \textbf{Description} \\
+\midrule
+Classe & Modèle/plan d'un objet \\
+Objet & Instance d'une classe \\
+Attribut & Variable d'une classe \\
+Méthode & Fonction d'une classe \\
+Constructeur & Méthode d'initialisation \\
+Héritage & Une classe réutilise une autre \\
+Encapsulation & Masquer les détails internes \\
+Polymorphisme & Même méthode, comportements différents \\
+Abstraction & Simplifier la complexité \\
+\bottomrule
+\end{tabular}
+\end{tcolorbox}
+
+\end{multicols}
+
+\vspace{4pt}
+\begin{tcolorbox}[basebox, colframe=teal, title=Points clés à retenir pour l'examen]
+\begin{multicols}{2}
+\begin{itemize}
+  \item Un algorithme = structure ALGORITHME / Variables / DEBUT / FIN
+  \item Losange dans algorigramme = condition (2 sorties OUI/NON)
+  \item \warn{TantQue} vérifie AVANT ; \warn{Répéter...Jusqu'à} vérifie APRÈS
+  \item En C\# : types statiques (int, string, bool), accolades \{\}
+  \item En Python : typage dynamique, indentation obligatoire
+  \item POO : classe = plan, objet = instance
+  \item Héritage C\# : \lstinline[style=csharp]{class Etudiant : Personne}
+  \item Console.WriteLine = afficher + saut de ligne
+  \item \lstinline[style=python]{range(0, 10)} = de 0 à 9 inclus
+  \item Un constructeur s'appelle avec \lstinline[style=csharp]{new NomClasse()}
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\end{document}
