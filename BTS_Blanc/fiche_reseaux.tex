@@ -1,0 +1,286 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+
+\renewcommand{\familydefault}{\sfdefault}
+\pagestyle{empty}
+\setlist{nosep, leftmargin=1.5em}
+
+\definecolor{navy}{RGB}{0,51,102}
+\definecolor{teal}{RGB}{0,120,120}
+\definecolor{crimson}{RGB}{180,0,0}
+\definecolor{green}{RGB}{0,120,50}
+\definecolor{lightbg}{RGB}{245,248,252}
+\definecolor{orange}{RGB}{200,100,0}
+
+\tcbset{basebox/.style={
+  colback=lightbg, colframe=navy, coltitle=white,
+  fonttitle=\bfseries, arc=2mm, boxrule=0.5mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm, after skip=6pt
+}}
+
+\newcommand{\key}[1]{\textbf{\textcolor{navy}{#1}}}
+\newcommand{\warn}[1]{\textbf{\textcolor{crimson}{#1}}}
+\newcommand{\tip}[1]{\textit{\textcolor{teal}{#1}}}
+
+\begin{document}
+
+\begin{center}
+  \colorbox{navy}{\parbox{\dimexpr\textwidth-2\fboxsep}{
+    \centering\vspace{3pt}
+    {\LARGE\bfseries\textcolor{white}{RÉSEAUX \& ROUTAGE — Fiche de révision détaillée}}\\
+    {\normalsize\textcolor{white}{BTS SIO — Maël Mignard}}
+    \vspace{3pt}
+  }}
+\end{center}
+\vspace{6pt}
+
+\begin{multicols}{2}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=1. Le Modèle OSI — 7 couches]
+\begin{tabular}{clll}
+\toprule
+\textbf{N°} & \textbf{Couche} & \textbf{Rôle} & \textbf{PDU} \\
+\midrule
+7 & Application   & Interface utilisateur        & Message \\
+6 & Présentation  & Format, chiffrement (SSL)    & Message \\
+5 & Session       & Gestion des sessions         & Message \\
+4 & Transport     & Fiabilité (TCP/UDP)          & Segment \\
+3 & Réseau        & Adressage/routage (IP)       & Paquet \\
+2 & Liaison       & Trames, MAC, switch          & Trame \\
+1 & Physique      & Signaux électriques/optiques & Bits \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{Moyen mnémotechnique (fr)} : « \textit{Ah Petit Salaud Tu Rends La Peine !} » \\
+\key{Encapsulation} : en émission, chaque couche ajoute son en-tête. \\
+\key{Désencapsulation} : en réception, chaque couche retire son en-tête.
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=2. Modèle TCP/IP (4 couches)]
+\begin{tabular}{ll}
+\toprule
+\textbf{Couche TCP/IP} & \textbf{Équivalent OSI} \\
+\midrule
+Application & OSI 5, 6, 7 \\
+Transport   & OSI 4 (TCP/UDP) \\
+Internet    & OSI 3 (IP, ICMP) \\
+Accès réseau & OSI 1, 2 \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\tip{Différence OSI/TCP-IP} : OSI est un modèle \textbf{théorique} de référence, TCP/IP est le \textbf{modèle pratique} utilisé sur Internet.
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=3. TCP vs UDP]
+\begin{tabularx}{\columnwidth}{lXX}
+\toprule
+ & \textbf{TCP} & \textbf{UDP} \\
+\midrule
+Connexion & Oui (3-way handshake) & Non \\
+Fiabilité & Garantie (ACK) & Aucune \\
+Vitesse & Plus lent & Rapide \\
+Ordre & Garanti & Non garanti \\
+Usage & HTTP, FTP, SSH & DNS, VoIP, streaming \\
+\bottomrule
+\end{tabularx}
+\vspace{4pt}\\
+\key{3-Way Handshake TCP} : SYN $\to$ SYN-ACK $\to$ ACK
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=4. Adressage IPv4]
+\key{Format} : 4 octets (32 bits) — ex: \texttt{192.168.1.100/24}\\[3pt]
+\textbf{Plages privées (RFC 1918) :}
+\begin{itemize}
+  \item \texttt{10.0.0.0/8} \hfill (Classe A — grandes entreprises)
+  \item \texttt{172.16.0.0/12} \hfill (Classe B)
+  \item \texttt{192.168.0.0/16} \hfill (Classe C — particuliers)
+  \item \texttt{127.0.0.1} \hfill (Loopback)
+\end{itemize}
+
+\textbf{Masques et taille de réseau :}
+\begin{tabular}{lll}
+/24 & 255.255.255.0 & 254 hôtes \\
+/25 & 255.255.255.128 & 126 hôtes \\
+/16 & 255.255.0.0 & 65534 hôtes \\
+/8  & 255.0.0.0 & 16M hôtes \\
+\end{tabular}\\[3pt]
+\key{Calcul hôtes} : $2^{(32 - \text{préfixe})} - 2$ \\
+\warn{-2} : adresse réseau + broadcast \\[3pt]
+\key{NAT} (Network Address Translation) : traduit IP privée $\to$ publique \\
+\key{DHCP} : attribue automatiquement IP, masque, passerelle, DNS
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=5. IPv6 — Essentiel]
+\key{Format} : 128 bits, 8 groupes hexadécimaux \\
+Ex: \texttt{2001:0db8:85a3::8a2e:0370:7334} \\[3pt]
+\textbf{Types d'adresses :}
+\begin{itemize}
+  \item \key{Unicast} : une seule destination
+  \item \key{Multicast} : groupe de destinations
+  \item \key{Anycast} : le plus proche du groupe
+  \item \key{Lien-local} : \texttt{fe80::/10} (non routable)
+\end{itemize}
+\textbf{Avantages sur IPv4} : espace d'adressage immense, pas de NAT nécessaire, sécurité intégrée (IPsec).
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=6. Protocoles applicatifs — Ports]
+\begin{tabular}{lll}
+\toprule
+\textbf{Proto} & \textbf{Port} & \textbf{Usage} \\
+\midrule
+HTTP  & 80  & Web non chiffré \\
+HTTPS & 443 & Web chiffré (TLS) \\
+FTP   & 21  & Transfert fichiers \\
+SSH   & 22  & Shell sécurisé \\
+SMTP  & 25  & Envoi mail \\
+DNS   & 53  & Résolution noms \\
+DHCP  & 67/68 & Attribution IP \\
+RDP   & 3389 & Bureau à distance \\
+SNMP  & 161 & Supervision réseau \\
+\bottomrule
+\end{tabular}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=7. Équipements réseau]
+\begin{tabular}{lll}
+\toprule
+\textbf{Équipement} & \textbf{Couche OSI} & \textbf{Rôle} \\
+\midrule
+Hub         & 1 & Diffuse tout (obsolète) \\
+Switch      & 2 & Commute par adresse MAC \\
+Routeur     & 3 & Route par adresse IP \\
+Firewall    & 3-7 & Filtre le trafic \\
+Point d'accès & 1-2 & Connexion WiFi \\
+\bottomrule
+\end{tabular}
+\vspace{4pt}\\
+\key{Table MAC} : switch mémorise MAC $\leftrightarrow$ port \\
+\key{Table ARP} : résolution IP $\leftrightarrow$ MAC \\
+\texttt{arp -a} : afficher la table ARP
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=orange, title=8. VLAN — Virtual LAN]
+\key{VLAN} : segmentation \textbf{logique} d'un réseau physique \\[3pt]
+\textbf{Avantages :}
+\begin{itemize}
+  \item Isolation du trafic (sécurité)
+  \item Réduction du domaine de broadcast
+  \item Flexibilité sans recâblage
+\end{itemize}
+\vspace{3pt}
+\key{VLAN d'accès} : port connecté à un terminal (1 VLAN) \\
+\key{Lien trunk (802.1Q)} : port inter-switch (plusieurs VLAN) \\[3pt]
+\textbf{Configuration Cisco :}
+\begin{verbatim}
+Switch(config)# vlan 10
+Switch(config-vlan)# name IT
+Switch(config)# interface Fa0/1
+Switch(config-if)# switchport mode access
+Switch(config-if)# switchport access vlan 10
+\end{verbatim}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=crimson, title=9. Spanning Tree Protocol (STP)]
+\key{Problème résolu} : éviter les boucles de commutation \\[3pt]
+\textbf{Fonctionnement :}
+\begin{itemize}
+  \item Élection d'un \key{Root Bridge} (plus faible Bridge ID)
+  \item Ports en état \textit{Forwarding} ou \textit{Blocking}
+  \item Si un lien tombe, recalcul automatique
+\end{itemize}
+\vspace{3pt}
+\key{RSTP (802.1w)} : version rapide du STP \\
+\key{PVST+} : une instance STP par VLAN (Cisco)
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=green, title=10. Routage — Concepts]
+\key{Routage statique} : routes saisies manuellement \\
+\quad $\to$ Simple, adapté aux petits réseaux \\
+\key{Routage dynamique} : protocoles qui échangent les routes \\[3pt]
+\textbf{Protocoles de routage :}
+\begin{itemize}
+  \item \key{RIP} : distance en sauts (max 15), lent
+  \item \key{OSPF} : coût (bande passante), rapide
+  \item \key{BGP} : Internet, entre AS (opérateurs)
+\end{itemize}
+\vspace{3pt}
+\textbf{Commandes Cisco :}
+\begin{verbatim}
+Router(config)# ip route 192.168.2.0
+              255.255.255.0 10.0.0.1
+Router# show ip route
+\end{verbatim}
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=navy, title=11. Multicast]
+\key{Unicast} : 1 émetteur $\to$ 1 récepteur \\
+\key{Broadcast} : 1 émetteur $\to$ tous \\
+\key{Multicast} : 1 émetteur $\to$ groupe abonné \\[3pt]
+\textbf{Plage multicast IPv4} : \texttt{224.0.0.0/4} \\
+\key{IGMP} : protocole de gestion des groupes multicast \\
+\key{Usage} : streaming vidéo, IPTV, protocoles de routage
+\end{tcolorbox}
+
+% ============================================================
+\begin{tcolorbox}[basebox, colframe=teal, title=12. Commandes de diagnostic réseau]
+\begin{tabular}{ll}
+\toprule
+\textbf{Commande} & \textbf{Usage} \\
+\midrule
+\texttt{ping 8.8.8.8} & Test connectivité ICMP \\
+\texttt{traceroute / tracert} & Chemin des paquets \\
+\texttt{ipconfig / ip addr} & Configuration IP locale \\
+\texttt{netstat -an} & Connexions actives \\
+\texttt{nslookup domaine} & Résolution DNS \\
+\texttt{show interfaces} & Cisco : état interfaces \\
+\texttt{show vlan brief} & Cisco : liste VLANs \\
+\texttt{show mac-address-table} & Cisco : table MAC \\
+\bottomrule
+\end{tabular}
+\end{tcolorbox}
+
+\end{multicols}
+
+\vspace{4pt}
+\begin{tcolorbox}[basebox, colframe=crimson, title=Points clés à retenir pour l'examen]
+\begin{multicols}{3}
+\begin{itemize}
+  \item Le modèle OSI a \textbf{7 couches}, TCP/IP en a \textbf{4}
+  \item TCP = fiable (ACK), UDP = rapide (pas d'ACK)
+  \item VLAN = segmentation logique, trunk = lien multi-VLAN
+  \item STP évite les boucles en bloquant des ports
+  \item /24 = 254 hôtes (255.255.255.0)
+  \item Adresses privées : 10.x, 172.16-31.x, 192.168.x
+  \item OSPF > RIP (plus rapide, pas de limite 15 sauts)
+  \item Un routeur travaille en couche 3, un switch en couche 2
+  \item MAC = couche 2, IP = couche 3
+  \item DNS port 53, HTTPS port 443, SSH port 22
+  \item Ping utilise ICMP (couche 3)
+  \item NAT traduit IP privée/publique
+\end{itemize}
+\end{multicols}
+\end{tcolorbox}
+
+\end{document}
