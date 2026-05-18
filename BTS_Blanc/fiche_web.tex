@@ -211,7 +211,7 @@ input::placeholder { color: gray; }
 % ============================================================
 \begin{tcolorbox}[basebox, colframe=navy, title=5. JavaScript — Manipulation du DOM]
 \begin{lstlisting}[style=js]
-// Sélectionner des éléments
+// Selectionner des elements
 const btn = document.getElementById("btn");
 const items = document.querySelectorAll(".item");
 
@@ -224,12 +224,12 @@ btn.style.color = "red";
 btn.classList.add("active");
 btn.classList.remove("hidden");
 
-// Événements
+// Evenements
 btn.addEventListener("click", function() {
-  alert("Bouton cliqué !");
+  alert("Bouton clique !");
 });
 
-// Créer et ajouter un élément
+// Creer et ajouter un element
 const p = document.createElement("p");
 p.textContent = "Nouveau paragraphe";
 document.body.appendChild(p);
