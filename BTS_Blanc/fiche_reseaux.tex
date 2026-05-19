@@ -164,17 +164,18 @@ SNMP  & 161   & Supervision réseau \\
 
 % ============================================================
 \begin{tcolorbox}[basebox, colframe=teal, title=7. Équipements réseau]
-\begin{tabular}{lll}
+{\footnotesize
+\begin{tabularx}{\columnwidth}{@{}llX@{}}
 \toprule
-\textbf{Équipement} & \textbf{Couche OSI} & \textbf{Rôle} \\
+\textbf{Équipement} & \textbf{L.} & \textbf{Rôle} \\
 \midrule
-Hub         & 1 & Diffuse tout (obsolète) \\
-Switch      & 2 & Commute par adresse MAC \\
-Routeur     & 3 & Route par adresse IP \\
-Firewall    & 3-7 & Filtre le trafic \\
+Hub           & 1   & Diffuse tout (obsolète) \\
+Switch        & 2   & Commute par adresse MAC \\
+Routeur       & 3   & Route par adresse IP \\
+Firewall      & 3-7 & Filtre le trafic \\
 Point d'accès & 1-2 & Connexion WiFi \\
 \bottomrule
-\end{tabular}
+\end{tabularx}}
 \vspace{4pt}\\
 \key{Table MAC} : switch mémorise MAC $\leftrightarrow$ port \\
 \key{Table ARP} : résolution IP $\leftrightarrow$ MAC \\
