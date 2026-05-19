@@ -29,11 +29,6 @@
     left=2mm, right=2mm, top=1mm, bottom=1mm, after skip=3pt}
 }
 
-\newcommand{\rubrique}[2]{%
-  \begin{tcolorbox}[basebox, title=#1, colframe=#2]
-}
-\newcommand{\finrubrique}{\end{tcolorbox}}
-
 \newcommand{\key}[1]{\textbf{\textcolor{navy}{#1}}}
 \newcommand{\warn}[1]{\textbf{\textcolor{crimson}{#1}}}
 \newcommand{\ok}[1]{\textbf{\textcolor{green}{#1}}}
@@ -55,53 +50,51 @@
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=navy, title=RÉSEAUX — Modèle OSI]
-\begin{tabular}{lll}
-\textbf{\#} & \textbf{Couche} & \textbf{PDU / Proto} \\
+{\footnotesize
+\begin{tabularx}{\columnwidth}{@{}llX@{}}
+\textbf{\#} & \textbf{Couche} & \textbf{Proto} \\
 \hline
-7 & Application & HTTP, FTP, DNS \\
-6 & Présentation & SSL/TLS \\
+7 & Appli. & HTTP, FTP, DNS \\
+6 & Présent. & TLS/SSL \\
 5 & Session & NetBIOS \\
 4 & Transport & TCP/UDP \\
 3 & Réseau & IP, ICMP \\
-2 & Liaison & Ethernet, MAC \\
+2 & Liaison & Ethernet \\
 1 & Physique & Câbles, WiFi \\
-\end{tabular}
+\end{tabularx}}
 \vspace{2pt}\\
-\key{TCP} = fiable, connexion ; \key{UDP} = rapide, sans connexion \\
-\key{Encapsulation} : données $\to$ segment $\to$ paquet $\to$ trame $\to$ bits
+\key{TCP} = fiable ; \key{UDP} = rapide \\
+\key{Encapsul.} : données$\to$segment$\to$paquet$\to$trame
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=teal, title=RÉSEAUX — Adressage IP]
-\key{IPv4} : 32 bits, 4 octets (ex: 192.168.1.1) \\
+\key{IPv4} : 32 bits, 4 octets (192.168.1.1) \\
 \key{IPv6} : 128 bits, 8 groupes hex \\[2pt]
-\textbf{Classes privées :}
+\textbf{Plages privées :}
 \begin{itemize}
   \item 10.0.0.0/8
   \item 172.16.0.0/12
   \item 192.168.0.0/16
 \end{itemize}
-\key{CIDR} : /24 $\to$ 256 adresses (254 hôtes) \\
-\key{Masque} : /24 = 255.255.255.0 \\
+\key{CIDR} : /24 $\to$ 254 hôtes utiles \\
 \key{Passerelle} = routeur par défaut \\
-\key{DHCP} : attribution IP automatique \\
-\key{DNS} : nom $\leftrightarrow$ IP
+\key{DHCP} : attribution IP auto \\
+\key{DNS} : nom $\leftrightarrow$ adresse IP
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=navy, title=ROUTAGE \& VLAN]
-\key{Routeur} : interconnecte réseaux (couche 3) \\
-\key{Switch} : commute trames (couche 2) \\
-\key{VLAN} : segmentation logique du réseau \\
-\quad $\to$ VLAN 10 : Compta, VLAN 20 : IT \\
-\key{Trunk} : lien inter-switch (multi-VLAN) \\
-\key{Spanning Tree (STP)} : évite les boucles \\
-\key{Multicast} : 1 émetteur $\to$ groupe \\[2pt]
-\textbf{Commandes Cisco :}
+\key{Routeur} : interconnecte réseaux (L3) \\
+\key{Switch} : commute trames (L2) \\
+\key{VLAN} : segmentation logique réseau \\
+\quad $\to$ VLAN 10: Compta, VLAN 20: IT \\
+\key{Trunk} : lien inter-switch multi-VLAN \\
+\key{STP} : évite les boucles réseau \\[2pt]
+\textbf{Cisco essentiels :}
 \begin{itemize}
   \item \texttt{enable} / \texttt{conf t}
   \item \texttt{vlan 10} / \texttt{name IT}
-  \item \texttt{ip address x.x.x.x mask}
   \item \texttt{show ip route}
 \end{itemize}
 \end{tcolorbox}
@@ -110,77 +103,77 @@
 \begin{tcolorbox}[basebox, colframe=crimson, title=CYBERSÉCURITÉ — Piliers]
 \key{CIA} (Triade) :
 \begin{itemize}
-  \item \textbf{C}onfidentialité : accès autorisés seulement
+  \item \textbf{C}onfidentialité : accès autorisés
   \item \textbf{I}ntégrité : données non altérées
   \item \textbf{D}isponibilité : service accessible
 \end{itemize}
-\key{Menaces courantes :}
+\textbf{Menaces :}
 \begin{itemize}
-  \item \warn{Phishing} : usurpation par e-mail
-  \item \warn{Ransomware} : chiffrement + rançon
-  \item \warn{XSS} : injection JS dans pages web
+  \item \warn{Phishing} : usurpation e-mail
+  \item \warn{Ransomware} : chiffrement+rançon
+  \item \warn{XSS} : injection JS web
   \item \warn{SQLi} : injection SQL
-  \item \warn{RCE} : exécution de code à distance
 \end{itemize}
-\key{RBAC} : droits selon le rôle \\
-\key{MFA} : authentification multi-facteur \\
-\key{DPO} : responsable RGPD
+\key{RBAC} : droits par rôle \\
+\key{MFA} : authentification multi-facteur
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=crimson, title=CYBERSÉCURITÉ — RGPD \& PCA]
-\key{RGPD} (2018) : protection données personnelles
+\key{RGPD} (2018) : protection données perso.
 \begin{itemize}
   \item Consentement explicite
   \item Droit à l'oubli, droit d'accès
-  \item Notification breach : 72h
-  \item Amende : jusqu'à 4\% CA mondial
+  \item Notification breach : \warn{72h}
+  \item Amende : jusqu'à \warn{4\% CA mondial}
 \end{itemize}
-\key{PCA} (Plan de Continuité) : maintenir activité \\
-\key{PRA} (Plan de Reprise) : après sinistre \\
+\key{PCA} : maintenir l'activité \\
+\key{PRA} : reprendre après sinistre \\
 \key{RTO} : délai max de reprise \\
 \key{RPO} : perte de données max acceptable
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=green, title=ADMIN LINUX — Commandes clés]
-\begin{tabular}{ll}
-\texttt{ls -lah} & liste (droits, taille) \\
+{\footnotesize
+\begin{tabularx}{\columnwidth}{@{}lX@{}}
+\texttt{ls -lah} & liste + droits \\
 \texttt{chmod 755} & permissions \\
 \texttt{chown u:g} & propriétaire \\
 \texttt{sudo / su} & élévation droits \\
 \texttt{useradd} & créer utilisateur \\
-\texttt{passwd} & changer mdp \\
 \texttt{ps / top} & processus \\
 \texttt{grep / find} & recherche \\
 \texttt{scp / ssh} & transfert sécurisé \\
 \texttt{apt install} & installer paquet \\
-\end{tabular}
+\end{tabularx}}
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=green, title=ADMIN LINUX — Permissions]
-Format : \texttt{-rwxrwxrwx} \\
-\begin{tabular}{lll}
-\textbf{Valeur} & \textbf{Lettre} & \textbf{Droit} \\
+Format : \texttt{-rwxrwxrwx} \\[1pt]
+{\footnotesize
+\begin{tabular}{@{}lll@{}}
+\textbf{Val.} & \textbf{Let.} & \textbf{Droit} \\
+\hline
 4 & r & lecture \\
 2 & w & écriture \\
 1 & x & exécution \\
-\end{tabular}
+\end{tabular}}
 \vspace{2pt} \\
 \texttt{chmod 755} = \texttt{rwxr-xr-x} \\
-\warn{Jamais w+x ensemble} (risque injection) \\
-\key{u}=user, \key{g}=group, \key{o}=others \\
-Ex: \texttt{chmod u+x fichier.sh}
+\warn{Jamais 777} (tous les droits = danger) \\
+\key{u}=user \key{g}=group \key{o}=others
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=teal, title=ALGORITHMIQUE — Structure]
+{\footnotesize
 \begin{verbatim}
 ALGORITHME Nom
 Variables
-  x : Numérique
-  nom : Chaîne
+  x : Numerique
+  n : Chaine
 DEBUT
   Lire x
   Si x > 0 Alors
@@ -189,27 +182,26 @@ DEBUT
     Ecrire "Negatif"
   FinSi
 FIN
-\end{verbatim}
+\end{verbatim}}
 \key{Structures} : Si/Sinon, TantQue, Pour \\
 \key{Types} : Numérique, Chaîne, Booléen
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=teal, title=C\# — Bases]
+{\footnotesize
 \begin{verbatim}
 int age = 18;
-string nom = "Maël";
-bool majeur = age >= 18;
-
-if (majeur) {
+string nom = "Mael";
+bool ok = age >= 18;
+if (ok) {
   Console.WriteLine("Majeur");
 }
-
-for (int i = 0; i < 10; i++) {
+for (int i = 0; i < 5; i++) {
   Console.WriteLine(i);
 }
-\end{verbatim}
-\key{POO} : classe, objet, méthode, propriété \\
+\end{verbatim}}
+\key{POO} : classe, objet, méthode \\
 \key{Héritage} : \texttt{class B : A} \\
 \key{Interface} : contrat de méthodes
 \end{tcolorbox}
@@ -219,145 +211,145 @@ for (int i = 0; i < 10; i++) {
 \key{HTML} : structure (balises) \\
 \texttt{<header>}, \texttt{<nav>}, \texttt{<main>}, \texttt{<footer>} \\[2pt]
 \key{CSS} : mise en forme \\
-\texttt{display: flex / grid} \\
-\texttt{position: relative / absolute} \\
+\texttt{display: flex} (1D) / \texttt{grid} (2D) \\
 \texttt{@media (max-width: 768px)} \\[2pt]
 \key{Sélecteurs} : \texttt{.classe}, \texttt{\#id}, \texttt{balise} \\
-\key{Box model} : margin $\to$ border $\to$ padding $\to$ content
+\key{Box model} : margin$\to$border$\to$padding$\to$content
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=navy, title=CRÉATION WEB — JS \& PHP]
-\key{JavaScript} (côté client) :\\
-\texttt{document.getElementById("id")} \\
+\key{JS} (client) :\\
+\texttt{getElementById("id")} \\
 \texttt{addEventListener("click", fn)} \\
 \texttt{fetch(url).then(r => r.json())} \\[2pt]
-\key{PHP} (côté serveur) :\\
-\texttt{\$\_POST["champ"]} / \texttt{\$\_GET["param"]} \\
-\texttt{mysqli\_connect(host, user, pw, db)} \\
+\key{PHP} (serveur) :\\
+\texttt{\$\_POST["champ"]} / \texttt{\$\_GET["p"]} \\
 \texttt{htmlspecialchars()} : anti-XSS \\
-\warn{Toujours valider/échapper les entrées}
+\texttt{PDO prepare()} : anti-SQLi \\
+\warn{Toujours valider les entrées}
 \end{tcolorbox}
 
 % =============================================
-\begin{tcolorbox}[basebox, colframe=crimson, title=GESTION DES INCIDENTS — ITIL]
+\begin{tcolorbox}[basebox, colframe=crimson, title=GESTION INCIDENTS — ITIL]
 \key{Incident} : interruption non planifiée \\
 \key{Problème} : cause inconnue récurrente \\
-\key{Demande} : requête de service standard \\
+\key{Demande} : requête de service std. \\
 \key{Changement} : modification planifiée \\[2pt]
-\textbf{Niveaux d'impact :}
+\textbf{Niveaux impact :}
 \begin{itemize}
   \item Critique : arrêt total activité
   \item Élevé : service majeur impacté
   \item Moyen : contournement possible
-  \item Faible : utilisateur individuel
 \end{itemize}
-\key{GLPI} : outil de ticketing open-source \\
 \key{SLA} : accord de niveau de service
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=green, title=GESTION PATRIMOINE — GLPI]
 \key{Inventaire} : parc matériel + logiciel \\
-\key{Ticket} : signalement d'incident ou demande \\
-\key{CMDB} : base de données de configuration \\[2pt]
-\textbf{Cycle de vie matériel :}
+\key{Ticket} : incident ou demande \\
+\key{CMDB} : base de données de config. \\[2pt]
+\textbf{Cycle vie matériel :}
 \begin{itemize}
-  \item Achat $\to$ Déploiement $\to$ Maintenance $\to$ Fin de vie
+  \item Achat $\to$ Déploiement
+  \item Maintenance $\to$ Fin de vie
 \end{itemize}
-\key{Agent GLPI} : remontée inventaire auto \\
-\key{Fusioninventory} : plugin d'inventaire \\
-\key{Dashboard} : vue globale tickets/parc
+\key{GLPI} : outil open-source (ticketing) \\
+\key{N1/N2/N3} : niveaux d'escalade support \\
+\key{ITIL} : référentiel bonnes pratiques IT
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=navy, title=MATHS — Algèbre Booléenne]
-\begin{tabular}{ll}
-\key{ET (AND)} & $A \cdot B$ : 1 si A=1 et B=1 \\
-\key{OU (OR)} & $A + B$ : 1 si A=1 ou B=1 \\
-\key{NON (NOT)} & $\overline{A}$ : inverse \\
-\key{XOR} & $A \oplus B$ : différents \\
-\end{tabular}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\key{ET (AND)} & $A \cdot B$ : vrai si A=1 et B=1 \\
+\key{OU (OR)} & $A + B$ : vrai si A=1 ou B=1 \\
+\key{NON (NOT)} & $\overline{A}$ : inverse de A \\
+\key{XOR} & $A \oplus B$ : vrai si différents \\
+\end{tabular}}
 \vspace{2pt} \\
-\textbf{Lois :} $A \cdot 0=0$ ; $A+1=1$ ; $\overline{\overline{A}}=A$ \\
+\textbf{Identités :} $A \cdot 0=0$ ; $A+1=1$ ; $\overline{\overline{A}}=A$ \\
 \textbf{De Morgan :} $\overline{A \cdot B} = \overline{A}+\overline{B}$
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=navy, title=MATHS — Bases de numération]
-\begin{tabular}{lll}
+{\footnotesize
+\begin{tabularx}{\columnwidth}{@{}llX@{}}
 \textbf{Base} & \textbf{Chiffres} & \textbf{Nom} \\
-2 & 0,1 & Binaire \\
-8 & 0-7 & Octal \\
-10 & 0-9 & Décimal \\
+\hline
+2  & 0,1     & Binaire \\
+8  & 0-7     & Octal \\
+10 & 0-9     & Décimal \\
 16 & 0-9,A-F & Hexadécimal \\
-\end{tabular}
+\end{tabularx}}
 \vspace{2pt} \\
-\key{Décimal $\to$ Binaire} : divisions par 2 \\
-\key{Binaire $\to$ Hex} : groupes de 4 bits \\
+\key{Décimal$\to$Binaire} : divisions par 2 \\
+\key{Binaire$\to$Hex} : groupes de 4 bits \\
 Ex: $42_{10} = 101010_2 = 2A_{16}$
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=teal, title=CEJM — Économie]
-\key{Agents éco} : Ménages, Entreprises, État, Banques \\
-\key{Offre/Demande} : Offre$>$Demande $\to$ Prix$\downarrow$ \\
-\key{Marché} : concurrentiel, oligopole, monopole \\
+\key{Agents éco} : Ménages, Entreprises, État \\
+\key{Offre$>$Demande} $\to$ Prix $\downarrow$ \\
+\key{Demande$>$Offre} $\to$ Prix $\uparrow$ \\
+\key{Marchés} : CPP, oligopole, monopole \\
 \key{PIB} : richesse produite par un pays \\
 \key{Inflation} : hausse générale des prix \\
-\key{Chômage} : personne sans emploi, cherchant activement \\
-\key{Mondialisation} : interdépendance économique mondiale
+\key{Mondialisation} : interdépendance éco.
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=teal, title=CEJM — Droit des contrats]
-\key{Contrat} : accord de volontés créant des obligations \\
-\textbf{Conditions de validité :}
+\key{Contrat valide} : consentement + capacité + objet licite \\[2pt]
+\textbf{Vices du consentement :}
 \begin{itemize}
-  \item Consentement libre et éclairé
-  \item Capacité juridique
-  \item Objet licite et certain
-  \item Cause licite
+  \item \warn{Erreur} : mauvaise compréhension
+  \item \warn{Dol} : tromperie intentionnelle
+  \item \warn{Violence} : contrainte physique/morale
 \end{itemize}
-\key{Vices} : erreur, dol, violence \\
-\key{CDI} vs \key{CDD} : durée indéterminée/déterminée \\
-\key{Rupture} : démission, licenciement, rupture conventionnelle
+\key{CDI} / \key{CDD} : durée indét./déterm. \\
+\key{Rupture conv.} : accord salarié+employeur
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=teal, title=CEJM — Management]
-\key{Finalité entreprise} : lucrative (SA, SARL) / non lucrative (asso) \\
-\key{Styles management} :
+\key{Formes} : SA (37k€), SARL, SAS (1€) \\
+\textbf{Styles management :}
 \begin{itemize}
   \item Directif : ordres, peu d'autonomie
   \item Participatif : concertation, équipe
   \item Délégatif : autonomie totale
 \end{itemize}
-\key{Performance} : efficacité + efficience \\
-\key{RSE} : Responsabilité Sociale des Entreprises \\
-\key{Parties prenantes} : actionnaires, salariés, clients, société
+\key{Efficacité} : atteindre l'objectif \\
+\key{Efficience} : objectif au moindre coût \\
+\key{RSE} : Responsabilité Sociétale Entreprise
 \end{tcolorbox}
 
 % =============================================
-\begin{tcolorbox}[basebox, colframe=green, title=ACTIVITÉS TRANSVERSALES]
-\key{Git} : système de gestion de versions \\
-\begin{tabular}{ll}
-\texttt{git init} & initialiser dépôt \\
-\texttt{git add .} & indexer modifications \\
-\texttt{git commit -m} & valider \\
-\texttt{git push} & envoyer \\
-\texttt{git pull} & récupérer \\
-\texttt{git branch} & branches \\
-\end{tabular}
-\vspace{2pt} \\
-\key{UX/UI} : expérience/interface utilisateur \\
-\key{Veille techno} : surveiller l'actualité IT \\
-\key{GitLab} : plateforme DevOps (CI/CD, issues)
+\begin{tcolorbox}[basebox, colframe=green, title=GIT \& OUTILS]
+\key{Git} : système de gestion de versions \\[1pt]
+{\footnotesize
+\begin{tabularx}{\columnwidth}{@{}lX@{}}
+\texttt{git init} & init. dépôt \\
+\texttt{git add .} & indexer modifs \\
+\texttt{git commit} & valider \\
+\texttt{git push} & envoyer remote \\
+\texttt{git pull} & récupérer remote \\
+\texttt{git branch} & gérer branches \\
+\end{tabularx}}
+\vspace{1pt}\\
+\key{GitLab} : DevOps, CI/CD, issues \\
+\key{UX/UI} : expérience/interface utilisateur
 \end{tcolorbox}
 
 % =============================================
 \begin{tcolorbox}[basebox, colframe=green, title=ANGLAIS — Vocabulaire IT]
-\begin{tabular}{ll}
+{\footnotesize
+\begin{tabularx}{\columnwidth}{@{}lX@{}}
 \textbf{EN} & \textbf{FR} \\
 \hline
 network & réseau \\
@@ -368,7 +360,7 @@ backup & sauvegarde \\
 patch & correctif \\
 stakeholder & partie prenante \\
 workflow & flux de travail \\
-\end{tabular}
+\end{tabularx}}
 \end{tcolorbox}
 
 \end{multicols}
