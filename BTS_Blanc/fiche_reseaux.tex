@@ -71,16 +71,17 @@
 
 % ============================================================
 \begin{tcolorbox}[basebox, colframe=teal, title=2. Modèle TCP/IP (4 couches)]
-\begin{tabular}{ll}
+{\footnotesize
+\begin{tabularx}{\columnwidth}{@{}lX@{}}
 \toprule
 \textbf{Couche TCP/IP} & \textbf{Équivalent OSI} \\
 \midrule
-Application & OSI 5, 6, 7 \\
-Transport   & OSI 4 (TCP/UDP) \\
-Internet    & OSI 3 (IP, ICMP) \\
+Application  & OSI 5, 6, 7 \\
+Transport    & OSI 4 (TCP/UDP) \\
+Internet     & OSI 3 (IP, ICMP) \\
 Accès réseau & OSI 1, 2 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}}
 \vspace{4pt}\\
 \tip{Différence OSI/TCP-IP} : OSI est un modèle \textbf{théorique} de référence, TCP/IP est le \textbf{modèle pratique} utilisé sur Internet.
 \end{tcolorbox}
