@@ -114,13 +114,14 @@ Usage & HTTP, FTP, SSH & DNS, VoIP, streaming \\
   \item \texttt{127.0.0.1} \hfill (Loopback)
 \end{itemize}
 
-\textbf{Masques et taille de réseau :}
-\begin{tabular}{lll}
-/24 & 255.255.255.0 & 254 hôtes \\
+\textbf{Masques et taille de réseau :}\\
+{\footnotesize
+\begin{tabularx}{\columnwidth}{@{}llX@{}}
+/24 & 255.255.255.0   & 254 hôtes \\
 /25 & 255.255.255.128 & 126 hôtes \\
-/16 & 255.255.0.0 & 65534 hôtes \\
-/8  & 255.0.0.0 & 16M hôtes \\
-\end{tabular}\\[3pt]
+/16 & 255.255.0.0     & 65\,534 hôtes \\
+/8  & 255.0.0.0       & 16M hôtes \\
+\end{tabularx}}\\[3pt]
 \key{Calcul hôtes} : $2^{(32 - \text{préfixe})} - 2$ \\
 \warn{-2} : adresse réseau + broadcast \\[3pt]
 \key{NAT} (Network Address Translation) : traduit IP privée $\to$ publique \\
