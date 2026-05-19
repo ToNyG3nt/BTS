@@ -250,20 +250,21 @@ Router# show ip route
 
 % ============================================================
 \begin{tcolorbox}[basebox, colframe=teal, title=12. Commandes de diagnostic réseau]
-\begin{tabular}{ll}
+{\footnotesize
+\begin{tabularx}{\columnwidth}{@{}lX@{}}
 \toprule
 \textbf{Commande} & \textbf{Usage} \\
 \midrule
-\texttt{ping 8.8.8.8} & Test connectivité ICMP \\
-\texttt{traceroute / tracert} & Chemin des paquets \\
-\texttt{ipconfig / ip addr} & Configuration IP locale \\
-\texttt{netstat -an} & Connexions actives \\
-\texttt{nslookup domaine} & Résolution DNS \\
-\texttt{show interfaces} & Cisco : état interfaces \\
-\texttt{show vlan brief} & Cisco : liste VLANs \\
+\texttt{ping 8.8.8.8}          & Test connectivité ICMP \\
+\texttt{traceroute/tracert}     & Chemin des paquets \\
+\texttt{ipconfig / ip addr}     & Config. IP locale \\
+\texttt{netstat -an}            & Connexions actives \\
+\texttt{nslookup domaine}       & Résolution DNS \\
+\texttt{show interfaces}        & Cisco : état interfaces \\
+\texttt{show vlan brief}        & Cisco : liste VLANs \\
 \texttt{show mac-address-table} & Cisco : table MAC \\
 \bottomrule
-\end{tabular}
+\end{tabularx}}
 \end{tcolorbox}
 
 \end{multicols}
