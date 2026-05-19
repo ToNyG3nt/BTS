@@ -49,19 +49,20 @@
 
 % ============================================================
 \begin{tcolorbox}[basebox, colframe=navy, title=1. Le Modèle OSI — 7 couches]
-\begin{tabular}{clll}
+{\footnotesize
+\begin{tabularx}{\columnwidth}{@{}clXl@{}}
 \toprule
 \textbf{N°} & \textbf{Couche} & \textbf{Rôle} & \textbf{PDU} \\
 \midrule
-7 & Application   & Interface utilisateur        & Message \\
-6 & Présentation  & Format, chiffrement (SSL)    & Message \\
-5 & Session       & Gestion des sessions         & Message \\
-4 & Transport     & Fiabilité (TCP/UDP)          & Segment \\
-3 & Réseau        & Adressage/routage (IP)       & Paquet \\
-2 & Liaison       & Trames, MAC, switch          & Trame \\
-1 & Physique      & Signaux électriques/optiques & Bits \\
+7 & Appli. & Interface utilisateur & Message \\
+6 & Présent. & Format, chiffrement & Message \\
+5 & Session & Gestion des sessions & Message \\
+4 & Transport & Fiabilité (TCP/UDP) & Segment \\
+3 & Réseau & Adressage/routage IP & Paquet \\
+2 & Liaison & Trames, MAC, switch & Trame \\
+1 & Physique & Signaux élec./opt. & Bits \\
 \bottomrule
-\end{tabular}
+\end{tabularx}}
 \vspace{4pt}\\
 \key{Moyen mnémotechnique (fr)} : « \textit{Ah Petit Salaud Tu Rends La Peine !} » \\
 \key{Encapsulation} : en émission, chaque couche ajoute son en-tête. \\
