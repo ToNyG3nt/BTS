@@ -195,6 +195,7 @@ Point d'accès & 1-2 & Connexion WiFi \\
 \key{VLAN d'accès} : port connecté à un terminal (1 VLAN) \\
 \key{Lien trunk (802.1Q)} : port inter-switch (plusieurs VLAN) \\[3pt]
 \textbf{Configuration Cisco :}
+\small
 \begin{verbatim}
 Switch(config)# vlan 10
 Switch(config-vlan)# name IT
@@ -202,6 +203,7 @@ Switch(config)# interface Fa0/1
 Switch(config-if)# switchport mode access
 Switch(config-if)# switchport access vlan 10
 \end{verbatim}
+\normalsize
 \end{tcolorbox}
 
 % ============================================================
