@@ -75,13 +75,20 @@ Ce compte rendu présente chaque étape réalisée, accompagnée de captures d'�
 
 \subsection{Travail réalisé}
 
-Avant d'installer GLPI, j'ai vérifié que WAMP était correctement installé et fonctionnel sur mon poste. L'icône WAMP est devenue verte, indiquant que tous les services (Apache, MySQL, PHP) sont actifs.
+Avant d'installer GLPI, j'ai vérifié que la pile LAMP était opérationnelle sur mon poste Debian. J'ai contrôlé l'état des services Apache et MariaDB avec les commandes suivantes :
+
+\begin{lstlisting}[language=bash]
+systemctl status apache2
+systemctl status mariadb
+\end{lstlisting}
+
+Les deux services sont actifs (\texttt{active (running)}).
 
 \begin{figure}[H]
     \centering
-    % capture_wamp_ok.png
-    \includegraphics[width=0.85\textwidth, height=7cm, keepaspectratio]{capture_wamp_ok.png}
-    \caption{Interface WAMP -- tous les services actifs (icône verte)}
+    % capture_services_lamp.png
+    \includegraphics[width=0.85\textwidth, height=7cm, keepaspectratio]{capture_services_lamp.png}
+    \caption{Services Apache et MariaDB actifs sur Debian}
 \end{figure}
 
 \subsection{Versions relevées}
@@ -93,12 +100,12 @@ Avant d'installer GLPI, j'ai vérifié que WAMP était correctement installé et
 \hline
 Apache & 2.4.x \\
 PHP    & 8.x.x \\
-MySQL / MariaDB & 10.x.x \\
+MariaDB & 10.x.x \\
 \hline
 \end{tabular}
 \end{center}
 
-\textit{(À compléter avec les versions réelles affichées dans le menu WAMP.)}
+\textit{(À compléter avec les versions réelles : \texttt{apache2 -v}, \texttt{php -v}, \texttt{mariadb --version}.)}
 
 \begin{figure}[H]
     \centering
