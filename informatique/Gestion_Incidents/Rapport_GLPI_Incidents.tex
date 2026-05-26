@@ -1,67 +1,163 @@
 \documentclass[a4paper,11pt]{article}
 
-% Packages pour l'encodage, la langue et les images
+% Encodage et langue
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% Mise en page
+\usepackage{geometry}
+\geometry{hmargin=2.5cm, top=3cm, bottom=2.5cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+
+% Images
 \usepackage{graphicx}
 \usepackage{float}
 
-% Configuration des marges
-\usepackage{geometry}
-\geometry{hmargin=2.5cm, vmargin=2.5cm}
-
-% Packages pour le code et les liens
-\usepackage{listings}
+% Couleurs
 \usepackage{xcolor}
-\usepackage{hyperref}
+\definecolor{glpiblue}{RGB}{0,82,155}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.95}
+
+% Tableaux
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{booktabs}
+\renewcommand{\arraystretch}{1.4}
 
-% Configuration des liens
+% Listes
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=1.5em, itemsep=2pt}
+\setlist[enumerate]{leftmargin=1.5em, itemsep=2pt}
+\setlist[description]{leftmargin=0pt, labelwidth=0pt}
+
+% En-têtes et pieds de page
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textcolor{glpiblue}{\small\textbf{TP GLPI -- Gestion des incidents}}}
+\rhead{\textcolor{glpiblue}{\small MIGNARD Maël -- BTS SIO}}
+\cfoot{\textcolor{glpiblue!70}{\small\thepage}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{glpiblue}\leaders\hrule height \headrulewidth\hfill}}
+\setlength{\headheight}{15pt}
+
+% Titres stylisés
+\usepackage{titlesec}
+\titleformat{\section}[block]
+  {\Large\bfseries\color{glpiblue}}
+  {\thesection.}{0.5em}{}
+  [\vspace{2pt}\textcolor{glpiblue}{\rule{\textwidth}{1.5pt}}\vspace{4pt}]
+
+\titleformat{\subsection}[block]
+  {\normalsize\bfseries\color{glpiblue!80!black}}
+  {\thesubsection}{0.5em}{}
+
+% Boîtes colorées
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{qabox}{
+  enhanced,
+  breakable,
+  colback=glpiblue!4!white,
+  colframe=glpiblue,
+  boxrule=0.4pt,
+  leftrule=4pt,
+  title={\textbf{Réponses aux questions}},
+  fonttitle=\bfseries,
+  coltitle=white,
+  attach boxed title to top left={yshift=-2.5mm, xshift=5mm},
+  boxed title style={colback=glpiblue, colframe=glpiblue, boxrule=0pt, sharp corners},
+  top=10pt,
+  before upper={\setlength{\parskip}{0.4em}}
+}
+
+% Code
+\usepackage{listings}
+\lstset{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{glpiblue}\bfseries,
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    rulecolor=\color{glpiblue!30},
+    numbers=left,
+    numberstyle=\tiny\color{codegray},
+    keepspaces=true,
+    showstringspaces=false
+}
+
+% Liens
+\usepackage{hyperref}
 \hypersetup{
     hidelinks,
     pdfborder={0 0 0},
     linktoc=all,
-    pdftitle={TP GLPI - Gestion d'incidents},
+    pdftitle={TP GLPI -- Gestion d'incidents},
     pdfauthor={MIGNARD Maël}
 }
 
-% Configuration des blocs de code
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
-\lstset{
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegreen},
-    basicstyle=\ttfamily\footnotesize,
-    breaklines=true,
-    frame=single,
-    numbers=left,
-    numberstyle=\tiny\color{codegray},
-    keepspaces=true
-}
-
-\renewcommand{\arraystretch}{1.3}
-
-% Informations du rapport
-\title{\textbf{TP -- Mise en place d'un mini helpdesk avec GLPI}\\Gestion des incidents et ticketing}
-
-\author{MIGNARD Maël \\ BTS SIO -- Support informatique}
-
-\date{\today}
-
+% ================================================================
 \begin{document}
 
-\maketitle
+% ----------------------------------------------------------------
+% Page de garde
+% ----------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+
+\vspace*{1.5cm}
+{\color{glpiblue}\rule{\textwidth}{3pt}}
+\vspace{0.6cm}
+
+{\Huge\bfseries\color{glpiblue} TP -- Mini Helpdesk avec GLPI}\\[0.4cm]
+{\Large\color{glpiblue!80!black} Gestion des incidents et ticketing}
+
+\vspace{0.6cm}
+{\color{glpiblue}\rule{\textwidth}{3pt}}
+
+\vspace{2.5cm}
+
+\begin{minipage}[t]{0.45\textwidth}
+\centering
+{\large\bfseries\color{glpiblue} Étudiant}\\[0.5cm]
+{\large MIGNARD Maël}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\centering
+{\large\bfseries\color{glpiblue} Formation}\\[0.5cm]
+{\large BTS SIO -- Support informatique}
+\end{minipage}
+
+\vfill
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Module :}        & Gestion des incidents \\[4pt]
+\textbf{Outil :}         & GLPI 10 \\[4pt]
+\textbf{Environnement :} & Debian 12 -- pile LAMP \\[4pt]
+\textbf{Date :}          & \today \\
+\end{tabular}
+\end{center}
+
+\vspace{1.2cm}
+{\color{glpiblue!50}\rule{\textwidth}{0.8pt}}
+\end{titlepage}
+
 \tableofcontents
 \newpage
 
-% ============================================================
+% ================================================================
 \section{Introduction}
-% ============================================================
 
 L'objectif de ce TP est de mettre en place un mini helpdesk à partir de GLPI sur un environnement Debian avec la pile LAMP (Linux, Apache, MariaDB, PHP). Il s'agit de simuler le fonctionnement d'un service support informatique : installation de l'outil, création d'utilisateurs avec des rôles distincts, traitement de tickets d'incidents et de demandes, puis capitalisation des solutions dans une base de connaissances.
 
@@ -69,9 +165,8 @@ Ce compte rendu présente chaque étape réalisée, accompagnée de captures d'�
 
 \newpage
 
-% ============================================================
+% ================================================================
 \section{Exercice 1 -- Préparation de l'environnement de travail}
-% ============================================================
 
 \subsection{Travail réalisé}
 
@@ -105,39 +200,38 @@ MariaDB & 10.x.x \\
 \end{tabular}
 \end{center}
 
-\textit{(À compléter avec les versions réelles : \texttt{apache2 -v}, \texttt{php -v}, \texttt{mariadb --version}.)}
+\textit{À compléter avec les versions réelles : \texttt{apache2 -v}, \texttt{php -v}, \texttt{mariadb --version}.}
 
 \subsection{Rôle de chaque composant}
 
 \begin{description}
-    \item[Apache :] Serveur web qui reçoit les requêtes HTTP du navigateur et sert les fichiers PHP de l'application GLPI.
-    \item[PHP :] Langage de programmation côté serveur utilisé par GLPI pour générer les pages dynamiquement.
-    \item[MariaDB :] Système de gestion de base de données qui stocke toutes les informations de GLPI (utilisateurs, tickets, matériel\ldots).
-    \item[Navigateur web :] Interface cliente permettant d'accéder à GLPI via une adresse HTTP locale.
+    \item[\textbf{Apache :}] Serveur web qui reçoit les requêtes HTTP du navigateur et sert les fichiers PHP de l'application GLPI.
+    \item[\textbf{PHP :}] Langage de programmation côté serveur utilisé par GLPI pour générer les pages dynamiquement.
+    \item[\textbf{MariaDB :}] Système de gestion de base de données qui stocke toutes les informations de GLPI (utilisateurs, tickets, matériel\ldots).
+    \item[\textbf{Navigateur web :}] Interface cliente permettant d'accéder à GLPI via une adresse HTTP locale.
 \end{description}
 
-\subsection{Réponses aux questions}
-
+\begin{qabox}
 \begin{description}
-    \item[Q1 -- Pourquoi GLPI a-t-il besoin d'un serveur web ?]
+    \item[\textbf{Q1 -- Pourquoi GLPI a-t-il besoin d'un serveur web ?}]~\\
     GLPI est une application web développée en PHP. Pour être exécutée, elle nécessite un serveur web (Apache) qui interprète le code PHP et retourne les pages au navigateur de l'utilisateur. Sans serveur web, les fichiers PHP ne sont que du texte brut.
 
-    \item[Q2 -- Quel est le rôle de la base de données dans un outil de ticketing ?]
+    \item[\textbf{Q2 -- Quel est le rôle de la base de données dans un outil de ticketing ?}]~\\
     La base de données stocke de façon permanente toutes les informations de GLPI : les comptes utilisateurs, les tickets créés, leur état, les historiques d'interventions, les équipements inventoriés\ldots Sans base de données, aucune information ne serait conservée entre deux sessions.
 
-    \item[Q3 -- Pourquoi utilise-t-on un navigateur pour accéder à GLPI ?]
+    \item[\textbf{Q3 -- Pourquoi utilise-t-on un navigateur pour accéder à GLPI ?}]~\\
     GLPI est une application web : son interface est générée en HTML/CSS/JavaScript par le serveur. Le navigateur est le client universel qui permet d'afficher et d'interagir avec cette interface, sans avoir à installer de logiciel supplémentaire sur les postes des utilisateurs.
 \end{description}
+\end{qabox}
 
 \newpage
 
-% ============================================================
+% ================================================================
 \section{Exercice 2 -- Installation de GLPI}
-% ============================================================
 
 \subsection{Installation des dépendances PHP}
 
-GLPI nécessite plusieurs extensions PHP supplémentaires :
+GLPI nécessite plusieurs extensions PHP supplémentaires pour fonctionner :
 
 \begin{lstlisting}[language=bash]
 sudo apt install php-{apcu,cli,common,curl,gd,mysql,xml,mbstring,bcmath,intl,zip,bz2}
@@ -171,10 +265,10 @@ FLUSH PRIVILEGES;
 \hline
 \textbf{Paramètre} & \textbf{Valeur} \\
 \hline
-Serveur & localhost \\
+Serveur         & localhost \\
 Base de données & glpi \\
-Utilisateur & glpiuser \\
-Mot de passe & (non divulgué) \\
+Utilisateur     & glpiuser \\
+Mot de passe    & (non divulgué) \\
 \hline
 \end{tabular}
 \end{center}
@@ -209,7 +303,7 @@ J'ai lancé l'assistant depuis le navigateur en accédant à \texttt{http://loca
 
 \subsubsection*{Étape 0 -- Vérification de la compatibilité de l'environnement}
 
-L'assistant vérifie que toutes les extensions PHP requises sont présentes.
+L'assistant vérifie que toutes les extensions PHP requises sont présentes et que les permissions sont correctes.
 
 \begin{figure}[H]
     \centering
@@ -283,24 +377,23 @@ L'assistant vérifie que toutes les extensions PHP requises sont présentes.
     \caption{Page de connexion GLPI après installation}
 \end{figure}
 
-\subsection{Réponses aux questions}
-
+\begin{qabox}
 \begin{description}
-    \item[Q1 -- Pourquoi créer un utilisateur MariaDB dédié plutôt qu'utiliser \texttt{root} ?]
+    \item[\textbf{Q1 -- Pourquoi créer un utilisateur MariaDB dédié plutôt qu'utiliser \texttt{root} ?}]~\\
     Le compte \texttt{root} possède des droits complets sur toutes les bases de données. En cas de compromission de GLPI, un attaquant aurait accès à tout le serveur MariaDB. Un utilisateur dédié avec des droits limités à la seule base \texttt{glpi} réduit considérablement la surface d'attaque.
 
-    \item[Q2 -- À quoi sert l'encodage \texttt{utf8mb4} ?]
+    \item[\textbf{Q2 -- À quoi sert l'encodage \texttt{utf8mb4} ?}]~\\
     \texttt{utf8mb4} est l'encodage UTF-8 complet sur 4 octets. Il permet de stocker tous les caractères Unicode, y compris les émojis et les caractères asiatiques, sans risque de troncature ou d'erreur. Il est recommandé pour toute application moderne.
 
-    \item[Q3 -- Différence entre installation TP local et installation de production ?]
+    \item[\textbf{Q3 -- Différence entre installation TP local et installation de production ?}]~\\
     En local (TP), on utilise des mots de passe simples, pas de HTTPS, et les données ne sont pas critiques. En production, on sécurise les accès (HTTPS, mots de passe forts, pare-feu), on met en place des sauvegardes régulières, des mises à jour automatiques et une supervision, car des données réelles d'entreprise sont en jeu.
 \end{description}
+\end{qabox}
 
 \newpage
 
-% ============================================================
+% ================================================================
 \section{Exercice 3 -- Création des utilisateurs, rôles et catégories}
-% ============================================================
 
 \subsection{Utilisateurs créés}
 
@@ -309,61 +402,65 @@ J'ai créé les comptes suivants dans GLPI (\textit{Administration > Utilisateur
 \begin{center}
 \begin{tabularx}{0.95\textwidth}{l l X}
 \toprule
-\textbf{Nom du compte} & \textbf{Rôle} & \textbf{Utilisation dans le TP} \\
+\textbf{Nom du compte} & \textbf{Rôle GLPI} & \textbf{Utilisation dans le TP} \\
 \midrule
-\texttt{admin1} & Utilisateur (Self-Service) & Signale une demande administrative \\
-\texttt{enseignant1} & Utilisateur (Self-Service) & Signale des incidents ou demandes \\
-\texttt{technicien1} & Technicien & Traite les tickets \\
+\texttt{admin1}       & Self-Service (utilisateur) & Signale une demande administrative \\
+\texttt{enseignant1}  & Self-Service (utilisateur) & Signale des incidents ou demandes \\
+\texttt{technicien1}  & Technicien                 & Traite les tickets \\
 \bottomrule
 \end{tabularx}
 \end{center}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth, keepaspectratio]{screen/image.png}
-    \caption{Liste des utilisateurs créés dans GLPI}
-\end{figure}
 
 \subsection{Catégories de tickets créées}
 
 Les catégories suivantes ont été créées dans \textit{Configuration > Intitulés > Catégories de tickets} :
 
 \begin{itemize}
-    \item Compte Et Accès ;
-    \item Réseau et Wi-Fi ;
-    \item Matériel ;
-    \item Logiciel ;
-    \item Messagerie.
+    \item Compte Et Accès
+    \item Réseau et Wi-Fi
+    \item Matériel
+    \item Logiciel
+    \item Messagerie
 \end{itemize}
+
+\subsection{Captures d'écran}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth, keepaspectratio]{screen/14.png}
-    \caption{Catégories de tickets configurées dans GLPI}
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{screen/image.png}
+        \caption{Liste des utilisateurs créés dans GLPI}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth, keepaspectratio]{screen/14.png}
+        \caption{Catégories de tickets configurées}
+    \end{minipage}
 \end{figure}
 
 \subsection{Organisation et intérêt}
 
-Les utilisateurs (enseignant1, admin1) disposent du profil \textbf{Self-Service} : ils peuvent créer des tickets et suivre l'avancement des leurs, sans accès à l'administration. Le compte \texttt{technicien1} dispose du profil \textbf{Technicien} : il consulte, prend en charge et résout les tickets qui lui sont assignés. Cette séparation des droits garantit la sécurité et la cohérence du système.
+Les utilisateurs (\texttt{enseignant1}, \texttt{admin1}) disposent du profil \textbf{Self-Service} : ils peuvent créer des tickets et suivre l'avancement des leurs, sans accès à l'administration. Le compte \texttt{technicien1} dispose du profil \textbf{Technicien} : il consulte, prend en charge et résout les tickets qui lui sont assignés. Cette séparation des droits garantit la sécurité et la cohérence du système.
 
-\subsection{Réponses aux questions}
-
+\begin{qabox}
 \begin{description}
-    \item[Q1 -- Différence entre requérant et technicien ?]
+    \item[\textbf{Q1 -- Différence entre requérant et technicien ?}]~\\
     Le \textbf{requérant} est l'utilisateur qui signale un problème et suit son ticket. Il n'a pas de visibilité sur les autres tickets ni sur les actions techniques. Le \textbf{technicien} prend en charge les tickets, effectue les interventions et rédige les solutions. Il a accès à l'ensemble de la file d'attente.
 
-    \item[Q2 -- Pourquoi catégoriser les tickets ?]
+    \item[\textbf{Q2 -- Pourquoi catégoriser les tickets ?}]~\\
     La catégorisation permet de trier rapidement les demandes, d'identifier les problèmes récurrents, de router les tickets vers le bon technicien compétent, et de produire des statistiques par type d'incident pour anticiper les besoins.
 
-    \item[Q3 -- À quoi servent les profils et les droits dans GLPI ?]
+    \item[\textbf{Q3 -- À quoi servent les profils et les droits dans GLPI ?}]~\\
     Les profils définissent précisément ce que chaque type d'utilisateur peut voir et faire dans GLPI. Cela évite qu'un utilisateur lambda accède à des données confidentielles, modifie des configurations ou consulte les tickets des autres, tout en permettant au technicien et à l'administrateur de travailler efficacement.
 \end{description}
+\end{qabox}
 
 \newpage
 
-% ============================================================
+% ================================================================
 \section{Exercice 4 -- Création et traitement des tickets}
-% ============================================================
 
 \subsection{Tickets créés}
 
@@ -371,7 +468,7 @@ J'ai créé les quatre tickets suivants, conformément aux scénarios du TP :
 
 \begin{center}
 \small
-\begin{tabularx}{\textwidth}{c X l l l X}
+\begin{tabularx}{\textwidth}{c X l l l l}
 \toprule
 \textbf{N°} & \textbf{Titre} & \textbf{Type} & \textbf{Catégorie} & \textbf{Priorité} & \textbf{Statut} \\
 \midrule
@@ -393,60 +490,59 @@ J'ai créé les quatre tickets suivants, conformément aux scénarios du TP :
 
 \subsubsection*{Ticket 1 -- Problème de connexion wifi}
 \begin{description}
-    \item[Description :] L'utilisateur \texttt{enseignant1} signale qu'il ne parvient plus à se connecter au réseau Wi-Fi depuis son poste.
-    \item[Suivi technique :] Vérification de l'état du point d'accès concerné depuis la console réseau. Test de connexion depuis un autre appareil pour isoler le problème (poste ou infrastructure).
-    \item[Statut :] Nouveau -- ticket en attente d'attribution.
+    \item[\textbf{Description :}] L'utilisateur \texttt{enseignant1} signale qu'il ne parvient plus à se connecter au réseau Wi-Fi depuis son poste.
+    \item[\textbf{Suivi technique :}] Vérification de l'état du point d'accès depuis la console réseau. Test de connexion depuis un autre appareil pour isoler le problème (poste ou infrastructure).
+    \item[\textbf{Statut :}] Nouveau -- ticket en attente d'attribution.
 \end{description}
 
 \subsubsection*{Ticket 3 -- Ma session windows est bloqué}
 \begin{description}
-    \item[Description :] L'utilisateur \texttt{enseignant1} ne peut plus ouvrir sa session Windows. Le message d'erreur indique que les identifiants sont incorrects.
-    \item[Suivi technique :] Vérification que le verrou Majuscules n'est pas activé. Test du compte sur un autre poste confirmant le blocage du compte. Réinitialisation du mot de passe via le technicien.
-    \item[Statut :] En cours (Attribué) -- ticket assigné à \texttt{technicien1}.
+    \item[\textbf{Description :}] L'utilisateur \texttt{enseignant1} ne peut plus ouvrir sa session Windows. Le message d'erreur indique que les identifiants sont incorrects.
+    \item[\textbf{Suivi technique :}] Vérification que le verrou Majuscules n'est pas activé. Test du compte sur un autre poste confirmant le blocage. Réinitialisation du mot de passe via le technicien.
+    \item[\textbf{Statut :}] En cours -- ticket assigné à \texttt{technicien1}.
 \end{description}
 
 \subsubsection*{Ticket 4 -- Accès à une imprimante}
 \begin{description}
-    \item[Description :] L'utilisateur \texttt{enseignant1} demande l'accès à une imprimante réseau pour imprimer ses documents.
-    \item[Suivi technique :] Identification de l'imprimante concernée. Ajout du compte utilisateur dans le groupe d'impression correspondant.
-    \item[Statut :] En cours (Attribué) -- ticket assigné à \texttt{technicien1}.
+    \item[\textbf{Description :}] L'utilisateur \texttt{enseignant1} demande l'accès à une imprimante réseau pour imprimer ses documents.
+    \item[\textbf{Suivi technique :}] Identification de l'imprimante concernée. Ajout du compte utilisateur dans le groupe d'impression correspondant.
+    \item[\textbf{Statut :}] En cours -- ticket assigné à \texttt{technicien1}.
 \end{description}
 
 \subsubsection*{Ticket 5 -- Installation d'un logiciel validé par le responsable}
 \begin{description}
-    \item[Description :] L'utilisateur \texttt{enseignant1} demande l'installation d'un logiciel sur son poste, après validation préalable du responsable.
-    \item[Suivi technique :] Vérification de la validation dans la liste des logiciels autorisés. Téléchargement depuis la source officielle et installation sur le poste.
-    \item[Solution :] Logiciel installé et fonctionnel. L'utilisateur a été informé.
-    \item[Statut :] Résolu.
+    \item[\textbf{Description :}] L'utilisateur \texttt{enseignant1} demande l'installation d'un logiciel sur son poste, après validation préalable du responsable.
+    \item[\textbf{Suivi technique :}] Vérification de la validation dans la liste des logiciels autorisés. Téléchargement depuis la source officielle et installation sur le poste.
+    \item[\textbf{Solution :}] Logiciel installé et fonctionnel. L'utilisateur a été informé.
+    \item[\textbf{Statut :}] Résolu.
 \end{description}
 
-\subsection{Réponses aux questions}
-
+\begin{qabox}
 \begin{description}
-    \item[Q1 -- Différence entre urgence, impact et priorité ?]
-    L'\textbf{urgence} représente la vitesse à laquelle il faut intervenir selon le ressenti de l'utilisateur. L'\textbf{impact} mesure le nombre de personnes ou de services affectés par le problème. La \textbf{priorité} est calculée automatiquement par GLPI en combinant les deux : un incident urgent avec un fort impact sera traité en premier.
+    \item[\textbf{Q1 -- Différence entre urgence, impact et priorité ?}]~\\
+    L'\textbf{urgence} représente la vitesse à laquelle il faut intervenir selon le ressenti de l'utilisateur. L'\textbf{impact} mesure le nombre de personnes ou de services affectés. La \textbf{priorité} est calculée automatiquement par GLPI en combinant les deux : un incident urgent avec un fort impact sera traité en premier.
 
-    \item[Q2 -- Pourquoi le Wi-Fi en salle est plus prioritaire qu'une installation logicielle ?]
-    Le Wi-Fi indisponible en salle bloque simultanément l'accès à Internet pour un groupe entier d'étudiants et un enseignant, impactant directement le déroulement du cours. L'installation d'un logiciel ne concerne qu'un seul utilisateur et n'est pas bloquante immédiatement.
+    \item[\textbf{Q2 -- Pourquoi le Wi-Fi en salle est plus prioritaire qu'une installation logicielle ?}]~\\
+    Le Wi-Fi indisponible en salle bloque simultanément l'accès à Internet pour un groupe entier et impacte directement le déroulement du cours. L'installation d'un logiciel ne concerne qu'un seul utilisateur et n'est pas bloquante immédiatement.
 
-    \item[Q3 -- Pourquoi ajouter un suivi technique dans un ticket ?]
-    Le suivi technique permet de tracer toutes les actions réalisées : ce qui a été vérifié, testé, modifié. Il est indispensable pour la communication entre techniciens sur un même ticket, et constitue un historique précieux pour diagnostiquer des incidents similaires à l'avenir.
+    \item[\textbf{Q3 -- Pourquoi ajouter un suivi technique dans un ticket ?}]~\\
+    Le suivi technique permet de tracer toutes les actions réalisées : ce qui a été vérifié, testé, modifié. Il est indispensable pour la communication entre techniciens sur un même ticket et constitue un historique précieux pour diagnostiquer des incidents similaires à l'avenir.
 
-    \item[Q4 -- Risque de clôturer sans solution détaillée ?]
-    Sans solution documentée, l'équipe ne peut pas capitaliser sur l'expérience acquise. Si l'incident se reproduit, le technicien (ou un collègue) devra repartir de zéro. De plus, l'utilisateur ne comprend pas ce qui a été fait et ne peut pas prévenir une récidive.
+    \item[\textbf{Q4 -- Risque de clôturer sans solution détaillée ?}]~\\
+    Sans solution documentée, l'équipe ne peut pas capitaliser sur l'expérience acquise. Si l'incident se reproduit, le technicien devra repartir de zéro. De plus, l'utilisateur ne comprend pas ce qui a été fait et ne peut pas prévenir une récidive.
 \end{description}
+\end{qabox}
 
 \newpage
 
-% ============================================================
+% ================================================================
 \section{Exercice 5 -- Base de connaissances}
-% ============================================================
 
 \subsection{Article rédigé}
 
-À partir du Ticket 1, j'ai rédigé l'article de base de connaissances suivant dans \textit{Outils > Base de connaissances}.
+À partir du Ticket 3, j'ai rédigé l'article de base de connaissances suivant dans \textit{Outils > Base de connaissances}.
 
-\vspace{0.5em}
+\vspace{0.6em}
 \noindent\textbf{Titre de l'article :} \textit{Que faire lorsqu'un utilisateur ne peut plus ouvrir sa session Windows ?}
 
 \vspace{0.5em}
@@ -456,7 +552,7 @@ L'utilisateur ne peut pas se connecter à son poste Windows. Le message affiché
 \vspace{0.5em}
 \noindent\textbf{Symptômes observables :}
 \begin{itemize}
-    \item Impossible de saisir les identifiants sur l'écran de connexion.
+    \item Impossible de valider les identifiants sur l'écran de connexion.
     \item Message d'erreur au moment de la validation.
     \item Le problème persiste après redémarrage du poste.
 \end{itemize}
@@ -464,7 +560,7 @@ L'utilisateur ne peut pas se connecter à son poste Windows. Le message affiché
 \vspace{0.5em}
 \noindent\textbf{Procédure de résolution :}
 \begin{enumerate}
-    \item Vérifier que la touche Verr. Maj n'est pas activée.
+    \item Vérifier que la touche Verr.\ Maj n'est pas activée.
     \item Vérifier que la disposition du clavier est correcte (FR, pas EN).
     \item Tester la connexion sur un autre poste pour isoler le problème.
     \item Si l'échec persiste, contacter le technicien pour réinitialiser le mot de passe.
@@ -480,26 +576,25 @@ S'assurer que l'utilisateur peut se connecter normalement et accéder à ses fic
 \noindent\textbf{Remarque de prévention :}\\
 Inviter les utilisateurs à noter leurs identifiants dans un gestionnaire de mots de passe sécurisé pour éviter ce type d'incident.
 
-\subsection{Réponses aux questions}
-
+\begin{qabox}
 \begin{description}
-    \item[Q1 -- Comment la base de connaissances réduit-elle le nombre de tickets ?]
+    \item[\textbf{Q1 -- Comment la base de connaissances réduit-elle le nombre de tickets ?}]~\\
     Si un utilisateur rencontre un problème déjà documenté, il peut consulter lui-même la procédure et résoudre son incident sans contacter le support. Cela libère du temps aux techniciens et autonomise les utilisateurs.
 
-    \item[Q2 -- Différence entre suivi technique interne et article visible par les utilisateurs ?]
-    Le suivi technique est réservé aux techniciens : il peut contenir des informations sensibles (identifiants, configurations réseau, commandes système) qui ne doivent pas être divulguées. L'article de la base de connaissances est rédigé dans un langage accessible aux utilisateurs finaux, sans informations sensibles.
+    \item[\textbf{Q2 -- Différence entre suivi technique interne et article visible par les utilisateurs ?}]~\\
+    Le suivi technique est réservé aux techniciens : il peut contenir des informations sensibles (identifiants, configurations réseau, commandes système). L'article de la base de connaissances est rédigé dans un langage accessible aux utilisateurs finaux, sans informations sensibles.
 
-    \item[Q3 -- Pourquoi rédiger une procédure simple et compréhensible ?]
+    \item[\textbf{Q3 -- Pourquoi rédiger une procédure simple et compréhensible ?}]~\\
     La base de connaissances est destinée à des utilisateurs non techniciens. Si la procédure est trop complexe ou utilise du jargon, l'utilisateur ne pourra pas l'appliquer seul. Une procédure claire, avec des étapes numérotées et un vocabulaire adapté, garantit son efficacité.
 \end{description}
+\end{qabox}
 
 \newpage
 
-% ============================================================
+% ================================================================
 \section{Exercice 6 -- Analyse du fonctionnement du helpdesk}
-% ============================================================
 
-La mise en place d'un outil de ticketing comme GLPI représente un changement structurant pour une organisation. Par rapport à une gestion par mail ou par téléphone, GLPI apporte une centralisation complète des demandes : chaque incident ou demande est formalisé, traçable et consultable à tout moment par les personnes concernées. Plus aucune demande ne peut être « oubliée dans une boîte mail » ou perdue dans un couloir.
+La mise en place d'un outil de ticketing comme GLPI représente un changement structurant pour une organisation. Par rapport à une gestion par mail ou par téléphone, GLPI apporte une centralisation complète des demandes : chaque incident ou demande est formalisé, traçable et consultable à tout moment par les personnes concernées. Plus aucune demande ne peut être oubliée dans une boîte mail ou perdue dans un couloir.
 
 Pour qu'un ticket soit réellement exploitable, il doit contenir a minima un titre explicite, une description précise du problème, un type (incident ou demande), une catégorie, une urgence, un impact, une priorité et le nom du requérant. Sans ces informations, le technicien ne peut pas agir efficacement.
 
@@ -511,9 +606,8 @@ Enfin, pour utiliser GLPI dans un vrai établissement, plusieurs précautions so
 
 \newpage
 
-% ============================================================
+% ================================================================
 \section{Conclusion}
-% ============================================================
 
 Ce TP m'a permis de découvrir et de pratiquer l'ensemble du cycle de vie d'un ticket dans GLPI, depuis l'installation de l'outil jusqu'à la capitalisation des solutions. Les principales compétences acquises sont :
 
@@ -526,6 +620,6 @@ Ce TP m'a permis de découvrir et de pratiquer l'ensemble du cycle de vie d'un t
     \item analyser l'apport professionnel d'un outil de ticketing.
 \end{itemize}
 
-\textbf{Difficultés rencontrées :} \textit{(À compléter en fin de TP selon les problèmes rencontrés.)}
+\textbf{Difficultés rencontrées :} \textit{(À compléter selon les problèmes rencontrés pendant le TP.)}
 
 \end{document}
