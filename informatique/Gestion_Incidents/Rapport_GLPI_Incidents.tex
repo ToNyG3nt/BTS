@@ -140,19 +140,30 @@ MariaDB & 10.x.x \\
 \newpage
 
 % ============================================================
-\section{Exercice 2 -- Installation de GLPI en local}
+\section{Exercice 2 -- Installation de GLPI}
 % ============================================================
 
-\subsection{Travail réalisé}
+\subsection{Installation des dépendances PHP}
 
-J'ai téléchargé l'archive GLPI et extrait le dossier dans le répertoire web de WAMP :
-\begin{lstlisting}[language=bash, numbers=none]
-C:\wamp64\www\glpi
+GLPI nécessite plusieurs extensions PHP supplémentaires :
+
+\begin{lstlisting}[language=bash]
+sudo apt install php-{apcu,cli,common,curl,gd,mysql,xml,mbstring,bcmath,intl,zip,bz2}
+\end{lstlisting}
+
+\subsection{Déploiement des fichiers GLPI}
+
+J'ai téléchargé l'archive GLPI et extrait les fichiers dans le répertoire web :
+
+\begin{lstlisting}[language=bash]
+wget https://github.com/glpi-project/glpi/releases/download/10.0.x/glpi-10.0.x.tgz
+sudo tar -xzvf glpi-10.0.x.tgz -C /var/www/html/
+sudo chown -R www-data:www-data /var/www/html/glpi/
 \end{lstlisting}
 
 \subsection{Création de la base de données}
 
-Dans phpMyAdmin, j'ai créé la base de données et l'utilisateur dédié via les commandes SQL suivantes :
+Après connexion à MariaDB, j'ai créé la base et l'utilisateur dédié :
 
 \begin{lstlisting}[language=SQL]
 CREATE DATABASE glpi CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
