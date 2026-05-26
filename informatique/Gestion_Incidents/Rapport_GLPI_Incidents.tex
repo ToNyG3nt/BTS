@@ -179,27 +179,108 @@ Mot de passe & (non divulgué) \\
 \end{tabular}
 \end{center}
 
-\subsection{Lancement de l'assistant d'installation}
+\subsection{Assistant d'installation web}
 
-J'ai lancé l'installation depuis le navigateur :
-\begin{lstlisting}[numbers=none]
-http://localhost/glpi/public
-\end{lstlisting}
+J'ai lancé l'assistant depuis le navigateur en accédant à \texttt{http://localhost/glpi/public}, puis j'ai suivi les étapes suivantes.
 
-J'ai suivi l'assistant jusqu'à la création des tables, puis effectué la première connexion avec le compte administrateur par défaut (\texttt{glpi} / \texttt{glpi}).
+\subsubsection*{Sélection de la langue}
 
 \begin{figure}[H]
     \centering
-    % capture_glpi_install_fin.png
-    \includegraphics[width=0.85\textwidth, height=7cm, keepaspectratio]{capture_glpi_install_fin.png}
-    \caption{Fin de l'assistant d'installation GLPI}
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/2.png}
+    \caption{Sélection de la langue -- Français}
+\end{figure}
+
+\subsubsection*{Acceptation de la licence}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/3.png}
+    \caption{Licence GNU GPL v3}
+\end{figure}
+
+\subsubsection*{Choix du type d'installation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/4.png}
+    \caption{Choix \og{}Installer\fg{} pour une nouvelle installation}
+\end{figure}
+
+\subsubsection*{Étape 0 -- Vérification de la compatibilité de l'environnement}
+
+L'assistant vérifie que toutes les extensions PHP requises sont présentes.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/5.1.png}
+    \caption{Étape 0 -- Vérification des prérequis (partie 1)}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    % capture_glpi_dashboard.png
-    \includegraphics[width=0.85\textwidth, height=7cm, keepaspectratio]{capture_glpi_dashboard.png}
-    \caption{Tableau de bord GLPI après la première connexion}
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/5.2.png}
+    \caption{Étape 0 -- Vérification des prérequis (partie 2) -- tous les tests passent}
+\end{figure}
+
+\subsubsection*{Étape 1 -- Configuration de la connexion à la base de données}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/6.png}
+    \caption{Étape 1 -- Saisie des identifiants MariaDB (localhost, utilisateur dédié)}
+\end{figure}
+
+\subsubsection*{Étape 2 -- Test de connexion et sélection de la base}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/7.png}
+    \caption{Étape 2 -- Connexion réussie, sélection de la base \texttt{glpi}}
+\end{figure}
+
+\subsubsection*{Étape 3 -- Initialisation de la base de données}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/8.png}
+    \caption{Étape 3 -- Initialisation en cours (création des tables)}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/8.1.png}
+    \caption{Étape 3 -- Initialisation terminée à 100\,\%}
+\end{figure}
+
+\subsubsection*{Étapes 4 et 5 -- Télémétrie et informations complémentaires}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/9.png}
+    \caption{Étape 4 -- Option de télémétrie (statistiques d'usage anonymes)}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/10.png}
+    \caption{Étape 5 -- Information sur le support GLPI-Network}
+\end{figure}
+
+\subsubsection*{Étape 6 -- Fin de l'installation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/11.png}
+    \caption{Étape 6 -- Installation terminée, identifiants par défaut affichés}
+\end{figure}
+
+\subsubsection*{Première connexion}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth, keepaspectratio]{screen/12.png}
+    \caption{Page de connexion GLPI après installation}
 \end{figure}
 
 \subsection{Réponses aux questions}
