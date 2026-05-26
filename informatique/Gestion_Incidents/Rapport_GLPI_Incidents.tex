@@ -411,6 +411,14 @@ J'ai créé les comptes suivants dans GLPI (\textit{Administration > Utilisateur
 \end{tabularx}
 \end{center}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth, keepaspectratio]{screen/image.png}
+    \caption{Liste des utilisateurs créés dans GLPI}
+\end{figure}
+
+Les utilisateurs (\texttt{enseignant1}, \texttt{admin1}) disposent du profil \textbf{Self-Service} : ils peuvent créer des tickets et suivre les leurs uniquement. Le compte \texttt{technicien1} dispose du profil \textbf{Technicien} : il accède à toute la file et prend en charge les interventions.
+
 \subsection{Catégories de tickets créées}
 
 Les catégories suivantes ont été créées dans \textit{Configuration > Intitulés > Catégories de tickets} :
@@ -423,37 +431,24 @@ Les catégories suivantes ont été créées dans \textit{Configuration > Intitu
     \item Messagerie
 \end{itemize}
 
-\subsection{Captures d'écran}
-
 \begin{figure}[H]
     \centering
-    \begin{minipage}[t]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth, keepaspectratio]{screen/image.png}
-        \caption{Liste des utilisateurs créés dans GLPI}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth, keepaspectratio]{screen/14.png}
-        \caption{Catégories de tickets configurées}
-    \end{minipage}
+    \includegraphics[width=0.55\textwidth, keepaspectratio]{screen/14.png}
+    \caption{Catégories de tickets configurées dans GLPI}
 \end{figure}
 
-\subsection{Organisation et intérêt}
-
-Les utilisateurs (\texttt{enseignant1}, \texttt{admin1}) disposent du profil \textbf{Self-Service} : ils peuvent créer des tickets et suivre l'avancement des leurs, sans accès à l'administration. Le compte \texttt{technicien1} dispose du profil \textbf{Technicien} : il consulte, prend en charge et résout les tickets qui lui sont assignés. Cette séparation des droits garantit la sécurité et la cohérence du système.
+Ces catégories permettent de trier les demandes, d'identifier les incidents récurrents et de router chaque ticket vers le technicien compétent.
 
 \begin{qabox}
 \begin{description}
     \item[\textbf{Q1 -- Différence entre requérant et technicien ?}]~\\
-    Le \textbf{requérant} est l'utilisateur qui signale un problème et suit son ticket. Il n'a pas de visibilité sur les autres tickets ni sur les actions techniques. Le \textbf{technicien} prend en charge les tickets, effectue les interventions et rédige les solutions. Il a accès à l'ensemble de la file d'attente.
+    Le requérant crée des tickets et suit uniquement les siens ; le technicien accède à toute la file d'attente et effectue les interventions.
 
     \item[\textbf{Q2 -- Pourquoi catégoriser les tickets ?}]~\\
-    La catégorisation permet de trier rapidement les demandes, d'identifier les problèmes récurrents, de router les tickets vers le bon technicien compétent, et de produire des statistiques par type d'incident pour anticiper les besoins.
+    Pour trier rapidement les demandes, les assigner au bon technicien et générer des statistiques par type d'incident.
 
     \item[\textbf{Q3 -- À quoi servent les profils et les droits dans GLPI ?}]~\\
-    Les profils définissent précisément ce que chaque type d'utilisateur peut voir et faire dans GLPI. Cela évite qu'un utilisateur lambda accède à des données confidentielles, modifie des configurations ou consulte les tickets des autres, tout en permettant au technicien et à l'administrateur de travailler efficacement.
+    Ils définissent ce que chaque utilisateur peut voir et faire, évitant qu'un utilisateur consulte les tickets des autres ou modifie des configurations.
 \end{description}
 \end{qabox}
 
