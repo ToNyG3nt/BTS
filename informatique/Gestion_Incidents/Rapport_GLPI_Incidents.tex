@@ -214,13 +214,13 @@ MariaDB & 10.x.x \\
 \begin{qabox}
 \begin{description}
     \item[\textbf{Q1 -- Pourquoi GLPI a-t-il besoin d'un serveur web ?}]~\\
-    GLPI est une application web développée en PHP. Pour être exécutée, elle nécessite un serveur web (Apache) qui interprète le code PHP et retourne les pages au navigateur de l'utilisateur. Sans serveur web, les fichiers PHP ne sont que du texte brut.
+    GLPI est une application PHP : Apache interprète ce code côté serveur et renvoie les pages au navigateur.
 
     \item[\textbf{Q2 -- Quel est le rôle de la base de données dans un outil de ticketing ?}]~\\
-    La base de données stocke de façon permanente toutes les informations de GLPI : les comptes utilisateurs, les tickets créés, leur état, les historiques d'interventions, les équipements inventoriés\ldots Sans base de données, aucune information ne serait conservée entre deux sessions.
+    Elle conserve toutes les données de GLPI entre les sessions : utilisateurs, tickets, historiques et matériel inventorié.
 
     \item[\textbf{Q3 -- Pourquoi utilise-t-on un navigateur pour accéder à GLPI ?}]~\\
-    GLPI est une application web : son interface est générée en HTML/CSS/JavaScript par le serveur. Le navigateur est le client universel qui permet d'afficher et d'interagir avec cette interface, sans avoir à installer de logiciel supplémentaire sur les postes des utilisateurs.
+    GLPI génère son interface en HTML/CSS, donc n'importe quel navigateur suffit pour y accéder, sans logiciel à installer sur les postes.
 \end{description}
 \end{qabox}
 
