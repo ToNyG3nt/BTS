@@ -380,13 +380,13 @@ L'assistant vérifie que toutes les extensions PHP requises sont présentes et q
 \begin{qabox}
 \begin{description}
     \item[\textbf{Q1 -- Pourquoi créer un utilisateur MariaDB dédié plutôt qu'utiliser \texttt{root} ?}]~\\
-    Le compte \texttt{root} possède des droits complets sur toutes les bases de données. En cas de compromission de GLPI, un attaquant aurait accès à tout le serveur MariaDB. Un utilisateur dédié avec des droits limités à la seule base \texttt{glpi} réduit considérablement la surface d'attaque.
+    Un compte dédié limite les droits à la seule base \texttt{glpi}, ce qui réduit l'impact en cas de compromission de l'application.
 
     \item[\textbf{Q2 -- À quoi sert l'encodage \texttt{utf8mb4} ?}]~\\
-    \texttt{utf8mb4} est l'encodage UTF-8 complet sur 4 octets. Il permet de stocker tous les caractères Unicode, y compris les émojis et les caractères asiatiques, sans risque de troncature ou d'erreur. Il est recommandé pour toute application moderne.
+    Il prend en charge la totalité des caractères Unicode (accents, emojis\ldots) sans risque de troncature ou d'erreur d'encodage.
 
     \item[\textbf{Q3 -- Différence entre installation TP local et installation de production ?}]~\\
-    En local (TP), on utilise des mots de passe simples, pas de HTTPS, et les données ne sont pas critiques. En production, on sécurise les accès (HTTPS, mots de passe forts, pare-feu), on met en place des sauvegardes régulières, des mises à jour automatiques et une supervision, car des données réelles d'entreprise sont en jeu.
+    En TP on accepte un mot de passe simple et pas de HTTPS ; en production ces éléments sont obligatoires, accompagnés de sauvegardes régulières et d'une supervision.
 \end{description}
 \end{qabox}
 
