@@ -391,32 +391,33 @@ J'ai créé les quatre tickets suivants, conformément aux scénarios du TP :
 
 \subsection{Détail des tickets}
 
-\subsubsection*{Ticket 1 -- Impossible d'ouvrir la session Windows}
+\subsubsection*{Ticket 1 -- Problème de connexion wifi}
 \begin{description}
-    \item[Description :] L'utilisateur \texttt{enseignant1} signale qu'il ne peut plus se connecter à son poste Windows depuis ce matin. Le message affiché est « Le nom d'utilisateur ou le mot de passe est incorrect ».
-    \item[Suivi technique :] Vérification que le verrou Majuscules n'est pas activé, puis test du compte sur un autre poste confirmant le blocage. Réinitialisation du mot de passe via l'administrateur.
-    \item[Solution :] Mot de passe réinitialisé. L'utilisateur a pu se connecter. Il lui est conseillé de choisir un mot de passe mémorisable mais robuste.
+    \item[Description :] L'utilisateur \texttt{enseignant1} signale qu'il ne parvient plus à se connecter au réseau Wi-Fi depuis son poste.
+    \item[Suivi technique :] Vérification de l'état du point d'accès concerné depuis la console réseau. Test de connexion depuis un autre appareil pour isoler le problème (poste ou infrastructure).
+    \item[Statut :] Nouveau -- ticket en attente d'attribution.
 \end{description}
 
-\subsubsection*{Ticket 2 -- Accès imprimante salle 203}
+\subsubsection*{Ticket 3 -- Ma session windows est bloqué}
 \begin{description}
-    \item[Description :] M. Dupont, nouvel enseignant, demande l'accès à l'imprimante réseau de la salle 203 (\texttt{IMP-203}) pour imprimer ses cours.
-    \item[Suivi technique :] Ajout du compte dans le groupe de sécurité « Impression-Salle203 » sur le serveur.
-    \item[Solution :] L'accès à l'imprimante a été accordé. L'utilisateur a été informé de la procédure d'installation du pilote sur son poste.
+    \item[Description :] L'utilisateur \texttt{enseignant1} ne peut plus ouvrir sa session Windows. Le message d'erreur indique que les identifiants sont incorrects.
+    \item[Suivi technique :] Vérification que le verrou Majuscules n'est pas activé. Test du compte sur un autre poste confirmant le blocage du compte. Réinitialisation du mot de passe via le technicien.
+    \item[Statut :] En cours (Attribué) -- ticket assigné à \texttt{technicien1}.
 \end{description}
 
-\subsubsection*{Ticket 3 -- Wi-Fi indisponible en salle B12}
+\subsubsection*{Ticket 4 -- Accès à une imprimante}
 \begin{description}
-    \item[Description :] Le Wi-Fi est totalement indisponible dans la salle B12. Plusieurs étudiants et l'enseignant ne peuvent pas accéder à Internet depuis leurs appareils.
-    \item[Suivi technique :] Connexion à la console de supervision réseau : le point d'accès AP-B12 est signalé hors ligne. Redémarrage à distance depuis le contrôleur Wi-Fi. Test de reconnexion concluant.
-    \item[Solution :] Le point d'accès AP-B12 a été redémarré à distance. Le Wi-Fi est rétabli dans la salle. À surveiller (possible défaillance matérielle à venir).
+    \item[Description :] L'utilisateur \texttt{enseignant1} demande l'accès à une imprimante réseau pour imprimer ses documents.
+    \item[Suivi technique :] Identification de l'imprimante concernée. Ajout du compte utilisateur dans le groupe d'impression correspondant.
+    \item[Statut :] En cours (Attribué) -- ticket assigné à \texttt{technicien1}.
 \end{description}
 
-\subsubsection*{Ticket 4 -- Installation de Visual Studio Code}
+\subsubsection*{Ticket 5 -- Installation d'un logiciel validé par le responsable}
 \begin{description}
-    \item[Description :] Un étudiant demande l'installation de Visual Studio Code sur son poste pour les cours de développement.
-    \item[Suivi technique :] Vérification de la validation du logiciel dans la liste des logiciels autorisés. Téléchargement depuis le site officiel et installation silencieuse.
-    \item[Solution :] Visual Studio Code installé et testé. L'étudiant a été informé de son installation.
+    \item[Description :] L'utilisateur \texttt{enseignant1} demande l'installation d'un logiciel sur son poste, après validation préalable du responsable.
+    \item[Suivi technique :] Vérification de la validation dans la liste des logiciels autorisés. Téléchargement depuis la source officielle et installation sur le poste.
+    \item[Solution :] Logiciel installé et fonctionnel. L'utilisateur a été informé.
+    \item[Statut :] Résolu.
 \end{description}
 
 \subsection{Réponses aux questions}
