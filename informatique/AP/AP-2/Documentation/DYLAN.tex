@@ -106,23 +106,33 @@
 
 \subsection{Présentation du contexte}
 
-% Depuis la mise en place des VLANs (projet VELANNE), les personnels des ligues
-% ne peuvent plus accéder à leurs données depuis la salle de réunion commune.
-% Les postes fixes sont dans leur VLAN de ligue, mais la prise de la salle de
-% réunion est partagée entre plusieurs ligues.
+La \textbf{Maison des Ligues de Lorraine (M2L)} héberge plusieurs ligues sportives régionales
+(volley, escrime, badminton, etc.) dans ses bâtiments. Chaque ligue dispose de ses propres
+postes fixes, isolés dans un \textbf{VLAN dédié} depuis le projet VELANNE.
+
+Les bâtiments disposent également de \textbf{salles de réunion communes}, partagées entre
+toutes les ligues. Or, depuis la mise en place des VLANs, un portable d'une ligue branché
+sur la prise de la salle de réunion ne peut plus communiquer avec les postes fixes de sa ligue :
+la prise n'appartient à aucun VLAN en particulier et \textbf{l'accès aux données internes est coupé}.
 
 \subsection{Problématique identifiée}
 
-% Comment permettre à un portable de se placer automatiquement
-% dans le bon VLAN selon la ligue à laquelle il appartient,
-% sans intervention manuelle sur le switch ?
+Comment permettre à un ordinateur portable de \textbf{rejoindre automatiquement le VLAN de sa ligue}
+lorsqu'il se connecte sur la prise de la salle de réunion, sans qu'un technicien ait besoin
+d'intervenir manuellement sur la configuration du switch ?
+
+La solution retenue repose sur le mécanisme de \textbf{VLAN dynamique par adresse MAC} disponible
+sur le switch \textbf{Cisco SF-300} : le switch identifie l'adresse MAC de la machine connectée,
+la compare à des groupes MAC prédéfinis, et affecte automatiquement le port au VLAN correspondant.
 
 \subsection{Objectifs du projet}
 
 \begin{itemize}
-  \item
-  \item
-  \item
+  \item Configurer le switch \textbf{Cisco SF-300} avec les VLANs des ligues (121, 122, 123)
+  \item Mettre les ports bureaux en mode \textbf{ACCESS} dans le VLAN de leur ligue respective
+  \item Configurer le port de la salle de réunion en mode \textbf{GÉNÉRAL} (partagé entre les VLANs)
+  \item Créer des \textbf{groupes d'adresses MAC} par ligue et les mapper vers leur VLAN
+  \item Valider que l'affectation VLAN se fait \textbf{automatiquement} à la connexion du portable
 \end{itemize}
 
 % =============================================================================
