@@ -106,22 +106,38 @@
 
 \subsection{Présentation du contexte}
 
-% Décrire la situation de départ : la ligue d'Escrime organise une manifestation
-% sous chapiteaux (2500 visiteurs), à quelques centaines de mètres de la M2L.
-% Le service informatique doit prototyper l'infrastructure réseau nomade.
+La \textbf{Maison des Ligues de Lorraine (M2L)} héberge de nombreuses ligues sportives régionales.
+Dans ce cadre, la \textbf{ligue d'Escrime} organise une manifestation d'envergure ---
+les \textit{Assises de l'Escrime} --- sous chapiteaux, à quelques centaines de mètres des bâtiments de la M2L.
+L'événement accueille environ \textbf{2500 visiteurs} et nécessite une infrastructure réseau temporaire
+et autonome, déployée sur site pour la durée de la manifestation.
+
+Le service informatique de la M2L est chargé de \textbf{concevoir et prototyper} cette infrastructure
+réseau nomade avant le déploiement réel.
 
 \subsection{Problématique identifiée}
 
-% Expliquer le besoin : fournir un accès Wifi sécurisé et séparé
-% pour les organisateurs et les visiteurs, sans que le public
-% puisse accéder aux ressources de l'orga.
+Le principal défi est de fournir un accès réseau Wi-Fi à deux types d'utilisateurs aux besoins très différents :
+
+\begin{itemize}
+  \item Les \textbf{organisateurs}, qui ont besoin d'accéder à des ressources internes
+        (imprimante réseau, traceur à banderoles, afficheur géant) et dont le réseau doit rester \textbf{strictement privé}.
+  \item Les \textbf{visiteurs}, qui ont uniquement besoin d'un accès Internet, sans possibilité
+        d'accéder aux ressources de l'organisation ni aux équipements des autres visiteurs.
+\end{itemize}
+
+Il faut donc mettre en place une \textbf{séparation claire des flux} entre ces deux populations,
+tout en assurant l'accès à Internet pour les deux, via une connexion fournie par France Télécom
+dont le routeur n'est \textbf{pas configurable}.
 
 \subsection{Objectifs du projet}
 
 \begin{itemize}
-  \item
-  \item
-  \item
+  \item Déployer une infrastructure Wi-Fi avec \textbf{deux SSIDs distincts} (un pour l'orga, un pour le public)
+  \item Mettre en place une \textbf{segmentation réseau par VLANs} pour isoler les deux types d'utilisateurs
+  \item Configurer un service \textbf{DHCP} attribuant automatiquement les adresses IP selon le VLAN
+  \item Assurer l'accès à Internet pour les deux réseaux via un \textbf{NAT} sur le routeur MDL
+  \item Appliquer des \textbf{règles de filtrage} empêchant les visiteurs d'accéder aux ressources de l'organisation
 \end{itemize}
 
 % =============================================================================
