@@ -1,0 +1,351 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage[explicit]{titlesec}
+\usepackage{tcolorbox}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+
+\geometry{margin=2.5cm, top=3cm, bottom=3cm}
+
+% ── Couleurs ──────────────────────────────────────────────────────────────────
+\definecolor{primary}{RGB}{0, 70, 140}
+\definecolor{secondary}{RGB}{230, 240, 255}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{darkgray}{RGB}{80, 80, 80}
+
+% ── En-tête / Pied de page ────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textcolor{darkgray}{\small BTS SIO — SISR | AP-2}}
+\rhead{\textcolor{darkgray}{\small Projet ASSIZ — M2L}}
+\cfoot{\textcolor{darkgray}{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Style des sections ────────────────────────────────────────────────────────
+\titleformat{\section}
+  {\normalfont\Large\bfseries\sffamily\color{primary}}
+  {}
+  {0pt}
+  {\colorbox{secondary}{\parbox{\dimexpr\textwidth-2\fboxsep}{\thesection\quad #1}}}
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries\sffamily\color{primary}}
+  {\thesubsection}
+  {0.5em}
+  {#1}
+  [\vspace{-0.3em}\textcolor{primary!40}{\hrule height 0.5pt}\vspace{0.3em}]
+
+% ── Style des listes ──────────────────────────────────────────────────────────
+\setlist[itemize,1]{label=\textcolor{primary}{$\bullet$}, leftmargin=2em, labelsep=1em}
+\setlist[itemize,2]{label=\textcolor{primary!60}{--}, leftmargin=2em, labelsep=0.8em}
+\setlist[enumerate,1]{label=\textcolor{primary}{\arabic*.}, leftmargin=2em, labelsep=1em}
+\setlist{itemsep=2pt, parsep=2pt}
+
+% ── Boîte info ────────────────────────────────────────────────────────────────
+\tcbuselibrary{skins}
+\newtcolorbox{infobox}{
+  colback=secondary, colframe=primary,
+  boxrule=0.5pt, leftrule=4pt,
+  sharp corners, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% ── Tableau stylé ─────────────────────────────────────────────────────────────
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\hypersetup{colorlinks=true, linkcolor=primary, urlcolor=primary, citecolor=primary}
+
+% =============================================================================
+\begin{document}
+\thispagestyle{empty}
+
+% ── Page de garde ─────────────────────────────────────────────────────────────
+\begin{center}
+  \vspace*{2cm}
+  {\color{primary}\rule{\textwidth}{2pt}}
+  \vspace{0.8em}
+
+  {\Huge\bfseries\sffamily\color{primary} Projet ASSIZ}\\[0.4em]
+  {\Large\sffamily\color{darkgray} Couverture Wifi des Assises de l'Escrime}\\[0.2em]
+  {\normalsize\color{darkgray} Maison des Ligues de Lorraine — AP-2 SISR}
+
+  \vspace{0.8em}
+  {\color{primary}\rule{\textwidth}{2pt}}
+
+  \vspace{2cm}
+
+  \begin{tcolorbox}[colback=lightgray, colframe=primary!30, sharp corners, width=0.7\textwidth]
+    \centering
+    \textbf{Groupe :} Maël — Joan — Camille — Anna\\[0.3em]
+    \textbf{Formation :} BTS SIO option SISR\\[0.3em]
+    \textbf{Année :} 2025–2026\\[0.3em]
+    \textbf{Date :} \today
+  \end{tcolorbox}
+\end{center}
+
+\vfill
+{\small\color{darkgray}\centering Réseau CERTA — Contexte M2L\par}
+
+\newpage
+\tableofcontents
+\newpage
+
+% =============================================================================
+\section{Contexte et problématique}
+
+\subsection{Présentation du contexte}
+
+% Décrire la situation de départ : la ligue d'Escrime organise une manifestation
+% sous chapiteaux (2500 visiteurs), à quelques centaines de mètres de la M2L.
+% Le service informatique doit prototyper l'infrastructure réseau nomade.
+
+\subsection{Problématique identifiée}
+
+% Expliquer le besoin : fournir un accès Wifi sécurisé et séparé
+% pour les organisateurs et les visiteurs, sans que le public
+% puisse accéder aux ressources de l'orga.
+
+\subsection{Objectifs du projet}
+
+\begin{itemize}
+  \item
+  \item
+  \item
+\end{itemize}
+
+% =============================================================================
+\section{Infrastructure réseau}
+
+\subsection{Matériel réseau}
+
+\begin{itemize}
+  \item \textbf{Routeur ISR4321} — Arrivée internet
+  \item \textbf{Routeur ISR4331} — Gestion du réseau local
+  \item \textbf{Switch 2960-24TT} — Switch principal, connecte les machines du réseau
+  \item \textbf{AP-PT} — Access Point, gère le réseau Wi-Fi (×5 pour couvrir toute la zone)
+\end{itemize}
+
+\subsection{Matériel informatique}
+
+\begin{itemize}
+  \item \textbf{PC-PT — PC-1-Accueil} — Poste de travail pour l'accueil, connecté au switch
+  \item \textbf{PC-PT — PC-2-Orga} — Poste de travail pour l'organisation, connecté au switch
+  \item \textbf{Laptop-PT — Portable-Orga} — Ordinateur portable pour l'organisation, connecté à l'AP
+  \item \textbf{Laptop-PT — Portable-Visiteur} — Ordinateur portable dédié aux visiteurs, connecté à l'AP
+\end{itemize}
+
+\subsection{Organisation du réseau}
+
+\begin{itemize}
+  \item Le routeur ISR4321 est connecté à Internet et gère la connexion entrante.
+  \item Le routeur ISR4331 est connecté au routeur ISR4321 et gère le réseau local, y compris les VLANs et les règles de sécurité.
+  \item Le switch 2960-24TT est connecté au routeur ISR4331 et connecte les postes de travail et les APs.
+  \item Les AP-PT sont connectés au switch et fournissent une couverture Wi-Fi pour les zones d'accueil et d'organisation.
+  \item Les postes fixes sont connectés au switch ; les portables se connectent via les AP.
+\end{itemize}
+
+\subsection{Schéma réseau}
+
+% Insérer ici le schéma de topologie réseau (export Packet Tracer ou Visio)
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=0.9\textwidth]{schema_assiz.png}
+%   \caption{Topologie réseau — Projet ASSIZ}
+% \end{figure}
+
+\begin{infobox}
+  \textit{Schéma à insérer ici — export depuis Cisco Packet Tracer ou Draw.io}
+\end{infobox}
+
+\subsection{Plan d'adressage IP}
+
+\begin{tabularx}{\textwidth}{L{3.5cm} C{2.5cm} C{2.5cm} C{2.5cm} L{3cm}}
+  \toprule
+  \textbf{Équipement} & \textbf{VLAN} & \textbf{Adresse IP} & \textbf{Masque} & \textbf{Passerelle} \\
+  \midrule
+  Routeur ISR4331 (LAN) & — & & & — \\
+  Switch 2960-24TT & 1 & & & \\
+  PC-1-Accueil & 2 & & & \\
+  PC-2-Orga & 2 & & & \\
+  Portable-Orga & 2 & DHCP & & \\
+  Portable-Visiteur & 3 & DHCP & & \\
+  AP-PT (×5) & 1 & & & \\
+  \bottomrule
+\end{tabularx}
+
+\subsection{VLANs}
+
+\begin{tabularx}{\textwidth}{C{2cm} C{3cm} X C{3.5cm}}
+  \toprule
+  \textbf{VLAN ID} & \textbf{Nom} & \textbf{Équipements} & \textbf{Plage réseau} \\
+  \midrule
+  VLAN 1 & Management & Switch, APs & \\
+  VLAN 2 & Orga & PC-1-Accueil, PC-2-Orga, Portable-Orga & 10.10.10.0/24 \\
+  VLAN 3 & Public & Portable-Visiteur & 172.31.1.0/24 \\
+  \bottomrule
+\end{tabularx}
+
+% =============================================================================
+\section{Configuration du réseau}
+
+\subsection{Configuration des routeurs}
+
+\subsubsection{Routeur ISR4321 — Connexion Internet}
+
+% Décrire et coller la configuration : interface WAN, NAT outside, route par défaut
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Configuration ISR4321}, colbacktitle=primary]
+% Coller ici les commandes IOS
+\end{tcolorbox}
+
+\subsubsection{Routeur ISR4331 — Réseau local}
+
+% Décrire et coller la configuration : sous-interfaces (router-on-a-stick),
+% encapsulation 802.1Q, adresses IP par VLAN
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Configuration ISR4331}, colbacktitle=primary]
+% Coller ici les commandes IOS
+\end{tcolorbox}
+
+\subsection{Configuration NAT}
+
+% Expliquer et coller la configuration NAT (ip nat inside / outside,
+% access-list, ip nat inside source)
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Configuration NAT}, colbacktitle=primary]
+% Coller ici les commandes IOS
+\end{tcolorbox}
+
+\subsection{Configuration DHCP}
+
+% 2 pools DHCP : un pour le VLAN orga (10.10.10.0/24) et un pour le VLAN public (172.31.1.0/24)
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Configuration DHCP}, colbacktitle=primary]
+% Coller ici les commandes IOS
+\end{tcolorbox}
+
+\subsection{Configuration du switch}
+
+% Création des VLANs, ports en mode access (vers postes fixes),
+% ports en mode trunk (vers routeur et APs)
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Configuration Switch 2960}, colbacktitle=primary]
+% Coller ici les commandes IOS
+\end{tcolorbox}
+
+\subsection{Configuration des Access Points}
+
+% Pour chaque AP : 2 SSIDs (public diffusé WPA2, orga non diffusé WPA2),
+% association SSID → VLAN
+
+\subsubsection{SSID "orga"}
+
+\begin{itemize}
+  \item Diffusion SSID : non diffusé (hidden)
+  \item Sécurité : WPA2
+  \item Clé : (connue des organisateurs uniquement)
+  \item VLAN associé : VLAN 2
+\end{itemize}
+
+\subsubsection{SSID "public"}
+
+\begin{itemize}
+  \item Diffusion SSID : diffusé
+  \item Sécurité : WPA2
+  \item Clé : (indiquée sur le badge visiteur)
+  \item VLAN associé : VLAN 3
+  \item Isolation entre postes : activée
+\end{itemize}
+
+\subsection{Règles de filtrage}
+
+% Décrire les ACL ou règles de pare-feu empêchant le VLAN public
+% d'accéder aux ressources du VLAN orga (imprimante, traceur, afficheur géant)
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Règles de filtrage (ACL)}, colbacktitle=primary]
+% Coller ici les commandes IOS
+\end{tcolorbox}
+
+% =============================================================================
+\section{Tests et validation}
+
+\subsection{Plan de tests}
+
+\begin{tabularx}{\textwidth}{C{0.5cm} L{4.5cm} L{4cm} C{2cm} C{2cm}}
+  \toprule
+  \textbf{\#} & \textbf{Test} & \textbf{Action} & \textbf{Résultat attendu} & \textbf{Résultat obtenu} \\
+  \midrule
+  1 & Attribution DHCP VLAN orga & Connecter Portable-Orga sur SSID "orga" & IP en 10.10.10.x & \\
+  2 & Attribution DHCP VLAN public & Connecter Portable-Visiteur sur SSID "public" & IP en 172.31.1.x & \\
+  3 & Accès Internet depuis VLAN orga & Ping 8.8.8.8 depuis Portable-Orga & Succès & \\
+  4 & Accès Internet depuis VLAN public & Ping 8.8.8.8 depuis Portable-Visiteur & Succès & \\
+  5 & Isolation VLAN public → orga & Ping PC-2-Orga depuis Portable-Visiteur & Échec (filtré) & \\
+  6 & Communication interne VLAN orga & Ping PC-1-Accueil depuis Portable-Orga & Succès & \\
+  \bottomrule
+\end{tabularx}
+
+\subsection{Captures d'écran}
+
+% Insérer les captures : attribution DHCP, résultats de ping, interface AP, etc.
+
+\begin{infobox}
+  \textit{Captures d'écran à insérer ici (DHCP, pings, interface de configuration AP)}
+\end{infobox}
+
+% =============================================================================
+\section{Sauvegarde de la configuration (TFTP)}
+
+\subsection{Procédure de sauvegarde}
+
+% Décrire la procédure : adresse du serveur TFTP, commande copy running-config tftp
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Sauvegarde vers TFTP}, colbacktitle=primary]
+% copy running-config tftp
+% Address or name of remote host []?
+% Destination filename []?
+\end{tcolorbox}
+
+\subsection{Vérification}
+
+% Confirmer que le fichier est bien présent sur le serveur TFTP
+
+% =============================================================================
+\section{Avantages et limites de la solution}
+
+\begin{tabularx}{\textwidth}{X X}
+  \toprule
+  \textbf{Avantages} & \textbf{Limites / Inconvénients} \\
+  \midrule
+  & \\
+  & \\
+  & \\
+  & \\
+  \bottomrule
+\end{tabularx}
+
+% =============================================================================
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+
+% Résumer ce qui a été mis en place, les compétences mobilisées,
+% et ce que ce projet apporte dans le cadre du référentiel SISR2.
+
+\end{document}
