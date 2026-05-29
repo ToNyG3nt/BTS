@@ -1,0 +1,356 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage[explicit]{titlesec}
+\usepackage{tcolorbox}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+
+\geometry{margin=2.5cm, top=3cm, bottom=3cm}
+
+% ── Couleurs ──────────────────────────────────────────────────────────────────
+\definecolor{primary}{RGB}{0, 70, 140}
+\definecolor{secondary}{RGB}{230, 240, 255}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{darkgray}{RGB}{80, 80, 80}
+
+% ── En-tête / Pied de page ────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textcolor{darkgray}{\small BTS SIO — SISR | AP-2}}
+\rhead{\textcolor{darkgray}{\small Projet DYLAN — M2L}}
+\cfoot{\textcolor{darkgray}{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Style des sections ────────────────────────────────────────────────────────
+\titleformat{\section}
+  {\normalfont\Large\bfseries\sffamily\color{primary}}
+  {}
+  {0pt}
+  {\colorbox{secondary}{\parbox{\dimexpr\textwidth-2\fboxsep}{\thesection\quad #1}}}
+
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries\sffamily\color{primary}}
+  {\thesubsection}
+  {0.5em}
+  {#1}
+  [\vspace{-0.3em}\textcolor{primary!40}{\hrule height 0.5pt}\vspace{0.3em}]
+
+% ── Style des listes ──────────────────────────────────────────────────────────
+\setlist[itemize,1]{label=\textcolor{primary}{$\bullet$}, leftmargin=2em, labelsep=1em}
+\setlist[itemize,2]{label=\textcolor{primary!60}{--}, leftmargin=2em, labelsep=0.8em}
+\setlist[enumerate,1]{label=\textcolor{primary}{\arabic*.}, leftmargin=2em, labelsep=1em}
+\setlist{itemsep=2pt, parsep=2pt}
+
+% ── Boîte info ────────────────────────────────────────────────────────────────
+\tcbuselibrary{skins}
+\newtcolorbox{infobox}{
+  colback=secondary, colframe=primary,
+  boxrule=0.5pt, leftrule=4pt,
+  sharp corners, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% ── Tableau stylé ─────────────────────────────────────────────────────────────
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\hypersetup{colorlinks=true, linkcolor=primary, urlcolor=primary, citecolor=primary}
+
+% =============================================================================
+\begin{document}
+\thispagestyle{empty}
+
+% ── Page de garde ─────────────────────────────────────────────────────────────
+\begin{center}
+  \vspace*{2cm}
+  {\color{primary}\rule{\textwidth}{2pt}}
+  \vspace{0.8em}
+
+  {\Huge\bfseries\sffamily\color{primary} Projet DYLAN}\\[0.4em]
+  {\Large\sffamily\color{darkgray} Insertion dynamique dans le VLAN par adresse MAC}\\[0.2em]
+  {\normalsize\color{darkgray} Maison des Ligues de Lorraine — AP-2 SISR}
+
+  \vspace{0.8em}
+  {\color{primary}\rule{\textwidth}{2pt}}
+
+  \vspace{2cm}
+
+  \begin{tcolorbox}[colback=lightgray, colframe=primary!30, sharp corners, width=0.7\textwidth]
+    \centering
+    \textbf{Groupe :} Maël — Joan — Camille — Anna\\[0.3em]
+    \textbf{Formation :} BTS SIO option SISR\\[0.3em]
+    \textbf{Année :} 2025–2026\\[0.3em]
+    \textbf{Date :} \today
+  \end{tcolorbox}
+\end{center}
+
+\vfill
+{\small\color{darkgray}\centering Réseau CERTA — Contexte M2L\par}
+
+\newpage
+\tableofcontents
+\newpage
+
+% =============================================================================
+\section{Contexte et problématique}
+
+\subsection{Présentation du contexte}
+
+% Depuis la mise en place des VLANs (projet VELANNE), les personnels des ligues
+% ne peuvent plus accéder à leurs données depuis la salle de réunion commune.
+% Les postes fixes sont dans leur VLAN de ligue, mais la prise de la salle de
+% réunion est partagée entre plusieurs ligues.
+
+\subsection{Problématique identifiée}
+
+% Comment permettre à un portable de se placer automatiquement
+% dans le bon VLAN selon la ligue à laquelle il appartient,
+% sans intervention manuelle sur le switch ?
+
+\subsection{Objectifs du projet}
+
+\begin{itemize}
+  \item
+  \item
+  \item
+\end{itemize}
+
+% =============================================================================
+\section{Infrastructure réseau}
+
+\subsection{Matériel utilisé}
+
+\begin{itemize}
+  \item \textbf{Switch Cisco SF-300} — Switch administrable supportant la gestion de VLANs par adresse MAC (bâtiments A et B)
+  \item \textbf{PC fixes des ligues} — Connectés sur les ports ACCESS de leur VLAN respectif
+  \item \textbf{Portables des ligues} — Se connectent sur la prise de la salle de réunion
+\end{itemize}
+
+\subsection{Schéma réseau}
+
+% Insérer ici le schéma de topologie : switch SF-300, ports bureaux (ACCESS),
+% port salle de réunion (GÉNÉRAL), postes fixes et portables
+
+\begin{infobox}
+  \textit{Schéma à insérer ici — topologie switch Cisco SF-300 avec les VLANs}
+\end{infobox}
+
+\subsection{Plan de VLANs}
+
+\begin{infobox}
+  \textbf{Convention de numérotation M2L :} \texttt{[Bâtiment][Étage][Numéro ligue]}\\
+  Exemple : VLAN \textbf{121} = Bâtiment A, Étage 2, Ligue 1 (Volley)
+\end{infobox}
+
+\vspace{0.5em}
+\begin{tabularx}{\textwidth}{C{2cm} C{3cm} C{3cm} X}
+  \toprule
+  \textbf{VLAN ID} & \textbf{Ligue} & \textbf{Groupe MAC} & \textbf{Équipements concernés} \\
+  \midrule
+  121 & Volley & Groupe-121 & Postes fixes volley + portables volley \\
+  122 & Escrime & Groupe-122 & Postes fixes escrime + portables escrime \\
+  123 & Badminton & Groupe-123 & Postes fixes badminton + portables badminton \\
+  \bottomrule
+\end{tabularx}
+
+\subsection{Adresses MAC des équipements}
+
+\begin{tabularx}{\textwidth}{L{4cm} C{3cm} C{3cm} C{3cm}}
+  \toprule
+  \textbf{Équipement} & \textbf{Adresse MAC} & \textbf{Groupe} & \textbf{VLAN} \\
+  \midrule
+  Portable Volley & & Groupe-121 & 121 \\
+  Portable Escrime & & Groupe-122 & 122 \\
+  Portable Badminton & & Groupe-123 & 123 \\
+  \bottomrule
+\end{tabularx}
+
+% =============================================================================
+\section{Configuration du switch Cisco SF-300}
+
+\subsection{Création des VLANs}
+
+% Aller dans VLAN Management > VLAN Settings > Add
+% Créer VLAN 121, 122, 123
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Création des VLANs (CLI)}, colbacktitle=primary]
+% vlan database
+% vlan 121 name Volley
+% vlan 122 name Escrime
+% vlan 123 name Badminton
+% exit
+\end{tcolorbox}
+
+\subsection{Configuration des ports en mode ACCESS}
+
+% Chaque port de bureau est assigné au VLAN de la ligue correspondante.
+% Un port en mode ACCESS ne transmet que les trames d'un seul VLAN.
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Ports ACCESS (CLI)}, colbacktitle=primary]
+% interface GigabitEthernet X
+%  switchport mode access
+%  switchport access vlan 121   (adapter selon la ligue)
+% exit
+\end{tcolorbox}
+
+\begin{tabularx}{\textwidth}{C{3cm} C{3cm} C{3cm} X}
+  \toprule
+  \textbf{Port} & \textbf{Mode} & \textbf{VLAN} & \textbf{Équipement connecté} \\
+  \midrule
+   & ACCESS & 121 & Poste fixe Volley \\
+   & ACCESS & 122 & Poste fixe Escrime \\
+   & ACCESS & 123 & Poste fixe Badminton \\
+  \bottomrule
+\end{tabularx}
+
+\subsection{Configuration du port de la salle de réunion (mode GÉNÉRAL)}
+
+% Le port de la prise de la salle de réunion est mis en mode GÉNÉRAL :
+% il est membre des VLANs 121, 122 et 123 simultanément.
+% C'est sur ce port que le mécanisme MAC-based VLAN s'applique.
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Port salle de réunion — mode GÉNÉRAL (CLI)}, colbacktitle=primary]
+% interface GigabitEthernet X
+%  switchport mode general
+%  switchport general allowed vlan add 121,122,123 untagged
+% exit
+\end{tcolorbox}
+
+\subsection{Création des groupes d'adresses MAC}
+
+% Via l'interface web : VLAN Management > MAC-Based Groups > Add
+% Créer un groupe par ligue et y ajouter les adresses MAC des portables
+
+\begin{infobox}
+  \textbf{Chemin interface web :} \texttt{VLAN Management > MAC-Based Groups > Add}\\
+  Créer un groupe par ligue (Groupe-121, Groupe-122, Groupe-123) et y ajouter
+  les adresses MAC des portables correspondants.
+\end{infobox}
+
+\begin{tcolorbox}[colback=black!90, coltext=green!70!white, fontupper=\ttfamily\small,
+  title={\color{white}\small Groupes MAC (CLI)}, colbacktitle=primary]
+% mac address-table static XX:XX:XX:XX:XX:XX vlan 121 interface GigabitEthernet X
+% (répéter pour chaque adresse MAC)
+\end{tcolorbox}
+
+\subsection{Mapping Groupe MAC → VLAN}
+
+% Via l'interface web : VLAN Management > MAC-Based Groups to VLAN > Add
+% Associer chaque groupe à son VLAN cible
+
+\begin{infobox}
+  \textbf{Chemin interface web :} \texttt{VLAN Management > MAC-Based Groups to VLAN > Add}\\
+  Associer : Groupe-121 → VLAN 121, Groupe-122 → VLAN 122, Groupe-123 → VLAN 123.
+\end{infobox}
+
+\begin{tabularx}{\textwidth}{C{3.5cm} C{3.5cm} X}
+  \toprule
+  \textbf{Groupe MAC} & \textbf{VLAN cible} & \textbf{Description} \\
+  \midrule
+  Groupe-121 & 121 & Portables de la ligue Volley \\
+  Groupe-122 & 122 & Portables de la ligue Escrime \\
+  Groupe-123 & 123 & Portables de la ligue Badminton \\
+  \bottomrule
+\end{tabularx}
+
+% =============================================================================
+\section{Tests et validation}
+
+\subsection{Plan de tests}
+
+\begin{tabularx}{\textwidth}{C{0.5cm} L{4.5cm} L{4cm} C{2cm} C{2cm}}
+  \toprule
+  \textbf{\#} & \textbf{Test} & \textbf{Action} & \textbf{Résultat attendu} & \textbf{Résultat obtenu} \\
+  \midrule
+  1 & Affectation automatique VLAN 121 & Brancher le portable Volley sur la prise salle de réunion & VLAN 121 assigné & \\
+  2 & Affectation automatique VLAN 122 & Brancher le portable Escrime & VLAN 122 assigné & \\
+  3 & Affectation automatique VLAN 123 & Brancher le portable Badminton & VLAN 123 assigné & \\
+  4 & Communication dans le même VLAN & Ping poste fixe Volley depuis portable Volley & Succès & \\
+  5 & Isolation entre VLANs & Ping poste fixe Escrime depuis portable Volley & Échec (isolé) & \\
+  6 & Partage de dossiers Windows & Accéder au dossier partagé depuis le portable dans le même VLAN & Succès & \\
+  \bottomrule
+\end{tabularx}
+
+\subsection{Captures d'écran}
+
+\begin{infobox}
+  \textit{Captures d'écran à insérer ici : interface SF-300, assignation VLAN, résultats de ping, partage réseau Windows}
+\end{infobox}
+
+% =============================================================================
+\section{Avantages et inconvénients de la solution}
+
+\begin{tabularx}{\textwidth}{X X}
+  \toprule
+  \textbf{Avantages} & \textbf{Inconvénients} \\
+  \midrule
+  & \\
+  & \\
+  & \\
+  & \\
+  \bottomrule
+\end{tabularx}
+
+% =============================================================================
+\section{Support de formation — Partage de dossiers Windows}
+
+\subsection{Objectif}
+
+% Expliquer comment deux postes dans le même VLAN peuvent partager des dossiers
+% sous Windows (partage réseau, droits d'accès, accès par \\NomMachine\Dossier)
+
+\subsection{Prérequis}
+
+\begin{itemize}
+  \item Les deux machines doivent être dans le même VLAN (et donc sur le même sous-réseau)
+  \item La découverte réseau et le partage de fichiers doivent être activés dans Windows
+  \item
+\end{itemize}
+
+\subsection{Procédure}
+
+\begin{enumerate}
+  \item Activer le partage réseau sur Windows :
+  \begin{itemize}
+    \item Panneau de configuration → Centre réseau et partage → Modifier les paramètres de partage avancés
+    \item Activer la découverte réseau et le partage de fichiers
+  \end{itemize}
+  \item Partager un dossier :
+  \begin{itemize}
+    \item Clic droit sur le dossier → Propriétés → Partage → Partager
+    \item Définir les droits d'accès (lecture / lecture-écriture)
+  \end{itemize}
+  \item Accéder au dossier partagé depuis l'autre machine :
+  \begin{itemize}
+    \item Explorateur de fichiers → \texttt{\textbackslash\textbackslash NomMachine\textbackslash NomDossier}
+    \item Ou via l'adresse IP : \texttt{\textbackslash\textbackslash 10.x.x.x\textbackslash NomDossier}
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Captures d'écran}
+
+\begin{infobox}
+  \textit{Captures d'écran à insérer ici : configuration partage, accès depuis l'autre poste}
+\end{infobox}
+
+% =============================================================================
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+
+% Résumer ce qui a été mis en place, les compétences mobilisées (SISR2),
+% et l'intérêt de la solution MAC-based VLAN dans un contexte professionnel réel.
+
+\end{document}
