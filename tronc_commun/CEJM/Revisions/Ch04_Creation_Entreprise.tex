@@ -1,0 +1,157 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{lmodern}
+
+% --- Couleur discipline : MANAGEMENT ---
+\definecolor{mainColor}{RGB}{0,120,60}
+\definecolor{darkGray}{RGB}{50,50,50}
+
+\tcbset{boxrule=0.5pt, arc=3pt, left=5pt, right=5pt, top=3pt, bottom=3pt, breakable}
+
+\newtcolorbox{defbox}[1]{
+  colback=mainColor!8, colframe=mainColor, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=DÉFINITION \textemdash\ #1}
+
+\newtcolorbox{keybox}{
+  colback=darkGray!7, colframe=darkGray!50, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=POINT CLÉ}
+
+\newtcolorbox{exbox}{
+  colback=mainColor!5, colframe=mainColor!40,
+  fonttitle=\bfseries\footnotesize, title=EXEMPLE}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\textcolor{mainColor}{\textbf{CEJM — BTS SIO}}}
+\fancyhead[C]{\small\textbf{Chapitre 4 — La création d'entreprise et sa performance}}
+\fancyhead[R]{\small\textcolor{mainColor}{\textbf{MANAGEMENT}}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{15pt}
+\setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\textcolor{mainColor}{Chapitre 4}}\\[2pt]
+  {\large La création d'entreprise et sa performance}\\[4pt]
+  \textit{\textcolor{darkGray}{Comment créer une entreprise et mesurer sa performance économique ?}}
+\end{center}
+\vspace{4pt}\hrule\vspace{8pt}
+
+\section*{Définitions essentielles}
+
+\begin{defbox}{Entreprise}
+Organisation économique qui \textbf{combine des facteurs de production} pour produire des biens ou services destinés à la vente.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Business plan}
+Document de synthèse qui présente le \textbf{projet d'entreprise}, sa stratégie commerciale et ses prévisions financières.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Performance}
+Capacité de l'entreprise à \textbf{atteindre ses objectifs} de manière efficace (faire les bonnes choses) et efficiente (avec les bons moyens).
+\end{defbox}
+
+\section*{Le processus de création d'entreprise}
+
+\begin{center}
+\textbf{Idée} $\rightarrow$ \textbf{Étude de marché} $\rightarrow$ \textbf{Business plan} $\rightarrow$ \textbf{Financement} $\rightarrow$ \textbf{Choix juridique} $\rightarrow$ \textbf{Immatriculation}
+\end{center}
+
+\subsection*{Le financement}
+\begin{itemize}
+  \item \textbf{Apports personnels} : épargne, family \& friends
+  \item \textbf{Aides publiques} : ACRE (exonération cotisations), prêts d'honneur, subventions
+  \item \textbf{Emprunts bancaires} : crédits professionnels
+  \item \textbf{Investisseurs} : business angels, capital-risque (start-up)
+\end{itemize}
+
+\section*{Les formes juridiques d'entreprise}
+
+\begin{center}
+\begin{tabular}{|l|c|c|l|}
+\hline
+\textbf{Forme} & \textbf{Associés} & \textbf{Capital min.} & \textbf{Responsabilité} \\
+\hline
+Entreprise individuelle (EI) & 1 & Aucun & \textbf{Illimitée} \\
+Micro-entreprise & 1 & Aucun & Illimitée \\
+SARL & 1 à 100 & 1 € & \textbf{Limitée aux apports} \\
+SAS / SASU & 1+ & 1 € & \textbf{Limitée aux apports} \\
+SA & 2+ (7 si cotée) & 37 000 € & Limitée aux apports \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{keybox}
+\textbf{EI} : simple mais risque sur patrimoine personnel. \textbf{SARL/SAS} : protection du patrimoine, plus adapté aux projets ambitieux.
+\end{keybox}
+
+\section*{La mesure de la performance}
+
+\subsection*{Performance commerciale}
+\begin{itemize}
+  \item \textbf{Chiffre d'affaires (CA)} = Prix × Quantités vendues
+  \item \textbf{Part de marché} = CA entreprise / CA total du marché × 100
+  \item \textbf{Taux de croissance du CA} = (CA$_n$ $-$ CA$_{n-1}$) / CA$_{n-1}$ × 100
+\end{itemize}
+
+\subsection*{Performance financière}
+\begin{itemize}
+  \item \textbf{Marge commerciale} = Ventes $-$ Coût d'achat des marchandises vendues
+  \item \textbf{Résultat d'exploitation} = Produits d'exploitation $-$ Charges d'exploitation
+  \item \textbf{Résultat net} = Résultat après impôts et charges financières
+  \item \textbf{Taux de marge} = Résultat / CA × 100
+  \item \textbf{Rentabilité financière} = Résultat net / Capitaux propres × 100
+\end{itemize}
+
+\subsection*{Performance sociale}
+\begin{itemize}
+  \item \textbf{Productivité} = Production / Nombre de salariés
+  \item \textbf{Taux d'absentéisme} = Heures d'absence / Heures théoriques × 100
+  \item \textbf{Turn-over} = Nombre de départs / Effectif moyen × 100
+\end{itemize}
+
+\vspace{4pt}
+\begin{exbox}
+\textbf{Start-up tech} : CA faible au départ, financée par capital-risque, statut SAS pour attirer investisseurs, objectif = croissance rapide.\\
+\textbf{PME} : performance liée à la productivité, rentabilité mesurée par le taux de marge.
+\end{exbox}
+
+\section*{Points clés à retenir}
+
+\begin{keybox}
+Le \textbf{business plan} est indispensable pour convaincre les financeurs et structurer le projet.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+Le choix de la forme juridique dépend du \textbf{niveau de risque souhaité}, du nombre d'associés et des besoins en financement.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+La performance se mesure sur \textbf{trois dimensions} : commerciale, financière et sociale.
+\end{keybox}
+
+\section*{Mots-clés}
+\textcolor{mainColor}{\textbf{Entrepreneur / Entrepreneuriat}} $\cdot$
+\textcolor{mainColor}{\textbf{Business plan}} $\cdot$
+\textcolor{mainColor}{\textbf{EI / SARL / SAS / SA}} $\cdot$
+\textcolor{mainColor}{\textbf{Chiffre d'affaires}} $\cdot$
+\textcolor{mainColor}{\textbf{Résultat net}} $\cdot$
+\textcolor{mainColor}{\textbf{Taux de marge}} $\cdot$
+\textcolor{mainColor}{\textbf{Rentabilité}} $\cdot$
+\textcolor{mainColor}{\textbf{Part de marché}} $\cdot$
+\textcolor{mainColor}{\textbf{Productivité}} $\cdot$
+\textcolor{mainColor}{\textbf{Turn-over}} $\cdot$
+\textcolor{mainColor}{\textbf{Capital social}}
+
+\end{document}
