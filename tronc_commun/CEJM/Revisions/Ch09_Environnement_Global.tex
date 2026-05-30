@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{lmodern}
+
+% --- Couleur discipline : MANAGEMENT ---
+\definecolor{mainColor}{RGB}{0,120,60}
+\definecolor{darkGray}{RGB}{50,50,50}
+
+\tcbset{boxrule=0.5pt, arc=3pt, left=5pt, right=5pt, top=3pt, bottom=3pt, breakable}
+
+\newtcolorbox{defbox}[1]{
+  colback=mainColor!8, colframe=mainColor, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=DÉFINITION \textemdash\ #1}
+
+\newtcolorbox{keybox}{
+  colback=darkGray!7, colframe=darkGray!50, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=POINT CLÉ}
+
+\newtcolorbox{exbox}{
+  colback=mainColor!5, colframe=mainColor!40,
+  fonttitle=\bfseries\footnotesize, title=EXEMPLE}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\textcolor{mainColor}{\textbf{CEJM — BTS SIO}}}
+\fancyhead[C]{\small\textbf{Chapitre 9 — L'environnement global de l'entreprise}}
+\fancyhead[R]{\small\textcolor{mainColor}{\textbf{MANAGEMENT}}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{15pt}
+\setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\textcolor{mainColor}{Chapitre 9}}\\[2pt]
+  {\large L'environnement global de l'entreprise}\\[4pt]
+  \textit{\textcolor{darkGray}{Comment l'entreprise analyse-t-elle son environnement pour prendre ses décisions ?}}
+\end{center}
+\vspace{4pt}\hrule\vspace{8pt}
+
+\section*{Définitions essentielles}
+
+\begin{defbox}{Macro-environnement}
+\textbf{Environnement général} de l'entreprise : facteurs sur lesquels elle a peu ou pas d'influence (tendances sociétales, réglementations, conjoncture).
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Micro-environnement}
+\textbf{Environnement proche} de l'entreprise, avec lequel elle interagit directement : clients, concurrents, fournisseurs, partenaires.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Analyse PESTEL}
+Outil de diagnostic de l'\textbf{environnement externe} qui classe les facteurs en 6 axes : Politique, Économique, Socioculturel, Technologique, Écologique, Légal.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Innovation}
+Introduction d'une \textbf{nouveauté} (produit, procédé, organisation, marché) permettant à l'entreprise de s'adapter aux évolutions de l'environnement et de se différencier.
+\end{defbox}
+
+\section*{Macro vs Micro-environnement}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+ & \textbf{Macro-environnement} & \textbf{Micro-environnement} \\
+\hline
+\textbf{Influence de l'entreprise} & Très faible & Directe (possible) \\
+\textbf{Exemples} & Lois, conjoncture, climat & Clients, concurrents, fournisseurs \\
+\textbf{Outils d'analyse} & PESTEL & 5 forces de Porter \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{L'analyse PESTEL}
+
+\begin{keybox}
+Chaque facteur PESTEL peut être une \textbf{opportunité à saisir} ou une \textbf{menace à anticiper}.
+\end{keybox}
+
+\vspace{4pt}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Lettre} & \textbf{Facteur} & \textbf{Exemples} \\
+\hline
+\textbf{P} & Politique & Stabilité gouvernementale, politique fiscale, commerce extérieur \\
+\textbf{E} & Économique & Croissance du PIB, inflation, taux d'intérêt, chômage, pouvoir d'achat \\
+\textbf{S} & Socioculturel & Vieillissement pop., modes de vie, niveau d'éducation, consumérisme \\
+\textbf{T} & Technologique & R\&D, digitalisation, brevets, IA, infrastructures numériques \\
+\textbf{E} & Écologique & Changement climatique, normes environnementales, énergies renouvelables \\
+\textbf{L} & Légal & Droit du travail, droit de la concurrence, RGPD, normes produits \\
+\hline
+\end{tabular}
+
+\vspace{6pt}
+\begin{exbox}
+\textbf{Entreprise de e-commerce} : Opportunité \textbf{T} (essor du mobile) + Opportunité \textbf{E} (pouvoir d'achat stable). Menace \textbf{L} (RGPD contraignant) + Menace \textbf{E} (inflation = baisse des achats).
+\end{exbox}
+
+\section*{Les conséquences sur la prise de décision}
+
+\begin{itemize}
+  \item \textbf{Opportunités} : évolutions favorables à saisir (nouveau marché, nouvelle techno, déréglementation)
+  \item \textbf{Menaces} : contraintes à anticiper (crise économique, réglementation stricte, rupture technologique)
+  \item \textbf{Incertitude} : l'environnement est complexe et volatile → la décision se prend sous contrainte
+\end{itemize}
+
+\section*{L'innovation comme réponse aux évolutions}
+
+\begin{keybox}
+Innover permet de \textbf{transformer une menace en opportunité} et d'assurer la pérennité de l'entreprise.
+\end{keybox}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Type d'innovation} & \textbf{Description} \\
+\hline
+Produit & Nouveau bien ou service (ex. : smartphone) \\
+Procédé & Nouvelle méthode de production (ex. : impression 3D) \\
+Organisationnelle & Nouvelle façon d'organiser le travail (ex. : télétravail) \\
+Commerciale & Nouveau canal de vente (ex. : marketplace) \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{exbox}
+Le \textbf{changement climatique} (facteur E écologique) est une menace pour l'industrie automobile thermique → opportunité pour les constructeurs de véhicules électriques.
+\end{exbox}
+
+\section*{Points clés à retenir}
+
+\begin{keybox}
+L'\textbf{analyse PESTEL} est l'outil de référence pour scanner le macro-environnement.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+L'environnement génère des \textbf{opportunités et des menaces} qu'il faut identifier pour adapter la stratégie.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+L'\textbf{innovation} est le principal levier pour s'adapter aux évolutions et rester compétitif.
+\end{keybox}
+
+\section*{Mots-clés}
+\textcolor{mainColor}{\textbf{Macro-environnement}} $\cdot$
+\textcolor{mainColor}{\textbf{Micro-environnement}} $\cdot$
+\textcolor{mainColor}{\textbf{PESTEL}} $\cdot$
+\textcolor{mainColor}{\textbf{Opportunité / Menace}} $\cdot$
+\textcolor{mainColor}{\textbf{Innovation}} $\cdot$
+\textcolor{mainColor}{\textbf{Prise de décision}} $\cdot$
+\textcolor{mainColor}{\textbf{Veille stratégique}} $\cdot$
+\textcolor{mainColor}{\textbf{Mondialisation}} $\cdot$
+\textcolor{mainColor}{\textbf{Digitalisation}}
+
+\end{document}
