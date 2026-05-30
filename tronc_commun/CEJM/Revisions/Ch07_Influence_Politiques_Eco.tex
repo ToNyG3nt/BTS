@@ -1,0 +1,169 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{lmodern}
+
+% --- Couleur discipline : ÉCONOMIE ---
+\definecolor{mainColor}{RGB}{0,80,160}
+\definecolor{darkGray}{RGB}{50,50,50}
+
+\tcbset{boxrule=0.5pt, arc=3pt, left=5pt, right=5pt, top=3pt, bottom=3pt, breakable}
+
+\newtcolorbox{defbox}[1]{
+  colback=mainColor!8, colframe=mainColor, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=DÉFINITION \textemdash\ #1}
+
+\newtcolorbox{keybox}{
+  colback=darkGray!7, colframe=darkGray!50, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=POINT CLÉ}
+
+\newtcolorbox{exbox}{
+  colback=mainColor!5, colframe=mainColor!40,
+  fonttitle=\bfseries\footnotesize, title=EXEMPLE}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\textcolor{mainColor}{\textbf{CEJM — BTS SIO}}}
+\fancyhead[C]{\small\textbf{Chapitre 7 — L'influence des politiques économiques}}
+\fancyhead[R]{\small\textcolor{mainColor}{\textbf{ÉCONOMIE}}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{15pt}
+\setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\textcolor{mainColor}{Chapitre 7}}\\[2pt]
+  {\large L'influence des politiques économiques sur l'entreprise}\\[4pt]
+  \textit{\textcolor{darkGray}{Comment les politiques économiques influencent-elles l'activité des entreprises ?}}
+\end{center}
+\vspace{4pt}\hrule\vspace{8pt}
+
+\section*{Définitions essentielles}
+
+\begin{defbox}{Politique budgétaire}
+Ensemble des mesures prises par les \textbf{pouvoirs publics} pour réguler l'activité économique via le \textbf{budget de l'État} (dépenses et recettes).
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Politique monétaire}
+Action de la \textbf{Banque Centrale} (BCE en zone euro) sur la \textbf{quantité de monnaie} en circulation pour contrôler l'inflation et soutenir la croissance.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Taux directeur}
+Taux auquel les banques commerciales empruntent auprès de la BCE. Il influence le \textbf{coût du crédit} pour les entreprises et les ménages.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Déficit budgétaire}
+Situation où les \textbf{recettes de l'État < dépenses} publiques. Le déficit est financé par l'emprunt (dette publique).
+\end{defbox}
+
+\section*{Les politiques conjoncturelles}
+
+\subsection*{1. La politique budgétaire}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Objectif} & \textbf{Outils} & \textbf{Effet sur les entreprises} \\
+\hline
+\textbf{Relance} & $\uparrow$ dépenses publiques, $\downarrow$ impôts & $\uparrow$ demande, $\uparrow$ investissement \\
+\textbf{Rigueur} & $\downarrow$ dépenses publiques, $\uparrow$ impôts & $\downarrow$ déficit, risque $\downarrow$ activité \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{keybox}
+La \textbf{loi de finances} (votée par le Parlement) fixe chaque année le budget de l'État.
+\end{keybox}
+
+\begin{exbox}
+Baisse de l'\textbf{impôt sur les sociétés} : les entreprises conservent plus de bénéfices → elles investissent et embauchent davantage.
+\end{exbox}
+
+\subsection*{2. La politique monétaire (BCE)}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Situation} & \textbf{Action BCE} & \textbf{Effet} \\
+\hline
+Croissance faible & $\downarrow$ taux directeur & Crédit moins cher → $\uparrow$ investissement \\
+Inflation trop forte & $\uparrow$ taux directeur & Crédit plus cher → $\downarrow$ demande \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{keybox}
+Objectif principal de la BCE : \textbf{stabilité des prix} avec une cible d'inflation proche de \textbf{2\,\%}.
+\end{keybox}
+
+\begin{exbox}
+Depuis 2022 : la BCE a relevé son taux directeur (jusqu'à 4,5\,\%) pour lutter contre l'inflation post-Covid et guerre en Ukraine.\\
+2008--2016 : taux directeur abaissé jusqu'à 0\,\% pour soutenir l'économie après la crise des subprimes.
+\end{exbox}
+
+\section*{Les politiques structurelles}
+\begin{keybox}
+Actions de l'État à \textbf{long terme} visant à modifier les structures de l'économie (différent des politiques conjoncturelles qui agissent à court terme).
+\end{keybox}
+
+\begin{itemize}
+  \item \textbf{Politique de la concurrence} : renforcer les marchés concurrentiels
+  \item \textbf{Politique de l'emploi} : formation professionnelle, flexibilisation du marché du travail
+  \item \textbf{Politique industrielle} : soutien aux secteurs stratégiques (plan France 2030)
+  \item \textbf{Politique d'innovation} : financement de la R\&D, Crédit Impôt Recherche (CIR)
+  \item \textbf{Politique d'aménagement} : développement des territoires, infrastructures
+\end{itemize}
+
+\section*{Les impacts concrets sur les entreprises}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Politique} & \textbf{Impact sur l'entreprise} \\
+\hline
+$\downarrow$ IS (impôt sociétés) & $\uparrow$ bénéfices → $\uparrow$ investissement \\
+$\downarrow$ taux directeur & $\downarrow$ coût des emprunts → $\uparrow$ investissement \\
+$\uparrow$ dépenses publiques & $\uparrow$ commandes publiques → $\uparrow$ CA \\
+CIR / subventions R\&D & $\downarrow$ coût innovation → $\uparrow$ compétitivité \\
+Hausse TVA & $\downarrow$ pouvoir d'achat ménages → $\downarrow$ consommation \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Points clés à retenir}
+
+\begin{keybox}
+Deux grandes politiques conjoncturelles : \textbf{budgétaire} (gouvernement) et \textbf{monétaire} (BCE indépendante).
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+En zone euro, les États \textbf{ne contrôlent plus leur politique monétaire} : elle est déléguée à la BCE.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+Les politiques structurelles agissent sur le \textbf{long terme} : compétitivité, innovation, emploi.
+\end{keybox}
+
+\section*{Mots-clés}
+\textcolor{mainColor}{\textbf{Politique budgétaire}} $\cdot$
+\textcolor{mainColor}{\textbf{Politique monétaire}} $\cdot$
+\textcolor{mainColor}{\textbf{Politique conjoncturelle / structurelle}} $\cdot$
+\textcolor{mainColor}{\textbf{BCE}} $\cdot$
+\textcolor{mainColor}{\textbf{Taux directeur}} $\cdot$
+\textcolor{mainColor}{\textbf{Déficit budgétaire}} $\cdot$
+\textcolor{mainColor}{\textbf{Relance / Rigueur}} $\cdot$
+\textcolor{mainColor}{\textbf{Loi de finances}} $\cdot$
+\textcolor{mainColor}{\textbf{Crédit Impôt Recherche}}
+
+\end{document}
