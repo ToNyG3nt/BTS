@@ -1,0 +1,142 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{lmodern}
+
+% --- Couleur discipline : ÉCONOMIE ---
+\definecolor{mainColor}{RGB}{0,80,160}
+\definecolor{darkGray}{RGB}{50,50,50}
+
+\tcbset{boxrule=0.5pt, arc=3pt, left=5pt, right=5pt, top=3pt, bottom=3pt, breakable}
+
+\newtcolorbox{defbox}[1]{
+  colback=mainColor!8, colframe=mainColor, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=DÉFINITION \textemdash\ #1}
+
+\newtcolorbox{keybox}{
+  colback=darkGray!7, colframe=darkGray!50, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=POINT CLÉ}
+
+\newtcolorbox{exbox}{
+  colback=mainColor!5, colframe=mainColor!40,
+  fonttitle=\bfseries\footnotesize, title=EXEMPLE}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\textcolor{mainColor}{\textbf{CEJM — BTS SIO}}}
+\fancyhead[C]{\small\textbf{Chapitre 6 — Le rôle de l'État}}
+\fancyhead[R]{\small\textcolor{mainColor}{\textbf{ÉCONOMIE}}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{15pt}
+\setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\textcolor{mainColor}{Chapitre 6}}\\[2pt]
+  {\large Le rôle de l'État et les principales politiques économiques}\\[4pt]
+  \textit{\textcolor{darkGray}{Quel est le rôle de l'État dans la régulation de l'activité économique ?}}
+\end{center}
+\vspace{4pt}\hrule\vspace{8pt}
+
+\section*{Définitions essentielles}
+
+\begin{defbox}{État providence}
+État qui assume de vastes responsabilités économiques et sociales, de \textbf{l'État gendarme} (fonctions régaliennes) à \textbf{l'État providence} (protection sociale, redistribution).
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Bien public}
+Bien \textbf{non rival} (consommation par l'un ne prive pas l'autre) et \textbf{non excluable} (nul ne peut en être exclu). Produit par l'État car non rentable pour le secteur privé.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Externalité}
+Effet \textbf{non compensé} de l'activité d'un agent sur d'autres agents : positive (recherche) ou négative (pollution).
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Asymétrie d'information}
+Situation où l'\textbf{information est inégalement répartie} entre les agents économiques, pouvant entraîner des défaillances de marché.
+\end{defbox}
+
+\section*{Les fonctions régaliennes de l'État}
+
+\begin{keybox}
+Fonctions \textbf{souveraines} indélégables : sécurité intérieure (police, justice), défense nationale (armée), relations extérieures.
+\end{keybox}
+
+\section*{Les 3 fonctions économiques de l'État}
+
+\subsection*{1. Fonction d'allocation}
+\begin{keybox}
+L'État corrige les \textbf{défaillances de marché} en produisant ce que le marché ne peut pas produire efficacement.
+\end{keybox}
+
+\textbf{Défaillances de marché justifiant l'intervention de l'État :}
+\begin{itemize}
+  \item \textbf{Faible concurrence} : l'État réglemente les marchés monopolistiques
+  \item \textbf{Biens publics} : l'État les produit (enseignement public, routes, défense)
+  \item \textbf{Externalités négatives} : l'État taxe (taxe carbone) ou réglemente
+  \item \textbf{Externalités positives} : l'État subventionne (R\&D, énergies renouvelables)
+  \item \textbf{Asymétrie d'information} : l'État impose la transparence (étiquetage énergétique)
+\end{itemize}
+
+\begin{exbox}
+L'entrée de \textbf{Free Mobile} en 2009 : l'État a autorisé un 4\textsuperscript{e} opérateur pour renforcer la concurrence et faire baisser les prix.\\
+La \textbf{prime à la conversion} : subvention pour inciter à réduire les externalités négatives (pollution).
+\end{exbox}
+
+\subsection*{2. Fonction de redistribution}
+\begin{keybox}
+L'État réduit les \textbf{inégalités de revenus} : prélève sur les revenus primaires → verse des prestations sociales.
+\end{keybox}
+\begin{itemize}
+  \item \textbf{Prélèvements} : impôts (IR, IS), cotisations sociales, TVA
+  \item \textbf{Transferts} : allocations chômage, CAF, retraites, RSA, remboursements santé
+  \item Objectif : réduire les écarts entre les 10\,\% les plus riches et les 10\,\% les plus pauvres
+\end{itemize}
+
+\subsection*{3. Fonction de régulation}
+\begin{keybox}
+L'État lutte contre les grands \textbf{déséquilibres macro-économiques} : chômage et inflation.
+\end{keybox}
+\begin{itemize}
+  \item \textbf{Chômage} : demande de travail < offre de travail → politiques de l'emploi
+  \item \textbf{Inflation} : hausse générale et durable des prix → perte de compétitivité
+  \item Objectif : maintenir la croissance tout en maîtrisant les prix
+\end{itemize}
+
+\section*{Points clés à retenir}
+
+\begin{keybox}
+L'État intervient quand le \textbf{marché échoue} : défaillances, inégalités, déséquilibres.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+Les \textbf{dépenses publiques} ont fortement augmenté depuis 1945 : passage de l'État gendarme à l'État providence.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+La redistribution ne supprime pas les inégalités mais les \textbf{réduit} grâce au système socio-fiscal.
+\end{keybox}
+
+\section*{Mots-clés}
+\textcolor{mainColor}{\textbf{État gendarme / État providence}} $\cdot$
+\textcolor{mainColor}{\textbf{Bien public}} $\cdot$
+\textcolor{mainColor}{\textbf{Externalité}} $\cdot$
+\textcolor{mainColor}{\textbf{Asymétrie d'information}} $\cdot$
+\textcolor{mainColor}{\textbf{Défaillance de marché}} $\cdot$
+\textcolor{mainColor}{\textbf{Redistribution}} $\cdot$
+\textcolor{mainColor}{\textbf{Prestations sociales}} $\cdot$
+\textcolor{mainColor}{\textbf{Régulation}} $\cdot$
+\textcolor{mainColor}{\textbf{Inflation / Chômage}}
+
+\end{document}
