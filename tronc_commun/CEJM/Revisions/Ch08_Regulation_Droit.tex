@@ -1,0 +1,166 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{lmodern}
+
+% --- Couleur discipline : DROIT ---
+\definecolor{mainColor}{RGB}{160,60,0}
+\definecolor{darkGray}{RGB}{50,50,50}
+
+\tcbset{boxrule=0.5pt, arc=3pt, left=5pt, right=5pt, top=3pt, bottom=3pt, breakable}
+
+\newtcolorbox{defbox}[1]{
+  colback=mainColor!8, colframe=mainColor, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=DÉFINITION \textemdash\ #1}
+
+\newtcolorbox{keybox}{
+  colback=darkGray!7, colframe=darkGray!50, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=POINT CLÉ}
+
+\newtcolorbox{exbox}{
+  colback=mainColor!5, colframe=mainColor!40,
+  fonttitle=\bfseries\footnotesize, title=EXEMPLE}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\textcolor{mainColor}{\textbf{CEJM — BTS SIO}}}
+\fancyhead[C]{\small\textbf{Chapitre 8 — La régulation des activités économiques}}
+\fancyhead[R]{\small\textcolor{mainColor}{\textbf{DROIT}}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{15pt}
+\setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\textcolor{mainColor}{Chapitre 8}}\\[2pt]
+  {\large La régulation des activités économiques par le droit}\\[4pt]
+  \textit{\textcolor{darkGray}{Comment le droit organise-t-il la concurrence et protège-t-il les acteurs économiques ?}}
+\end{center}
+\vspace{4pt}\hrule\vspace{8pt}
+
+\section*{Définitions essentielles}
+
+\begin{defbox}{Régulation}
+Action de \textbf{maintenir en équilibre} les activités économiques en fixant des règles et en veillant à leur respect.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Concurrence libre et non faussée}
+Principe garantissant que les entreprises se livrent concurrence de façon \textbf{équitable}, sans ententes illicites ni abus de position dominante.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{AAI — Autorité Administrative Indépendante}
+Organisme qui agit \textbf{au nom de l'État} tout en étant \textbf{indépendant} du gouvernement et des entreprises régulées. Dispose de pouvoirs de recommandation, de décision et de \textbf{sanction}.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Propriété industrielle}
+Ensemble des droits \textbf{exclusifs} accordés à un inventeur ou créateur pour protéger ses créations (brevets, marques, dessins et modèles).
+\end{defbox}
+
+\section*{La liberté du commerce et de l'industrie}
+
+\begin{keybox}
+Instituée par le \textbf{décret d'Allarde (1791)} — 3 libertés fondamentales :
+\end{keybox}
+\begin{itemize}
+  \item \textbf{Liberté d'entreprendre} : choisir son activité commerciale
+  \item \textbf{Liberté d'exploitation} : gérer son entreprise comme on l'entend
+  \item \textbf{Liberté de concurrence} : utiliser tous les \textbf{moyens loyaux} pour attirer la clientèle
+\end{itemize}
+
+Ces libertés sont \textbf{limitées par l'ordre public} :
+\begin{itemize}
+  \item \textbf{Règles de direction} : protègent l'intérêt général (ex. : conditions pour ouvrir une pharmacie)
+  \item \textbf{Règles de protection} : protègent une catégorie de personnes (ex. : droits des consommateurs)
+\end{itemize}
+
+\section*{Les pratiques anticoncurrentielles}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Pratique} & \textbf{Description} & \textbf{Sanction possible} \\
+\hline
+\textbf{Entente} & Accord secret entre concurrents pour fixer les prix & Amende jusqu'à 10\,\% du CA mondial \\
+\textbf{Abus de position dominante} & Exploiter sa position pour écraser la concurrence & Injonction + amende \\
+\textbf{Pratiques déloyales} & Dénigrement, parasitisme, imitation & Responsabilité civile \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Les autorités de régulation}
+
+\subsection*{Au niveau national}
+\begin{itemize}
+  \item \textbf{Autorité de la Concurrence (ADLC)} : contrôle les pratiques anticoncurrentielles et les concentrations
+  \item \textbf{ARCEP} : régule les télécoms et les postes
+  \item \textbf{CRE} : régule l'énergie (électricité, gaz)
+  \item \textbf{ARCOM} : régule l'audiovisuel et la communication en ligne
+  \item \textbf{AMF} : régule les marchés financiers
+  \item \textbf{CNIL} : protège les données personnelles
+\end{itemize}
+
+\subsection*{Au niveau européen}
+\begin{keybox}
+La \textbf{Commission européenne} veille à l'application du droit de la concurrence dans les 27 États membres. Elle peut infliger des amendes très lourdes.
+\end{keybox}
+
+\begin{exbox}
+\textbf{Google} condamné par la Commission européenne à 2,4 Md€ d'amende (2017) pour abus de position dominante (favorisation de son comparateur de prix).
+\end{exbox}
+
+\section*{La protection de l'innovation : la propriété industrielle}
+
+\begin{center}
+\begin{tabular}{|l|l|c|}
+\hline
+\textbf{Titre} & \textbf{Objet protégé} & \textbf{Durée} \\
+\hline
+\textbf{Brevet} & Invention technique nouvelle & 20 ans \\
+\textbf{Marque} & Signe distinctif (nom, logo) & 10 ans (renouvelable) \\
+\textbf{Dessin et modèle} & Apparence d'un produit & 5 ans (jusqu'à 25 ans) \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{keybox}
+La propriété industrielle \textbf{restreint temporairement la concurrence} pour récompenser l'innovateur, puis enrichit le domaine public.
+\end{keybox}
+
+\section*{Points clés à retenir}
+
+\begin{keybox}
+La concurrence ne s'établit pas naturellement : le droit est \textbf{indispensable} pour l'organiser et la protéger.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+Les \textbf{AAI} sont indépendantes du gouvernement : elles garantissent une régulation \textbf{objective et impartiale}.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+\textbf{Innover = risque} → la propriété industrielle (brevets) protège les investissements en R\&D.
+\end{keybox}
+
+\section*{Mots-clés}
+\textcolor{mainColor}{\textbf{Régulation / Réglementation}} $\cdot$
+\textcolor{mainColor}{\textbf{Liberté du commerce et de l'industrie}} $\cdot$
+\textcolor{mainColor}{\textbf{Entente / Abus de position dominante}} $\cdot$
+\textcolor{mainColor}{\textbf{AAI}} $\cdot$
+\textcolor{mainColor}{\textbf{Autorité de la Concurrence}} $\cdot$
+\textcolor{mainColor}{\textbf{Commission européenne}} $\cdot$
+\textcolor{mainColor}{\textbf{Brevet}} $\cdot$
+\textcolor{mainColor}{\textbf{Marque}} $\cdot$
+\textcolor{mainColor}{\textbf{Propriété industrielle}} $\cdot$
+\textcolor{mainColor}{\textbf{CNIL}}
+
+\end{document}
