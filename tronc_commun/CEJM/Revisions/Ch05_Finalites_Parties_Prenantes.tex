@@ -1,0 +1,161 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{lmodern}
+
+% --- Couleur discipline : MANAGEMENT ---
+\definecolor{mainColor}{RGB}{0,120,60}
+\definecolor{darkGray}{RGB}{50,50,50}
+
+\tcbset{boxrule=0.5pt, arc=3pt, left=5pt, right=5pt, top=3pt, bottom=3pt, breakable}
+
+\newtcolorbox{defbox}[1]{
+  colback=mainColor!8, colframe=mainColor, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=DÉFINITION \textemdash\ #1}
+
+\newtcolorbox{keybox}{
+  colback=darkGray!7, colframe=darkGray!50, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=POINT CLÉ}
+
+\newtcolorbox{exbox}{
+  colback=mainColor!5, colframe=mainColor!40,
+  fonttitle=\bfseries\footnotesize, title=EXEMPLE}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\textcolor{mainColor}{\textbf{CEJM — BTS SIO}}}
+\fancyhead[C]{\small\textbf{Chapitre 5 — Finalités et parties prenantes}}
+\fancyhead[R]{\small\textcolor{mainColor}{\textbf{MANAGEMENT}}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{15pt}
+\setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\textcolor{mainColor}{Chapitre 5}}\\[2pt]
+  {\large Les finalités de l'entreprise et les parties prenantes}\\[4pt]
+  \textit{\textcolor{darkGray}{Comment concilier performance économique et responsabilité sociétale ?}}
+\end{center}
+\vspace{4pt}\hrule\vspace{8pt}
+
+\section*{Définitions essentielles}
+
+\begin{defbox}{Finalité}
+La \textbf{raison d'être} de l'entreprise — mission fondamentale qui justifie son existence sur le long terme.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{RSE — Responsabilité Sociétale des Entreprises}
+Intégration \textbf{volontaire} par les entreprises de préoccupations \textbf{sociales, environnementales et économiques} dans leur activité et leurs relations avec les parties prenantes.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Parties prenantes (Stakeholders)}
+Ensemble des acteurs \textbf{internes et externes} qui peuvent affecter ou être affectés par les décisions de l'entreprise.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Performance globale}
+Résultat de l'entreprise mesuré sur \textbf{trois dimensions} : économique, sociale et environnementale (Triple Bottom Line).
+\end{defbox}
+
+\section*{Les 4 finalités de l'entreprise}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Finalité} & \textbf{Objectif} \\
+\hline
+\textbf{Économique} & Produire, être rentable, assurer la pérennité \\
+\textbf{Sociale} & Bien-être des salariés, emploi, formation, égalité \\
+\textbf{Environnementale} & Réduire l'impact sur l'environnement (CO2, déchets…) \\
+\textbf{Sociétale} & Contribuer positivement à la société, éthique des affaires \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{exbox}
+\textbf{Veja (baskets)} : économique (vente et rentabilité), sociale (conditions de travail, insertion handicap), environnementale (coton agroécologique), sociétale (juste rémunération des producteurs).
+\end{exbox}
+
+\section*{Les parties prenantes}
+
+\subsection*{Parties prenantes internes}
+\begin{itemize}
+  \item \textbf{Salariés} : conditions de travail, rémunération, sens au travail
+  \item \textbf{Dirigeants} : rentabilité, pérennité, stratégie
+  \item \textbf{Actionnaires} : dividendes, valeur de l'action, risques extra-financiers
+\end{itemize}
+
+\subsection*{Parties prenantes externes}
+\begin{itemize}
+  \item \textbf{Clients} : qualité, prix, éthique, transparence
+  \item \textbf{Fournisseurs} : relations équitables et durables
+  \item \textbf{État} : respect de la réglementation, emploi, impôts
+  \item \textbf{Société civile / ONG} : impact environnemental et social
+\end{itemize}
+
+\begin{keybox}
+L'entreprise doit \textbf{équilibrer} les attentes parfois contradictoires de ses parties prenantes.
+\end{keybox}
+
+\section*{La démarche RSE}
+
+\subsection*{Les bénéfices d'une démarche RSE}
+\begin{itemize}
+  \item \textbf{Image et réputation} : attractivité auprès des clients et candidats
+  \item \textbf{Fidélisation} : rétention des talents (marque employeur)
+  \item \textbf{Innovation} : nouvelles solutions durables = nouveaux marchés
+  \item \textbf{Gestion des risques} : anticipation des risques réglementaires
+  \item \textbf{Économies} : réduction des coûts énergétiques et de matières
+\end{itemize}
+
+\section*{La performance globale — indicateurs}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Dimension} & \textbf{Indicateurs} \\
+\hline
+Économique & CA, résultat net, rentabilité \\
+Sociale & Turn-over, taux d'absentéisme, index égalité H/F \\
+Environnementale & Bilan carbone, part d'énergies renouvelables \\
+Sociétale & Mécénat, achats solidaires, score RSE \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Points clés à retenir}
+
+\begin{keybox}
+L'entreprise ne poursuit pas uniquement un but lucratif : ses \textbf{finalités} orientent toute sa stratégie.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+La \textbf{RSE} est la mise en œuvre concrète des finalités sociales, environnementales et sociétales.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+La \textbf{performance globale} (triple bilan) dépasse la simple rentabilité financière.
+\end{keybox}
+
+\section*{Mots-clés}
+\textcolor{mainColor}{\textbf{Finalité}} $\cdot$
+\textcolor{mainColor}{\textbf{RSE}} $\cdot$
+\textcolor{mainColor}{\textbf{Parties prenantes}} $\cdot$
+\textcolor{mainColor}{\textbf{Performance globale}} $\cdot$
+\textcolor{mainColor}{\textbf{Triple Bottom Line}} $\cdot$
+\textcolor{mainColor}{\textbf{Développement durable}} $\cdot$
+\textcolor{mainColor}{\textbf{Marque employeur}} $\cdot$
+\textcolor{mainColor}{\textbf{Éthique des affaires}} $\cdot$
+\textcolor{mainColor}{\textbf{Bilan carbone}}
+
+\end{document}
