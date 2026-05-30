@@ -1,0 +1,178 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{lmodern}
+
+% --- Couleur discipline : DROIT ---
+\definecolor{mainColor}{RGB}{160,60,0}
+\definecolor{darkGray}{RGB}{50,50,50}
+
+\tcbset{boxrule=0.5pt, arc=3pt, left=5pt, right=5pt, top=3pt, bottom=3pt, breakable}
+
+\newtcolorbox{defbox}[1]{
+  colback=mainColor!8, colframe=mainColor, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=DÉFINITION \textemdash\ #1}
+
+\newtcolorbox{keybox}{
+  colback=darkGray!7, colframe=darkGray!50, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=POINT CLÉ}
+
+\newtcolorbox{exbox}{
+  colback=mainColor!5, colframe=mainColor!40,
+  fonttitle=\bfseries\footnotesize, title=EXEMPLE}
+
+\newtcolorbox{alertbox}{
+  colback=red!6, colframe=red!70, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=ATTENTION}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\textcolor{mainColor}{\textbf{CEJM — BTS SIO}}}
+\fancyhead[C]{\small\textbf{Chapitre 3 — La formation du contrat}}
+\fancyhead[R]{\small\textcolor{mainColor}{\textbf{DROIT}}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{15pt}
+\setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\textcolor{mainColor}{Chapitre 3}}\\[2pt]
+  {\large La formation du contrat}\\[4pt]
+  \textit{\textcolor{darkGray}{Quelles sont les conditions de validité d'un contrat et comment se forme-t-il ?}}
+\end{center}
+\vspace{4pt}\hrule\vspace{8pt}
+
+\section*{Définitions essentielles}
+
+\begin{defbox}{Contrat}
+Accord de volontés entre deux ou plusieurs personnes destiné à créer, modifier ou éteindre des \textbf{obligations juridiques}.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Offre (pollicitation)}
+Proposition \textbf{ferme, précise et complète} de contracter, faite à une personne déterminée ou au public.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Consentement}
+Accord de volonté \textbf{libre et éclairé} de chaque partie au contrat.
+\end{defbox}
+
+\section*{Les 4 conditions de validité du contrat}
+
+\begin{keybox}
+\textbf{Consentement} + \textbf{Capacité} + \textbf{Contenu licite et certain} (objet + cause) → contrat valide.
+\end{keybox}
+
+\subsection*{1. Le consentement — libre et éclairé}
+\begin{itemize}
+  \item Doit être \textbf{libre} (sans contrainte) et \textbf{éclairé} (en connaissance de cause)
+\end{itemize}
+
+\textbf{Vices du consentement} (rendent le contrat annulable) :
+\begin{itemize}
+  \item \textbf{Erreur} : méconnaissance de la réalité (sur la substance de la chose)
+  \item \textbf{Dol} : tromperie intentionnelle d'une partie pour obtenir l'accord
+  \item \textbf{Violence} : contrainte physique ou morale sur le cocontractant
+\end{itemize}
+
+\subsection*{2. La capacité juridique}
+\begin{itemize}
+  \item \textbf{Capacité de jouissance} : aptitude à avoir des droits (toute personne)
+  \item \textbf{Capacité d'exercice} : aptitude à exercer ses droits seul
+  \item \textbf{Incapables} : mineurs non émancipés, majeurs sous tutelle/curatelle
+\end{itemize}
+
+\subsection*{3. Un contenu licite et certain}
+\begin{itemize}
+  \item L'objet doit être \textbf{déterminé ou déterminable}, \textbf{possible} et \textbf{licite}
+  \item Conforme à la loi et aux bonnes mœurs (ex. : vente d'organes → nul)
+\end{itemize}
+
+\subsection*{4. La forme}
+\begin{itemize}
+  \item \textbf{Contrat consensuel} : accord de volonté suffit (la majorité des contrats)
+  \item \textbf{Contrat solennel} : forme particulière exigée (ex. : acte notarié pour l'immobilier)
+  \item \textbf{Contrat réel} : remise de la chose nécessaire (ex. : prêt)
+\end{itemize}
+
+\section*{Le processus de formation}
+
+\begin{center}
+\textbf{Pourparlers} $\rightarrow$ \textbf{Offre} $\rightarrow$ \textbf{Acceptation} $\rightarrow$ \textbf{Contrat formé}
+\end{center}
+
+\begin{itemize}
+  \item L'\textbf{offre} : ferme + précise + complète (tous les éléments essentiels)
+  \item L'\textbf{acceptation} : pure et simple (toute modification = contre-offre)
+  \item Le contrat est formé dès la \textbf{rencontre de l'offre et de l'acceptation}
+\end{itemize}
+
+\begin{exbox}
+\textbf{Vente en ligne} : offre = fiche produit sur le site, acceptation = validation de la commande, formation au moment du paiement.\\
+\textbf{Achat en magasin} : offre = étiquetage, acceptation = passage en caisse.
+\end{exbox}
+
+\section*{Classification des contrats}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Type} & \textbf{Caractéristique} \\
+\hline
+Synallagmatique & Obligations \textbf{réciproques} (vente) \\
+Unilatéral & Obligations d'\textbf{une seule partie} (donation) \\
+À titre onéreux & \textbf{Avantages réciproques} \\
+À titre gratuit & \textbf{Libéralité} d'une partie \\
+De gré à gré & Négociation \textbf{libre} \\
+D'adhésion & Conditions \textbf{imposées} (contrat type) \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Les sanctions : la nullité}
+
+\begin{alertbox}
+La nullité \textbf{anéantit rétroactivement} le contrat : les parties retrouvent leur situation initiale (restitutions réciproques).
+\end{alertbox}
+
+\begin{itemize}
+  \item \textbf{Nullité absolue} : violation de l'ordre public (ex. : objet illicite) — tout intéressé peut agir
+  \item \textbf{Nullité relative} : protection d'une partie (ex. : vice du consentement) — délai : \textbf{5 ans}
+\end{itemize}
+
+\section*{Points clés à retenir}
+
+\begin{keybox}
+Un contrat valide nécessite : \textbf{consentement libre et éclairé}, \textbf{capacité}, \textbf{contenu licite et certain}.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+L'acceptation doit être \textbf{pure et simple} : toute modification constitue une contre-offre.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+En cas de vice du consentement (erreur, dol, violence), le contrat peut être \textbf{annulé} à la demande de la victime.
+\end{keybox}
+
+\section*{Mots-clés}
+\textcolor{mainColor}{\textbf{Contrat}} $\cdot$
+\textcolor{mainColor}{\textbf{Offre / Pollicitation}} $\cdot$
+\textcolor{mainColor}{\textbf{Acceptation}} $\cdot$
+\textcolor{mainColor}{\textbf{Consentement}} $\cdot$
+\textcolor{mainColor}{\textbf{Vices du consentement}} $\cdot$
+\textcolor{mainColor}{\textbf{Capacité juridique}} $\cdot$
+\textcolor{mainColor}{\textbf{Objet licite}} $\cdot$
+\textcolor{mainColor}{\textbf{Nullité absolue / relative}} $\cdot$
+\textcolor{mainColor}{\textbf{Contrat synallagmatique}} $\cdot$
+\textcolor{mainColor}{\textbf{Contrat d'adhésion}}
+
+\end{document}
