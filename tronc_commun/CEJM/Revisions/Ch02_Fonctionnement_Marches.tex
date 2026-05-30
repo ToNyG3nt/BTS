@@ -1,0 +1,164 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{lmodern}
+
+% --- Couleur discipline : ÉCONOMIE ---
+\definecolor{mainColor}{RGB}{0,80,160}
+\definecolor{darkGray}{RGB}{50,50,50}
+
+\tcbset{boxrule=0.5pt, arc=3pt, left=5pt, right=5pt, top=3pt, bottom=3pt, breakable}
+
+\newtcolorbox{defbox}[1]{
+  colback=mainColor!8, colframe=mainColor, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=DÉFINITION \textemdash\ #1}
+
+\newtcolorbox{keybox}{
+  colback=darkGray!7, colframe=darkGray!50, coltitle=white,
+  fonttitle=\bfseries\footnotesize, title=POINT CLÉ}
+
+\newtcolorbox{exbox}{
+  colback=mainColor!5, colframe=mainColor!40,
+  fonttitle=\bfseries\footnotesize, title=EXEMPLE}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\textcolor{mainColor}{\textbf{CEJM — BTS SIO}}}
+\fancyhead[C]{\small\textbf{Chapitre 2 — Le fonctionnement des marchés}}
+\fancyhead[R]{\small\textcolor{mainColor}{\textbf{ÉCONOMIE}}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{15pt}
+\setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\textcolor{mainColor}{Chapitre 2}}\\[2pt]
+  {\large Le fonctionnement des marchés}\\[4pt]
+  \textit{\textcolor{darkGray}{Comment se forme le prix d'équilibre et comment le marché s'autorégule-t-il ?}}
+\end{center}
+\vspace{4pt}\hrule\vspace{8pt}
+
+\section*{Définitions essentielles}
+
+\begin{defbox}{Marché}
+Lieu de rencontre (réel ou virtuel) entre l'\textbf{offre} (vendeurs) et la \textbf{demande} (acheteurs) permettant de déterminer un prix.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Prix d'équilibre}
+Prix auquel \textbf{offre = demande}. Il n'y a ni excédent ni pénurie sur le marché.
+\end{defbox}
+
+\vspace{4pt}
+\begin{defbox}{Élasticité-prix de la demande}
+Mesure la \textbf{sensibilité de la demande} aux variations de prix.
+$e = \frac{\Delta Q / Q}{\Delta P / P}$. Si $|e| > 1$ : demande élastique.
+\end{defbox}
+
+\section*{Les lois fondamentales du marché}
+
+\subsection*{Loi de l'offre}
+\begin{keybox}
+\textbf{Prix $\uparrow$ → Offre $\uparrow$} (relation positive) : les producteurs sont incités à produire davantage.
+\end{keybox}
+
+\subsection*{Loi de la demande}
+\begin{keybox}
+\textbf{Prix $\uparrow$ → Demande $\downarrow$} (relation négative) : les consommateurs achètent moins quand le prix augmente.
+\end{keybox}
+
+\subsection*{L'équilibre de marché}
+\begin{keybox}
+L'équilibre se forme à l'\textbf{intersection} des courbes d'offre et de demande → autorégulation par le mécanisme des prix.
+\end{keybox}
+
+\section*{Les déséquilibres}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Situation} & \textbf{Cause} & \textbf{Conséquence} \\
+\hline
+Excédent & Offre > Demande & Prix tend à \textbf{baisser} \\
+Pénurie & Demande > Offre & Prix tend à \textbf{monter} \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Facteurs de déplacement des courbes}
+
+\subsection*{Facteurs influençant la demande}
+\begin{itemize}
+  \item \textbf{Revenus des consommateurs} : revenus $\uparrow$ → demande $\uparrow$
+  \item \textbf{Prix des biens substituts} : prix substitut $\uparrow$ → demande $\uparrow$
+  \item \textbf{Prix des biens complémentaires} : prix complémentaire $\uparrow$ → demande $\downarrow$
+  \item \textbf{Goûts et anticipations} : effet de mode, publicité
+\end{itemize}
+
+\subsection*{Facteurs influençant l'offre}
+\begin{itemize}
+  \item \textbf{Coûts de production} : coûts $\downarrow$ → offre $\uparrow$
+  \item \textbf{Progrès technique} : amélioration → offre $\uparrow$
+  \item \textbf{Nombre de producteurs} : plus de concurrents → offre $\uparrow$
+  \item \textbf{Réglementation} : contraintes → offre $\downarrow$
+\end{itemize}
+
+\section*{Types de structures de marché}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Structure} & \textbf{Vendeurs} & \textbf{Prix} \\
+\hline
+Concurrence parfaite & Nombreux (atomicité) & Prix fixé par le marché \\
+Monopole & 1 seul & Prix fixé par le monopoleur \\
+Oligopole & Quelques-uns & Interdépendance des prix \\
+Conc. monopolistique & Nombreux, produits diff. & Prix influencé (marque) \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{keybox}
+\textbf{5 conditions de la concurrence parfaite} : atomicité, homogénéité, transparence, libre entrée/sortie, mobilité des facteurs.
+\end{keybox}
+
+\vspace{4pt}
+\begin{exbox}
+\textbf{Marché de l'essence} : oligopole (quelques compagnies), prix similaires, demande peu élastique (indispensable).\\
+\textbf{Marché agricole} : proche de la concurrence parfaite, prix très volatils selon la récolte.
+\end{exbox}
+
+\section*{Points clés à retenir}
+
+\begin{keybox}
+Le \textbf{prix} est le signal central qui guide les décisions des agents économiques.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+En concurrence parfaite, les déséquilibres sont \textbf{temporaires} : le marché s'autorégule automatiquement.
+\end{keybox}
+\vspace{3pt}
+\begin{keybox}
+Les marchés réels s'éloignent souvent du modèle théorique → intervention de l'État souvent nécessaire.
+\end{keybox}
+
+\section*{Mots-clés}
+\textcolor{mainColor}{\textbf{Marché}} $\cdot$
+\textcolor{mainColor}{\textbf{Offre / Demande}} $\cdot$
+\textcolor{mainColor}{\textbf{Prix d'équilibre}} $\cdot$
+\textcolor{mainColor}{\textbf{Excédent / Pénurie}} $\cdot$
+\textcolor{mainColor}{\textbf{Élasticité-prix}} $\cdot$
+\textcolor{mainColor}{\textbf{Concurrence parfaite}} $\cdot$
+\textcolor{mainColor}{\textbf{Monopole / Oligopole}} $\cdot$
+\textcolor{mainColor}{\textbf{Biens substituts / complémentaires}} $\cdot$
+\textcolor{mainColor}{\textbf{Autorégulation}}
+
+\end{document}
