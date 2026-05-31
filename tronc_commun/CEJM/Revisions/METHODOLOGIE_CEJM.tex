@@ -1,0 +1,284 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage{multicol}
+
+% --- Couleur : MÉTHODO (violet foncé) ---
+\definecolor{mainColor}{RGB}{80,0,140}
+\definecolor{ecoColor}{RGB}{0,80,160}
+\definecolor{droitColor}{RGB}{160,60,0}
+\definecolor{manaColor}{RGB}{0,120,60}
+\definecolor{darkGray}{RGB}{50,50,50}
+\definecolor{alertRed}{RGB}{180,30,30}
+
+\tcbset{boxrule=0.5pt, arc=3pt, left=5pt, right=5pt, top=3pt, bottom=3pt, breakable}
+
+\newtcolorbox{methbox}[1]{
+  colback=mainColor!8, colframe=mainColor, coltitle=white,
+  fonttitle=\bfseries\small, title=#1}
+
+\newtcolorbox{verbebox}[1]{
+  colback=darkGray!7, colframe=darkGray!60, coltitle=white,
+  fonttitle=\bfseries\small, title=\texttt{#1}}
+
+\newtcolorbox{alertbox}{
+  colback=alertRed!7, colframe=alertRed, coltitle=white,
+  fonttitle=\bfseries\small, title=ATTENTION — À NE PAS FAIRE}
+
+\newtcolorbox{tipbox}{
+  colback=manaColor!7, colframe=manaColor, coltitle=white,
+  fonttitle=\bfseries\small, title=CONSEIL}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\textcolor{mainColor}{\textbf{CEJM — BTS SIO}}}
+\fancyhead[C]{\small\textbf{FICHE MÉTHODOLOGIE — Épreuve E4}}
+\fancyhead[R]{\small\textcolor{mainColor}{\textbf{MÉTHODE}}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{15pt}
+\setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries\textcolor{mainColor}{Fiche Méthodologie}}\\[2pt]
+  {\large Épreuve E4 — CEJM — BTS SIO}\\[4pt]
+  \textit{\textcolor{darkGray}{Les outils, les verbes consignes et les méthodes à maîtriser}}
+\end{center}
+\vspace{4pt}\hrule\vspace{8pt}
+
+% =========================================================
+\section*{\textcolor{mainColor}{1. Présentation de l'épreuve E4}}
+
+\begin{methbox}{Format de l'épreuve}
+\begin{tabular}{ll}
+\textbf{Durée :} & 4 heures \\
+\textbf{Coefficient :} & 3 \\
+\textbf{Forme :} & Écrite (épreuve ponctuelle) \\
+\textbf{Structure :} & Dossier documentaire (annexes) + questions numérotées \\
+\textbf{Rattrapage :} & Épreuve orale de 20 minutes possible \\
+\end{tabular}
+\end{methbox}
+
+\vspace{4pt}
+\begin{methbox}{Ce qui est évalué}
+\begin{itemize}
+  \item Analyser des situations d'entreprise à partir d'un dossier documentaire
+  \item Mobiliser les \textbf{notions du cours} (ECO + DROIT + MANA) pour éclairer la situation
+  \item Proposer des solutions \textbf{argumentées} et \textbf{rédigées}
+  \item Utiliser un vocabulaire précis et adapté à chaque discipline
+\end{itemize}
+\end{methbox}
+
+\vspace{4pt}
+\begin{methbox}{Les 6 thèmes du programme (les 2 ans)}
+\begin{tabular}{cl}
+\textbf{Thème 1} & L'intégration de l'entreprise dans son environnement \\
+\textbf{Thème 2} & La régulation de l'activité économique \\
+\textbf{Thème 3} & L'organisation de l'activité de l'entreprise \\
+\textbf{Thème 4} & L'impact du numérique sur la vie de l'entreprise \\
+\textbf{Thème 5} & Les mutations du travail \\
+\textbf{Thème 6} & Les choix stratégiques de l'entreprise \\
+\end{tabular}
+\end{methbox}
+
+% =========================================================
+\section*{\textcolor{mainColor}{2. Les verbes consignes — Ce qu'ils exigent}}
+
+\begin{verbebox}{CARACTÉRISER}
+\textbf{Identifier et qualifier} les caractéristiques essentielles d'un objet (entreprise, situation, marché…).\\
+\textbf{Structure :} Nommer la caractéristique + la définir brièvement + l'illustrer avec le cas.\\
+\textit{Ex. : « L'entreprise X est une \textbf{PME} (effectif < 250 salariés) du secteur \textbf{tertiaire marchand}… »}
+\end{verbebox}
+
+\vspace{4pt}
+\begin{verbebox}{ANALYSER}
+\textbf{Expliquer} (définir la notion) + \textbf{Appliquer au cas} + tirer une \textbf{conclusion} (la NE = notion essentielle).\\
+\textbf{Structure :} Définition → Lien avec le cas (doc) → Conclusion sur les conséquences.\\
+\textit{Ex. : « Cette situation constitue une externalité positive car… Elle a pour conséquence que… »}
+\end{verbebox}
+
+\vspace{4pt}
+\begin{verbebox}{EXPLIQUER}
+\textbf{Mettre en lumière} le mécanisme ou la notion, \textbf{en s'appuyant sur les documents}.\\
+\textbf{Structure :} Définition de la notion + illustration par les éléments du cas.\\
+\textit{Ex. : « Un marché oligopolistique est un marché dominé par quelques vendeurs. Ici, les 4 opérateurs télécom… »}
+\end{verbebox}
+
+\vspace{4pt}
+\begin{verbebox}{DÉMONTRER}
+\textbf{Prouver} une affirmation à l'aide d'arguments tirés des documents ET du cours.\\
+\textbf{Structure :} Affirmation à prouver → Arguments (au moins 2-3 points) → Conclusion.\\
+\textit{Ex. : « Pour démontrer que l'entreprise adopte une démarche RSE : 1° … 2° … 3° … »}
+\end{verbebox}
+
+\vspace{4pt}
+\begin{verbebox}{ÉVALUER (raisonnement juridique)}
+\textbf{Porter un jugement de valeur} sur une situation juridique. Méthode en 4 étapes obligatoires :\\
+\begin{enumerate}
+  \item \textbf{Faits} : résumer la situation (qui fait quoi à qui)
+  \item \textbf{Question de droit} : quelle règle juridique est en jeu ?
+  \item \textbf{Règle de droit} : définir et énoncer la règle applicable
+  \item \textbf{Application + Conclusion} : appliquer la règle aux faits → conclusion claire (légal ou illégal, valide ou nul…)
+\end{enumerate}
+\end{verbebox}
+
+\vspace{4pt}
+\begin{verbebox}{IDENTIFIER / REPÉRER}
+\textbf{Trouver et nommer} dans les documents les éléments demandés.\\
+Réponse courte. Toujours citer la source (« Selon l'annexe X… »).
+\end{verbebox}
+
+\vspace{4pt}
+\begin{verbebox}{JUSTIFIER}
+\textbf{Apporter des arguments} pour soutenir une affirmation ou un choix.\\
+\textbf{Structure :} Affirmation + 2 ou 3 arguments précis tirés du cours et des docs.
+\end{verbebox}
+
+\vspace{4pt}
+\begin{verbebox}{PROPOSER}
+\textbf{Formuler des recommandations concrètes et argumentées} adaptées à la situation de l'entreprise.\\
+Toujours justifier chaque proposition par des éléments du cas.
+\end{verbebox}
+
+% =========================================================
+\section*{\textcolor{mainColor}{3. Comment caractériser une entreprise}}
+
+\begin{methbox}{Les 6 dimensions à connaître}
+
+\subsection*{\textcolor{ecoColor}{Dimension économique}}
+\begin{itemize}
+  \item \textbf{Secteur d'activité} : primaire (agriculture), secondaire (industrie), tertiaire (services)
+  \item \textbf{Type de production} : marchande (vendue à un prix) / non marchande (gratuite ou quasi-gratuite)
+  \item \textbf{Taille} :
+    \begin{tabular}{lll}
+      TPE & Très petite entreprise & < 10 salariés \\
+      PME & Petite et moyenne entreprise & 10 à 249 salariés \\
+      ETI & Entreprise de taille intermédiaire & 250 à 4 999 salariés \\
+      GE & Grande entreprise & $\geq$ 5 000 salariés \\
+    \end{tabular}
+\end{itemize}
+
+\subsection*{\textcolor{droitColor}{Dimension juridique}}
+\begin{itemize}
+  \item \textbf{Forme juridique} : EI, SARL, SAS, SA, association, coopérative…
+  \item \textbf{Responsabilité} : limitée aux apports (SARL, SAS) ou illimitée (EI)
+  \item \textbf{Nombre d'associés} et \textbf{capital social}
+\end{itemize}
+
+\subsection*{\textcolor{manaColor}{Dimension managériale}}
+\begin{itemize}
+  \item \textbf{Finalité} : lucrative (profit) / non lucrative (ESS, association)
+  \item \textbf{Parties prenantes} principales identifiées dans le cas
+  \item \textbf{Démarche RSE} éventuelle
+  \item \textbf{Marché} : local, national, international ; concurrentiel ou non
+\end{itemize}
+
+\end{methbox}
+
+% =========================================================
+\section*{\textcolor{mainColor}{4. Le raisonnement juridique (méthode FDAC)}}
+
+\begin{methbox}{Méthode en 4 étapes — à utiliser pour toute question de DROIT}
+
+\begin{enumerate}
+  \item[\textbf{F}] \textbf{Faits} — Identifier et résumer les faits pertinents de la situation
+  \item[\textbf{D}] \textbf{Question de Droit} — Formuler le problème juridique (« La question est de savoir si… »)
+  \item[\textbf{A}] \textbf{Application de la règle de droit} — Énoncer la règle + l'appliquer aux faits
+  \item[\textbf{C}] \textbf{Conclusion} — Répondre clairement à la question de droit
+\end{enumerate}
+
+\textit{Ex. appliqué à une rupture de pourparlers :}\\
+\textbf{F :} L'entreprise A a rompu brusquement les négociations après 3 mois de discussions avancées.\\
+\textbf{D :} La rupture des pourparlers est-elle fautive ?\\
+\textbf{A :} La liberté contractuelle autorise la rupture des pourparlers. Cependant, l'obligation précontractuelle de bonne foi (art. 1112 Code civil) interdit la rupture abusive. Ici, la rupture est soudaine et tardive → faute.\\
+\textbf{C :} La rupture est fautive ; l'entreprise A engage sa responsabilité civile.
+
+\end{methbox}
+
+% =========================================================
+\section*{\textcolor{mainColor}{5. Conseils pratiques pour l'examen}}
+
+\begin{tipbox}
+\textbf{Avant de commencer :}
+\begin{itemize}
+  \item Lire \textbf{toutes les questions} avant de lire les annexes
+  \item Repérer le \textbf{barème} de chaque question → calibrer la longueur de vos réponses
+  \item Identifier \textbf{le thème} et \textbf{la discipline} (ECO / DROIT / MANA) de chaque question
+\end{itemize}
+\end{tipbox}
+
+\vspace{4pt}
+\begin{tipbox}
+\textbf{Pendant la rédaction :}
+\begin{itemize}
+  \item \textbf{Toujours} partir de la définition de la notion mobilisée
+  \item \textbf{Toujours} relier au cas pratique : citer les annexes (« Selon l'annexe 2… »)
+  \item Utiliser le \textbf{vocabulaire précis} du cours (pas de paraphrase)
+  \item Soigner la \textbf{conclusion} : répondre explicitement à la question posée
+  \item 1 point = environ 2--3 lignes de réponse bien argumentée
+\end{itemize}
+\end{tipbox}
+
+\vspace{4pt}
+\begin{alertbox}
+\begin{itemize}
+  \item Ne pas faire de \textbf{cours général} sans lien avec le cas → hors-sujet = 0 point
+  \item Ne pas oublier la \textbf{conclusion} (surtout en droit et pour ANALYSER)
+  \item Ne pas confondre les verbes : EXPLIQUER $\neq$ IDENTIFIER $\neq$ DÉMONTRER
+  \item Ne pas laisser de question \textbf{sans réponse} : même incomplète, une réponse rapporte des points
+\end{itemize}
+\end{alertbox}
+
+% =========================================================
+\section*{\textcolor{mainColor}{6. Réflexes par discipline}}
+
+\begin{center}
+\begin{tabular}{|l|p{5.5cm}|p{5.5cm}|}
+\hline
+\textbf{Discipline} & \textbf{Notions-réflexes à mobiliser} & \textbf{Structure de réponse type} \\
+\hline
+\textcolor{ecoColor}{\textbf{ÉCONOMIE}} &
+Offre/demande, élasticité, agents économiques, externalités, politiques budgétaire/monétaire, marché &
+Définition + mécanisme économique + lien avec le cas + impact chiffré si possible \\
+\hline
+\textcolor{droitColor}{\textbf{DROIT}} &
+Contrat, consentement, capacité, responsabilité, nullité, AAI, propriété industrielle &
+Méthode FDAC (Faits → Droit → Application → Conclusion) \\
+\hline
+\textcolor{manaColor}{\textbf{MANAGEMENT}} &
+Finalités, RSE, PESTEL, parties prenantes, performance globale, décision, stratégie &
+Définition + caractéristiques identifiées dans les docs + bénéfices/enjeux \\
+\hline
+\end{tabular}
+\end{center}
+
+% =========================================================
+\section*{\textcolor{mainColor}{7. Vocabulaire de la caractérisation d'entreprise — mémo rapide}}
+
+\begin{multicols}{2}
+\begin{itemize}
+  \item \textbf{Entreprise industrielle} : transforme des matières premières
+  \item \textbf{Entreprise commerciale} : achète/revend sans transformation
+  \item \textbf{Entreprise de services} : produit des prestations immatérielles
+  \item \textbf{Production marchande} : vendue à un prix significatif
+  \item \textbf{Production non marchande} : gratuite ou quasi-gratuite
+  \item \textbf{ESS} : Économie Sociale et Solidaire (but non lucratif)
+  \item \textbf{B2B} : entreprise à entreprise
+  \item \textbf{B2C} : entreprise à consommateur
+  \item \textbf{Start-up} : entreprise innovante à fort potentiel de croissance
+  \item \textbf{Multinationale} : présente dans plusieurs pays
+  \item \textbf{Franchise} : réseau sous enseigne commune
+  \item \textbf{Groupe} : ensemble de sociétés liées par des participations
+\end{itemize}
+\end{multicols}
+
+\end{document}
