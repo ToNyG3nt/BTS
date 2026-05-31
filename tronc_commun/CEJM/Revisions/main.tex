@@ -1,0 +1,76 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{pdfpages}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{lmodern}
+\geometry{margin=0pt}
+\pagestyle{empty}
+
+\begin{document}
+
+% Page de garde
+\newgeometry{top=4cm,bottom=4cm,left=3cm,right=3cm}
+\begin{center}
+  \vspace*{2cm}
+  {\fontsize{32}{40}\selectfont\bfseries\color[RGB]{80,0,140} CEJM}\\[8pt]
+  {\fontsize{18}{24}\selectfont\bfseries\color[RGB]{50,50,50} Fiches de Révision}\\[4pt]
+  {\fontsize{14}{18}\selectfont\color[RGB]{80,0,140} BTS SIO — 1\textsuperscript{ère} année}\\[60pt]
+
+  \noindent\rule{\linewidth}{1pt}\\[12pt]
+
+  {\large\bfseries Sommaire}\\[12pt]
+
+  \begin{tabular}{lp{10cm}r}
+    \textbf{Méthodo} & Méthodologie — Épreuve E4, verbes consignes, raisonnement juridique & p.~1 \\[4pt]
+    \hline\\[-6pt]
+    \multicolumn{3}{l}{\textcolor[RGB]{0,80,160}{\textbf{Thème 1 — L'intégration de l'entreprise dans son environnement}}} \\[4pt]
+    \textbf{Ch. 1}  & Les agents économiques en relation avec l'entreprise & p.~2 \\
+    \textbf{Ch. 2}  & Le fonctionnement des marchés                        & p.~3 \\
+    \textbf{Ch. 3}  & La formation du contrat                               & p.~4 \\
+    \textbf{Ch. 4}  & La création d'entreprise et sa performance            & p.~5 \\
+    \textbf{Ch. 5}  & Les finalités de l'entreprise et les parties prenantes & p.~6 \\[4pt]
+    \hline\\[-6pt]
+    \multicolumn{3}{l}{\textcolor[RGB]{0,80,160}{\textbf{Thème 2 — La régulation de l'activité économique}}} \\[4pt]
+    \textbf{Ch. 6}  & Le rôle de l'État et les principales politiques économiques & p.~7 \\
+    \textbf{Ch. 7}  & L'influence des politiques économiques sur l'entreprise     & p.~8 \\
+    \textbf{Ch. 8}  & La régulation des activités économiques par le droit        & p.~9 \\
+    \textbf{Ch. 9}  & L'environnement global de l'entreprise (PESTEL)             & p.~10 \\[4pt]
+    \hline\\[-6pt]
+    \multicolumn{3}{l}{\textcolor[RGB]{0,80,160}{\textbf{Thème 3 — L'organisation de l'activité de l'entreprise}}} \\[4pt]
+    \textbf{Ch. 10} & Les choix de production de l'entreprise                     & p.~11 \\
+  \end{tabular}
+
+  \vfill
+  \noindent\rule{\linewidth}{1pt}\\[8pt]
+  {\small\color[RGB]{100,100,100}
+    \textbf{Code couleur :}
+    \quad \textcolor[RGB]{0,80,160}{\rule{8pt}{8pt}}~Économie
+    \quad \textcolor[RGB]{160,60,0}{\rule{8pt}{8pt}}~Droit
+    \quad \textcolor[RGB]{0,120,60}{\rule{8pt}{8pt}}~Management
+    \quad \textcolor[RGB]{80,0,140}{\rule{8pt}{8pt}}~Méthodologie
+  }
+\end{center}
+\restoregeometry
+
+% ============================================================
+% Inclusion des fiches
+% ============================================================
+\includepdf[pages=-]{METHODOLOGIE_CEJM.pdf}
+
+\includepdf[pages=-]{Ch01_Agents_Economiques.pdf}
+\includepdf[pages=-]{Ch02_Fonctionnement_Marches.pdf}
+\includepdf[pages=-]{Ch03_Formation_Contrat.pdf}
+\includepdf[pages=-]{Ch04_Creation_Entreprise.pdf}
+\includepdf[pages=-]{Ch05_Finalites_Parties_Prenantes.pdf}
+
+\includepdf[pages=-]{Ch06_Role_Etat_Politiques.pdf}
+\includepdf[pages=-]{Ch07_Influence_Politiques_Eco.pdf}
+\includepdf[pages=-]{Ch08_Regulation_Droit.pdf}
+\includepdf[pages=-]{Ch09_Environnement_Global.pdf}
+
+\includepdf[pages=-]{Ch10_Choix_Production.pdf}
+
+\end{document}
